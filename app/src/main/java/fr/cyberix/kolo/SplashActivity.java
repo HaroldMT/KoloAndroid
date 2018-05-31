@@ -1,42 +1,43 @@
 package fr.cyberix.kolo;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class SplashActivity extends AppCompatActivity {
+    /*
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
-    private static final boolean AUTO_HIDE = true;
+    //private static final boolean AUTO_HIDE = true;
 
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
      * user interaction before hiding the system UI.
      */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    //private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
     /**
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
-    private static final int UI_ANIMATION_DELAY = 300;
-    private final Handler mHideHandler = new Handler();
+    //private static final int UI_ANIMATION_DELAY = 300;
+    //private final Handler mHideHandler = new Handler();
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+    /*private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
@@ -121,7 +122,7 @@ public class SplashActivity extends AppCompatActivity {
     /**
      * Schedules a call to hide() in delay milliseconds, canceling any
      * previously scheduled calls.
-     */
+
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
@@ -159,5 +160,36 @@ public class SplashActivity extends AppCompatActivity {
         // Schedule a runnable to display UI elements after a delay
         mHideHandler.removeCallbacks(mHidePart2Runnable);
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+    }*/
+
+    private TextView tv;
+    private ImageView iv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+
+        tv = findViewById(R.id.splash_text);
+        iv = findViewById(R.id.splash_image);
+
+        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
+        tv.startAnimation(myanim);
+        iv.startAnimation(myanim);
+
+        Thread timer = new Thread(){
+            public void run(){
+                try {
+                    sleep(5000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally {
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                }
+            }
+        };
+
+        timer.start();
+
     }
 }
