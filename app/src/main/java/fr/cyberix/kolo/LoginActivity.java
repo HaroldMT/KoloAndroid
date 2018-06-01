@@ -24,13 +24,17 @@ import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.model.entities.Customer;
+import fr.cyberix.kolo.model.entities.LoginAttempt;
+import fr.cyberix.kolo.model.entities.RefResult;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    @BindView(R.id.login_progressBar)
+    @BindView(R.id.progressBar_login)
     ProgressBar loginProgressBar;
     @BindView(R.id.input_phone)
     EditText inputPhone;
@@ -179,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 btnLogin.setEnabled(true);
                 ConfigHelper.saveConfig();
-                startActivity(new Intent(getBaseContext(), ForeasActivity.class));
+                startActivity(new Intent(getBaseContext(), DashboardActivity.class));
                 finish();
             }
         }
