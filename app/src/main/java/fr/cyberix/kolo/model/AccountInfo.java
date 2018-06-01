@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.model.entities.Business;
@@ -22,6 +23,8 @@ import fr.cyberix.kolo.model.entities.Registration;
 
 public final class AccountInfo {
     private Boolean isAuthenticated = false;
+    private Boolean isRegistring = false;
+    private Boolean isRegistred = false;
     private Customer customer = new Customer();
     private Date lastAuthenticationTime;
     private MobileDevice mobileDevice = new MobileDevice();
@@ -29,7 +32,7 @@ public final class AccountInfo {
     private Business business = new Business();
     private Registration registration = new Registration();
     private TelephonyInfo telInfo = SystemServiceHelper.getInfos();
-    private ArrayList<Contact> contacts = new ArrayList<Contact>();
+    private HashSet<Contact> contacts = new HashSet<Contact>();
 
     public Boolean getAuthenticated() {
         return isAuthenticated;
@@ -80,6 +83,22 @@ public final class AccountInfo {
         this.mobileDevice = mobileDevice;
     }
 
+    public Boolean getRegistring() {
+        return isRegistring;
+    }
+
+    public void setRegistring(Boolean registring) {
+        isRegistring = registring;
+    }
+
+    public Boolean getRegistred() {
+        return isRegistred;
+    }
+
+    public void setRegistred(Boolean registred) {
+        isRegistred = registred;
+    }
+
     public Person getPerson() {
         return person;
     }
@@ -107,11 +126,11 @@ public final class AccountInfo {
         this.telInfo = telInfo;
     }
 
-    public ArrayList<Contact> getContacts() {
+    public HashSet<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts(ArrayList<Contact> contacts) {
+    public void setContacts(HashSet<Contact> contacts) {
         this.contacts = contacts;
     }
 
