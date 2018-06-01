@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity
     private Calendar calendar;
     private int myYear, myMonth, myDay;
     private Registration registration;
-    @BindView(R.id.signup_progressBar)
+    @BindView(R.id.progressBar_signup)
     ProgressBar signup_progressBar;
     private Date _dobValue;
     DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {

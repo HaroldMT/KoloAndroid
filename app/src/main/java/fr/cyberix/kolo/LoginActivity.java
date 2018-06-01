@@ -1,76 +1,53 @@
 package fr.cyberix.kolo;
 
-import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.helpers.KoloHelper;
-import fr.cyberix.kolo.model.entities.Registration;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "SignupActivity";
-    @BindView(R.id.btn_dob)
-    Button _dobButton;
-    @BindView(R.id.btnRegister)
-    Button _signupButton;
-    @BindView(R.id.link_login)
-    TextView _loginLink;
-    @BindView(R.id.txtSignUpDob)
-    TextView _dobText;
-    @BindView(R.id.txtSignUpEmail)
-    EditText _emailText;
-    @BindView(R.id.txtSignUpFirstname)
-    EditText _firstNameText;
-    @BindView(R.id.txtSignUpLastName)
-    EditText _lastnameText;
-    @BindView(R.id.txtSignUpTel)
-    EditText _mobileText;
-    @BindView(R.id.txtSignUpPwd)
-    EditText _pwdText;
-    @BindView(R.id.signup_progressBar)
-    ProgressBar signup_progressBar;
+    private static final String TAG = "LoginActivity";
+    private static final int REQUEST_SIGNUP = 0;
 
-    UserSignUpTask userSignUpTask = null;
-    String dob;
-    String email;
-    String firstname;
-    String lastname;
-    String mobile;
-    String pwd;
-    private Calendar calendar;
-    private int myYear, myMonth, myDay;
-    private Registration registration;
-    private Date _dobValue;
-    DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-            myYear = year;
-            myMonth = monthOfYear + 1;
-            myDay = dayOfMonth;
-            calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, monthOfYear);
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            showDate();
-        }
-    };
+    @BindView(R.id.login_progressBar)
+    ProgressBar loginProgressBar;
+    @BindView(R.id.input_phone)
+    EditText inputPhone;
+    @BindView(R.id.input_password)
+    TextInputEditText inputPassword;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
+    @BindView(R.id.btn_signup)
+    Button btnSignup;
+    @BindView(R.id.login_linearLayout)
+    LinearLayout loginLinearLayout;
+    @BindView(R.id.login_scrollView)
+    ScrollView loginScrollView;
+    LoginAttempt loginAttempt = null;
+    UserSignInTask userSignInTask = null;
+    Customer customer = null;
+    private RefResult loginResult = null;
 
     RelativeLayout login_view, login_creds;
     LinearLayout signUp_view;
@@ -125,185 +102,162 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loadConfig() {
-        calendar = Calendar.getInstance();
-        registration = ConfigHelper.getAccountInfo().getRegistration();
-        if (registration != null) {
-            _dobValue = registration.getDob();
-            _emailText.setText(registration.getEmail());
-            _firstNameText.setText(registration.getFirstName());
-            _lastnameText.setText(registration.getLastName());
-            _mobileText.setText(registration.getPhoneNumber());
-            if (_dobValue != null) {
-                myDay = _dobValue.getDay() + 1;
-                myMonth = _dobValue.getMonth() + 1;
-                myYear = _dobValue.getYear() + 1900;
+        if (!ConfigHelper.getRegistered()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("No account found");
+            alertDialog.setMessage("There is no registered account on this device. You should " +
+                    "sign up first");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        } else {
+            customer = ConfigHelper.getAccountInfo().getCustomer();
+            if (customer != null) {
+                inputPhone.setText(ConfigHelper.getAccountInfo().getMobileDevice().getLineNumber());
+                inputPhone.setEnabled(false);
             } else {
-                Date now = Calendar.getInstance().getTime();
-                myDay = now.getDay() + 1;
-                myMonth = now.getMonth() + 1;
-                myYear = now.getYear() + 1900;
+                AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+                alertDialog.setTitle("No account found");
+                alertDialog.setMessage("There is no customer data on this device. You " +
+                        "should sign up first");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
             }
-            showDate();
         }
     }
 
-    private void showDate() {
-        calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, myYear);
-        calendar.set(Calendar.MONTH, myMonth - 1);
-        calendar.set(Calendar.DAY_OF_MONTH, myDay);
-        _dobValue = calendar.getTime();
-        _dobButton.setText(ForeasHelper.getDateFormat().format(_dobValue));
-    }
-
-    public void signup() {
-        Log.d(TAG, "Signup");
+    public void login() {
+        Log.d(TAG, "Login");
         if (!validate()) {
-            onSignupFailed();
+            onLoginFailed();
             return;
         }
-        userSignUpTask = new UserSignUpTask(registration);
-        userSignUpTask.execute((Void) null);
+        userSignInTask = new UserSignInTask();
+        userSignInTask.execute((Void) null);
     }
 
     public boolean validate() {
         boolean valid = true;
 
-        dob = _dobText.getText().toString();
-        email = _emailText.getText().toString();
-        firstname = _firstNameText.getText().toString();
-        lastname = _lastnameText.getText().toString();
-        mobile = _mobileText.getText().toString();
-        pwd = _pwdText.getText().toString();
+        String phone = inputPhone.getText().toString();
+        String password = inputPassword.getText().toString();
 
-        if (!ValidationHelper.isValidEmail(email)) {
-            _emailText.setError("Invalid email");
+        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
+            inputPhone.setError("enter a valid phone number");
             valid = false;
         } else {
-            _emailText.setError(null);
+            inputPhone.setError(null);
         }
 
-        if (!ValidationHelper.isValidDateOfBirth(dob)) {
-            _dobText.setError("Invalid date of birth");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+            inputPassword.setError("between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
-            _dobText.setError(null);
-        }
-
-        if (!ValidationHelper.isValidName(firstname)) {
-            _firstNameText.setError("Invalid firstame");
-            valid = false;
-        } else {
-            _firstNameText.setError(null);
-        }
-
-        if (!ValidationHelper.isValidName(lastname)) {
-            _lastnameText.setError("Invalid lastname");
-            valid = false;
-        } else {
-            _lastnameText.setError(null);
-        }
-
-        if (!ValidationHelper.isValidPassword(pwd)) {
-            _pwdText.setError("Invalid password");
-            valid = false;
-        } else {
-            _pwdText.setError(null);
-        }
-
-        if (!ValidationHelper.isValidPhone(mobile)) {
-            _mobileText.setError("Invalid date of birth");
-            valid = false;
-        } else {
-            _mobileText.setError(null);
+            inputPassword.setError(null);
         }
 
         return valid;
     }
 
-    public void onSignupFailed() {
-        if (userSignUpTask.mRegistration != null && userSignUpTask.mRegistration
-                .getIdRegistration() == -10) {
-            Toast.makeText(getBaseContext(), "This number is already register; is it is your " +
-                    "number, try to sign in", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getBaseContext(), "Registration failed", Toast.LENGTH_LONG).show();
-        }
-        _signupButton.setEnabled(true);
+    public void onLoginFailed() {
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        btnLogin.setEnabled(true);
     }
 
-    public void onSignupSuccess() {
-        _signupButton.setEnabled(true);
-        setResult(RESULT_OK, null);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_SIGNUP) {
+            if (resultCode == RESULT_OK) {
+                btnLogin.setEnabled(true);
+                ConfigHelper.saveConfig();
+                startActivity(new Intent(getBaseContext(), ForeasActivity.class));
+                finish();
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+    public void onLoginSuccess() {
+        btnLogin.setEnabled(true);
+        ConfigHelper.getAccountInfo().setLastAuthenticationTime(Calendar.getInstance().getTime());
+        ConfigHelper.getAccountInfo().setAuthenticated(true);
         ConfigHelper.saveConfig();
-        startActivity(new Intent(getBaseContext(), ConfirmRegistrationActivity.class));
+        startActivity(new Intent(getBaseContext(), ForeasActivity.class));
         finish();
     }
 
-    private class UserSignUpTask extends AsyncTask<Void, Void, Registration> {
-
-        private Registration mRegistration;
-
-        UserSignUpTask(Registration registration) {
-            mRegistration = registration;
+    private class UserSignInTask extends AsyncTask<Void, Void, RefResult> {
+        UserSignInTask() {
         }
 
         @Override
-        protected Registration doInBackground(Void... params) {
+        protected RefResult doInBackground(Void... params) {
+            RefResult loginResult;
             try {
-                mRegistration = ServiceHelper.signUp(mRegistration);
+                loginResult = ServiceHelper.signIn(loginAttempt);
             } catch (Exception e) {
                 return null;
             }
-            return mRegistration;
+            return loginResult;
         }
 
         @Override
         protected void onPreExecute() {
-            _signupButton.setEnabled(false);
+            btnLogin.setEnabled(false);
 
-            signup_progressBar.setVisibility(View.VISIBLE);
+            loginProgressBar.setVisibility(View.VISIBLE);
 
             TelephonyInfo telInfo = SystemServiceHelper.getInfos();
-            String pass = SerializationHelper.HashPassword(_pwdText.getText().toString());
-            mRegistration.setDob(_dobValue);
-            mRegistration.setEmail(_emailText.getText().toString());
-            mRegistration.setFirstName(_firstNameText.getText().toString());
-            mRegistration.setLastName(_lastnameText.getText().toString());
-            mRegistration.setPhoneNumber(_mobileText.getText().toString());
-            mRegistration.setPwd(pass);
-            mRegistration.setOperatorDeviceSim(telInfo.getSimOperatorName());
-            mRegistration.setSimSerialNumber(telInfo.getSimSerialNumber());
-            mRegistration.setSimSubscriberId(telInfo.getSubscriberId());
-            mRegistration.setDeviceId(telInfo.getDeviceId());
-            mRegistration.setRegistrationStatusCode("");
-            ConfigHelper.getAccountInfo().setRegistration(registration);
-            ConfigHelper.saveConfig();
+            Location loc = SystemServiceHelper.getLocation();
+            String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
+            loginAttempt = new LoginAttempt();
+            loginAttempt.setNumber(inputPhone.getText().toString());
+            loginAttempt.setPwd(pass);
+            loginAttempt.setIdCustomer(customer.getIdCustomer());
+            loginAttempt.setSimOperator(telInfo.getSimOperatorName());
+            loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
+            loginAttempt.setSubscriberId(telInfo.getSubscriberId());
+            loginAttempt.setDeviceId(telInfo.getDeviceId());
+            if (loc != null) {
+                loginAttempt.setLatitude(BigDecimal.valueOf(loc.getLatitude()));
+                loginAttempt.setLongitude(BigDecimal.valueOf(loc.getLongitude()));
+                loginAttempt.setAccuracy(BigDecimal.valueOf(loc.getAccuracy()));
+            }
         }
 
         @Override
-        protected void onPostExecute(final Registration myRegistration) {
-            mRegistration = myRegistration;
-            final Boolean success = myRegistration != null && myRegistration.isRegistering();
-            new android.os.Handler().postDelayed(
+        protected void onPostExecute(final RefResult myLoginResult) {
+            final Boolean success = (myLoginResult != null) && myLoginResult.getResultCode().equals
+                    (RefResult.RESULT_SUCCESS);
+            new Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                             if (success) {
-                                registration = myRegistration;
-                                mRegistration = myRegistration;
-                                ConfigHelper.getAccountInfo().getRegistration().setRegistrationStatusCode(Registration.STATUS_NEEDCONFIRM);
-                                ConfigHelper.getAccountInfo().getRegistration().setIdRegistration(myRegistration.getIdRegistration());
-                                onSignupSuccess();
-                            } else onSignupFailed();
-                            signup_progressBar.setVisibility(View.GONE);
+                                loginResult = myLoginResult;
+                                onLoginSuccess();
+                            } else onLoginFailed();
+                            loginProgressBar.setVisibility(View.INVISIBLE);
                         }
                     }, 3000);
         }
 
         @Override
         protected void onCancelled() {
-            userSignUpTask = null;
-            signup_progressBar.setVisibility(View.GONE);
+            userSignInTask = null;
+            loginProgressBar.setVisibility(View.INVISIBLE);
         }
     }
 }

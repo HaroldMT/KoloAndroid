@@ -365,6 +365,10 @@ public class Registration implements KvmSerializable {
         return dob;
     }
 
+    public Date getDobDate() {
+        return new Date(dob);
+    }
+
     public void setDob(String dob) {
         this.dob = dob;
     }
