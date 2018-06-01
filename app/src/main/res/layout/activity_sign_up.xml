@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -32,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -74,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -117,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -161,7 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -205,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -250,7 +251,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -260,6 +261,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:layout_marginRight="10dp"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:clickable="true"
@@ -271,12 +273,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/DOB"
+                    android:text=""
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
                 <Button
+                    android:onClick="datePicker"
                     android:id="@+id/btn_dob"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:hint="@string/DOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -288,7 +291,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:elevation="5dp"
+            app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
             <LinearLayout

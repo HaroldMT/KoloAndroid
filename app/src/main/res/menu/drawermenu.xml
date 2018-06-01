@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/drawer_dash" android:title="Dash board" android:icon="@drawable/ic_dashboard_black_36dp" />
+    <item android:id="@+id/drawer_historic" android:title="Historic" android:icon="@drawable/ic_event_black_36dp" />
+    <item android:id="@+id/drawer_notifications" android:title="Notifications" android:icon="@drawable/ic_trending_up_black_36dp" />
+    <item android:id="@+id/drawer_search" android:title="Search" android:icon="@drawable/ic_search_black_36dp" />
+    <item android:id="@+id/drawer_contacts" android:title="Contacts" android:icon="@drawable/ic_contacts_black_36dp" />
+    <item android:id="@+id/drawer_settings" android:title="Settings" android:icon="@drawable/ic_settings_black_36dp" />
+    <item android:id="@+id/drawer_logout" android:title="Logout" android:icon="@drawable/ic_exit_to_app_black_36dp" />
+
+</menu>

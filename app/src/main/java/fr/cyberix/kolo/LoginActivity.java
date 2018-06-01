@@ -50,13 +50,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /*Button fbutton = (Button)findViewById(R.id.forgotten_pass_button);
+        Button fbutton = findViewById(R.id.forgotten_pass_button);
         fbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RecoverPassActivity.class));
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             }
-        });*/
+        });
 
     }
 
