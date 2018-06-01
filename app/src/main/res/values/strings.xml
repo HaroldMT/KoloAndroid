@@ -40,4 +40,7 @@
     <string name="kolo_transfer_desc">Do a Kolo to a friend or family</string>
     <string name="kolo_payement">Kolo Payement</string>
     <string name="kolo_payement_desc">Replenish your Kolo account</string>
+    <string name="forgot_pass">Forgotten Password?</string>
+    <string name="signup_now">SignUp Now</string>
+    <string name="signin">Sign In</string>
 </resources>
