@@ -33,6 +33,7 @@
 
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/txt_input_login_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -41,6 +42,7 @@
                 android:textColorHint="@color/colorPrimary">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_edit_login_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone"
@@ -49,6 +51,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/txt_input_login_passphrase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -57,6 +60,7 @@
                 android:textColorHint="@color/colorPrimary">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_edit_login_passphrase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"

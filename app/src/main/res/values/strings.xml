@@ -43,4 +43,6 @@
     <string name="forgot_pass">Forgotten Password?</string>
     <string name="signup_now">SignUp Now</string>
     <string name="signin">Sign In</string>
+    <string name="hint_phone_number">Phone number...</string>
+    <string name="hint_full_name">Full name...</string>
 </resources>

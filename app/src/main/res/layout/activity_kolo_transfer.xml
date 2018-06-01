@@ -91,7 +91,7 @@
                             app:srcCompat="@drawable/ic_portrait_black_48dp" />
 
                         <LinearLayout
-                            android:layout_width="230dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:orientation="vertical">
@@ -100,7 +100,7 @@
                                 android:id="@+id/txt_trans_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Phone number..."
+                                android:hint="@string/hint_phone_number"
                                 android:text=""
                                 android:textSize="16sp" />
 
@@ -108,19 +108,11 @@
                                 android:id="@+id/txt_trans_full_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Full name..."
+                                android:hint="@string/hint_full_name"
                                 android:text=""
                                 android:textSize="16sp" />
 
                         </LinearLayout>
-
-                        <ImageButton
-                            android:id="@+id/btn_trans_remove"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/buttonstyleredoval"
-                            android:src="@drawable/ic_close_white_24dp" />
 
                     </LinearLayout>
 
@@ -142,7 +134,7 @@
 
 
                     <android.support.v7.widget.SwitchCompat
-                        android:id="@+id/scheduled_date_switch"
+                        android:id="@+id/switch_trans_scheduled_date_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
