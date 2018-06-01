@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/lightgrayline"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KoloTransferActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                app:cardElevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="32dp"
+                        android:text="@string/choose_recipient"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgrayline" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+
+
+                        <ImageButton
+                            android:id="@+id/btn_trans_search"
+                            android:layout_width="64dp"
+                            android:layout_height="32dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/buttonstyleredoval"
+                            android:src="@drawable/ic_search_white_24dp" />
+
+                        <ImageButton
+                            android:id="@+id/btn_trans_add_contact"
+                            android:layout_width="64dp"
+                            android:layout_height="32dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/buttonstyleredoval"
+                            android:src="@drawable/ic_person_add_white_24dp" />
+
+                        <ImageButton
+                            android:id="@+id/btn_trans_scan_qr"
+                            android:layout_width="64dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/buttonstyleredoval"
+                            android:src="@drawable/ic_qr_code"
+                            android:tint="@color/white" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:tint="@color/colorPrimary"
+                            app:srcCompat="@drawable/ic_portrait_black_48dp" />
+
+                        <LinearLayout
+                            android:layout_width="230dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_trans_phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Phone number..."
+                                android:text=""
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txt_trans_full_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Full name..."
+                                android:text=""
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_trans_remove"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/buttonstyleredoval"
+                            android:src="@drawable/ic_close_white_24dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardElevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/scheduled_date_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:paddingLeft="32dp"
+                        android:text="@string/scheduled_date"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/colorPrimary"
+                        android:textOff="@string/scheduled"
+                        android:textOn="@string/immediate"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgrayline" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="10dp"
+                            android:clickable="true"
+                            android:tint="@color/colorPrimary"
+                            app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+                        <TextView
+                            android:id="@+id/txt_trans_sche_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btn_trans_sche_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/scheduled_date"
+                            android:onClick="datePicker" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardElevation="5dp"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txt_trans_ent_amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/txt_trans_edit_amt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_amount" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txt_trans_ent_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/txt_trans_edit_pass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_passphrase_opt" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/progressBar_transfer"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_trans_cancel"
+                    android:layout_width="96dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/buttonstyleredoval"
+                    android:text="@string/cancel"
+                    android:textSize="16sp"
+                    android:layout_marginRight="20dp"/>
+
+                <Button
+                    android:id="@+id/btn_trans_ok"
+                    android:layout_width="96dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/buttonstyleredoval"
+                    android:text="@string/Ok"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

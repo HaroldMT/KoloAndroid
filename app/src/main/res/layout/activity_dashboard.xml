@@ -67,7 +67,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Kolo Retrait"
+                            android:text="@string/kolo_retrieve"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"/>
 
@@ -81,7 +81,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Retrieve money from your Kolo account"
+                            android:text="@string/kolo_retrieve_desc"
                             android:padding="4dp"/>
 
                     </LinearLayout>
@@ -114,7 +114,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Kolo Transfer"
+                            android:text="@string/kolo_transfer"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"/>
 
@@ -128,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Do a Kolo to a friend or family."
+                            android:text="@string/kolo_transfer_desc"
                             android:padding="4dp"/>
 
                     </LinearLayout>
@@ -170,7 +170,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Kolo Payement"
+                            android:text="@string/kolo_payement"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"/>
 
@@ -184,7 +184,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Replenish your Kolo account."
+                            android:text="@string/kolo_payement_desc"
                             android:padding="4dp"/>
 
                     </LinearLayout>

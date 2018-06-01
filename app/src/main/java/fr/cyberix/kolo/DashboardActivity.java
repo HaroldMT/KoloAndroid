@@ -9,18 +9,32 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private CardView cardKoloRetrieve, cardKoloTransfer, cardKoloPayement;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        //Define Cards
+        cardKoloRetrieve = findViewById(R.id.card_view_kolo_retrait);
+        cardKoloTransfer = findViewById(R.id.card_view_kolo_tranfer);
+        cardKoloPayement = findViewById(R.id.card_view_kolo_payement);
+
+        //Click listeners to cards
+        cardKoloRetrieve.setOnClickListener(this);
+        cardKoloPayement.setOnClickListener(this);
+        cardKoloTransfer.setOnClickListener(this);
+
 
         //Drawer animation and toggle
         drawerLayout = findViewById(R.id.drawer_nav);
@@ -89,5 +103,20 @@ public class DashboardActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()){
+            case R.id.card_view_kolo_tranfer : intent = new Intent(this, KoloTransferActivity.class);
+                startActivity(intent);
+                break;
+            /*case R.id.card_view_kolo_payement:
+                break;
+            case R.id.card_view_kolo_retrait:
+                break;*/
+            default: break;
+        }
     }
 }
