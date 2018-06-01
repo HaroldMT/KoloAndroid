@@ -17,6 +17,7 @@ import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
+import java.util.Date;
 import java.util.Hashtable;
 
 public class Registration implements KvmSerializable {
@@ -364,8 +365,16 @@ public class Registration implements KvmSerializable {
         return dob;
     }
 
+    public Date getDobDate() {
+        return new Date(dob);
+    }
+
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob.toString();
     }
 
     public String getEmail() {

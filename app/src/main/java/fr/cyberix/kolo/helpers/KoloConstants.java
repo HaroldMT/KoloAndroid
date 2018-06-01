@@ -23,4 +23,9 @@ public final class KoloConstants {
     public static final String BaseUrl = "http://192.168.43.149/";
     //    public static final String BaseUrl = "http://192.168.1.15/";
     public static final int forceLoginAfterShutdownTimeLimit = 5;
+    public static final String REGISTRATION_STATUS_NONE = "NONE";
+    public static final String REGISTRATION_STATUS_CANCEL = "CANCEL";
+    public static final String REGISTRATION_STATUS_COMPLETED = "COMPLETED";
+    public static final String REGISTRATION_STATUS_DELETED = "DELETED";
+    public static final String REGISTRATION_STATUS_NEEDCONFIRM = "NEEDCONFIRM";
 }
