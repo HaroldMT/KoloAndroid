@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefGroupType implements KvmSerializable {
 
-    public String groupTypeCode;
-    public String groupTypeDescription;
+    private String groupTypeCode;
+    private String groupTypeDescription;
 
     public RefGroupType() {
     }
@@ -35,18 +35,18 @@ public class RefGroupType implements KvmSerializable {
             Object obj = soapObject.getProperty("GroupTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                groupTypeCode = j.toString();
+                setGroupTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                groupTypeCode = (String) obj;
+                setGroupTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("GroupTypeDescription")) {
             Object obj = soapObject.getProperty("GroupTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                groupTypeDescription = j.toString();
+                setGroupTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                groupTypeDescription = (String) obj;
+                setGroupTypeDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefGroupType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return groupTypeCode;
+                return getGroupTypeCode();
             case 1:
-                return groupTypeDescription;
+                return getGroupTypeDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefGroupType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getGroupTypeCode() {
+        return groupTypeCode;
+    }
+
+    public void setGroupTypeCode(String groupTypeCode) {
+        this.groupTypeCode = groupTypeCode;
+    }
+
+    public String getGroupTypeDescription() {
+        return groupTypeDescription;
+    }
+
+    public void setGroupTypeDescription(String groupTypeDescription) {
+        this.groupTypeDescription = groupTypeDescription;
+    }
 }

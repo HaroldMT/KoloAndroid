@@ -21,21 +21,21 @@ import java.util.Hashtable;
 
 public class LoginAttempt implements KvmSerializable {
 
-    public int idLoginAttempt;
-    public int idCustomer;
-    public String loginTime;
-    public String resultCode;
-    public String deviceId;
-    public String simOperator;
-    public String simSerialNumber;
-    public String subscriberId;
-    public String pwd;
-    public String number;
-    public double latitude;
-    public double longitude;
-    public double accuracy;
-    public CustomerLogin customerLogin;
-    public RefResult refResult;
+    private int idLoginAttempt;
+    private int idCustomer;
+    private String loginTime;
+    private String resultCode;
+    private String deviceId;
+    private String simOperator;
+    private String simSerialNumber;
+    private String subscriberId;
+    private String pwd;
+    private String number;
+    private double latitude;
+    private double longitude;
+    private double accuracy;
+    private CustomerLogin customerLogin;
+    private RefResult refResult;
 
     public LoginAttempt() {
     }
@@ -47,127 +47,127 @@ public class LoginAttempt implements KvmSerializable {
             Object obj = soapObject.getProperty("IdLoginAttempt");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idLoginAttempt = Integer.parseInt(j.toString());
+                setIdLoginAttempt(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idLoginAttempt = (Integer) obj;
+                setIdLoginAttempt((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomer")) {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("LoginTime")) {
             Object obj = soapObject.getProperty("LoginTime");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                loginTime = j.toString();
+                setLoginTime(j.toString());
             } else if (obj != null && obj instanceof String) {
-                loginTime = (String) obj;
+                setLoginTime((String) obj);
             }
         }
         if (soapObject.hasProperty("ResultCode")) {
             Object obj = soapObject.getProperty("ResultCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                resultCode = j.toString();
+                setResultCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                resultCode = (String) obj;
+                setResultCode((String) obj);
             }
         }
         if (soapObject.hasProperty("DeviceId")) {
             Object obj = soapObject.getProperty("DeviceId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                deviceId = j.toString();
+                setDeviceId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                deviceId = (String) obj;
+                setDeviceId((String) obj);
             }
         }
         if (soapObject.hasProperty("SimOperator")) {
             Object obj = soapObject.getProperty("SimOperator");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simOperator = j.toString();
+                setSimOperator(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simOperator = (String) obj;
+                setSimOperator((String) obj);
             }
         }
         if (soapObject.hasProperty("SimSerialNumber")) {
             Object obj = soapObject.getProperty("SimSerialNumber");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simSerialNumber = j.toString();
+                setSimSerialNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simSerialNumber = (String) obj;
+                setSimSerialNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("SubscriberId")) {
             Object obj = soapObject.getProperty("SubscriberId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                subscriberId = j.toString();
+                setSubscriberId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                subscriberId = (String) obj;
+                setSubscriberId((String) obj);
             }
         }
         if (soapObject.hasProperty("Pwd")) {
             Object obj = soapObject.getProperty("Pwd");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                pwd = j.toString();
+                setPwd(j.toString());
             } else if (obj != null && obj instanceof String) {
-                pwd = (String) obj;
+                setPwd((String) obj);
             }
         }
         if (soapObject.hasProperty("Number")) {
             Object obj = soapObject.getProperty("Number");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                number = j.toString();
+                setNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                number = (String) obj;
+                setNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("Latitude")) {
             Object obj = soapObject.getProperty("Latitude");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                latitude = Double.parseDouble(j.toString());
+                setLatitude(Double.parseDouble(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                latitude = (Double) obj;
+                setLatitude((Double) obj);
             }
         }
         if (soapObject.hasProperty("Longitude")) {
             Object obj = soapObject.getProperty("Longitude");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                longitude = Double.parseDouble(j.toString());
+                setLongitude(Double.parseDouble(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                longitude = (Double) obj;
+                setLongitude((Double) obj);
             }
         }
         if (soapObject.hasProperty("Accuracy")) {
             Object obj = soapObject.getProperty("Accuracy");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                accuracy = Double.parseDouble(j.toString());
+                setAccuracy(Double.parseDouble(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                accuracy = (Double) obj;
+                setAccuracy((Double) obj);
             }
         }
         if (soapObject.hasProperty("CustomerLogin")) {
             SoapObject j = (SoapObject) soapObject.getProperty("CustomerLogin");
-            customerLogin = new CustomerLogin(j);
+            setCustomerLogin(new CustomerLogin(j));
             
         }
         if (soapObject.hasProperty("RefResult")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefResult");
-            refResult = new RefResult(j);
+            setRefResult(new RefResult(j));
             
         }
     }
@@ -175,35 +175,35 @@ public class LoginAttempt implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idLoginAttempt;
+                return getIdLoginAttempt();
             case 1:
-                return idCustomer;
+                return getIdCustomer();
             case 2:
-                return loginTime;
+                return getLoginTime();
             case 3:
-                return resultCode;
+                return getResultCode();
             case 4:
-                return deviceId;
+                return getDeviceId();
             case 5:
-                return simOperator;
+                return getSimOperator();
             case 6:
-                return simSerialNumber;
+                return getSimSerialNumber();
             case 7:
-                return subscriberId;
+                return getSubscriberId();
             case 8:
-                return pwd;
+                return getPwd();
             case 9:
-                return number;
+                return getNumber();
             case 10:
-                return latitude;
+                return getLatitude();
             case 11:
-                return longitude;
+                return getLongitude();
             case 12:
-                return accuracy;
+                return getAccuracy();
             case 13:
-                return customerLogin;
+                return getCustomerLogin();
             case 14:
-                return refResult;
+                return getRefResult();
         }
         return null;
     }
@@ -292,4 +292,123 @@ public class LoginAttempt implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdLoginAttempt() {
+        return idLoginAttempt;
+    }
+
+    public void setIdLoginAttempt(int idLoginAttempt) {
+        this.idLoginAttempt = idLoginAttempt;
+    }
+
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getSimOperator() {
+        return simOperator;
+    }
+
+    public void setSimOperator(String simOperator) {
+        this.simOperator = simOperator;
+    }
+
+    public String getSimSerialNumber() {
+        return simSerialNumber;
+    }
+
+    public void setSimSerialNumber(String simSerialNumber) {
+        this.simSerialNumber = simSerialNumber;
+    }
+
+    public String getSubscriberId() {
+        return subscriberId;
+    }
+
+    public void setSubscriberId(String subscriberId) {
+        this.subscriberId = subscriberId;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(double accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public CustomerLogin getCustomerLogin() {
+        return customerLogin;
+    }
+
+    public void setCustomerLogin(CustomerLogin customerLogin) {
+        this.customerLogin = customerLogin;
+    }
+
+    public RefResult getRefResult() {
+        return refResult;
+    }
+
+    public void setRefResult(RefResult refResult) {
+        this.refResult = refResult;
+    }
 }

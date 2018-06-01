@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefOperationType implements KvmSerializable {
 
-    public String operationTypeCode;
-    public String operationTypeName;
+    private String operationTypeCode;
+    private String operationTypeName;
 
     public RefOperationType() {
     }
@@ -35,18 +35,18 @@ public class RefOperationType implements KvmSerializable {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeName")) {
             Object obj = soapObject.getProperty("OperationTypeName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeName = j.toString();
+                setOperationTypeName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeName = (String) obj;
+                setOperationTypeName((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefOperationType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 1:
-                return operationTypeName;
+                return getOperationTypeName();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefOperationType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public String getOperationTypeName() {
+        return operationTypeName;
+    }
+
+    public void setOperationTypeName(String operationTypeName) {
+        this.operationTypeName = operationTypeName;
+    }
 }

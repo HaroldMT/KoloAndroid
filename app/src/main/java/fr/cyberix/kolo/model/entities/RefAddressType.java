@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefAddressType implements KvmSerializable {
 
-    public String addressTypeDescription;
-    public String addressTypeCode;
+    private String addressTypeDescription;
+    private String addressTypeCode;
 
     public RefAddressType() {
     }
@@ -35,18 +35,18 @@ public class RefAddressType implements KvmSerializable {
             Object obj = soapObject.getProperty("AddressTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                addressTypeDescription = j.toString();
+                setAddressTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                addressTypeDescription = (String) obj;
+                setAddressTypeDescription((String) obj);
             }
         }
         if (soapObject.hasProperty("AddressTypeCode")) {
             Object obj = soapObject.getProperty("AddressTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                addressTypeCode = j.toString();
+                setAddressTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                addressTypeCode = (String) obj;
+                setAddressTypeCode((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefAddressType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return addressTypeDescription;
+                return getAddressTypeDescription();
             case 1:
-                return addressTypeCode;
+                return getAddressTypeCode();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefAddressType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getAddressTypeDescription() {
+        return addressTypeDescription;
+    }
+
+    public void setAddressTypeDescription(String addressTypeDescription) {
+        this.addressTypeDescription = addressTypeDescription;
+    }
+
+    public String getAddressTypeCode() {
+        return addressTypeCode;
+    }
+
+    public void setAddressTypeCode(String addressTypeCode) {
+        this.addressTypeCode = addressTypeCode;
+    }
 }

@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class RecurringContribution implements KvmSerializable {
 
-    public int idRecurringContribution;
-    public int idTreasurerCustomer;
-    public int idCustomerGroup;
-    public Customer customer;
-    public CustomerGroup customerGroup;
+    private int idRecurringContribution;
+    private int idTreasurerCustomer;
+    private int idCustomerGroup;
+    private Customer customer;
+    private CustomerGroup customerGroup;
 
     public RecurringContribution() {
     }
@@ -38,37 +38,37 @@ public class RecurringContribution implements KvmSerializable {
             Object obj = soapObject.getProperty("IdRecurringContribution");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idRecurringContribution = Integer.parseInt(j.toString());
+                setIdRecurringContribution(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idRecurringContribution = (Integer) obj;
+                setIdRecurringContribution((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdTreasurerCustomer")) {
             Object obj = soapObject.getProperty("IdTreasurerCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTreasurerCustomer = Integer.parseInt(j.toString());
+                setIdTreasurerCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTreasurerCustomer = (Integer) obj;
+                setIdTreasurerCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomerGroup")) {
             Object obj = soapObject.getProperty("IdCustomerGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerGroup = Integer.parseInt(j.toString());
+                setIdCustomerGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerGroup = (Integer) obj;
+                setIdCustomerGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("CustomerGroup")) {
             SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            customerGroup = new CustomerGroup(j);
+            setCustomerGroup(new CustomerGroup(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class RecurringContribution implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idRecurringContribution;
+                return getIdRecurringContribution();
             case 1:
-                return idTreasurerCustomer;
+                return getIdTreasurerCustomer();
             case 2:
-                return idCustomerGroup;
+                return getIdCustomerGroup();
             case 3:
-                return customer;
+                return getCustomer();
             case 4:
-                return customerGroup;
+                return getCustomerGroup();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class RecurringContribution implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdRecurringContribution() {
+        return idRecurringContribution;
+    }
+
+    public void setIdRecurringContribution(int idRecurringContribution) {
+        this.idRecurringContribution = idRecurringContribution;
+    }
+
+    public int getIdTreasurerCustomer() {
+        return idTreasurerCustomer;
+    }
+
+    public void setIdTreasurerCustomer(int idTreasurerCustomer) {
+        this.idTreasurerCustomer = idTreasurerCustomer;
+    }
+
+    public int getIdCustomerGroup() {
+        return idCustomerGroup;
+    }
+
+    public void setIdCustomerGroup(int idCustomerGroup) {
+        this.idCustomerGroup = idCustomerGroup;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public CustomerGroup getCustomerGroup() {
+        return customerGroup;
+    }
+
+    public void setCustomerGroup(CustomerGroup customerGroup) {
+        this.customerGroup = customerGroup;
+    }
 }

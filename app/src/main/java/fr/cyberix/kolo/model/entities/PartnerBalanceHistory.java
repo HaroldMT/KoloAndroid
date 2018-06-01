@@ -22,12 +22,12 @@ import java.util.Hashtable;
 
 public class PartnerBalanceHistory implements KvmSerializable {
 
-    public int idPatnerHistory;
-    public int idPartnerAccount;
-    public String historyDate;
-    public int oldBalance;
-    public int newBalance;
-    public int amount;
+    private int idPatnerHistory;
+    private int idPartnerAccount;
+    private String historyDate;
+    private int oldBalance;
+    private int newBalance;
+    private int amount;
 
     public PartnerBalanceHistory() {
     }
@@ -39,54 +39,54 @@ public class PartnerBalanceHistory implements KvmSerializable {
             Object obj = soapObject.getProperty("IdPatnerHistory");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPatnerHistory = Integer.parseInt(j.toString());
+                setIdPatnerHistory(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPatnerHistory = (Integer) obj;
+                setIdPatnerHistory((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPartnerAccount")) {
             Object obj = soapObject.getProperty("IdPartnerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartnerAccount = Integer.parseInt(j.toString());
+                setIdPartnerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartnerAccount = (Integer) obj;
+                setIdPartnerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("HistoryDate")) {
             Object obj = soapObject.getProperty("HistoryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                historyDate = j.toString();
+                setHistoryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                historyDate = (String) obj;
+                setHistoryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("OldBalance")) {
             Object obj = soapObject.getProperty("OldBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                oldBalance = Integer.parseInt(j.toString());
+                setOldBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                oldBalance = (Integer) obj;
+                setOldBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("NewBalance")) {
             Object obj = soapObject.getProperty("NewBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                newBalance = Integer.parseInt(j.toString());
+                setNewBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                newBalance = (Integer) obj;
+                setNewBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
     }
@@ -95,17 +95,17 @@ public class PartnerBalanceHistory implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idPatnerHistory;
+                return getIdPatnerHistory();
             case 1:
-                return idPartnerAccount;
+                return getIdPartnerAccount();
             case 2:
-                return historyDate;
+                return getHistoryDate();
             case 3:
-                return oldBalance;
+                return getOldBalance();
             case 4:
-                return newBalance;
+                return getNewBalance();
             case 5:
-                return amount;
+                return getAmount();
         }
         return null;
     }
@@ -158,4 +158,51 @@ public class PartnerBalanceHistory implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdPatnerHistory() {
+        return idPatnerHistory;
+    }
+
+    public void setIdPatnerHistory(int idPatnerHistory) {
+        this.idPatnerHistory = idPatnerHistory;
+    }
+
+    public int getIdPartnerAccount() {
+        return idPartnerAccount;
+    }
+
+    public void setIdPartnerAccount(int idPartnerAccount) {
+        this.idPartnerAccount = idPartnerAccount;
+    }
+
+    public String getHistoryDate() {
+        return historyDate;
+    }
+
+    public void setHistoryDate(String historyDate) {
+        this.historyDate = historyDate;
+    }
+
+    public int getOldBalance() {
+        return oldBalance;
+    }
+
+    public void setOldBalance(int oldBalance) {
+        this.oldBalance = oldBalance;
+    }
+
+    public int getNewBalance() {
+        return newBalance;
+    }
+
+    public void setNewBalance(int newBalance) {
+        this.newBalance = newBalance;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }

@@ -22,15 +22,15 @@ import java.util.Hashtable;
 
 public class CustomerBalanceHistory implements KvmSerializable {
 
-    public int idCustomerHistory;
-    public int idCustomerAccount;
-    public String operationTypeCode;
-    public String historyDate;
-    public int oldBalance;
-    public int newBalance;
-    public int amount;
-    public Customer customer;
-    public RefOperationType refOperationType;
+    private int idCustomerHistory;
+    private int idCustomerAccount;
+    private String operationTypeCode;
+    private String historyDate;
+    private int oldBalance;
+    private int newBalance;
+    private int amount;
+    private Customer customer;
+    private RefOperationType refOperationType;
 
     public CustomerBalanceHistory() {
     }
@@ -42,73 +42,73 @@ public class CustomerBalanceHistory implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomerHistory");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerHistory = Integer.parseInt(j.toString());
+                setIdCustomerHistory(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerHistory = (Integer) obj;
+                setIdCustomerHistory((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomerAccount")) {
             Object obj = soapObject.getProperty("IdCustomerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerAccount = Integer.parseInt(j.toString());
+                setIdCustomerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerAccount = (Integer) obj;
+                setIdCustomerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeCode")) {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("HistoryDate")) {
             Object obj = soapObject.getProperty("HistoryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                historyDate = j.toString();
+                setHistoryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                historyDate = (String) obj;
+                setHistoryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("OldBalance")) {
             Object obj = soapObject.getProperty("OldBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                oldBalance = Integer.parseInt(j.toString());
+                setOldBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                oldBalance = (Integer) obj;
+                setOldBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("NewBalance")) {
             Object obj = soapObject.getProperty("NewBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                newBalance = Integer.parseInt(j.toString());
+                setNewBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                newBalance = (Integer) obj;
+                setNewBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("RefOperationType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            refOperationType = new RefOperationType(j);
+            setRefOperationType(new RefOperationType(j));
 
         }
     }
@@ -117,23 +117,23 @@ public class CustomerBalanceHistory implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomerHistory;
+                return getIdCustomerHistory();
             case 1:
-                return idCustomerAccount;
+                return getIdCustomerAccount();
             case 2:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 3:
-                return historyDate;
+                return getHistoryDate();
             case 4:
-                return oldBalance;
+                return getOldBalance();
             case 5:
-                return newBalance;
+                return getNewBalance();
             case 6:
-                return amount;
+                return getAmount();
             case 7:
-                return customer;
+                return getCustomer();
             case 8:
-                return refOperationType;
+                return getRefOperationType();
         }
         return null;
     }
@@ -198,4 +198,75 @@ public class CustomerBalanceHistory implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomerHistory() {
+        return idCustomerHistory;
+    }
+
+    public void setIdCustomerHistory(int idCustomerHistory) {
+        this.idCustomerHistory = idCustomerHistory;
+    }
+
+    public int getIdCustomerAccount() {
+        return idCustomerAccount;
+    }
+
+    public void setIdCustomerAccount(int idCustomerAccount) {
+        this.idCustomerAccount = idCustomerAccount;
+    }
+
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public String getHistoryDate() {
+        return historyDate;
+    }
+
+    public void setHistoryDate(String historyDate) {
+        this.historyDate = historyDate;
+    }
+
+    public int getOldBalance() {
+        return oldBalance;
+    }
+
+    public void setOldBalance(int oldBalance) {
+        this.oldBalance = oldBalance;
+    }
+
+    public int getNewBalance() {
+        return newBalance;
+    }
+
+    public void setNewBalance(int newBalance) {
+        this.newBalance = newBalance;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefOperationType getRefOperationType() {
+        return refOperationType;
+    }
+
+    public void setRefOperationType(RefOperationType refOperationType) {
+        this.refOperationType = refOperationType;
+    }
 }

@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class TransfertGroupScheduled implements KvmSerializable {
 
-    public int idTransfertGroupScheduled;
-    public int idReceiverGroup;
-    public int idSendingCustomer;
-    public Customer customer;
-    public CustomerGroup customerGroup;
+    private int idTransfertGroupScheduled;
+    private int idReceiverGroup;
+    private int idSendingCustomer;
+    private Customer customer;
+    private CustomerGroup customerGroup;
 
     public TransfertGroupScheduled() {
     }
@@ -38,37 +38,37 @@ public class TransfertGroupScheduled implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfertGroupScheduled");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertGroupScheduled = Integer.parseInt(j.toString());
+                setIdTransfertGroupScheduled(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertGroupScheduled = (Integer) obj;
+                setIdTransfertGroupScheduled((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverGroup")) {
             Object obj = soapObject.getProperty("IdReceiverGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverGroup = Integer.parseInt(j.toString());
+                setIdReceiverGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverGroup = (Integer) obj;
+                setIdReceiverGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingCustomer")) {
             Object obj = soapObject.getProperty("IdSendingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingCustomer = Integer.parseInt(j.toString());
+                setIdSendingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingCustomer = (Integer) obj;
+                setIdSendingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("CustomerGroup")) {
             SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            customerGroup = new CustomerGroup(j);
+            setCustomerGroup(new CustomerGroup(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class TransfertGroupScheduled implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfertGroupScheduled;
+                return getIdTransfertGroupScheduled();
             case 1:
-                return idReceiverGroup;
+                return getIdReceiverGroup();
             case 2:
-                return idSendingCustomer;
+                return getIdSendingCustomer();
             case 3:
-                return customer;
+                return getCustomer();
             case 4:
-                return customerGroup;
+                return getCustomerGroup();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class TransfertGroupScheduled implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfertGroupScheduled() {
+        return idTransfertGroupScheduled;
+    }
+
+    public void setIdTransfertGroupScheduled(int idTransfertGroupScheduled) {
+        this.idTransfertGroupScheduled = idTransfertGroupScheduled;
+    }
+
+    public int getIdReceiverGroup() {
+        return idReceiverGroup;
+    }
+
+    public void setIdReceiverGroup(int idReceiverGroup) {
+        this.idReceiverGroup = idReceiverGroup;
+    }
+
+    public int getIdSendingCustomer() {
+        return idSendingCustomer;
+    }
+
+    public void setIdSendingCustomer(int idSendingCustomer) {
+        this.idSendingCustomer = idSendingCustomer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public CustomerGroup getCustomerGroup() {
+        return customerGroup;
+    }
+
+    public void setCustomerGroup(CustomerGroup customerGroup) {
+        this.customerGroup = customerGroup;
+    }
 }

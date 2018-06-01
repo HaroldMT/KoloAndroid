@@ -22,12 +22,12 @@ import java.util.Hashtable;
 
 public class TransfertScheduled implements KvmSerializable {
 
-    public int idTransfertScheduled;
-    public int idSendingCustomer;
-    public int idReceiverCustomer;
-    public String dateScheduled;
-    public Customer customer;
-    public Customer customer1;
+    private int idTransfertScheduled;
+    private int idSendingCustomer;
+    private int idReceiverCustomer;
+    private String dateScheduled;
+    private Customer customer;
+    private Customer customer1;
 
     public TransfertScheduled() {
     }
@@ -39,46 +39,46 @@ public class TransfertScheduled implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfertScheduled");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertScheduled = Integer.parseInt(j.toString());
+                setIdTransfertScheduled(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertScheduled = (Integer) obj;
+                setIdTransfertScheduled((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingCustomer")) {
             Object obj = soapObject.getProperty("IdSendingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingCustomer = Integer.parseInt(j.toString());
+                setIdSendingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingCustomer = (Integer) obj;
+                setIdSendingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverCustomer")) {
             Object obj = soapObject.getProperty("IdReceiverCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverCustomer = Integer.parseInt(j.toString());
+                setIdReceiverCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverCustomer = (Integer) obj;
+                setIdReceiverCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("DateScheduled")) {
             Object obj = soapObject.getProperty("DateScheduled");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dateScheduled = j.toString();
+                setDateScheduled(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dateScheduled = (String) obj;
+                setDateScheduled((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("Customer1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer1");
-            customer1 = new Customer(j);
+            setCustomer1(new Customer(j));
 
         }
     }
@@ -87,17 +87,17 @@ public class TransfertScheduled implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfertScheduled;
+                return getIdTransfertScheduled();
             case 1:
-                return idSendingCustomer;
+                return getIdSendingCustomer();
             case 2:
-                return idReceiverCustomer;
+                return getIdReceiverCustomer();
             case 3:
-                return dateScheduled;
+                return getDateScheduled();
             case 4:
-                return customer;
+                return getCustomer();
             case 5:
-                return customer1;
+                return getCustomer1();
         }
         return null;
     }
@@ -150,4 +150,51 @@ public class TransfertScheduled implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfertScheduled() {
+        return idTransfertScheduled;
+    }
+
+    public void setIdTransfertScheduled(int idTransfertScheduled) {
+        this.idTransfertScheduled = idTransfertScheduled;
+    }
+
+    public int getIdSendingCustomer() {
+        return idSendingCustomer;
+    }
+
+    public void setIdSendingCustomer(int idSendingCustomer) {
+        this.idSendingCustomer = idSendingCustomer;
+    }
+
+    public int getIdReceiverCustomer() {
+        return idReceiverCustomer;
+    }
+
+    public void setIdReceiverCustomer(int idReceiverCustomer) {
+        this.idReceiverCustomer = idReceiverCustomer;
+    }
+
+    public String getDateScheduled() {
+        return dateScheduled;
+    }
+
+    public void setDateScheduled(String dateScheduled) {
+        this.dateScheduled = dateScheduled;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer1() {
+        return customer1;
+    }
+
+    public void setCustomer1(Customer customer1) {
+        this.customer1 = customer1;
+    }
 }

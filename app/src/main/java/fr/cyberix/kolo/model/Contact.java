@@ -32,13 +32,13 @@ public final class Contact {
 
     public String getFullName() {
         if (person == null) return "";
-        String fullName = new StringBuilder(person.lastname).append(' ').append(person
-                .firstname).toString();
+        String fullName = new StringBuilder(person.getLastname()).append(' ').append(person
+                .getFirstname()).toString();
         return fullName;
     }
 
     public String getPhoneNumber() {
-        return mobileDevice.lineNumber;
+        return mobileDevice.getLineNumber();
     }
 
     public Bitmap getImageBitmap() {
@@ -58,7 +58,7 @@ public final class Contact {
     public byte[] getImageBytes() {
         byte[] imageBytes = null;
         if (customerImage != null) {
-            imageBytes = customerImage.imageBytes.toBytes();
+            imageBytes = customerImage.getImageBytes().toBytes();
         } else {
             imageBytes = new byte[1];
         }

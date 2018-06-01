@@ -21,9 +21,9 @@ import java.util.Hashtable;
 
 public class Reseller implements KvmSerializable {
 
-    public int idPartner;
-    public int idWholesalerPartner;
-    public Partner partner;
+    private int idPartner;
+    private int idWholesalerPartner;
+    private Partner partner;
 
     public Reseller() {
     }
@@ -35,23 +35,23 @@ public class Reseller implements KvmSerializable {
             Object obj = soapObject.getProperty("IdPartner");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartner = Integer.parseInt(j.toString());
+                setIdPartner(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartner = (Integer) obj;
+                setIdPartner((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdWholesalerPartner")) {
             Object obj = soapObject.getProperty("IdWholesalerPartner");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idWholesalerPartner = Integer.parseInt(j.toString());
+                setIdWholesalerPartner(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idWholesalerPartner = (Integer) obj;
+                setIdWholesalerPartner((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
             
         }
     }
@@ -59,11 +59,11 @@ public class Reseller implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idPartner;
+                return getIdPartner();
             case 1:
-                return idWholesalerPartner;
+                return getIdWholesalerPartner();
             case 2:
-                return partner;
+                return getPartner();
         }
         return null;
     }
@@ -104,4 +104,27 @@ public class Reseller implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdPartner() {
+        return idPartner;
+    }
+
+    public void setIdPartner(int idPartner) {
+        this.idPartner = idPartner;
+    }
+
+    public int getIdWholesalerPartner() {
+        return idWholesalerPartner;
+    }
+
+    public void setIdWholesalerPartner(int idWholesalerPartner) {
+        this.idWholesalerPartner = idWholesalerPartner;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
 }

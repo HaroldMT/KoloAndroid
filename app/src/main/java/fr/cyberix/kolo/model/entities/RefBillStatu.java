@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefBillStatu implements KvmSerializable {
 
-    public String billStatusCode;
-    public String billStatusDescription;
+    private String billStatusCode;
+    private String billStatusDescription;
 
     public RefBillStatu() {
     }
@@ -35,18 +35,18 @@ public class RefBillStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("BillStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                billStatusCode = j.toString();
+                setBillStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                billStatusCode = (String) obj;
+                setBillStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("BillStatusDescription")) {
             Object obj = soapObject.getProperty("BillStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                billStatusDescription = j.toString();
+                setBillStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                billStatusDescription = (String) obj;
+                setBillStatusDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefBillStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return billStatusCode;
+                return getBillStatusCode();
             case 1:
-                return billStatusDescription;
+                return getBillStatusDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefBillStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getBillStatusCode() {
+        return billStatusCode;
+    }
+
+    public void setBillStatusCode(String billStatusCode) {
+        this.billStatusCode = billStatusCode;
+    }
+
+    public String getBillStatusDescription() {
+        return billStatusDescription;
+    }
+
+    public void setBillStatusDescription(String billStatusDescription) {
+        this.billStatusDescription = billStatusDescription;
+    }
 }

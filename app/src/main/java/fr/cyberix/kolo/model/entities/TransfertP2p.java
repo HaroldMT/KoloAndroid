@@ -22,18 +22,18 @@ import java.util.Hashtable;
 
 public class TransfertP2p implements KvmSerializable {
 
-    public int idTransfertP2p;
-    public int idSendingCustomer;
-    public int idReceiverCustomer;
-    public int idTransfertScheduled;
-    public String transfertStatusCode;
-    public int amount;
-    public boolean needsConfirmation;
-    public String secret;
-    public String transfertDate;
-    public String reference;
-    public boolean transfert2Cash;
-    public Customer customer;
+    private int idTransfertP2p;
+    private int idSendingCustomer;
+    private int idReceiverCustomer;
+    private int idTransfertScheduled;
+    private String transfertStatusCode;
+    private int amount;
+    private boolean needsConfirmation;
+    private String secret;
+    private String transfertDate;
+    private String reference;
+    private boolean transfert2Cash;
+    private Customer customer;
 
     public TransfertP2p() {
     }
@@ -45,104 +45,104 @@ public class TransfertP2p implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfertP2p");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertP2p = Integer.parseInt(j.toString());
+                setIdTransfertP2p(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertP2p = (Integer) obj;
+                setIdTransfertP2p((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingCustomer")) {
             Object obj = soapObject.getProperty("IdSendingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingCustomer = Integer.parseInt(j.toString());
+                setIdSendingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingCustomer = (Integer) obj;
+                setIdSendingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverCustomer")) {
             Object obj = soapObject.getProperty("IdReceiverCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverCustomer = Integer.parseInt(j.toString());
+                setIdReceiverCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverCustomer = (Integer) obj;
+                setIdReceiverCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdTransfertScheduled")) {
             Object obj = soapObject.getProperty("IdTransfertScheduled");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertScheduled = Integer.parseInt(j.toString());
+                setIdTransfertScheduled(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertScheduled = (Integer) obj;
+                setIdTransfertScheduled((Integer) obj);
             }
         }
         if (soapObject.hasProperty("TransfertStatusCode")) {
             Object obj = soapObject.getProperty("TransfertStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfertStatusCode = j.toString();
+                setTransfertStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                transfertStatusCode = (String) obj;
+                setTransfertStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("NeedsConfirmation")) {
             Object obj = soapObject.getProperty("NeedsConfirmation");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                needsConfirmation = Boolean.parseBoolean(j.toString());
+                setNeedsConfirmation(Boolean.parseBoolean(j.toString()));
             } else if (obj != null && obj instanceof Boolean) {
-                needsConfirmation = (Boolean) obj;
+                setNeedsConfirmation((Boolean) obj);
             }
         }
         if (soapObject.hasProperty("Secret")) {
             Object obj = soapObject.getProperty("Secret");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                secret = j.toString();
+                setSecret(j.toString());
             } else if (obj != null && obj instanceof String) {
-                secret = (String) obj;
+                setSecret((String) obj);
             }
         }
         if (soapObject.hasProperty("TransfertDate")) {
             Object obj = soapObject.getProperty("TransfertDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfertDate = j.toString();
+                setTransfertDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                transfertDate = (String) obj;
+                setTransfertDate((String) obj);
             }
         }
         if (soapObject.hasProperty("Reference")) {
             Object obj = soapObject.getProperty("Reference");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                reference = j.toString();
+                setReference(j.toString());
             } else if (obj != null && obj instanceof String) {
-                reference = (String) obj;
+                setReference((String) obj);
             }
         }
         if (soapObject.hasProperty("Transfert2Cash")) {
             Object obj = soapObject.getProperty("Transfert2Cash");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfert2Cash = Boolean.parseBoolean(j.toString());
+                setTransfert2Cash(Boolean.parseBoolean(j.toString()));
             } else if (obj != null && obj instanceof Boolean) {
-                transfert2Cash = (Boolean) obj;
+                setTransfert2Cash((Boolean) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
     }
@@ -151,29 +151,29 @@ public class TransfertP2p implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfertP2p;
+                return getIdTransfertP2p();
             case 1:
-                return idSendingCustomer;
+                return getIdSendingCustomer();
             case 2:
-                return idReceiverCustomer;
+                return getIdReceiverCustomer();
             case 3:
-                return idTransfertScheduled;
+                return getIdTransfertScheduled();
             case 4:
-                return transfertStatusCode;
+                return getTransfertStatusCode();
             case 5:
-                return amount;
+                return getAmount();
             case 6:
-                return needsConfirmation;
+                return isNeedsConfirmation();
             case 7:
-                return secret;
+                return getSecret();
             case 8:
-                return transfertDate;
+                return getTransfertDate();
             case 9:
-                return reference;
+                return getReference();
             case 10:
-                return transfert2Cash;
+                return isTransfert2Cash();
             case 11:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -250,4 +250,99 @@ public class TransfertP2p implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfertP2p() {
+        return idTransfertP2p;
+    }
+
+    public void setIdTransfertP2p(int idTransfertP2p) {
+        this.idTransfertP2p = idTransfertP2p;
+    }
+
+    public int getIdSendingCustomer() {
+        return idSendingCustomer;
+    }
+
+    public void setIdSendingCustomer(int idSendingCustomer) {
+        this.idSendingCustomer = idSendingCustomer;
+    }
+
+    public int getIdReceiverCustomer() {
+        return idReceiverCustomer;
+    }
+
+    public void setIdReceiverCustomer(int idReceiverCustomer) {
+        this.idReceiverCustomer = idReceiverCustomer;
+    }
+
+    public int getIdTransfertScheduled() {
+        return idTransfertScheduled;
+    }
+
+    public void setIdTransfertScheduled(int idTransfertScheduled) {
+        this.idTransfertScheduled = idTransfertScheduled;
+    }
+
+    public String getTransfertStatusCode() {
+        return transfertStatusCode;
+    }
+
+    public void setTransfertStatusCode(String transfertStatusCode) {
+        this.transfertStatusCode = transfertStatusCode;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isNeedsConfirmation() {
+        return needsConfirmation;
+    }
+
+    public void setNeedsConfirmation(boolean needsConfirmation) {
+        this.needsConfirmation = needsConfirmation;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    public String getTransfertDate() {
+        return transfertDate;
+    }
+
+    public void setTransfertDate(String transfertDate) {
+        this.transfertDate = transfertDate;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public boolean isTransfert2Cash() {
+        return transfert2Cash;
+    }
+
+    public void setTransfert2Cash(boolean transfert2Cash) {
+        this.transfert2Cash = transfert2Cash;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

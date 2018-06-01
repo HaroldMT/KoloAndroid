@@ -22,18 +22,18 @@ import java.util.Hashtable;
 
 public class Provision implements KvmSerializable {
 
-    public int idProvision;
-    public int idProvisionRequest;
-    public int idPatnerHistory;
-    public int idResellerPartnerAccount;
-    public int idWholesalerPartnerAccount;
-    public String codeRefProsisionStatus;
-    public String provisionDate;
-    public int amount;
-    public Partner partner;
-    public Partner partner1;
-    public PartnerBalanceHistory partnerBalanceHistory;
-    public RefProvisionStatu refProvisionStatu;
+    private int idProvision;
+    private int idProvisionRequest;
+    private int idPatnerHistory;
+    private int idResellerPartnerAccount;
+    private int idWholesalerPartnerAccount;
+    private String codeRefProsisionStatus;
+    private String provisionDate;
+    private int amount;
+    private Partner partner;
+    private Partner partner1;
+    private PartnerBalanceHistory partnerBalanceHistory;
+    private RefProvisionStatu refProvisionStatu;
 
     public Provision() {
     }
@@ -45,92 +45,92 @@ public class Provision implements KvmSerializable {
             Object obj = soapObject.getProperty("IdProvision");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idProvision = Integer.parseInt(j.toString());
+                setIdProvision(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idProvision = (Integer) obj;
+                setIdProvision((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdProvisionRequest")) {
             Object obj = soapObject.getProperty("IdProvisionRequest");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idProvisionRequest = Integer.parseInt(j.toString());
+                setIdProvisionRequest(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idProvisionRequest = (Integer) obj;
+                setIdProvisionRequest((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPatnerHistory")) {
             Object obj = soapObject.getProperty("IdPatnerHistory");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPatnerHistory = Integer.parseInt(j.toString());
+                setIdPatnerHistory(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPatnerHistory = (Integer) obj;
+                setIdPatnerHistory((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdResellerPartnerAccount")) {
             Object obj = soapObject.getProperty("IdResellerPartnerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idResellerPartnerAccount = Integer.parseInt(j.toString());
+                setIdResellerPartnerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idResellerPartnerAccount = (Integer) obj;
+                setIdResellerPartnerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdWholesalerPartnerAccount")) {
             Object obj = soapObject.getProperty("IdWholesalerPartnerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idWholesalerPartnerAccount = Integer.parseInt(j.toString());
+                setIdWholesalerPartnerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idWholesalerPartnerAccount = (Integer) obj;
+                setIdWholesalerPartnerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CodeRefProsisionStatus")) {
             Object obj = soapObject.getProperty("CodeRefProsisionStatus");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeRefProsisionStatus = j.toString();
+                setCodeRefProsisionStatus(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeRefProsisionStatus = (String) obj;
+                setCodeRefProsisionStatus((String) obj);
             }
         }
         if (soapObject.hasProperty("ProvisionDate")) {
             Object obj = soapObject.getProperty("ProvisionDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                provisionDate = j.toString();
+                setProvisionDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                provisionDate = (String) obj;
+                setProvisionDate((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
 
         }
         if (soapObject.hasProperty("Partner1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner1");
-            partner1 = new Partner(j);
+            setPartner1(new Partner(j));
 
         }
         if (soapObject.hasProperty("PartnerBalanceHistory")) {
             SoapObject j = (SoapObject) soapObject.getProperty("PartnerBalanceHistory");
-            partnerBalanceHistory = new PartnerBalanceHistory(j);
+            setPartnerBalanceHistory(new PartnerBalanceHistory(j));
 
         }
         if (soapObject.hasProperty("RefProvisionStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefProvisionStatu");
-            refProvisionStatu = new RefProvisionStatu(j);
+            setRefProvisionStatu(new RefProvisionStatu(j));
 
         }
     }
@@ -139,29 +139,29 @@ public class Provision implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idProvision;
+                return getIdProvision();
             case 1:
-                return idProvisionRequest;
+                return getIdProvisionRequest();
             case 2:
-                return idPatnerHistory;
+                return getIdPatnerHistory();
             case 3:
-                return idResellerPartnerAccount;
+                return getIdResellerPartnerAccount();
             case 4:
-                return idWholesalerPartnerAccount;
+                return getIdWholesalerPartnerAccount();
             case 5:
-                return codeRefProsisionStatus;
+                return getCodeRefProsisionStatus();
             case 6:
-                return provisionDate;
+                return getProvisionDate();
             case 7:
-                return amount;
+                return getAmount();
             case 8:
-                return partner;
+                return getPartner();
             case 9:
-                return partner1;
+                return getPartner1();
             case 10:
-                return partnerBalanceHistory;
+                return getPartnerBalanceHistory();
             case 11:
-                return refProvisionStatu;
+                return getRefProvisionStatu();
         }
         return null;
     }
@@ -238,4 +238,99 @@ public class Provision implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdProvision() {
+        return idProvision;
+    }
+
+    public void setIdProvision(int idProvision) {
+        this.idProvision = idProvision;
+    }
+
+    public int getIdProvisionRequest() {
+        return idProvisionRequest;
+    }
+
+    public void setIdProvisionRequest(int idProvisionRequest) {
+        this.idProvisionRequest = idProvisionRequest;
+    }
+
+    public int getIdPatnerHistory() {
+        return idPatnerHistory;
+    }
+
+    public void setIdPatnerHistory(int idPatnerHistory) {
+        this.idPatnerHistory = idPatnerHistory;
+    }
+
+    public int getIdResellerPartnerAccount() {
+        return idResellerPartnerAccount;
+    }
+
+    public void setIdResellerPartnerAccount(int idResellerPartnerAccount) {
+        this.idResellerPartnerAccount = idResellerPartnerAccount;
+    }
+
+    public int getIdWholesalerPartnerAccount() {
+        return idWholesalerPartnerAccount;
+    }
+
+    public void setIdWholesalerPartnerAccount(int idWholesalerPartnerAccount) {
+        this.idWholesalerPartnerAccount = idWholesalerPartnerAccount;
+    }
+
+    public String getCodeRefProsisionStatus() {
+        return codeRefProsisionStatus;
+    }
+
+    public void setCodeRefProsisionStatus(String codeRefProsisionStatus) {
+        this.codeRefProsisionStatus = codeRefProsisionStatus;
+    }
+
+    public String getProvisionDate() {
+        return provisionDate;
+    }
+
+    public void setProvisionDate(String provisionDate) {
+        this.provisionDate = provisionDate;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
+
+    public Partner getPartner1() {
+        return partner1;
+    }
+
+    public void setPartner1(Partner partner1) {
+        this.partner1 = partner1;
+    }
+
+    public PartnerBalanceHistory getPartnerBalanceHistory() {
+        return partnerBalanceHistory;
+    }
+
+    public void setPartnerBalanceHistory(PartnerBalanceHistory partnerBalanceHistory) {
+        this.partnerBalanceHistory = partnerBalanceHistory;
+    }
+
+    public RefProvisionStatu getRefProvisionStatu() {
+        return refProvisionStatu;
+    }
+
+    public void setRefProvisionStatu(RefProvisionStatu refProvisionStatu) {
+        this.refProvisionStatu = refProvisionStatu;
+    }
 }

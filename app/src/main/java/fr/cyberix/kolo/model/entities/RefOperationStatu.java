@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefOperationStatu implements KvmSerializable {
 
-    public String operationStatusCode;
-    public String operationStatusDescription;
+    private String operationStatusCode;
+    private String operationStatusDescription;
 
     public RefOperationStatu() {
     }
@@ -35,18 +35,18 @@ public class RefOperationStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("OperationStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationStatusCode = j.toString();
+                setOperationStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationStatusCode = (String) obj;
+                setOperationStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("OperationStatusDescription")) {
             Object obj = soapObject.getProperty("OperationStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationStatusDescription = j.toString();
+                setOperationStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationStatusDescription = (String) obj;
+                setOperationStatusDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefOperationStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return operationStatusCode;
+                return getOperationStatusCode();
             case 1:
-                return operationStatusDescription;
+                return getOperationStatusDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefOperationStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getOperationStatusCode() {
+        return operationStatusCode;
+    }
+
+    public void setOperationStatusCode(String operationStatusCode) {
+        this.operationStatusCode = operationStatusCode;
+    }
+
+    public String getOperationStatusDescription() {
+        return operationStatusDescription;
+    }
+
+    public void setOperationStatusDescription(String operationStatusDescription) {
+        this.operationStatusDescription = operationStatusDescription;
+    }
 }

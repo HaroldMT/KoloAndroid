@@ -21,9 +21,9 @@ import java.util.Hashtable;
 
 public class CustomerImage implements KvmSerializable {
 
-    public int idCustomer;
-    public VectorByte imageBytes;
-    public Customer customer;
+    private int idCustomer;
+    private VectorByte imageBytes;
+    private Customer customer;
 
     public CustomerImage() {
     }
@@ -35,18 +35,18 @@ public class CustomerImage implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("ImageBytes")) {
             SoapPrimitive j = (SoapPrimitive) soapObject.getProperty("ImageBytes");
-            imageBytes = new VectorByte(j);
+            setImageBytes(new VectorByte(j));
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
     }
@@ -54,11 +54,11 @@ public class CustomerImage implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return imageBytes.toString();
+                return getImageBytes().toString();
             case 2:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -99,4 +99,27 @@ public class CustomerImage implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public VectorByte getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(VectorByte imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

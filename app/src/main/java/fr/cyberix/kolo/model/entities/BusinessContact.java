@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class BusinessContact implements KvmSerializable {
 
-    public int idBusiness;
-    public int idContact;
-    public String jobTitle;
-    public Business business;
-    public Person person;
+    private int idBusiness;
+    private int idContact;
+    private String jobTitle;
+    private Business business;
+    private Person person;
 
     public BusinessContact() {
     }
@@ -38,37 +38,37 @@ public class BusinessContact implements KvmSerializable {
             Object obj = soapObject.getProperty("IdBusiness");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idBusiness = Integer.parseInt(j.toString());
+                setIdBusiness(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idBusiness = (Integer) obj;
+                setIdBusiness((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdContact")) {
             Object obj = soapObject.getProperty("IdContact");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idContact = Integer.parseInt(j.toString());
+                setIdContact(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idContact = (Integer) obj;
+                setIdContact((Integer) obj);
             }
         }
         if (soapObject.hasProperty("JobTitle")) {
             Object obj = soapObject.getProperty("JobTitle");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                jobTitle = j.toString();
+                setJobTitle(j.toString());
             } else if (obj != null && obj instanceof String) {
-                jobTitle = (String) obj;
+                setJobTitle((String) obj);
             }
         }
         if (soapObject.hasProperty("Business")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Business");
-            business = new Business(j);
+            setBusiness(new Business(j));
 
         }
         if (soapObject.hasProperty("Person")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Person");
-            person = new Person(j);
+            setPerson(new Person(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class BusinessContact implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idBusiness;
+                return getIdBusiness();
             case 1:
-                return idContact;
+                return getIdContact();
             case 2:
-                return jobTitle;
+                return getJobTitle();
             case 3:
-                return business;
+                return getBusiness();
             case 4:
-                return person;
+                return getPerson();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class BusinessContact implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdBusiness() {
+        return idBusiness;
+    }
+
+    public void setIdBusiness(int idBusiness) {
+        this.idBusiness = idBusiness;
+    }
+
+    public int getIdContact() {
+        return idContact;
+    }
+
+    public void setIdContact(int idContact) {
+        this.idContact = idContact;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

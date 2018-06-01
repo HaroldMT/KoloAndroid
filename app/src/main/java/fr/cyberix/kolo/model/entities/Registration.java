@@ -21,23 +21,23 @@ import java.util.Hashtable;
 
 public class Registration implements KvmSerializable {
 
-    public int idRegistration;
-    public String lastName;
-    public String firstName;
-    public String phoneNumber;
-    public String dob;
-    public String email;
-    public String registrationToken;
-    public String registrationStatusCode;
-    public String registrationDate;
-    public String registrationConfirmDate;
-    public String simSubscriberId;
-    public String simSerialNumber;
-    public String operatorDeviceSim;
-    public String registrationTokenExpiryDate;
-    public String pwd;
-    public String deviceId;
-    public RefRegistrationStatu refRegistrationStatu;
+    private int idRegistration;
+    private String lastName;
+    private String firstName;
+    private String phoneNumber;
+    private String dob;
+    private String email;
+    private String registrationToken;
+    private String registrationStatusCode;
+    private String registrationDate;
+    private String registrationConfirmDate;
+    private String simSubscriberId;
+    private String simSerialNumber;
+    private String operatorDeviceSim;
+    private String registrationTokenExpiryDate;
+    private String pwd;
+    private String deviceId;
+    private RefRegistrationStatu refRegistrationStatu;
 
     public Registration() {
     }
@@ -49,149 +49,149 @@ public class Registration implements KvmSerializable {
             Object obj = soapObject.getProperty("IdRegistration");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idRegistration = Integer.parseInt(j.toString());
+                setIdRegistration(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idRegistration = (Integer) obj;
+                setIdRegistration((Integer) obj);
             }
         }
         if (soapObject.hasProperty("LastName")) {
             Object obj = soapObject.getProperty("LastName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                lastName = j.toString();
+                setLastName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                lastName = (String) obj;
+                setLastName((String) obj);
             }
         }
         if (soapObject.hasProperty("FirstName")) {
             Object obj = soapObject.getProperty("FirstName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                firstName = j.toString();
+                setFirstName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                firstName = (String) obj;
+                setFirstName((String) obj);
             }
         }
         if (soapObject.hasProperty("PhoneNumber")) {
             Object obj = soapObject.getProperty("PhoneNumber");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                phoneNumber = j.toString();
+                setPhoneNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                phoneNumber = (String) obj;
+                setPhoneNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("Dob")) {
             Object obj = soapObject.getProperty("Dob");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dob = j.toString();
+                setDob(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dob = (String) obj;
+                setDob((String) obj);
             }
         }
         if (soapObject.hasProperty("Email")) {
             Object obj = soapObject.getProperty("Email");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                email = j.toString();
+                setEmail(j.toString());
             } else if (obj != null && obj instanceof String) {
-                email = (String) obj;
+                setEmail((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationToken")) {
             Object obj = soapObject.getProperty("RegistrationToken");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationToken = j.toString();
+                setRegistrationToken(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationToken = (String) obj;
+                setRegistrationToken((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationStatusCode")) {
             Object obj = soapObject.getProperty("RegistrationStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationStatusCode = j.toString();
+                setRegistrationStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationStatusCode = (String) obj;
+                setRegistrationStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationDate")) {
             Object obj = soapObject.getProperty("RegistrationDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationDate = j.toString();
+                setRegistrationDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationDate = (String) obj;
+                setRegistrationDate((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationConfirmDate")) {
             Object obj = soapObject.getProperty("RegistrationConfirmDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationConfirmDate = j.toString();
+                setRegistrationConfirmDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationConfirmDate = (String) obj;
+                setRegistrationConfirmDate((String) obj);
             }
         }
         if (soapObject.hasProperty("SimSubscriberId")) {
             Object obj = soapObject.getProperty("SimSubscriberId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simSubscriberId = j.toString();
+                setSimSubscriberId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simSubscriberId = (String) obj;
+                setSimSubscriberId((String) obj);
             }
         }
         if (soapObject.hasProperty("SimSerialNumber")) {
             Object obj = soapObject.getProperty("SimSerialNumber");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simSerialNumber = j.toString();
+                setSimSerialNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simSerialNumber = (String) obj;
+                setSimSerialNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("OperatorDeviceSim")) {
             Object obj = soapObject.getProperty("OperatorDeviceSim");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operatorDeviceSim = j.toString();
+                setOperatorDeviceSim(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operatorDeviceSim = (String) obj;
+                setOperatorDeviceSim((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationTokenExpiryDate")) {
             Object obj = soapObject.getProperty("RegistrationTokenExpiryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationTokenExpiryDate = j.toString();
+                setRegistrationTokenExpiryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationTokenExpiryDate = (String) obj;
+                setRegistrationTokenExpiryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("Pwd")) {
             Object obj = soapObject.getProperty("Pwd");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                pwd = j.toString();
+                setPwd(j.toString());
             } else if (obj != null && obj instanceof String) {
-                pwd = (String) obj;
+                setPwd((String) obj);
             }
         }
         if (soapObject.hasProperty("DeviceId")) {
             Object obj = soapObject.getProperty("DeviceId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                deviceId = j.toString();
+                setDeviceId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                deviceId = (String) obj;
+                setDeviceId((String) obj);
             }
         }
         if (soapObject.hasProperty("RefRegistrationStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefRegistrationStatu");
-            refRegistrationStatu = new RefRegistrationStatu(j);
+            setRefRegistrationStatu(new RefRegistrationStatu(j));
             
         }
     }
@@ -199,39 +199,39 @@ public class Registration implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idRegistration;
+                return getIdRegistration();
             case 1:
-                return lastName;
+                return getLastName();
             case 2:
-                return firstName;
+                return getFirstName();
             case 3:
-                return phoneNumber;
+                return getPhoneNumber();
             case 4:
-                return dob;
+                return getDob();
             case 5:
-                return email;
+                return getEmail();
             case 6:
-                return registrationToken;
+                return getRegistrationToken();
             case 7:
-                return registrationStatusCode;
+                return getRegistrationStatusCode();
             case 8:
-                return registrationDate;
+                return getRegistrationDate();
             case 9:
-                return registrationConfirmDate;
+                return getRegistrationConfirmDate();
             case 10:
-                return simSubscriberId;
+                return getSimSubscriberId();
             case 11:
-                return simSerialNumber;
+                return getSimSerialNumber();
             case 12:
-                return operatorDeviceSim;
+                return getOperatorDeviceSim();
             case 13:
-                return registrationTokenExpiryDate;
+                return getRegistrationTokenExpiryDate();
             case 14:
-                return pwd;
+                return getPwd();
             case 15:
-                return deviceId;
+                return getDeviceId();
             case 16:
-                return refRegistrationStatu;
+                return getRefRegistrationStatu();
         }
         return null;
     }
@@ -328,4 +328,139 @@ public class Registration implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdRegistration() {
+        return idRegistration;
+    }
+
+    public void setIdRegistration(int idRegistration) {
+        this.idRegistration = idRegistration;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRegistrationToken() {
+        return registrationToken;
+    }
+
+    public void setRegistrationToken(String registrationToken) {
+        this.registrationToken = registrationToken;
+    }
+
+    public String getRegistrationStatusCode() {
+        return registrationStatusCode;
+    }
+
+    public void setRegistrationStatusCode(String registrationStatusCode) {
+        this.registrationStatusCode = registrationStatusCode;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getRegistrationConfirmDate() {
+        return registrationConfirmDate;
+    }
+
+    public void setRegistrationConfirmDate(String registrationConfirmDate) {
+        this.registrationConfirmDate = registrationConfirmDate;
+    }
+
+    public String getSimSubscriberId() {
+        return simSubscriberId;
+    }
+
+    public void setSimSubscriberId(String simSubscriberId) {
+        this.simSubscriberId = simSubscriberId;
+    }
+
+    public String getSimSerialNumber() {
+        return simSerialNumber;
+    }
+
+    public void setSimSerialNumber(String simSerialNumber) {
+        this.simSerialNumber = simSerialNumber;
+    }
+
+    public String getOperatorDeviceSim() {
+        return operatorDeviceSim;
+    }
+
+    public void setOperatorDeviceSim(String operatorDeviceSim) {
+        this.operatorDeviceSim = operatorDeviceSim;
+    }
+
+    public String getRegistrationTokenExpiryDate() {
+        return registrationTokenExpiryDate;
+    }
+
+    public void setRegistrationTokenExpiryDate(String registrationTokenExpiryDate) {
+        this.registrationTokenExpiryDate = registrationTokenExpiryDate;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public RefRegistrationStatu getRefRegistrationStatu() {
+        return refRegistrationStatu;
+    }
+
+    public void setRefRegistrationStatu(RefRegistrationStatu refRegistrationStatu) {
+        this.refRegistrationStatu = refRegistrationStatu;
+    }
 }

@@ -21,18 +21,18 @@ import java.util.Hashtable;
 
 public class CustomerLogin implements KvmSerializable {
 
-    public int idCustomer;
-    public String number;
-    public boolean numberVerified;
-    public String emailAddress;
-    public boolean emailAddressVerified;
-    public String pwdSalt;
-    public String pwd;
-    public String recoveryToken;
-    public String recoveryTokenExpiryDate;
-    public String loginStatusCode;
-    public Customer customer;
-    public RefLoginStatu refLoginStatu;
+    private int idCustomer;
+    private String number;
+    private boolean numberVerified;
+    private String emailAddress;
+    private boolean emailAddressVerified;
+    private String pwdSalt;
+    private String pwd;
+    private String recoveryToken;
+    private String recoveryTokenExpiryDate;
+    private String loginStatusCode;
+    private Customer customer;
+    private RefLoginStatu refLoginStatu;
 
     public CustomerLogin() {
     }
@@ -44,100 +44,100 @@ public class CustomerLogin implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Number")) {
             Object obj = soapObject.getProperty("Number");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                number = j.toString();
+                setNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                number = (String) obj;
+                setNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("NumberVerified")) {
             Object obj = soapObject.getProperty("NumberVerified");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                numberVerified = Boolean.parseBoolean(j.toString());
+                setNumberVerified(Boolean.parseBoolean(j.toString()));
             } else if (obj != null && obj instanceof Boolean) {
-                numberVerified = (Boolean) obj;
+                setNumberVerified((Boolean) obj);
             }
         }
         if (soapObject.hasProperty("EmailAddress")) {
             Object obj = soapObject.getProperty("EmailAddress");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                emailAddress = j.toString();
+                setEmailAddress(j.toString());
             } else if (obj != null && obj instanceof String) {
-                emailAddress = (String) obj;
+                setEmailAddress((String) obj);
             }
         }
         if (soapObject.hasProperty("EmailAddressVerified")) {
             Object obj = soapObject.getProperty("EmailAddressVerified");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                emailAddressVerified = Boolean.parseBoolean(j.toString());
+                setEmailAddressVerified(Boolean.parseBoolean(j.toString()));
             } else if (obj != null && obj instanceof Boolean) {
-                emailAddressVerified = (Boolean) obj;
+                setEmailAddressVerified((Boolean) obj);
             }
         }
         if (soapObject.hasProperty("PwdSalt")) {
             Object obj = soapObject.getProperty("PwdSalt");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                pwdSalt = j.toString();
+                setPwdSalt(j.toString());
             } else if (obj != null && obj instanceof String) {
-                pwdSalt = (String) obj;
+                setPwdSalt((String) obj);
             }
         }
         if (soapObject.hasProperty("Pwd")) {
             Object obj = soapObject.getProperty("Pwd");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                pwd = j.toString();
+                setPwd(j.toString());
             } else if (obj != null && obj instanceof String) {
-                pwd = (String) obj;
+                setPwd((String) obj);
             }
         }
         if (soapObject.hasProperty("RecoveryToken")) {
             Object obj = soapObject.getProperty("RecoveryToken");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                recoveryToken = j.toString();
+                setRecoveryToken(j.toString());
             } else if (obj != null && obj instanceof String) {
-                recoveryToken = (String) obj;
+                setRecoveryToken((String) obj);
             }
         }
         if (soapObject.hasProperty("RecoveryTokenExpiryDate")) {
             Object obj = soapObject.getProperty("RecoveryTokenExpiryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                recoveryTokenExpiryDate = j.toString();
+                setRecoveryTokenExpiryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                recoveryTokenExpiryDate = (String) obj;
+                setRecoveryTokenExpiryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("LoginStatusCode")) {
             Object obj = soapObject.getProperty("LoginStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                loginStatusCode = j.toString();
+                setLoginStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                loginStatusCode = (String) obj;
+                setLoginStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
         if (soapObject.hasProperty("RefLoginStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefLoginStatu");
-            refLoginStatu = new RefLoginStatu(j);
+            setRefLoginStatu(new RefLoginStatu(j));
             
         }
     }
@@ -145,29 +145,29 @@ public class CustomerLogin implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return number;
+                return getNumber();
             case 2:
-                return numberVerified;
+                return isNumberVerified();
             case 3:
-                return emailAddress;
+                return getEmailAddress();
             case 4:
-                return emailAddressVerified;
+                return isEmailAddressVerified();
             case 5:
-                return pwdSalt;
+                return getPwdSalt();
             case 6:
-                return pwd;
+                return getPwd();
             case 7:
-                return recoveryToken;
+                return getRecoveryToken();
             case 8:
-                return recoveryTokenExpiryDate;
+                return getRecoveryTokenExpiryDate();
             case 9:
-                return loginStatusCode;
+                return getLoginStatusCode();
             case 10:
-                return customer;
+                return getCustomer();
             case 11:
-                return refLoginStatu;
+                return getRefLoginStatu();
         }
         return null;
     }
@@ -244,4 +244,99 @@ public class CustomerLogin implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public boolean isNumberVerified() {
+        return numberVerified;
+    }
+
+    public void setNumberVerified(boolean numberVerified) {
+        this.numberVerified = numberVerified;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public boolean isEmailAddressVerified() {
+        return emailAddressVerified;
+    }
+
+    public void setEmailAddressVerified(boolean emailAddressVerified) {
+        this.emailAddressVerified = emailAddressVerified;
+    }
+
+    public String getPwdSalt() {
+        return pwdSalt;
+    }
+
+    public void setPwdSalt(String pwdSalt) {
+        this.pwdSalt = pwdSalt;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getRecoveryToken() {
+        return recoveryToken;
+    }
+
+    public void setRecoveryToken(String recoveryToken) {
+        this.recoveryToken = recoveryToken;
+    }
+
+    public String getRecoveryTokenExpiryDate() {
+        return recoveryTokenExpiryDate;
+    }
+
+    public void setRecoveryTokenExpiryDate(String recoveryTokenExpiryDate) {
+        this.recoveryTokenExpiryDate = recoveryTokenExpiryDate;
+    }
+
+    public String getLoginStatusCode() {
+        return loginStatusCode;
+    }
+
+    public void setLoginStatusCode(String loginStatusCode) {
+        this.loginStatusCode = loginStatusCode;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefLoginStatu getRefLoginStatu() {
+        return refLoginStatu;
+    }
+
+    public void setRefLoginStatu(RefLoginStatu refLoginStatu) {
+        this.refLoginStatu = refLoginStatu;
+    }
 }

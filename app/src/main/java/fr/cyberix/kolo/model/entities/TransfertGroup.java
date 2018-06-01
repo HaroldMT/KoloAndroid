@@ -22,15 +22,15 @@ import java.util.Hashtable;
 
 public class TransfertGroup implements KvmSerializable {
 
-    public int idTransfertGroup;
-    public int idReceiverGroup;
-    public int idSendingCustomer;
-    public int amount;
-    public String codeTransfertStatus;
-    public String reference;
-    public Customer customer;
-    public CustomerGroup customerGroup;
-    public RefTransfertStatu refTransfertStatu;
+    private int idTransfertGroup;
+    private int idReceiverGroup;
+    private int idSendingCustomer;
+    private int amount;
+    private String codeTransfertStatus;
+    private String reference;
+    private Customer customer;
+    private CustomerGroup customerGroup;
+    private RefTransfertStatu refTransfertStatu;
 
     public TransfertGroup() {
     }
@@ -42,69 +42,69 @@ public class TransfertGroup implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfertGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertGroup = Integer.parseInt(j.toString());
+                setIdTransfertGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertGroup = (Integer) obj;
+                setIdTransfertGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverGroup")) {
             Object obj = soapObject.getProperty("IdReceiverGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverGroup = Integer.parseInt(j.toString());
+                setIdReceiverGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverGroup = (Integer) obj;
+                setIdReceiverGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingCustomer")) {
             Object obj = soapObject.getProperty("IdSendingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingCustomer = Integer.parseInt(j.toString());
+                setIdSendingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingCustomer = (Integer) obj;
+                setIdSendingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CodeTransfertStatus")) {
             Object obj = soapObject.getProperty("CodeTransfertStatus");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeTransfertStatus = j.toString();
+                setCodeTransfertStatus(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeTransfertStatus = (String) obj;
+                setCodeTransfertStatus((String) obj);
             }
         }
         if (soapObject.hasProperty("Reference")) {
             Object obj = soapObject.getProperty("Reference");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                reference = j.toString();
+                setReference(j.toString());
             } else if (obj != null && obj instanceof String) {
-                reference = (String) obj;
+                setReference((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("CustomerGroup")) {
             SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            customerGroup = new CustomerGroup(j);
+            setCustomerGroup(new CustomerGroup(j));
 
         }
         if (soapObject.hasProperty("RefTransfertStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefTransfertStatu");
-            refTransfertStatu = new RefTransfertStatu(j);
+            setRefTransfertStatu(new RefTransfertStatu(j));
 
         }
     }
@@ -113,23 +113,23 @@ public class TransfertGroup implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfertGroup;
+                return getIdTransfertGroup();
             case 1:
-                return idReceiverGroup;
+                return getIdReceiverGroup();
             case 2:
-                return idSendingCustomer;
+                return getIdSendingCustomer();
             case 3:
-                return amount;
+                return getAmount();
             case 4:
-                return codeTransfertStatus;
+                return getCodeTransfertStatus();
             case 5:
-                return reference;
+                return getReference();
             case 6:
-                return customer;
+                return getCustomer();
             case 7:
-                return customerGroup;
+                return getCustomerGroup();
             case 8:
-                return refTransfertStatu;
+                return getRefTransfertStatu();
         }
         return null;
     }
@@ -194,4 +194,75 @@ public class TransfertGroup implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfertGroup() {
+        return idTransfertGroup;
+    }
+
+    public void setIdTransfertGroup(int idTransfertGroup) {
+        this.idTransfertGroup = idTransfertGroup;
+    }
+
+    public int getIdReceiverGroup() {
+        return idReceiverGroup;
+    }
+
+    public void setIdReceiverGroup(int idReceiverGroup) {
+        this.idReceiverGroup = idReceiverGroup;
+    }
+
+    public int getIdSendingCustomer() {
+        return idSendingCustomer;
+    }
+
+    public void setIdSendingCustomer(int idSendingCustomer) {
+        this.idSendingCustomer = idSendingCustomer;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getCodeTransfertStatus() {
+        return codeTransfertStatus;
+    }
+
+    public void setCodeTransfertStatus(String codeTransfertStatus) {
+        this.codeTransfertStatus = codeTransfertStatus;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public CustomerGroup getCustomerGroup() {
+        return customerGroup;
+    }
+
+    public void setCustomerGroup(CustomerGroup customerGroup) {
+        this.customerGroup = customerGroup;
+    }
+
+    public RefTransfertStatu getRefTransfertStatu() {
+        return refTransfertStatu;
+    }
+
+    public void setRefTransfertStatu(RefTransfertStatu refTransfertStatu) {
+        this.refTransfertStatu = refTransfertStatu;
+    }
 }

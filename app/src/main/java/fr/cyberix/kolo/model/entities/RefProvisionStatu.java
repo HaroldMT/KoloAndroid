@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefProvisionStatu implements KvmSerializable {
 
-    public String provisionStatusCode;
-    public String provisionStatusDescription;
+    private String provisionStatusCode;
+    private String provisionStatusDescription;
 
     public RefProvisionStatu() {
     }
@@ -35,18 +35,18 @@ public class RefProvisionStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("ProvisionStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                provisionStatusCode = j.toString();
+                setProvisionStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                provisionStatusCode = (String) obj;
+                setProvisionStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("ProvisionStatusDescription")) {
             Object obj = soapObject.getProperty("ProvisionStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                provisionStatusDescription = j.toString();
+                setProvisionStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                provisionStatusDescription = (String) obj;
+                setProvisionStatusDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefProvisionStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return provisionStatusCode;
+                return getProvisionStatusCode();
             case 1:
-                return provisionStatusDescription;
+                return getProvisionStatusDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefProvisionStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getProvisionStatusCode() {
+        return provisionStatusCode;
+    }
+
+    public void setProvisionStatusCode(String provisionStatusCode) {
+        this.provisionStatusCode = provisionStatusCode;
+    }
+
+    public String getProvisionStatusDescription() {
+        return provisionStatusDescription;
+    }
+
+    public void setProvisionStatusDescription(String provisionStatusDescription) {
+        this.provisionStatusDescription = provisionStatusDescription;
+    }
 }

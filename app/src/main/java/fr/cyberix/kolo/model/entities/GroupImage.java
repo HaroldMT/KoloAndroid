@@ -22,9 +22,9 @@ import java.util.Hashtable;
 
 public class GroupImage implements KvmSerializable {
 
-    public int idCustomerGroup;
-    public VectorByte imageBytes;
-    public CustomerGroup customerGroup;
+    private int idCustomerGroup;
+    private VectorByte imageBytes;
+    private CustomerGroup customerGroup;
 
     public GroupImage() {
     }
@@ -36,18 +36,18 @@ public class GroupImage implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomerGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerGroup = Integer.parseInt(j.toString());
+                setIdCustomerGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerGroup = (Integer) obj;
+                setIdCustomerGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("ImageBytes")) {
             SoapPrimitive j = (SoapPrimitive) soapObject.getProperty("ImageBytes");
-            imageBytes = new VectorByte(j);
+            setImageBytes(new VectorByte(j));
         }
         if (soapObject.hasProperty("CustomerGroup")) {
             SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            customerGroup = new CustomerGroup(j);
+            setCustomerGroup(new CustomerGroup(j));
 
         }
     }
@@ -56,11 +56,11 @@ public class GroupImage implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomerGroup;
+                return getIdCustomerGroup();
             case 1:
-                return imageBytes.toString();
+                return getImageBytes().toString();
             case 2:
-                return customerGroup;
+                return getCustomerGroup();
         }
         return null;
     }
@@ -101,4 +101,27 @@ public class GroupImage implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomerGroup() {
+        return idCustomerGroup;
+    }
+
+    public void setIdCustomerGroup(int idCustomerGroup) {
+        this.idCustomerGroup = idCustomerGroup;
+    }
+
+    public VectorByte getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(VectorByte imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
+    public CustomerGroup getCustomerGroup() {
+        return customerGroup;
+    }
+
+    public void setCustomerGroup(CustomerGroup customerGroup) {
+        this.customerGroup = customerGroup;
+    }
 }

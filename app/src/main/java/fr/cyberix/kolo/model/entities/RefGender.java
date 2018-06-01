@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefGender implements KvmSerializable {
 
-    public String genderCode;
-    public String genderDescription;
+    private String genderCode;
+    private String genderDescription;
 
     public RefGender() {
     }
@@ -34,18 +34,18 @@ public class RefGender implements KvmSerializable {
             Object obj = soapObject.getProperty("GenderCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                genderCode = j.toString();
+                setGenderCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                genderCode = (String) obj;
+                setGenderCode((String) obj);
             }
         }
         if (soapObject.hasProperty("GenderDescription")) {
             Object obj = soapObject.getProperty("GenderDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                genderDescription = j.toString();
+                setGenderDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                genderDescription = (String) obj;
+                setGenderDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefGender implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return genderCode;
+                return getGenderCode();
             case 1:
-                return genderDescription;
+                return getGenderDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefGender implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getGenderCode() {
+        return genderCode;
+    }
+
+    public void setGenderCode(String genderCode) {
+        this.genderCode = genderCode;
+    }
+
+    public String getGenderDescription() {
+        return genderDescription;
+    }
+
+    public void setGenderDescription(String genderDescription) {
+        this.genderDescription = genderDescription;
+    }
 }

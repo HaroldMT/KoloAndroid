@@ -21,11 +21,11 @@ import java.util.Hashtable;
 
 public class Business implements KvmSerializable {
 
-    public int idCustomer;
-    public String industryCategoryCode;
-    public String businessName;
-    public Customer customer;
-    public RefIndustryCategory refIndustryCategory;
+    private int idCustomer;
+    private String industryCategoryCode;
+    private String businessName;
+    private Customer customer;
+    private RefIndustryCategory refIndustryCategory;
 
     public Business() {
     }
@@ -37,37 +37,37 @@ public class Business implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IndustryCategoryCode")) {
             Object obj = soapObject.getProperty("IndustryCategoryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                industryCategoryCode = j.toString();
+                setIndustryCategoryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                industryCategoryCode = (String) obj;
+                setIndustryCategoryCode((String) obj);
             }
         }
         if (soapObject.hasProperty("BusinessName")) {
             Object obj = soapObject.getProperty("BusinessName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                businessName = j.toString();
+                setBusinessName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                businessName = (String) obj;
+                setBusinessName((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
         if (soapObject.hasProperty("RefIndustryCategory")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefIndustryCategory");
-            refIndustryCategory = new RefIndustryCategory(j);
+            setRefIndustryCategory(new RefIndustryCategory(j));
             
         }
     }
@@ -75,15 +75,15 @@ public class Business implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return industryCategoryCode;
+                return getIndustryCategoryCode();
             case 2:
-                return businessName;
+                return getBusinessName();
             case 3:
-                return customer;
+                return getCustomer();
             case 4:
-                return refIndustryCategory;
+                return getRefIndustryCategory();
         }
         return null;
     }
@@ -132,4 +132,43 @@ public class Business implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getIndustryCategoryCode() {
+        return industryCategoryCode;
+    }
+
+    public void setIndustryCategoryCode(String industryCategoryCode) {
+        this.industryCategoryCode = industryCategoryCode;
+    }
+
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefIndustryCategory getRefIndustryCategory() {
+        return refIndustryCategory;
+    }
+
+    public void setRefIndustryCategory(RefIndustryCategory refIndustryCategory) {
+        this.refIndustryCategory = refIndustryCategory;
+    }
 }

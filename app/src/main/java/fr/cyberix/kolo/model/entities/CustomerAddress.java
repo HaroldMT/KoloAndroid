@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class CustomerAddress implements KvmSerializable {
 
-    public int idCustomer;
-    public int idAddress;
-    public String codeAddresseType;
-    public Adresse adresse;
-    public Customer customer;
+    private int idCustomer;
+    private int idAddress;
+    private String codeAddresseType;
+    private Adresse adresse;
+    private Customer customer;
 
     public CustomerAddress() {
     }
@@ -38,37 +38,37 @@ public class CustomerAddress implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdAddress")) {
             Object obj = soapObject.getProperty("IdAddress");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAddress = Integer.parseInt(j.toString());
+                setIdAddress(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAddress = (Integer) obj;
+                setIdAddress((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CodeAddresseType")) {
             Object obj = soapObject.getProperty("CodeAddresseType");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeAddresseType = j.toString();
+                setCodeAddresseType(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeAddresseType = (String) obj;
+                setCodeAddresseType((String) obj);
             }
         }
         if (soapObject.hasProperty("Adresse")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Adresse");
-            adresse = new Adresse(j);
+            setAdresse(new Adresse(j));
 
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class CustomerAddress implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return idAddress;
+                return getIdAddress();
             case 2:
-                return codeAddresseType;
+                return getCodeAddresseType();
             case 3:
-                return adresse;
+                return getAdresse();
             case 4:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class CustomerAddress implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
+    }
+
+    public String getCodeAddresseType() {
+        return codeAddresseType;
+    }
+
+    public void setCodeAddresseType(String codeAddresseType) {
+        this.codeAddresseType = codeAddresseType;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

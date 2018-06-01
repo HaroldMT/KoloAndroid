@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class Tag implements KvmSerializable {
 
-    public int idTag;
-    public String tagName;
+    private int idTag;
+    private String tagName;
 
     public Tag() {
     }
@@ -35,18 +35,18 @@ public class Tag implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTag");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTag = Integer.parseInt(j.toString());
+                setIdTag(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTag = (Integer) obj;
+                setIdTag((Integer) obj);
             }
         }
         if (soapObject.hasProperty("TagName")) {
             Object obj = soapObject.getProperty("TagName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                tagName = j.toString();
+                setTagName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                tagName = (String) obj;
+                setTagName((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class Tag implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTag;
+                return getIdTag();
             case 1:
-                return tagName;
+                return getTagName();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class Tag implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTag() {
+        return idTag;
+    }
+
+    public void setIdTag(int idTag) {
+        this.idTag = idTag;
+    }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
 }

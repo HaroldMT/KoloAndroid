@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefMaritalStatu implements KvmSerializable {
 
-    public String maritalStatusCode;
-    public String maritalStatusDescription;
+    private String maritalStatusCode;
+    private String maritalStatusDescription;
 
     public RefMaritalStatu() {
     }
@@ -34,18 +34,18 @@ public class RefMaritalStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("MaritalStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                maritalStatusCode = j.toString();
+                setMaritalStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                maritalStatusCode = (String) obj;
+                setMaritalStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("MaritalStatusDescription")) {
             Object obj = soapObject.getProperty("MaritalStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                maritalStatusDescription = j.toString();
+                setMaritalStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                maritalStatusDescription = (String) obj;
+                setMaritalStatusDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefMaritalStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return maritalStatusCode;
+                return getMaritalStatusCode();
             case 1:
-                return maritalStatusDescription;
+                return getMaritalStatusDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefMaritalStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getMaritalStatusCode() {
+        return maritalStatusCode;
+    }
+
+    public void setMaritalStatusCode(String maritalStatusCode) {
+        this.maritalStatusCode = maritalStatusCode;
+    }
+
+    public String getMaritalStatusDescription() {
+        return maritalStatusDescription;
+    }
+
+    public void setMaritalStatusDescription(String maritalStatusDescription) {
+        this.maritalStatusDescription = maritalStatusDescription;
+    }
 }

@@ -21,21 +21,21 @@ import java.util.Hashtable;
 
 public class MobileDevice implements KvmSerializable {
 
-    public int idMobileDevice;
-    public String deviceId;
-    public String lineNumber;
-    public String networkCountryIso;
-    public String networkOperator;
-    public String networkOperatorName;
-    public String networkType;
-    public String phoneType;
-    public String simCountryIso;
-    public String simOperator;
-    public String simOperatorName;
-    public String simSerialNumber;
-    public String simState;
-    public String subscriberId;
-    public Customer customer;
+    private int idMobileDevice;
+    private String deviceId;
+    private String lineNumber;
+    private String networkCountryIso;
+    private String networkOperator;
+    private String networkOperatorName;
+    private String networkType;
+    private String phoneType;
+    private String simCountryIso;
+    private String simOperator;
+    private String simOperatorName;
+    private String simSerialNumber;
+    private String simState;
+    private String subscriberId;
+    private Customer customer;
 
     public MobileDevice() {
     }
@@ -47,131 +47,131 @@ public class MobileDevice implements KvmSerializable {
             Object obj = soapObject.getProperty("IdMobileDevice");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idMobileDevice = Integer.parseInt(j.toString());
+                setIdMobileDevice(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idMobileDevice = (Integer) obj;
+                setIdMobileDevice((Integer) obj);
             }
         }
         if (soapObject.hasProperty("DeviceId")) {
             Object obj = soapObject.getProperty("DeviceId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                deviceId = j.toString();
+                setDeviceId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                deviceId = (String) obj;
+                setDeviceId((String) obj);
             }
         }
         if (soapObject.hasProperty("LineNumber")) {
             Object obj = soapObject.getProperty("LineNumber");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                lineNumber = j.toString();
+                setLineNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                lineNumber = (String) obj;
+                setLineNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("NetworkCountryIso")) {
             Object obj = soapObject.getProperty("NetworkCountryIso");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                networkCountryIso = j.toString();
+                setNetworkCountryIso(j.toString());
             } else if (obj != null && obj instanceof String) {
-                networkCountryIso = (String) obj;
+                setNetworkCountryIso((String) obj);
             }
         }
         if (soapObject.hasProperty("NetworkOperator")) {
             Object obj = soapObject.getProperty("NetworkOperator");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                networkOperator = j.toString();
+                setNetworkOperator(j.toString());
             } else if (obj != null && obj instanceof String) {
-                networkOperator = (String) obj;
+                setNetworkOperator((String) obj);
             }
         }
         if (soapObject.hasProperty("NetworkOperatorName")) {
             Object obj = soapObject.getProperty("NetworkOperatorName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                networkOperatorName = j.toString();
+                setNetworkOperatorName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                networkOperatorName = (String) obj;
+                setNetworkOperatorName((String) obj);
             }
         }
         if (soapObject.hasProperty("NetworkType")) {
             Object obj = soapObject.getProperty("NetworkType");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                networkType = j.toString();
+                setNetworkType(j.toString());
             } else if (obj != null && obj instanceof String) {
-                networkType = (String) obj;
+                setNetworkType((String) obj);
             }
         }
         if (soapObject.hasProperty("PhoneType")) {
             Object obj = soapObject.getProperty("PhoneType");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                phoneType = j.toString();
+                setPhoneType(j.toString());
             } else if (obj != null && obj instanceof String) {
-                phoneType = (String) obj;
+                setPhoneType((String) obj);
             }
         }
         if (soapObject.hasProperty("SimCountryIso")) {
             Object obj = soapObject.getProperty("SimCountryIso");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simCountryIso = j.toString();
+                setSimCountryIso(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simCountryIso = (String) obj;
+                setSimCountryIso((String) obj);
             }
         }
         if (soapObject.hasProperty("SimOperator")) {
             Object obj = soapObject.getProperty("SimOperator");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simOperator = j.toString();
+                setSimOperator(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simOperator = (String) obj;
+                setSimOperator((String) obj);
             }
         }
         if (soapObject.hasProperty("SimOperatorName")) {
             Object obj = soapObject.getProperty("SimOperatorName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simOperatorName = j.toString();
+                setSimOperatorName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simOperatorName = (String) obj;
+                setSimOperatorName((String) obj);
             }
         }
         if (soapObject.hasProperty("SimSerialNumber")) {
             Object obj = soapObject.getProperty("SimSerialNumber");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simSerialNumber = j.toString();
+                setSimSerialNumber(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simSerialNumber = (String) obj;
+                setSimSerialNumber((String) obj);
             }
         }
         if (soapObject.hasProperty("SimState")) {
             Object obj = soapObject.getProperty("SimState");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                simState = j.toString();
+                setSimState(j.toString());
             } else if (obj != null && obj instanceof String) {
-                simState = (String) obj;
+                setSimState((String) obj);
             }
         }
         if (soapObject.hasProperty("SubscriberId")) {
             Object obj = soapObject.getProperty("SubscriberId");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                subscriberId = j.toString();
+                setSubscriberId(j.toString());
             } else if (obj != null && obj instanceof String) {
-                subscriberId = (String) obj;
+                setSubscriberId((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
     }
@@ -179,35 +179,35 @@ public class MobileDevice implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idMobileDevice;
+                return getIdMobileDevice();
             case 1:
-                return deviceId;
+                return getDeviceId();
             case 2:
-                return lineNumber;
+                return getLineNumber();
             case 3:
-                return networkCountryIso;
+                return getNetworkCountryIso();
             case 4:
-                return networkOperator;
+                return getNetworkOperator();
             case 5:
-                return networkOperatorName;
+                return getNetworkOperatorName();
             case 6:
-                return networkType;
+                return getNetworkType();
             case 7:
-                return phoneType;
+                return getPhoneType();
             case 8:
-                return simCountryIso;
+                return getSimCountryIso();
             case 9:
-                return simOperator;
+                return getSimOperator();
             case 10:
-                return simOperatorName;
+                return getSimOperatorName();
             case 11:
-                return simSerialNumber;
+                return getSimSerialNumber();
             case 12:
-                return simState;
+                return getSimState();
             case 13:
-                return subscriberId;
+                return getSubscriberId();
             case 14:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -296,4 +296,123 @@ public class MobileDevice implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdMobileDevice() {
+        return idMobileDevice;
+    }
+
+    public void setIdMobileDevice(int idMobileDevice) {
+        this.idMobileDevice = idMobileDevice;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getLineNumber() {
+        return lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber) {
+        this.lineNumber = lineNumber;
+    }
+
+    public String getNetworkCountryIso() {
+        return networkCountryIso;
+    }
+
+    public void setNetworkCountryIso(String networkCountryIso) {
+        this.networkCountryIso = networkCountryIso;
+    }
+
+    public String getNetworkOperator() {
+        return networkOperator;
+    }
+
+    public void setNetworkOperator(String networkOperator) {
+        this.networkOperator = networkOperator;
+    }
+
+    public String getNetworkOperatorName() {
+        return networkOperatorName;
+    }
+
+    public void setNetworkOperatorName(String networkOperatorName) {
+        this.networkOperatorName = networkOperatorName;
+    }
+
+    public String getNetworkType() {
+        return networkType;
+    }
+
+    public void setNetworkType(String networkType) {
+        this.networkType = networkType;
+    }
+
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+    }
+
+    public String getSimCountryIso() {
+        return simCountryIso;
+    }
+
+    public void setSimCountryIso(String simCountryIso) {
+        this.simCountryIso = simCountryIso;
+    }
+
+    public String getSimOperator() {
+        return simOperator;
+    }
+
+    public void setSimOperator(String simOperator) {
+        this.simOperator = simOperator;
+    }
+
+    public String getSimOperatorName() {
+        return simOperatorName;
+    }
+
+    public void setSimOperatorName(String simOperatorName) {
+        this.simOperatorName = simOperatorName;
+    }
+
+    public String getSimSerialNumber() {
+        return simSerialNumber;
+    }
+
+    public void setSimSerialNumber(String simSerialNumber) {
+        this.simSerialNumber = simSerialNumber;
+    }
+
+    public String getSubscriberId() {
+        return subscriberId;
+    }
+
+    public void setSubscriberId(String subscriberId) {
+        this.subscriberId = subscriberId;
+    }
+
+    public String getSimState() {
+        return simState;
+    }
+
+    public void setSimState(String simState) {
+        this.simState = simState;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

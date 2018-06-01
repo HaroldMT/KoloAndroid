@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class Wholesaler implements KvmSerializable {
 
-    public int idPartner;
-    public Partner partner;
+    private int idPartner;
+    private Partner partner;
 
     public Wholesaler() {
     }
@@ -34,14 +34,14 @@ public class Wholesaler implements KvmSerializable {
             Object obj = soapObject.getProperty("IdPartner");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartner = Integer.parseInt(j.toString());
+                setIdPartner(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartner = (Integer) obj;
+                setIdPartner((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
             
         }
     }
@@ -49,9 +49,9 @@ public class Wholesaler implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idPartner;
+                return getIdPartner();
             case 1:
-                return partner;
+                return getPartner();
         }
         return null;
     }
@@ -88,4 +88,19 @@ public class Wholesaler implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdPartner() {
+        return idPartner;
+    }
+
+    public void setIdPartner(int idPartner) {
+        this.idPartner = idPartner;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
 }

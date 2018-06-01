@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefTransfertStatu implements KvmSerializable {
 
-    public String transfertStatusCode;
-    public String transfertStatusDescription;
+    private String transfertStatusCode;
+    private String transfertStatusDescription;
 
     public RefTransfertStatu() {
     }
@@ -35,18 +35,18 @@ public class RefTransfertStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("TransfertStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfertStatusCode = j.toString();
+                setTransfertStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                transfertStatusCode = (String) obj;
+                setTransfertStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("TransfertStatusDescription")) {
             Object obj = soapObject.getProperty("TransfertStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfertStatusDescription = j.toString();
+                setTransfertStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                transfertStatusDescription = (String) obj;
+                setTransfertStatusDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefTransfertStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return transfertStatusCode;
+                return getTransfertStatusCode();
             case 1:
-                return transfertStatusDescription;
+                return getTransfertStatusDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefTransfertStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getTransfertStatusCode() {
+        return transfertStatusCode;
+    }
+
+    public void setTransfertStatusCode(String transfertStatusCode) {
+        this.transfertStatusCode = transfertStatusCode;
+    }
+
+    public String getTransfertStatusDescription() {
+        return transfertStatusDescription;
+    }
+
+    public void setTransfertStatusDescription(String transfertStatusDescription) {
+        this.transfertStatusDescription = transfertStatusDescription;
+    }
 }
