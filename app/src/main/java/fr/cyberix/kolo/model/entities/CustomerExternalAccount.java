@@ -22,9 +22,9 @@ import java.util.Hashtable;
 
 public class CustomerExternalAccount implements KvmSerializable {
 
-    public int idCustomer;
-    public int idExternalAccount;
-    public ExternalAccount externalAccount;
+    private int idCustomer;
+    private int idExternalAccount;
+    private ExternalAccount externalAccount;
 
     public CustomerExternalAccount() {
     }
@@ -36,23 +36,23 @@ public class CustomerExternalAccount implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdExternalAccount")) {
             Object obj = soapObject.getProperty("IdExternalAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idExternalAccount = Integer.parseInt(j.toString());
+                setIdExternalAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idExternalAccount = (Integer) obj;
+                setIdExternalAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("ExternalAccount")) {
             SoapObject j = (SoapObject) soapObject.getProperty("ExternalAccount");
-            externalAccount = new ExternalAccount(j);
+            setExternalAccount(new ExternalAccount(j));
 
         }
     }
@@ -61,11 +61,11 @@ public class CustomerExternalAccount implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return idExternalAccount;
+                return getIdExternalAccount();
             case 2:
-                return externalAccount;
+                return getExternalAccount();
         }
         return null;
     }
@@ -106,4 +106,27 @@ public class CustomerExternalAccount implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public int getIdExternalAccount() {
+        return idExternalAccount;
+    }
+
+    public void setIdExternalAccount(int idExternalAccount) {
+        this.idExternalAccount = idExternalAccount;
+    }
+
+    public ExternalAccount getExternalAccount() {
+        return externalAccount;
+    }
+
+    public void setExternalAccount(ExternalAccount externalAccount) {
+        this.externalAccount = externalAccount;
+    }
 }

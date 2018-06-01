@@ -10,7 +10,6 @@ package fr.cyberix.kolo.model;
 
 import android.support.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -58,13 +57,13 @@ public final class AccountInfo {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-        if (customer.mobileDevice != null) setMobileDevice(customer.mobileDevice);
-        if (customer.business != null) setBusiness(customer.business);
-        if (customer.person != null) setPerson(customer.person);
+        if (customer.getMobileDevice() != null) setMobileDevice(customer.getMobileDevice());
+        if (customer.getBusiness() != null) setBusiness(customer.getBusiness());
+        if (customer.getPerson() != null) setPerson(customer.getPerson());
     }
 
     public String getFullName() {
-        return this.person.lastname + ' ' + this.person.firstname;
+        return this.person.getLastname() + ' ' + this.person.getFirstname();
     }
 
     public Date getLastAuthenticationTime() {

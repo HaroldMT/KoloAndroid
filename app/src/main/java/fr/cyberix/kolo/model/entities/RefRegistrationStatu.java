@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefRegistrationStatu implements KvmSerializable {
 
-    public String registrationStatusCode;
-    public String registrationStatusDescription;
+    private String registrationStatusCode;
+    private String registrationStatusDescription;
 
     public RefRegistrationStatu() {
     }
@@ -34,18 +34,18 @@ public class RefRegistrationStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("RegistrationStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationStatusCode = j.toString();
+                setRegistrationStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationStatusCode = (String) obj;
+                setRegistrationStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationStatusDescription")) {
             Object obj = soapObject.getProperty("RegistrationStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                registrationStatusDescription = j.toString();
+                setRegistrationStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                registrationStatusDescription = (String) obj;
+                setRegistrationStatusDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefRegistrationStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return registrationStatusCode;
+                return getRegistrationStatusCode();
             case 1:
-                return registrationStatusDescription;
+                return getRegistrationStatusDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefRegistrationStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getRegistrationStatusCode() {
+        return registrationStatusCode;
+    }
+
+    public void setRegistrationStatusCode(String registrationStatusCode) {
+        this.registrationStatusCode = registrationStatusCode;
+    }
+
+    public String getRegistrationStatusDescription() {
+        return registrationStatusDescription;
+    }
+
+    public void setRegistrationStatusDescription(String registrationStatusDescription) {
+        this.registrationStatusDescription = registrationStatusDescription;
+    }
 }

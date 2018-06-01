@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class ExternalAccount implements KvmSerializable {
 
-    public int idExternalAccount;
-    public String externalLogin;
-    public String externalPwd;
-    public String externalAccountTypeCode;
-    public RefExternalAccountType refExternalAccountType;
+    private int idExternalAccount;
+    private String externalLogin;
+    private String externalPwd;
+    private String externalAccountTypeCode;
+    private RefExternalAccountType refExternalAccountType;
 
     public ExternalAccount() {
     }
@@ -38,41 +38,41 @@ public class ExternalAccount implements KvmSerializable {
             Object obj = soapObject.getProperty("IdExternalAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idExternalAccount = Integer.parseInt(j.toString());
+                setIdExternalAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idExternalAccount = (Integer) obj;
+                setIdExternalAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("ExternalLogin")) {
             Object obj = soapObject.getProperty("ExternalLogin");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                externalLogin = j.toString();
+                setExternalLogin(j.toString());
             } else if (obj != null && obj instanceof String) {
-                externalLogin = (String) obj;
+                setExternalLogin((String) obj);
             }
         }
         if (soapObject.hasProperty("ExternalPwd")) {
             Object obj = soapObject.getProperty("ExternalPwd");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                externalPwd = j.toString();
+                setExternalPwd(j.toString());
             } else if (obj != null && obj instanceof String) {
-                externalPwd = (String) obj;
+                setExternalPwd((String) obj);
             }
         }
         if (soapObject.hasProperty("ExternalAccountTypeCode")) {
             Object obj = soapObject.getProperty("ExternalAccountTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                externalAccountTypeCode = j.toString();
+                setExternalAccountTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                externalAccountTypeCode = (String) obj;
+                setExternalAccountTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("RefExternalAccountType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefExternalAccountType");
-            refExternalAccountType = new RefExternalAccountType(j);
+            setRefExternalAccountType(new RefExternalAccountType(j));
 
         }
     }
@@ -81,15 +81,15 @@ public class ExternalAccount implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idExternalAccount;
+                return getIdExternalAccount();
             case 1:
-                return externalLogin;
+                return getExternalLogin();
             case 2:
-                return externalPwd;
+                return getExternalPwd();
             case 3:
-                return externalAccountTypeCode;
+                return getExternalAccountTypeCode();
             case 4:
-                return refExternalAccountType;
+                return getRefExternalAccountType();
         }
         return null;
     }
@@ -138,4 +138,43 @@ public class ExternalAccount implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdExternalAccount() {
+        return idExternalAccount;
+    }
+
+    public void setIdExternalAccount(int idExternalAccount) {
+        this.idExternalAccount = idExternalAccount;
+    }
+
+    public String getExternalLogin() {
+        return externalLogin;
+    }
+
+    public void setExternalLogin(String externalLogin) {
+        this.externalLogin = externalLogin;
+    }
+
+    public String getExternalPwd() {
+        return externalPwd;
+    }
+
+    public void setExternalPwd(String externalPwd) {
+        this.externalPwd = externalPwd;
+    }
+
+    public String getExternalAccountTypeCode() {
+        return externalAccountTypeCode;
+    }
+
+    public void setExternalAccountTypeCode(String externalAccountTypeCode) {
+        this.externalAccountTypeCode = externalAccountTypeCode;
+    }
+
+    public RefExternalAccountType getRefExternalAccountType() {
+        return refExternalAccountType;
+    }
+
+    public void setRefExternalAccountType(RefExternalAccountType refExternalAccountType) {
+        this.refExternalAccountType = refExternalAccountType;
+    }
 }

@@ -22,19 +22,19 @@ import java.util.Hashtable;
 
 public class TransfertE2e implements KvmSerializable {
 
-    public int idTransfertE2e;
-    public int idCustomer;
-    public int idSendingExternalAccount;
-    public int idReceiverExternalAccount;
-    public String transfertStatusCode;
-    public int amount;
-    public String operationTypeCode;
-    public String reference;
-    public Customer customer;
-    public ExternalAccount externalAccount;
-    public ExternalAccount externalAccount1;
-    public RefOperationType refOperationType;
-    public RefTransfertStatu refTransfertStatu;
+    private int idTransfertE2e;
+    private int idCustomer;
+    private int idSendingExternalAccount;
+    private int idReceiverExternalAccount;
+    private String transfertStatusCode;
+    private int amount;
+    private String operationTypeCode;
+    private String reference;
+    private Customer customer;
+    private ExternalAccount externalAccount;
+    private ExternalAccount externalAccount1;
+    private RefOperationType refOperationType;
+    private RefTransfertStatu refTransfertStatu;
 
     public TransfertE2e() {
     }
@@ -46,97 +46,97 @@ public class TransfertE2e implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfertE2e");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfertE2e = Integer.parseInt(j.toString());
+                setIdTransfertE2e(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfertE2e = (Integer) obj;
+                setIdTransfertE2e((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomer")) {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingExternalAccount")) {
             Object obj = soapObject.getProperty("IdSendingExternalAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingExternalAccount = Integer.parseInt(j.toString());
+                setIdSendingExternalAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingExternalAccount = (Integer) obj;
+                setIdSendingExternalAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverExternalAccount")) {
             Object obj = soapObject.getProperty("IdReceiverExternalAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverExternalAccount = Integer.parseInt(j.toString());
+                setIdReceiverExternalAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverExternalAccount = (Integer) obj;
+                setIdReceiverExternalAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("TransfertStatusCode")) {
             Object obj = soapObject.getProperty("TransfertStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                transfertStatusCode = j.toString();
+                setTransfertStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                transfertStatusCode = (String) obj;
+                setTransfertStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeCode")) {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Reference")) {
             Object obj = soapObject.getProperty("Reference");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                reference = j.toString();
+                setReference(j.toString());
             } else if (obj != null && obj instanceof String) {
-                reference = (String) obj;
+                setReference((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("ExternalAccount")) {
             SoapObject j = (SoapObject) soapObject.getProperty("ExternalAccount");
-            externalAccount = new ExternalAccount(j);
+            setExternalAccount(new ExternalAccount(j));
 
         }
         if (soapObject.hasProperty("ExternalAccount1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("ExternalAccount1");
-            externalAccount1 = new ExternalAccount(j);
+            setExternalAccount1(new ExternalAccount(j));
 
         }
         if (soapObject.hasProperty("RefOperationType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            refOperationType = new RefOperationType(j);
+            setRefOperationType(new RefOperationType(j));
 
         }
         if (soapObject.hasProperty("RefTransfertStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefTransfertStatu");
-            refTransfertStatu = new RefTransfertStatu(j);
+            setRefTransfertStatu(new RefTransfertStatu(j));
 
         }
     }
@@ -145,31 +145,31 @@ public class TransfertE2e implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfertE2e;
+                return getIdTransfertE2e();
             case 1:
-                return idCustomer;
+                return getIdCustomer();
             case 2:
-                return idSendingExternalAccount;
+                return getIdSendingExternalAccount();
             case 3:
-                return idReceiverExternalAccount;
+                return getIdReceiverExternalAccount();
             case 4:
-                return transfertStatusCode;
+                return getTransfertStatusCode();
             case 5:
-                return amount;
+                return getAmount();
             case 6:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 7:
-                return reference;
+                return getReference();
             case 8:
-                return customer;
+                return getCustomer();
             case 9:
-                return externalAccount;
+                return getExternalAccount();
             case 10:
-                return externalAccount1;
+                return getExternalAccount1();
             case 11:
-                return refOperationType;
+                return getRefOperationType();
             case 12:
-                return refTransfertStatu;
+                return getRefTransfertStatu();
         }
         return null;
     }
@@ -250,4 +250,107 @@ public class TransfertE2e implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfertE2e() {
+        return idTransfertE2e;
+    }
+
+    public void setIdTransfertE2e(int idTransfertE2e) {
+        this.idTransfertE2e = idTransfertE2e;
+    }
+
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public int getIdSendingExternalAccount() {
+        return idSendingExternalAccount;
+    }
+
+    public void setIdSendingExternalAccount(int idSendingExternalAccount) {
+        this.idSendingExternalAccount = idSendingExternalAccount;
+    }
+
+    public int getIdReceiverExternalAccount() {
+        return idReceiverExternalAccount;
+    }
+
+    public void setIdReceiverExternalAccount(int idReceiverExternalAccount) {
+        this.idReceiverExternalAccount = idReceiverExternalAccount;
+    }
+
+    public String getTransfertStatusCode() {
+        return transfertStatusCode;
+    }
+
+    public void setTransfertStatusCode(String transfertStatusCode) {
+        this.transfertStatusCode = transfertStatusCode;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public ExternalAccount getExternalAccount() {
+        return externalAccount;
+    }
+
+    public void setExternalAccount(ExternalAccount externalAccount) {
+        this.externalAccount = externalAccount;
+    }
+
+    public ExternalAccount getExternalAccount1() {
+        return externalAccount1;
+    }
+
+    public void setExternalAccount1(ExternalAccount externalAccount1) {
+        this.externalAccount1 = externalAccount1;
+    }
+
+    public RefOperationType getRefOperationType() {
+        return refOperationType;
+    }
+
+    public void setRefOperationType(RefOperationType refOperationType) {
+        this.refOperationType = refOperationType;
+    }
+
+    public RefTransfertStatu getRefTransfertStatu() {
+        return refTransfertStatu;
+    }
+
+    public void setRefTransfertStatu(RefTransfertStatu refTransfertStatu) {
+        this.refTransfertStatu = refTransfertStatu;
+    }
 }

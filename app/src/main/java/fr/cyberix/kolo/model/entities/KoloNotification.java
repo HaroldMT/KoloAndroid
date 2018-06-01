@@ -22,14 +22,14 @@ import java.util.Hashtable;
 
 public class KoloNotification implements KvmSerializable {
 
-    public int idNotification;
-    public int idCustomer;
-    public String title;
-    public String message;
-    public String creationDate;
-    public String expiryDate;
-    public boolean readed;
-    public Customer customer;
+    private int idNotification;
+    private int idCustomer;
+    private String title;
+    private String message;
+    private String creationDate;
+    private String expiryDate;
+    private boolean readed;
+    private Customer customer;
 
     public KoloNotification() {
     }
@@ -41,68 +41,68 @@ public class KoloNotification implements KvmSerializable {
             Object obj = soapObject.getProperty("IdNotification");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idNotification = Integer.parseInt(j.toString());
+                setIdNotification(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idNotification = (Integer) obj;
+                setIdNotification((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomer")) {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Title")) {
             Object obj = soapObject.getProperty("Title");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                title = j.toString();
+                setTitle(j.toString());
             } else if (obj != null && obj instanceof String) {
-                title = (String) obj;
+                setTitle((String) obj);
             }
         }
         if (soapObject.hasProperty("Message")) {
             Object obj = soapObject.getProperty("Message");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                message = j.toString();
+                setMessage(j.toString());
             } else if (obj != null && obj instanceof String) {
-                message = (String) obj;
+                setMessage((String) obj);
             }
         }
         if (soapObject.hasProperty("CreationDate")) {
             Object obj = soapObject.getProperty("CreationDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                creationDate = j.toString();
+                setCreationDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                creationDate = (String) obj;
+                setCreationDate((String) obj);
             }
         }
         if (soapObject.hasProperty("ExpiryDate")) {
             Object obj = soapObject.getProperty("ExpiryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                expiryDate = j.toString();
+                setExpiryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                expiryDate = (String) obj;
+                setExpiryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("Readed")) {
             Object obj = soapObject.getProperty("Readed");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                readed = Boolean.parseBoolean(j.toString());
+                setReaded(Boolean.parseBoolean(j.toString()));
             } else if (obj != null && obj instanceof Boolean) {
-                readed = (Boolean) obj;
+                setReaded((Boolean) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
     }
@@ -111,21 +111,21 @@ public class KoloNotification implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idNotification;
+                return getIdNotification();
             case 1:
-                return idCustomer;
+                return getIdCustomer();
             case 2:
-                return title;
+                return getTitle();
             case 3:
-                return message;
+                return getMessage();
             case 4:
-                return creationDate;
+                return getCreationDate();
             case 5:
-                return expiryDate;
+                return getExpiryDate();
             case 6:
-                return readed;
+                return isReaded();
             case 7:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -186,4 +186,67 @@ public class KoloNotification implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdNotification() {
+        return idNotification;
+    }
+
+    public void setIdNotification(int idNotification) {
+        this.idNotification = idNotification;
+    }
+
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public boolean isReaded() {
+        return readed;
+    }
+
+    public void setReaded(boolean readed) {
+        this.readed = readed;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

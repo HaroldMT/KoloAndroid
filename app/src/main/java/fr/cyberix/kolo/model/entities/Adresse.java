@@ -22,15 +22,15 @@ import java.util.Hashtable;
 
 public class Adresse implements KvmSerializable {
 
-    public int idAddress;
-    public String line_1;
-    public String line_2;
-    public String line_3;
-    public int idCity;
-    public String postCode;
-    public String addressTypeCode;
-    public City city;
-    public RefAddressType refAddressType;
+    private int idAddress;
+    private String line_1;
+    private String line_2;
+    private String line_3;
+    private int idCity;
+    private String postCode;
+    private String addressTypeCode;
+    private City city;
+    private RefAddressType refAddressType;
 
     public Adresse() {
     }
@@ -42,73 +42,73 @@ public class Adresse implements KvmSerializable {
             Object obj = soapObject.getProperty("IdAddress");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAddress = Integer.parseInt(j.toString());
+                setIdAddress(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAddress = (Integer) obj;
+                setIdAddress((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Line_1")) {
             Object obj = soapObject.getProperty("Line_1");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                line_1 = j.toString();
+                setLine_1(j.toString());
             } else if (obj != null && obj instanceof String) {
-                line_1 = (String) obj;
+                setLine_1((String) obj);
             }
         }
         if (soapObject.hasProperty("Line_2")) {
             Object obj = soapObject.getProperty("Line_2");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                line_2 = j.toString();
+                setLine_2(j.toString());
             } else if (obj != null && obj instanceof String) {
-                line_2 = (String) obj;
+                setLine_2((String) obj);
             }
         }
         if (soapObject.hasProperty("Line_3")) {
             Object obj = soapObject.getProperty("Line_3");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                line_3 = j.toString();
+                setLine_3(j.toString());
             } else if (obj != null && obj instanceof String) {
-                line_3 = (String) obj;
+                setLine_3((String) obj);
             }
         }
         if (soapObject.hasProperty("IdCity")) {
             Object obj = soapObject.getProperty("IdCity");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCity = Integer.parseInt(j.toString());
+                setIdCity(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCity = (Integer) obj;
+                setIdCity((Integer) obj);
             }
         }
         if (soapObject.hasProperty("PostCode")) {
             Object obj = soapObject.getProperty("PostCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                postCode = j.toString();
+                setPostCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                postCode = (String) obj;
+                setPostCode((String) obj);
             }
         }
         if (soapObject.hasProperty("AddressTypeCode")) {
             Object obj = soapObject.getProperty("AddressTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                addressTypeCode = j.toString();
+                setAddressTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                addressTypeCode = (String) obj;
+                setAddressTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("City")) {
             SoapObject j = (SoapObject) soapObject.getProperty("City");
-            city = new City(j);
+            setCity(new City(j));
 
         }
         if (soapObject.hasProperty("RefAddressType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefAddressType");
-            refAddressType = new RefAddressType(j);
+            setRefAddressType(new RefAddressType(j));
 
         }
     }
@@ -117,23 +117,23 @@ public class Adresse implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idAddress;
+                return getIdAddress();
             case 1:
-                return line_1;
+                return getLine_1();
             case 2:
-                return line_2;
+                return getLine_2();
             case 3:
-                return line_3;
+                return getLine_3();
             case 4:
-                return idCity;
+                return getIdCity();
             case 5:
-                return postCode;
+                return getPostCode();
             case 6:
-                return addressTypeCode;
+                return getAddressTypeCode();
             case 7:
-                return city;
+                return getCity();
             case 8:
-                return refAddressType;
+                return getRefAddressType();
         }
         return null;
     }
@@ -198,4 +198,75 @@ public class Adresse implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
+    }
+
+    public String getLine_1() {
+        return line_1;
+    }
+
+    public void setLine_1(String line_1) {
+        this.line_1 = line_1;
+    }
+
+    public String getLine_2() {
+        return line_2;
+    }
+
+    public void setLine_2(String line_2) {
+        this.line_2 = line_2;
+    }
+
+    public String getLine_3() {
+        return line_3;
+    }
+
+    public void setLine_3(String line_3) {
+        this.line_3 = line_3;
+    }
+
+    public int getIdCity() {
+        return idCity;
+    }
+
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getAddressTypeCode() {
+        return addressTypeCode;
+    }
+
+    public void setAddressTypeCode(String addressTypeCode) {
+        this.addressTypeCode = addressTypeCode;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public RefAddressType getRefAddressType() {
+        return refAddressType;
+    }
+
+    public void setRefAddressType(RefAddressType refAddressType) {
+        this.refAddressType = refAddressType;
+    }
 }

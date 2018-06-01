@@ -22,13 +22,13 @@ import java.util.Hashtable;
 
 public class Transfert2CashDetails implements KvmSerializable {
 
-    public int idTransfert2CashDetails;
-    public int idCustomerAccount;
-    public String firstname;
-    public String middlename;
-    public String lastname;
-    public String reference;
-    public Customer customer;
+    private int idTransfert2CashDetails;
+    private int idCustomerAccount;
+    private String firstname;
+    private String middlename;
+    private String lastname;
+    private String reference;
+    private Customer customer;
 
     public Transfert2CashDetails() {
     }
@@ -40,59 +40,59 @@ public class Transfert2CashDetails implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfert2CashDetails");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfert2CashDetails = Integer.parseInt(j.toString());
+                setIdTransfert2CashDetails(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfert2CashDetails = (Integer) obj;
+                setIdTransfert2CashDetails((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomerAccount")) {
             Object obj = soapObject.getProperty("IdCustomerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerAccount = Integer.parseInt(j.toString());
+                setIdCustomerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerAccount = (Integer) obj;
+                setIdCustomerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Firstname")) {
             Object obj = soapObject.getProperty("Firstname");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                firstname = j.toString();
+                setFirstname(j.toString());
             } else if (obj != null && obj instanceof String) {
-                firstname = (String) obj;
+                setFirstname((String) obj);
             }
         }
         if (soapObject.hasProperty("Middlename")) {
             Object obj = soapObject.getProperty("Middlename");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                middlename = j.toString();
+                setMiddlename(j.toString());
             } else if (obj != null && obj instanceof String) {
-                middlename = (String) obj;
+                setMiddlename((String) obj);
             }
         }
         if (soapObject.hasProperty("Lastname")) {
             Object obj = soapObject.getProperty("Lastname");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                lastname = j.toString();
+                setLastname(j.toString());
             } else if (obj != null && obj instanceof String) {
-                lastname = (String) obj;
+                setLastname((String) obj);
             }
         }
         if (soapObject.hasProperty("Reference")) {
             Object obj = soapObject.getProperty("Reference");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                reference = j.toString();
+                setReference(j.toString());
             } else if (obj != null && obj instanceof String) {
-                reference = (String) obj;
+                setReference((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
     }
@@ -101,19 +101,19 @@ public class Transfert2CashDetails implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfert2CashDetails;
+                return getIdTransfert2CashDetails();
             case 1:
-                return idCustomerAccount;
+                return getIdCustomerAccount();
             case 2:
-                return firstname;
+                return getFirstname();
             case 3:
-                return middlename;
+                return getMiddlename();
             case 4:
-                return lastname;
+                return getLastname();
             case 5:
-                return reference;
+                return getReference();
             case 6:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -170,4 +170,59 @@ public class Transfert2CashDetails implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfert2CashDetails() {
+        return idTransfert2CashDetails;
+    }
+
+    public void setIdTransfert2CashDetails(int idTransfert2CashDetails) {
+        this.idTransfert2CashDetails = idTransfert2CashDetails;
+    }
+
+    public int getIdCustomerAccount() {
+        return idCustomerAccount;
+    }
+
+    public void setIdCustomerAccount(int idCustomerAccount) {
+        this.idCustomerAccount = idCustomerAccount;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

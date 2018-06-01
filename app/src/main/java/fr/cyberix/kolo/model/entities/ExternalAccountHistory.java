@@ -22,14 +22,14 @@ import java.util.Hashtable;
 
 public class ExternalAccountHistory implements KvmSerializable {
 
-    public int idAccountHistory;
-    public int idExternalAccount;
-    public String operationTypeCode;
-    public String historyDate;
-    public int oldBalance;
-    public int newBalance;
-    public int amount;
-    public ExternalAccount externalAccount;
+    private int idAccountHistory;
+    private int idExternalAccount;
+    private String operationTypeCode;
+    private String historyDate;
+    private int oldBalance;
+    private int newBalance;
+    private int amount;
+    private ExternalAccount externalAccount;
 
     public ExternalAccountHistory() {
     }
@@ -41,68 +41,68 @@ public class ExternalAccountHistory implements KvmSerializable {
             Object obj = soapObject.getProperty("IdAccountHistory");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAccountHistory = Integer.parseInt(j.toString());
+                setIdAccountHistory(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAccountHistory = (Integer) obj;
+                setIdAccountHistory((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdExternalAccount")) {
             Object obj = soapObject.getProperty("IdExternalAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idExternalAccount = Integer.parseInt(j.toString());
+                setIdExternalAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idExternalAccount = (Integer) obj;
+                setIdExternalAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeCode")) {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("HistoryDate")) {
             Object obj = soapObject.getProperty("HistoryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                historyDate = j.toString();
+                setHistoryDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                historyDate = (String) obj;
+                setHistoryDate((String) obj);
             }
         }
         if (soapObject.hasProperty("OldBalance")) {
             Object obj = soapObject.getProperty("OldBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                oldBalance = Integer.parseInt(j.toString());
+                setOldBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                oldBalance = (Integer) obj;
+                setOldBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("NewBalance")) {
             Object obj = soapObject.getProperty("NewBalance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                newBalance = Integer.parseInt(j.toString());
+                setNewBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                newBalance = (Integer) obj;
+                setNewBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("ExternalAccount")) {
             SoapObject j = (SoapObject) soapObject.getProperty("ExternalAccount");
-            externalAccount = new ExternalAccount(j);
+            setExternalAccount(new ExternalAccount(j));
 
         }
     }
@@ -111,21 +111,21 @@ public class ExternalAccountHistory implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idAccountHistory;
+                return getIdAccountHistory();
             case 1:
-                return idExternalAccount;
+                return getIdExternalAccount();
             case 2:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 3:
-                return historyDate;
+                return getHistoryDate();
             case 4:
-                return oldBalance;
+                return getOldBalance();
             case 5:
-                return newBalance;
+                return getNewBalance();
             case 6:
-                return amount;
+                return getAmount();
             case 7:
-                return externalAccount;
+                return getExternalAccount();
         }
         return null;
     }
@@ -186,4 +186,67 @@ public class ExternalAccountHistory implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdAccountHistory() {
+        return idAccountHistory;
+    }
+
+    public void setIdAccountHistory(int idAccountHistory) {
+        this.idAccountHistory = idAccountHistory;
+    }
+
+    public int getIdExternalAccount() {
+        return idExternalAccount;
+    }
+
+    public void setIdExternalAccount(int idExternalAccount) {
+        this.idExternalAccount = idExternalAccount;
+    }
+
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public String getHistoryDate() {
+        return historyDate;
+    }
+
+    public void setHistoryDate(String historyDate) {
+        this.historyDate = historyDate;
+    }
+
+    public int getOldBalance() {
+        return oldBalance;
+    }
+
+    public void setOldBalance(int oldBalance) {
+        this.oldBalance = oldBalance;
+    }
+
+    public int getNewBalance() {
+        return newBalance;
+    }
+
+    public void setNewBalance(int newBalance) {
+        this.newBalance = newBalance;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public ExternalAccount getExternalAccount() {
+        return externalAccount;
+    }
+
+    public void setExternalAccount(ExternalAccount externalAccount) {
+        this.externalAccount = externalAccount;
+    }
 }

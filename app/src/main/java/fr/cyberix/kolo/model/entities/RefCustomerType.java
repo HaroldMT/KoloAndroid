@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefCustomerType implements KvmSerializable {
 
-    public String customerTypeCode;
-    public String customerTypeDescription;
+    private String customerTypeCode;
+    private String customerTypeDescription;
 
     public RefCustomerType() {
     }
@@ -34,18 +34,18 @@ public class RefCustomerType implements KvmSerializable {
             Object obj = soapObject.getProperty("CustomerTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                customerTypeCode = j.toString();
+                setCustomerTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                customerTypeCode = (String) obj;
+                setCustomerTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("CustomerTypeDescription")) {
             Object obj = soapObject.getProperty("CustomerTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                customerTypeDescription = j.toString();
+                setCustomerTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                customerTypeDescription = (String) obj;
+                setCustomerTypeDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefCustomerType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return customerTypeCode;
+                return getCustomerTypeCode();
             case 1:
-                return customerTypeDescription;
+                return getCustomerTypeDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefCustomerType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getCustomerTypeCode() {
+        return customerTypeCode;
+    }
+
+    public void setCustomerTypeCode(String customerTypeCode) {
+        this.customerTypeCode = customerTypeCode;
+    }
+
+    public String getCustomerTypeDescription() {
+        return customerTypeDescription;
+    }
+
+    public void setCustomerTypeDescription(String customerTypeDescription) {
+        this.customerTypeDescription = customerTypeDescription;
+    }
 }

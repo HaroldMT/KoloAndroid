@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefPersonRelationshipType implements KvmSerializable {
 
-    public String relationshipTypeCode;
-    public String relationshipTypeDescription;
+    private String relationshipTypeCode;
+    private String relationshipTypeDescription;
 
     public RefPersonRelationshipType() {
     }
@@ -34,18 +34,18 @@ public class RefPersonRelationshipType implements KvmSerializable {
             Object obj = soapObject.getProperty("RelationshipTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                relationshipTypeCode = j.toString();
+                setRelationshipTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                relationshipTypeCode = (String) obj;
+                setRelationshipTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("RelationshipTypeDescription")) {
             Object obj = soapObject.getProperty("RelationshipTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                relationshipTypeDescription = j.toString();
+                setRelationshipTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                relationshipTypeDescription = (String) obj;
+                setRelationshipTypeDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefPersonRelationshipType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return relationshipTypeCode;
+                return getRelationshipTypeCode();
             case 1:
-                return relationshipTypeDescription;
+                return getRelationshipTypeDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefPersonRelationshipType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getRelationshipTypeCode() {
+        return relationshipTypeCode;
+    }
+
+    public void setRelationshipTypeCode(String relationshipTypeCode) {
+        this.relationshipTypeCode = relationshipTypeCode;
+    }
+
+    public String getRelationshipTypeDescription() {
+        return relationshipTypeDescription;
+    }
+
+    public void setRelationshipTypeDescription(String relationshipTypeDescription) {
+        this.relationshipTypeDescription = relationshipTypeDescription;
+    }
 }

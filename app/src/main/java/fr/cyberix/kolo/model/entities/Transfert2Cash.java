@@ -22,13 +22,13 @@ import java.util.Hashtable;
 
 public class Transfert2Cash implements KvmSerializable {
 
-    public int idTransfert2Cash;
-    public int idPartnerAccount;
-    public int idSendingTransfert2CashDetails;
-    public int idReceiverTransfert2CashDetails;
-    public String codeTransfertStatus;
-    public int amount;
-    public Partner partner;
+    private int idTransfert2Cash;
+    private int idPartnerAccount;
+    private int idSendingTransfert2CashDetails;
+    private int idReceiverTransfert2CashDetails;
+    private String codeTransfertStatus;
+    private int amount;
+    private Partner partner;
 
     public Transfert2Cash() {
     }
@@ -40,59 +40,59 @@ public class Transfert2Cash implements KvmSerializable {
             Object obj = soapObject.getProperty("IdTransfert2Cash");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTransfert2Cash = Integer.parseInt(j.toString());
+                setIdTransfert2Cash(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTransfert2Cash = (Integer) obj;
+                setIdTransfert2Cash((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPartnerAccount")) {
             Object obj = soapObject.getProperty("IdPartnerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartnerAccount = Integer.parseInt(j.toString());
+                setIdPartnerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartnerAccount = (Integer) obj;
+                setIdPartnerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdSendingTransfert2CashDetails")) {
             Object obj = soapObject.getProperty("IdSendingTransfert2CashDetails");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idSendingTransfert2CashDetails = Integer.parseInt(j.toString());
+                setIdSendingTransfert2CashDetails(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idSendingTransfert2CashDetails = (Integer) obj;
+                setIdSendingTransfert2CashDetails((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdReceiverTransfert2CashDetails")) {
             Object obj = soapObject.getProperty("IdReceiverTransfert2CashDetails");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idReceiverTransfert2CashDetails = Integer.parseInt(j.toString());
+                setIdReceiverTransfert2CashDetails(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idReceiverTransfert2CashDetails = (Integer) obj;
+                setIdReceiverTransfert2CashDetails((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CodeTransfertStatus")) {
             Object obj = soapObject.getProperty("CodeTransfertStatus");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeTransfertStatus = j.toString();
+                setCodeTransfertStatus(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeTransfertStatus = (String) obj;
+                setCodeTransfertStatus((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
 
         }
     }
@@ -101,19 +101,19 @@ public class Transfert2Cash implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idTransfert2Cash;
+                return getIdTransfert2Cash();
             case 1:
-                return idPartnerAccount;
+                return getIdPartnerAccount();
             case 2:
-                return idSendingTransfert2CashDetails;
+                return getIdSendingTransfert2CashDetails();
             case 3:
-                return idReceiverTransfert2CashDetails;
+                return getIdReceiverTransfert2CashDetails();
             case 4:
-                return codeTransfertStatus;
+                return getCodeTransfertStatus();
             case 5:
-                return amount;
+                return getAmount();
             case 6:
-                return partner;
+                return getPartner();
         }
         return null;
     }
@@ -170,4 +170,59 @@ public class Transfert2Cash implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdTransfert2Cash() {
+        return idTransfert2Cash;
+    }
+
+    public void setIdTransfert2Cash(int idTransfert2Cash) {
+        this.idTransfert2Cash = idTransfert2Cash;
+    }
+
+    public int getIdPartnerAccount() {
+        return idPartnerAccount;
+    }
+
+    public void setIdPartnerAccount(int idPartnerAccount) {
+        this.idPartnerAccount = idPartnerAccount;
+    }
+
+    public int getIdSendingTransfert2CashDetails() {
+        return idSendingTransfert2CashDetails;
+    }
+
+    public void setIdSendingTransfert2CashDetails(int idSendingTransfert2CashDetails) {
+        this.idSendingTransfert2CashDetails = idSendingTransfert2CashDetails;
+    }
+
+    public int getIdReceiverTransfert2CashDetails() {
+        return idReceiverTransfert2CashDetails;
+    }
+
+    public void setIdReceiverTransfert2CashDetails(int idReceiverTransfert2CashDetails) {
+        this.idReceiverTransfert2CashDetails = idReceiverTransfert2CashDetails;
+    }
+
+    public String getCodeTransfertStatus() {
+        return codeTransfertStatus;
+    }
+
+    public void setCodeTransfertStatus(String codeTransfertStatus) {
+        this.codeTransfertStatus = codeTransfertStatus;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
 }

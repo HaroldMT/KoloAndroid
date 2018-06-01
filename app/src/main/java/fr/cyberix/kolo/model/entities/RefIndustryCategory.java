@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefIndustryCategory implements KvmSerializable {
 
-    public String industryCategoryCode;
-    public String industryCategoryDescrption;
+    private String industryCategoryCode;
+    private String industryCategoryDescrption;
 
     public RefIndustryCategory() {
     }
@@ -34,18 +34,18 @@ public class RefIndustryCategory implements KvmSerializable {
             Object obj = soapObject.getProperty("IndustryCategoryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                industryCategoryCode = j.toString();
+                setIndustryCategoryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                industryCategoryCode = (String) obj;
+                setIndustryCategoryCode((String) obj);
             }
         }
         if (soapObject.hasProperty("IndustryCategoryDescrption")) {
             Object obj = soapObject.getProperty("IndustryCategoryDescrption");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                industryCategoryDescrption = j.toString();
+                setIndustryCategoryDescrption(j.toString());
             } else if (obj != null && obj instanceof String) {
-                industryCategoryDescrption = (String) obj;
+                setIndustryCategoryDescrption((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefIndustryCategory implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return industryCategoryCode;
+                return getIndustryCategoryCode();
             case 1:
-                return industryCategoryDescrption;
+                return getIndustryCategoryDescrption();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefIndustryCategory implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getIndustryCategoryCode() {
+        return industryCategoryCode;
+    }
+
+    public void setIndustryCategoryCode(String industryCategoryCode) {
+        this.industryCategoryCode = industryCategoryCode;
+    }
+
+    public String getIndustryCategoryDescrption() {
+        return industryCategoryDescrption;
+    }
+
+    public void setIndustryCategoryDescrption(String industryCategoryDescrption) {
+        this.industryCategoryDescrption = industryCategoryDescrption;
+    }
 }

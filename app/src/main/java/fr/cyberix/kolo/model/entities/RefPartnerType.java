@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefPartnerType implements KvmSerializable {
 
-    public String partnerTypeCode;
-    public String partnerTypeDescription;
+    private String partnerTypeCode;
+    private String partnerTypeDescription;
 
     public RefPartnerType() {
     }
@@ -34,18 +34,18 @@ public class RefPartnerType implements KvmSerializable {
             Object obj = soapObject.getProperty("PartnerTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                partnerTypeCode = j.toString();
+                setPartnerTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                partnerTypeCode = (String) obj;
+                setPartnerTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("PartnerTypeDescription")) {
             Object obj = soapObject.getProperty("PartnerTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                partnerTypeDescription = j.toString();
+                setPartnerTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                partnerTypeDescription = (String) obj;
+                setPartnerTypeDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefPartnerType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return partnerTypeCode;
+                return getPartnerTypeCode();
             case 1:
-                return partnerTypeDescription;
+                return getPartnerTypeDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefPartnerType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getPartnerTypeCode() {
+        return partnerTypeCode;
+    }
+
+    public void setPartnerTypeCode(String partnerTypeCode) {
+        this.partnerTypeCode = partnerTypeCode;
+    }
+
+    public String getPartnerTypeDescription() {
+        return partnerTypeDescription;
+    }
+
+    public void setPartnerTypeDescription(String partnerTypeDescription) {
+        this.partnerTypeDescription = partnerTypeDescription;
+    }
 }

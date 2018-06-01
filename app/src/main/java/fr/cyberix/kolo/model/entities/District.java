@@ -22,9 +22,9 @@ import java.util.Hashtable;
 
 public class District implements KvmSerializable {
 
-    public int idDistrict;
-    public String districtName;
-    public String countryCode;
+    private int idDistrict;
+    private String districtName;
+    private String countryCode;
 
     public District() {
     }
@@ -36,27 +36,27 @@ public class District implements KvmSerializable {
             Object obj = soapObject.getProperty("IdDistrict");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idDistrict = Integer.parseInt(j.toString());
+                setIdDistrict(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idDistrict = (Integer) obj;
+                setIdDistrict((Integer) obj);
             }
         }
         if (soapObject.hasProperty("DistrictName")) {
             Object obj = soapObject.getProperty("DistrictName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                districtName = j.toString();
+                setDistrictName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                districtName = (String) obj;
+                setDistrictName((String) obj);
             }
         }
         if (soapObject.hasProperty("CountryCode")) {
             Object obj = soapObject.getProperty("CountryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                countryCode = j.toString();
+                setCountryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                countryCode = (String) obj;
+                setCountryCode((String) obj);
             }
         }
     }
@@ -65,11 +65,11 @@ public class District implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idDistrict;
+                return getIdDistrict();
             case 1:
-                return districtName;
+                return getDistrictName();
             case 2:
-                return countryCode;
+                return getCountryCode();
         }
         return null;
     }
@@ -110,4 +110,27 @@ public class District implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdDistrict() {
+        return idDistrict;
+    }
+
+    public void setIdDistrict(int idDistrict) {
+        this.idDistrict = idDistrict;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
 }

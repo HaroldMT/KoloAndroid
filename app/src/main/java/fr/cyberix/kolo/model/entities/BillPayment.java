@@ -22,15 +22,15 @@ import java.util.Hashtable;
 
 public class BillPayment implements KvmSerializable {
 
-    public int idBillPayment;
-    public int idBill;
-    public int idPayingCustomer;
-    public int idIssuingCustomer;
-    public String datePaid;
-    public int paidAmount;
-    public Bill bill;
-    public Customer customer;
-    public Customer customer1;
+    private int idBillPayment;
+    private int idBill;
+    private int idPayingCustomer;
+    private int idIssuingCustomer;
+    private String datePaid;
+    private int paidAmount;
+    private Bill bill;
+    private Customer customer;
+    private Customer customer1;
 
     public BillPayment() {
     }
@@ -42,69 +42,69 @@ public class BillPayment implements KvmSerializable {
             Object obj = soapObject.getProperty("IdBillPayment");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idBillPayment = Integer.parseInt(j.toString());
+                setIdBillPayment(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idBillPayment = (Integer) obj;
+                setIdBillPayment((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdBill")) {
             Object obj = soapObject.getProperty("IdBill");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idBill = Integer.parseInt(j.toString());
+                setIdBill(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idBill = (Integer) obj;
+                setIdBill((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPayingCustomer")) {
             Object obj = soapObject.getProperty("IdPayingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPayingCustomer = Integer.parseInt(j.toString());
+                setIdPayingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPayingCustomer = (Integer) obj;
+                setIdPayingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdIssuingCustomer")) {
             Object obj = soapObject.getProperty("IdIssuingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idIssuingCustomer = Integer.parseInt(j.toString());
+                setIdIssuingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idIssuingCustomer = (Integer) obj;
+                setIdIssuingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("DatePaid")) {
             Object obj = soapObject.getProperty("DatePaid");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                datePaid = j.toString();
+                setDatePaid(j.toString());
             } else if (obj != null && obj instanceof String) {
-                datePaid = (String) obj;
+                setDatePaid((String) obj);
             }
         }
         if (soapObject.hasProperty("PaidAmount")) {
             Object obj = soapObject.getProperty("PaidAmount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                paidAmount = Integer.parseInt(j.toString());
+                setPaidAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                paidAmount = (Integer) obj;
+                setPaidAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Bill")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Bill");
-            bill = new Bill(j);
+            setBill(new Bill(j));
 
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("Customer1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer1");
-            customer1 = new Customer(j);
+            setCustomer1(new Customer(j));
 
         }
     }
@@ -113,23 +113,23 @@ public class BillPayment implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idBillPayment;
+                return getIdBillPayment();
             case 1:
-                return idBill;
+                return getIdBill();
             case 2:
-                return idPayingCustomer;
+                return getIdPayingCustomer();
             case 3:
-                return idIssuingCustomer;
+                return getIdIssuingCustomer();
             case 4:
-                return datePaid;
+                return getDatePaid();
             case 5:
-                return paidAmount;
+                return getPaidAmount();
             case 6:
-                return bill;
+                return getBill();
             case 7:
-                return customer;
+                return getCustomer();
             case 8:
-                return customer1;
+                return getCustomer1();
         }
         return null;
     }
@@ -194,4 +194,75 @@ public class BillPayment implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdBillPayment() {
+        return idBillPayment;
+    }
+
+    public void setIdBillPayment(int idBillPayment) {
+        this.idBillPayment = idBillPayment;
+    }
+
+    public int getIdBill() {
+        return idBill;
+    }
+
+    public void setIdBill(int idBill) {
+        this.idBill = idBill;
+    }
+
+    public int getIdPayingCustomer() {
+        return idPayingCustomer;
+    }
+
+    public void setIdPayingCustomer(int idPayingCustomer) {
+        this.idPayingCustomer = idPayingCustomer;
+    }
+
+    public int getIdIssuingCustomer() {
+        return idIssuingCustomer;
+    }
+
+    public void setIdIssuingCustomer(int idIssuingCustomer) {
+        this.idIssuingCustomer = idIssuingCustomer;
+    }
+
+    public String getDatePaid() {
+        return datePaid;
+    }
+
+    public void setDatePaid(String datePaid) {
+        this.datePaid = datePaid;
+    }
+
+    public int getPaidAmount() {
+        return paidAmount;
+    }
+
+    public void setPaidAmount(int paidAmount) {
+        this.paidAmount = paidAmount;
+    }
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer1() {
+        return customer1;
+    }
+
+    public void setCustomer1(Customer customer1) {
+        this.customer1 = customer1;
+    }
 }

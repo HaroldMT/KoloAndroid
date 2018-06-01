@@ -21,16 +21,16 @@ import java.util.Hashtable;
 
 public class Partner implements KvmSerializable {
 
-    public int idPartner;
-    public String partnerTypeCode;
-    public String currencyCode;
-    public int balance;
-    public String dateCreated;
-    public Currency currency;
-    public Customer customer;
-    public RefPartnerType refPartnerType;
-    public Reseller reseller;
-    public Wholesaler wholesaler;
+    private int idPartner;
+    private String partnerTypeCode;
+    private String currencyCode;
+    private int balance;
+    private String dateCreated;
+    private Currency currency;
+    private Customer customer;
+    private RefPartnerType refPartnerType;
+    private Reseller reseller;
+    private Wholesaler wholesaler;
 
     public Partner() {
     }
@@ -42,70 +42,70 @@ public class Partner implements KvmSerializable {
             Object obj = soapObject.getProperty("IdPartner");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartner = Integer.parseInt(j.toString());
+                setIdPartner(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartner = (Integer) obj;
+                setIdPartner((Integer) obj);
             }
         }
         if (soapObject.hasProperty("PartnerTypeCode")) {
             Object obj = soapObject.getProperty("PartnerTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                partnerTypeCode = j.toString();
+                setPartnerTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                partnerTypeCode = (String) obj;
+                setPartnerTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("CurrencyCode")) {
             Object obj = soapObject.getProperty("CurrencyCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                currencyCode = j.toString();
+                setCurrencyCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                currencyCode = (String) obj;
+                setCurrencyCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Balance")) {
             Object obj = soapObject.getProperty("Balance");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                balance = Integer.parseInt(j.toString());
+                setBalance(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                balance = (Integer) obj;
+                setBalance((Integer) obj);
             }
         }
         if (soapObject.hasProperty("DateCreated")) {
             Object obj = soapObject.getProperty("DateCreated");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dateCreated = j.toString();
+                setDateCreated(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dateCreated = (String) obj;
+                setDateCreated((String) obj);
             }
         }
         if (soapObject.hasProperty("Currency")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Currency");
-            currency = new Currency(j);
+            setCurrency(new Currency(j));
             
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
         if (soapObject.hasProperty("RefPartnerType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefPartnerType");
-            refPartnerType = new RefPartnerType(j);
+            setRefPartnerType(new RefPartnerType(j));
             
         }
         if (soapObject.hasProperty("Reseller")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Reseller");
-            reseller = new Reseller(j);
+            setReseller(new Reseller(j));
             
         }
         if (soapObject.hasProperty("Wholesaler")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Wholesaler");
-            wholesaler = new Wholesaler(j);
+            setWholesaler(new Wholesaler(j));
             
         }
     }
@@ -113,25 +113,25 @@ public class Partner implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idPartner;
+                return getIdPartner();
             case 1:
-                return partnerTypeCode;
+                return getPartnerTypeCode();
             case 2:
-                return currencyCode;
+                return getCurrencyCode();
             case 3:
-                return balance;
+                return getBalance();
             case 4:
-                return dateCreated;
+                return getDateCreated();
             case 5:
-                return currency;
+                return getCurrency();
             case 6:
-                return customer;
+                return getCustomer();
             case 7:
-                return refPartnerType;
+                return getRefPartnerType();
             case 8:
-                return reseller;
+                return getReseller();
             case 9:
-                return wholesaler;
+                return getWholesaler();
         }
         return null;
     }
@@ -200,4 +200,83 @@ public class Partner implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdPartner() {
+        return idPartner;
+    }
+
+    public void setIdPartner(int idPartner) {
+        this.idPartner = idPartner;
+    }
+
+    public String getPartnerTypeCode() {
+        return partnerTypeCode;
+    }
+
+    public void setPartnerTypeCode(String partnerTypeCode) {
+        this.partnerTypeCode = partnerTypeCode;
+    }
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefPartnerType getRefPartnerType() {
+        return refPartnerType;
+    }
+
+    public void setRefPartnerType(RefPartnerType refPartnerType) {
+        this.refPartnerType = refPartnerType;
+    }
+
+    public Reseller getReseller() {
+        return reseller;
+    }
+
+    public void setReseller(Reseller reseller) {
+        this.reseller = reseller;
+    }
+
+    public Wholesaler getWholesaler() {
+        return wholesaler;
+    }
+
+    public void setWholesaler(Wholesaler wholesaler) {
+        this.wholesaler = wholesaler;
+    }
 }

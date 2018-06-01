@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefResult implements KvmSerializable {
 
-    public String resultCode;
-    public String resultDescription;
+    private String resultCode;
+    private String resultDescription;
 
     public RefResult() {
     }
@@ -34,18 +34,18 @@ public class RefResult implements KvmSerializable {
             Object obj = soapObject.getProperty("ResultCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                resultCode = j.toString();
+                setResultCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                resultCode = (String) obj;
+                setResultCode((String) obj);
             }
         }
         if (soapObject.hasProperty("ResultDescription")) {
             Object obj = soapObject.getProperty("ResultDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                resultDescription = j.toString();
+                setResultDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                resultDescription = (String) obj;
+                setResultDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefResult implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return resultCode;
+                return getResultCode();
             case 1:
-                return resultDescription;
+                return getResultDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefResult implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getResultDescription() {
+        return resultDescription;
+    }
+
+    public void setResultDescription(String resultDescription) {
+        this.resultDescription = resultDescription;
+    }
 }

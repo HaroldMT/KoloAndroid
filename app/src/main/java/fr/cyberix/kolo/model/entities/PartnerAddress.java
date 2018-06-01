@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class PartnerAddress implements KvmSerializable {
 
-    public int idPartner;
-    public int idAddress;
-    public String addresseTypeCode;
-    public Adresse adresse;
-    public Partner partner;
+    private int idPartner;
+    private int idAddress;
+    private String addresseTypeCode;
+    private Adresse adresse;
+    private Partner partner;
 
     public PartnerAddress() {
     }
@@ -38,37 +38,37 @@ public class PartnerAddress implements KvmSerializable {
             Object obj = soapObject.getProperty("IdPartner");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartner = Integer.parseInt(j.toString());
+                setIdPartner(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartner = (Integer) obj;
+                setIdPartner((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdAddress")) {
             Object obj = soapObject.getProperty("IdAddress");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAddress = Integer.parseInt(j.toString());
+                setIdAddress(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAddress = (Integer) obj;
+                setIdAddress((Integer) obj);
             }
         }
         if (soapObject.hasProperty("AddresseTypeCode")) {
             Object obj = soapObject.getProperty("AddresseTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                addresseTypeCode = j.toString();
+                setAddresseTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                addresseTypeCode = (String) obj;
+                setAddresseTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Adresse")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Adresse");
-            adresse = new Adresse(j);
+            setAdresse(new Adresse(j));
 
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class PartnerAddress implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idPartner;
+                return getIdPartner();
             case 1:
-                return idAddress;
+                return getIdAddress();
             case 2:
-                return addresseTypeCode;
+                return getAddresseTypeCode();
             case 3:
-                return adresse;
+                return getAdresse();
             case 4:
-                return partner;
+                return getPartner();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class PartnerAddress implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdPartner() {
+        return idPartner;
+    }
+
+    public void setIdPartner(int idPartner) {
+        this.idPartner = idPartner;
+    }
+
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
+    }
+
+    public String getAddresseTypeCode() {
+        return addresseTypeCode;
+    }
+
+    public void setAddresseTypeCode(String addresseTypeCode) {
+        this.addresseTypeCode = addresseTypeCode;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
 }

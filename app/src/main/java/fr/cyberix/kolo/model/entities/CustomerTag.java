@@ -22,11 +22,11 @@ import java.util.Hashtable;
 
 public class CustomerTag implements KvmSerializable {
 
-    public int idCustomerTags;
-    public int idCustomerAccount;
-    public int idTag;
-    public Customer customer;
-    public Tag tag;
+    private int idCustomerTags;
+    private int idCustomerAccount;
+    private int idTag;
+    private Customer customer;
+    private Tag tag;
 
     public CustomerTag() {
     }
@@ -38,37 +38,37 @@ public class CustomerTag implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomerTags");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerTags = Integer.parseInt(j.toString());
+                setIdCustomerTags(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerTags = (Integer) obj;
+                setIdCustomerTags((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomerAccount")) {
             Object obj = soapObject.getProperty("IdCustomerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerAccount = Integer.parseInt(j.toString());
+                setIdCustomerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerAccount = (Integer) obj;
+                setIdCustomerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdTag")) {
             Object obj = soapObject.getProperty("IdTag");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idTag = Integer.parseInt(j.toString());
+                setIdTag(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idTag = (Integer) obj;
+                setIdTag((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("Tag")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Tag");
-            tag = new Tag(j);
+            setTag(new Tag(j));
 
         }
     }
@@ -77,15 +77,15 @@ public class CustomerTag implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomerTags;
+                return getIdCustomerTags();
             case 1:
-                return idCustomerAccount;
+                return getIdCustomerAccount();
             case 2:
-                return idTag;
+                return getIdTag();
             case 3:
-                return customer;
+                return getCustomer();
             case 4:
-                return tag;
+                return getTag();
         }
         return null;
     }
@@ -134,4 +134,43 @@ public class CustomerTag implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomerTags() {
+        return idCustomerTags;
+    }
+
+    public void setIdCustomerTags(int idCustomerTags) {
+        this.idCustomerTags = idCustomerTags;
+    }
+
+    public int getIdCustomerAccount() {
+        return idCustomerAccount;
+    }
+
+    public void setIdCustomerAccount(int idCustomerAccount) {
+        this.idCustomerAccount = idCustomerAccount;
+    }
+
+    public int getIdTag() {
+        return idTag;
+    }
+
+    public void setIdTag(int idTag) {
+        this.idTag = idTag;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
 }

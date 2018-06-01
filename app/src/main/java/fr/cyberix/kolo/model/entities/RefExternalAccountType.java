@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefExternalAccountType implements KvmSerializable {
 
-    public String externalAccountTypeCode;
-    public String externalAccountTypeDescription;
+    private String externalAccountTypeCode;
+    private String externalAccountTypeDescription;
 
     public RefExternalAccountType() {
     }
@@ -35,18 +35,18 @@ public class RefExternalAccountType implements KvmSerializable {
             Object obj = soapObject.getProperty("ExternalAccountTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                externalAccountTypeCode = j.toString();
+                setExternalAccountTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                externalAccountTypeCode = (String) obj;
+                setExternalAccountTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("ExternalAccountTypeDescription")) {
             Object obj = soapObject.getProperty("ExternalAccountTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                externalAccountTypeDescription = j.toString();
+                setExternalAccountTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                externalAccountTypeDescription = (String) obj;
+                setExternalAccountTypeDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefExternalAccountType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return externalAccountTypeCode;
+                return getExternalAccountTypeCode();
             case 1:
-                return externalAccountTypeDescription;
+                return getExternalAccountTypeDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefExternalAccountType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getExternalAccountTypeCode() {
+        return externalAccountTypeCode;
+    }
+
+    public void setExternalAccountTypeCode(String externalAccountTypeCode) {
+        this.externalAccountTypeCode = externalAccountTypeCode;
+    }
+
+    public String getExternalAccountTypeDescription() {
+        return externalAccountTypeDescription;
+    }
+
+    public void setExternalAccountTypeDescription(String externalAccountTypeDescription) {
+        this.externalAccountTypeDescription = externalAccountTypeDescription;
+    }
 }

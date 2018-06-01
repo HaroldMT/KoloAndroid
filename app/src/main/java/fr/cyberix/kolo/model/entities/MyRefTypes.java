@@ -21,68 +21,68 @@ import java.util.Hashtable;
 
 public class MyRefTypes implements KvmSerializable {
 
-    public AccountOperation a1;
-    public Currency a10;
-    public Customer a11;
-    public CustomerAddress a12;
-    public CustomerBalanceHistory a13;
-    public CustomerExternalAccount a14;
-    public CustomerGroup a15;
-    public CustomerImage a16;
-    public CustomerLogin a17;
-    public CustomerTag a18;
-    public District a19;
-    public AccountOperationRequest a2;
-    public ExternalAccount a20;
-    public ExternalAccountHistory a21;
-    public KoloNotification a22;
-    public GroupImage a23;
-    public LoginAttempt a24;
-    public MobileDevice a25;
-    public Partner a26;
-    public PartnerAddress a27;
-    public PartnerBalanceHistory a28;
-    public Person a29;
-    public Adresse a3;
-    public PersonRelationship a30;
-    public Provision a31;
-    public RecurringContribution a32;
-    public RefAddressType a33;
-    public RefBillStatu a34;
-    public RefBillType a35;
-    public RefCustomerType a36;
-    public RefExternalAccountType a37;
-    public RefGender a38;
-    public RefGroupType a39;
-    public Bill a4;
-    public RefIndustryCategory a40;
-    public RefLoginStatu a41;
-    public RefMaritalStatu a42;
-    public RefOperationStatu a43;
-    public RefOperationType a44;
-    public RefPartnerType a45;
-    public RefPersonRelationshipType a46;
-    public RefProvisionStatu a47;
-    public RefRegistrationStatu a48;
-    public RefResult a49;
-    public BillPayment a5;
-    public RefTransfertStatu a50;
-    public Registration a51;
-    public Reseller a52;
-    public Tag a53;
-    public Transfert2Cash a54;
-    public Transfert2CashDetails a55;
-    public TransfertE2e a56;
-    public TransfertGroup a57;
-    public TransfertGroupScheduled a58;
-    public TransfertP2p a59;
-    public Business a6;
-    public TransfertScheduled a60;
-    public KoloUser a61;
-    public Wholesaler a62;
-    public BusinessContact a7;
-    public City a8;
-    public Country a9;
+    private AccountOperation a1;
+    private Currency a10;
+    private Customer a11;
+    private CustomerAddress a12;
+    private CustomerBalanceHistory a13;
+    private CustomerExternalAccount a14;
+    private CustomerGroup a15;
+    private CustomerImage a16;
+    private CustomerLogin a17;
+    private CustomerTag a18;
+    private District a19;
+    private AccountOperationRequest a2;
+    private ExternalAccount a20;
+    private ExternalAccountHistory a21;
+    private KoloNotification a22;
+    private GroupImage a23;
+    private LoginAttempt a24;
+    private MobileDevice a25;
+    private Partner a26;
+    private PartnerAddress a27;
+    private PartnerBalanceHistory a28;
+    private Person a29;
+    private Adresse a3;
+    private PersonRelationship a30;
+    private Provision a31;
+    private RecurringContribution a32;
+    private RefAddressType a33;
+    private RefBillStatu a34;
+    private RefBillType a35;
+    private RefCustomerType a36;
+    private RefExternalAccountType a37;
+    private RefGender a38;
+    private RefGroupType a39;
+    private Bill a4;
+    private RefIndustryCategory a40;
+    private RefLoginStatu a41;
+    private RefMaritalStatu a42;
+    private RefOperationStatu a43;
+    private RefOperationType a44;
+    private RefPartnerType a45;
+    private RefPersonRelationshipType a46;
+    private RefProvisionStatu a47;
+    private RefRegistrationStatu a48;
+    private RefResult a49;
+    private BillPayment a5;
+    private RefTransfertStatu a50;
+    private Registration a51;
+    private Reseller a52;
+    private Tag a53;
+    private Transfert2Cash a54;
+    private Transfert2CashDetails a55;
+    private TransfertE2e a56;
+    private TransfertGroup a57;
+    private TransfertGroupScheduled a58;
+    private TransfertP2p a59;
+    private Business a6;
+    private TransfertScheduled a60;
+    private KoloUser a61;
+    private Wholesaler a62;
+    private BusinessContact a7;
+    private City a8;
+    private Country a9;
 
     public MyRefTypes() {
     }
@@ -92,312 +92,312 @@ public class MyRefTypes implements KvmSerializable {
             return;
         if (soapObject.hasProperty("a1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a1");
-            a1 = new AccountOperation(j);
+            setA1(new AccountOperation(j));
 
         }
         if (soapObject.hasProperty("a10")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a10");
-            a10 = new Currency(j);
+            setA10(new Currency(j));
 
         }
         if (soapObject.hasProperty("a11")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a11");
-            a11 = new Customer(j);
+            setA11(new Customer(j));
 
         }
         if (soapObject.hasProperty("a12")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a12");
-            a12 = new CustomerAddress(j);
+            setA12(new CustomerAddress(j));
 
         }
         if (soapObject.hasProperty("a13")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a13");
-            a13 = new CustomerBalanceHistory(j);
+            setA13(new CustomerBalanceHistory(j));
 
         }
         if (soapObject.hasProperty("a14")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a14");
-            a14 = new CustomerExternalAccount(j);
+            setA14(new CustomerExternalAccount(j));
 
         }
         if (soapObject.hasProperty("a15")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a15");
-            a15 = new CustomerGroup(j);
+            setA15(new CustomerGroup(j));
 
         }
         if (soapObject.hasProperty("a16")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a16");
-            a16 = new CustomerImage(j);
+            setA16(new CustomerImage(j));
 
         }
         if (soapObject.hasProperty("a17")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a17");
-            a17 = new CustomerLogin(j);
+            setA17(new CustomerLogin(j));
 
         }
         if (soapObject.hasProperty("a18")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a18");
-            a18 = new CustomerTag(j);
+            setA18(new CustomerTag(j));
 
         }
         if (soapObject.hasProperty("a19")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a19");
-            a19 = new District(j);
+            setA19(new District(j));
 
         }
         if (soapObject.hasProperty("a2")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a2");
-            a2 = new AccountOperationRequest(j);
+            setA2(new AccountOperationRequest(j));
 
         }
         if (soapObject.hasProperty("a20")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a20");
-            a20 = new ExternalAccount(j);
+            setA20(new ExternalAccount(j));
 
         }
         if (soapObject.hasProperty("a21")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a21");
-            a21 = new ExternalAccountHistory(j);
+            setA21(new ExternalAccountHistory(j));
 
         }
         if (soapObject.hasProperty("a22")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a22");
-            a22 = new KoloNotification(j);
+            setA22(new KoloNotification(j));
 
         }
         if (soapObject.hasProperty("a23")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a23");
-            a23 = new GroupImage(j);
+            setA23(new GroupImage(j));
 
         }
         if (soapObject.hasProperty("a24")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a24");
-            a24 = new LoginAttempt(j);
+            setA24(new LoginAttempt(j));
 
         }
         if (soapObject.hasProperty("a25")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a25");
-            a25 = new MobileDevice(j);
+            setA25(new MobileDevice(j));
 
         }
         if (soapObject.hasProperty("a26")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a26");
-            a26 = new Partner(j);
+            setA26(new Partner(j));
 
         }
         if (soapObject.hasProperty("a27")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a27");
-            a27 = new PartnerAddress(j);
+            setA27(new PartnerAddress(j));
 
         }
         if (soapObject.hasProperty("a28")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a28");
-            a28 = new PartnerBalanceHistory(j);
+            setA28(new PartnerBalanceHistory(j));
 
         }
         if (soapObject.hasProperty("a29")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a29");
-            a29 = new Person(j);
+            setA29(new Person(j));
 
         }
         if (soapObject.hasProperty("a3")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a3");
-            a3 = new Adresse(j);
+            setA3(new Adresse(j));
 
         }
         if (soapObject.hasProperty("a30")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a30");
-            a30 = new PersonRelationship(j);
+            setA30(new PersonRelationship(j));
 
         }
         if (soapObject.hasProperty("a31")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a31");
-            a31 = new Provision(j);
+            setA31(new Provision(j));
 
         }
         if (soapObject.hasProperty("a32")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a32");
-            a32 = new RecurringContribution(j);
+            setA32(new RecurringContribution(j));
 
         }
         if (soapObject.hasProperty("a33")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a33");
-            a33 = new RefAddressType(j);
+            setA33(new RefAddressType(j));
 
         }
         if (soapObject.hasProperty("a34")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a34");
-            a34 = new RefBillStatu(j);
+            setA34(new RefBillStatu(j));
 
         }
         if (soapObject.hasProperty("a35")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a35");
-            a35 = new RefBillType(j);
+            setA35(new RefBillType(j));
 
         }
         if (soapObject.hasProperty("a36")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a36");
-            a36 = new RefCustomerType(j);
+            setA36(new RefCustomerType(j));
 
         }
         if (soapObject.hasProperty("a37")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a37");
-            a37 = new RefExternalAccountType(j);
+            setA37(new RefExternalAccountType(j));
 
         }
         if (soapObject.hasProperty("a38")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a38");
-            a38 = new RefGender(j);
+            setA38(new RefGender(j));
 
         }
         if (soapObject.hasProperty("a39")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a39");
-            a39 = new RefGroupType(j);
+            setA39(new RefGroupType(j));
 
         }
         if (soapObject.hasProperty("a4")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a4");
-            a4 = new Bill(j);
+            setA4(new Bill(j));
 
         }
         if (soapObject.hasProperty("a40")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a40");
-            a40 = new RefIndustryCategory(j);
+            setA40(new RefIndustryCategory(j));
 
         }
         if (soapObject.hasProperty("a41")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a41");
-            a41 = new RefLoginStatu(j);
+            setA41(new RefLoginStatu(j));
 
         }
         if (soapObject.hasProperty("a42")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a42");
-            a42 = new RefMaritalStatu(j);
+            setA42(new RefMaritalStatu(j));
 
         }
         if (soapObject.hasProperty("a43")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a43");
-            a43 = new RefOperationStatu(j);
+            setA43(new RefOperationStatu(j));
 
         }
         if (soapObject.hasProperty("a44")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a44");
-            a44 = new RefOperationType(j);
+            setA44(new RefOperationType(j));
 
         }
         if (soapObject.hasProperty("a45")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a45");
-            a45 = new RefPartnerType(j);
+            setA45(new RefPartnerType(j));
 
         }
         if (soapObject.hasProperty("a46")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a46");
-            a46 = new RefPersonRelationshipType(j);
+            setA46(new RefPersonRelationshipType(j));
 
         }
         if (soapObject.hasProperty("a47")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a47");
-            a47 = new RefProvisionStatu(j);
+            setA47(new RefProvisionStatu(j));
 
         }
         if (soapObject.hasProperty("a48")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a48");
-            a48 = new RefRegistrationStatu(j);
+            setA48(new RefRegistrationStatu(j));
 
         }
         if (soapObject.hasProperty("a49")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a49");
-            a49 = new RefResult(j);
+            setA49(new RefResult(j));
 
         }
         if (soapObject.hasProperty("a5")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a5");
-            a5 = new BillPayment(j);
+            setA5(new BillPayment(j));
 
         }
         if (soapObject.hasProperty("a50")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a50");
-            a50 = new RefTransfertStatu(j);
+            setA50(new RefTransfertStatu(j));
 
         }
         if (soapObject.hasProperty("a51")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a51");
-            a51 = new Registration(j);
+            setA51(new Registration(j));
 
         }
         if (soapObject.hasProperty("a52")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a52");
-            a52 = new Reseller(j);
+            setA52(new Reseller(j));
 
         }
         if (soapObject.hasProperty("a53")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a53");
-            a53 = new Tag(j);
+            setA53(new Tag(j));
 
         }
         if (soapObject.hasProperty("a54")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a54");
-            a54 = new Transfert2Cash(j);
+            setA54(new Transfert2Cash(j));
 
         }
         if (soapObject.hasProperty("a55")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a55");
-            a55 = new Transfert2CashDetails(j);
+            setA55(new Transfert2CashDetails(j));
 
         }
         if (soapObject.hasProperty("a56")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a56");
-            a56 = new TransfertE2e(j);
+            setA56(new TransfertE2e(j));
 
         }
         if (soapObject.hasProperty("a57")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a57");
-            a57 = new TransfertGroup(j);
+            setA57(new TransfertGroup(j));
 
         }
         if (soapObject.hasProperty("a58")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a58");
-            a58 = new TransfertGroupScheduled(j);
+            setA58(new TransfertGroupScheduled(j));
 
         }
         if (soapObject.hasProperty("a59")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a59");
-            a59 = new TransfertP2p(j);
+            setA59(new TransfertP2p(j));
 
         }
         if (soapObject.hasProperty("a6")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a6");
-            a6 = new Business(j);
+            setA6(new Business(j));
 
         }
         if (soapObject.hasProperty("a60")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a60");
-            a60 = new TransfertScheduled(j);
+            setA60(new TransfertScheduled(j));
 
         }
         if (soapObject.hasProperty("a61")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a61");
-            a61 = new KoloUser(j);
+            setA61(new KoloUser(j));
 
         }
         if (soapObject.hasProperty("a62")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a62");
-            a62 = new Wholesaler(j);
+            setA62(new Wholesaler(j));
 
         }
         if (soapObject.hasProperty("a7")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a7");
-            a7 = new BusinessContact(j);
+            setA7(new BusinessContact(j));
 
         }
         if (soapObject.hasProperty("a8")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a8");
-            a8 = new City(j);
+            setA8(new City(j));
 
         }
         if (soapObject.hasProperty("a9")) {
             SoapObject j = (SoapObject) soapObject.getProperty("a9");
-            a9 = new Country(j);
+            setA9(new Country(j));
 
         }
     }
@@ -406,129 +406,129 @@ public class MyRefTypes implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return a1;
+                return getA1();
             case 1:
-                return a10;
+                return getA10();
             case 2:
-                return a11;
+                return getA11();
             case 3:
-                return a12;
+                return getA12();
             case 4:
-                return a13;
+                return getA13();
             case 5:
-                return a14;
+                return getA14();
             case 6:
-                return a15;
+                return getA15();
             case 7:
-                return a16;
+                return getA16();
             case 8:
-                return a17;
+                return getA17();
             case 9:
-                return a18;
+                return getA18();
             case 10:
-                return a19;
+                return getA19();
             case 11:
-                return a2;
+                return getA2();
             case 12:
-                return a20;
+                return getA20();
             case 13:
-                return a21;
+                return getA21();
             case 14:
-                return a22;
+                return getA22();
             case 15:
-                return a23;
+                return getA23();
             case 16:
-                return a24;
+                return getA24();
             case 17:
-                return a25;
+                return getA25();
             case 18:
-                return a26;
+                return getA26();
             case 19:
-                return a27;
+                return getA27();
             case 20:
-                return a28;
+                return getA28();
             case 21:
-                return a29;
+                return getA29();
             case 22:
-                return a3;
+                return getA3();
             case 23:
-                return a30;
+                return getA30();
             case 24:
-                return a31;
+                return getA31();
             case 25:
-                return a32;
+                return getA32();
             case 26:
-                return a33;
+                return getA33();
             case 27:
-                return a34;
+                return getA34();
             case 28:
-                return a35;
+                return getA35();
             case 29:
-                return a36;
+                return getA36();
             case 30:
-                return a37;
+                return getA37();
             case 31:
-                return a38;
+                return getA38();
             case 32:
-                return a39;
+                return getA39();
             case 33:
-                return a4;
+                return getA4();
             case 34:
-                return a40;
+                return getA40();
             case 35:
-                return a41;
+                return getA41();
             case 36:
-                return a42;
+                return getA42();
             case 37:
-                return a43;
+                return getA43();
             case 38:
-                return a44;
+                return getA44();
             case 39:
-                return a45;
+                return getA45();
             case 40:
-                return a46;
+                return getA46();
             case 41:
-                return a47;
+                return getA47();
             case 42:
-                return a48;
+                return getA48();
             case 43:
-                return a49;
+                return getA49();
             case 44:
-                return a5;
+                return getA5();
             case 45:
-                return a50;
+                return getA50();
             case 46:
-                return a51;
+                return getA51();
             case 47:
-                return a52;
+                return getA52();
             case 48:
-                return a53;
+                return getA53();
             case 49:
-                return a54;
+                return getA54();
             case 50:
-                return a55;
+                return getA55();
             case 51:
-                return a56;
+                return getA56();
             case 52:
-                return a57;
+                return getA57();
             case 53:
-                return a58;
+                return getA58();
             case 54:
-                return a59;
+                return getA59();
             case 55:
-                return a6;
+                return getA6();
             case 56:
-                return a60;
+                return getA60();
             case 57:
-                return a61;
+                return getA61();
             case 58:
-                return a62;
+                return getA62();
             case 59:
-                return a7;
+                return getA7();
             case 60:
-                return a8;
+                return getA8();
             case 61:
-                return a9;
+                return getA9();
         }
         return null;
     }
@@ -805,4 +805,499 @@ public class MyRefTypes implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public AccountOperation getA1() {
+        return a1;
+    }
+
+    public void setA1(AccountOperation a1) {
+        this.a1 = a1;
+    }
+
+    public Currency getA10() {
+        return a10;
+    }
+
+    public void setA10(Currency a10) {
+        this.a10 = a10;
+    }
+
+    public Customer getA11() {
+        return a11;
+    }
+
+    public void setA11(Customer a11) {
+        this.a11 = a11;
+    }
+
+    public CustomerAddress getA12() {
+        return a12;
+    }
+
+    public void setA12(CustomerAddress a12) {
+        this.a12 = a12;
+    }
+
+    public CustomerBalanceHistory getA13() {
+        return a13;
+    }
+
+    public void setA13(CustomerBalanceHistory a13) {
+        this.a13 = a13;
+    }
+
+    public CustomerExternalAccount getA14() {
+        return a14;
+    }
+
+    public void setA14(CustomerExternalAccount a14) {
+        this.a14 = a14;
+    }
+
+    public CustomerGroup getA15() {
+        return a15;
+    }
+
+    public void setA15(CustomerGroup a15) {
+        this.a15 = a15;
+    }
+
+    public CustomerImage getA16() {
+        return a16;
+    }
+
+    public void setA16(CustomerImage a16) {
+        this.a16 = a16;
+    }
+
+    public CustomerLogin getA17() {
+        return a17;
+    }
+
+    public void setA17(CustomerLogin a17) {
+        this.a17 = a17;
+    }
+
+    public CustomerTag getA18() {
+        return a18;
+    }
+
+    public void setA18(CustomerTag a18) {
+        this.a18 = a18;
+    }
+
+    public District getA19() {
+        return a19;
+    }
+
+    public void setA19(District a19) {
+        this.a19 = a19;
+    }
+
+    public AccountOperationRequest getA2() {
+        return a2;
+    }
+
+    public void setA2(AccountOperationRequest a2) {
+        this.a2 = a2;
+    }
+
+    public ExternalAccount getA20() {
+        return a20;
+    }
+
+    public void setA20(ExternalAccount a20) {
+        this.a20 = a20;
+    }
+
+    public ExternalAccountHistory getA21() {
+        return a21;
+    }
+
+    public void setA21(ExternalAccountHistory a21) {
+        this.a21 = a21;
+    }
+
+    public KoloNotification getA22() {
+        return a22;
+    }
+
+    public void setA22(KoloNotification a22) {
+        this.a22 = a22;
+    }
+
+    public GroupImage getA23() {
+        return a23;
+    }
+
+    public void setA23(GroupImage a23) {
+        this.a23 = a23;
+    }
+
+    public LoginAttempt getA24() {
+        return a24;
+    }
+
+    public void setA24(LoginAttempt a24) {
+        this.a24 = a24;
+    }
+
+    public MobileDevice getA25() {
+        return a25;
+    }
+
+    public void setA25(MobileDevice a25) {
+        this.a25 = a25;
+    }
+
+    public Partner getA26() {
+        return a26;
+    }
+
+    public void setA26(Partner a26) {
+        this.a26 = a26;
+    }
+
+    public PartnerAddress getA27() {
+        return a27;
+    }
+
+    public void setA27(PartnerAddress a27) {
+        this.a27 = a27;
+    }
+
+    public PartnerBalanceHistory getA28() {
+        return a28;
+    }
+
+    public void setA28(PartnerBalanceHistory a28) {
+        this.a28 = a28;
+    }
+
+    public Person getA29() {
+        return a29;
+    }
+
+    public void setA29(Person a29) {
+        this.a29 = a29;
+    }
+
+    public Adresse getA3() {
+        return a3;
+    }
+
+    public void setA3(Adresse a3) {
+        this.a3 = a3;
+    }
+
+    public PersonRelationship getA30() {
+        return a30;
+    }
+
+    public void setA30(PersonRelationship a30) {
+        this.a30 = a30;
+    }
+
+    public Provision getA31() {
+        return a31;
+    }
+
+    public void setA31(Provision a31) {
+        this.a31 = a31;
+    }
+
+    public RecurringContribution getA32() {
+        return a32;
+    }
+
+    public void setA32(RecurringContribution a32) {
+        this.a32 = a32;
+    }
+
+    public RefAddressType getA33() {
+        return a33;
+    }
+
+    public void setA33(RefAddressType a33) {
+        this.a33 = a33;
+    }
+
+    public RefBillStatu getA34() {
+        return a34;
+    }
+
+    public void setA34(RefBillStatu a34) {
+        this.a34 = a34;
+    }
+
+    public RefBillType getA35() {
+        return a35;
+    }
+
+    public void setA35(RefBillType a35) {
+        this.a35 = a35;
+    }
+
+    public RefCustomerType getA36() {
+        return a36;
+    }
+
+    public void setA36(RefCustomerType a36) {
+        this.a36 = a36;
+    }
+
+    public RefExternalAccountType getA37() {
+        return a37;
+    }
+
+    public void setA37(RefExternalAccountType a37) {
+        this.a37 = a37;
+    }
+
+    public RefGender getA38() {
+        return a38;
+    }
+
+    public void setA38(RefGender a38) {
+        this.a38 = a38;
+    }
+
+    public RefGroupType getA39() {
+        return a39;
+    }
+
+    public void setA39(RefGroupType a39) {
+        this.a39 = a39;
+    }
+
+    public Bill getA4() {
+        return a4;
+    }
+
+    public void setA4(Bill a4) {
+        this.a4 = a4;
+    }
+
+    public RefIndustryCategory getA40() {
+        return a40;
+    }
+
+    public void setA40(RefIndustryCategory a40) {
+        this.a40 = a40;
+    }
+
+    public RefLoginStatu getA41() {
+        return a41;
+    }
+
+    public void setA41(RefLoginStatu a41) {
+        this.a41 = a41;
+    }
+
+    public RefMaritalStatu getA42() {
+        return a42;
+    }
+
+    public void setA42(RefMaritalStatu a42) {
+        this.a42 = a42;
+    }
+
+    public RefOperationStatu getA43() {
+        return a43;
+    }
+
+    public void setA43(RefOperationStatu a43) {
+        this.a43 = a43;
+    }
+
+    public RefOperationType getA44() {
+        return a44;
+    }
+
+    public void setA44(RefOperationType a44) {
+        this.a44 = a44;
+    }
+
+    public RefPartnerType getA45() {
+        return a45;
+    }
+
+    public void setA45(RefPartnerType a45) {
+        this.a45 = a45;
+    }
+
+    public RefPersonRelationshipType getA46() {
+        return a46;
+    }
+
+    public void setA46(RefPersonRelationshipType a46) {
+        this.a46 = a46;
+    }
+
+    public RefProvisionStatu getA47() {
+        return a47;
+    }
+
+    public void setA47(RefProvisionStatu a47) {
+        this.a47 = a47;
+    }
+
+    public RefRegistrationStatu getA48() {
+        return a48;
+    }
+
+    public void setA48(RefRegistrationStatu a48) {
+        this.a48 = a48;
+    }
+
+    public RefResult getA49() {
+        return a49;
+    }
+
+    public void setA49(RefResult a49) {
+        this.a49 = a49;
+    }
+
+    public BillPayment getA5() {
+        return a5;
+    }
+
+    public void setA5(BillPayment a5) {
+        this.a5 = a5;
+    }
+
+    public RefTransfertStatu getA50() {
+        return a50;
+    }
+
+    public void setA50(RefTransfertStatu a50) {
+        this.a50 = a50;
+    }
+
+    public Registration getA51() {
+        return a51;
+    }
+
+    public void setA51(Registration a51) {
+        this.a51 = a51;
+    }
+
+    public Reseller getA52() {
+        return a52;
+    }
+
+    public void setA52(Reseller a52) {
+        this.a52 = a52;
+    }
+
+    public Tag getA53() {
+        return a53;
+    }
+
+    public void setA53(Tag a53) {
+        this.a53 = a53;
+    }
+
+    public Transfert2Cash getA54() {
+        return a54;
+    }
+
+    public void setA54(Transfert2Cash a54) {
+        this.a54 = a54;
+    }
+
+    public Transfert2CashDetails getA55() {
+        return a55;
+    }
+
+    public void setA55(Transfert2CashDetails a55) {
+        this.a55 = a55;
+    }
+
+    public TransfertE2e getA56() {
+        return a56;
+    }
+
+    public void setA56(TransfertE2e a56) {
+        this.a56 = a56;
+    }
+
+    public TransfertGroup getA57() {
+        return a57;
+    }
+
+    public void setA57(TransfertGroup a57) {
+        this.a57 = a57;
+    }
+
+    public TransfertGroupScheduled getA58() {
+        return a58;
+    }
+
+    public void setA58(TransfertGroupScheduled a58) {
+        this.a58 = a58;
+    }
+
+    public TransfertP2p getA59() {
+        return a59;
+    }
+
+    public void setA59(TransfertP2p a59) {
+        this.a59 = a59;
+    }
+
+    public Business getA6() {
+        return a6;
+    }
+
+    public void setA6(Business a6) {
+        this.a6 = a6;
+    }
+
+    public TransfertScheduled getA60() {
+        return a60;
+    }
+
+    public void setA60(TransfertScheduled a60) {
+        this.a60 = a60;
+    }
+
+    public KoloUser getA61() {
+        return a61;
+    }
+
+    public void setA61(KoloUser a61) {
+        this.a61 = a61;
+    }
+
+    public Wholesaler getA62() {
+        return a62;
+    }
+
+    public void setA62(Wholesaler a62) {
+        this.a62 = a62;
+    }
+
+    public BusinessContact getA7() {
+        return a7;
+    }
+
+    public void setA7(BusinessContact a7) {
+        this.a7 = a7;
+    }
+
+    public City getA8() {
+        return a8;
+    }
+
+    public void setA8(City a8) {
+        this.a8 = a8;
+    }
+
+    public Country getA9() {
+        return a9;
+    }
+
+    public void setA9(Country a9) {
+        this.a9 = a9;
+    }
 }

@@ -22,18 +22,18 @@ import java.util.Hashtable;
 
 public class Bill implements KvmSerializable {
 
-    public int idBill;
-    public int idIssuingCustomer;
-    public int idPayingCustomer;
-    public String codeRefFactureType;
-    public String codeRefBillStatus;
-    public String dateIssued;
-    public int totalBillAmount;
-    public int leftToPay;
-    public RefBillStatu refBillStatu;
-    public RefBillType refBillType;
-    public Customer customer;
-    public Customer customer1;
+    private int idBill;
+    private int idIssuingCustomer;
+    private int idPayingCustomer;
+    private String codeRefFactureType;
+    private String codeRefBillStatus;
+    private String dateIssued;
+    private int totalBillAmount;
+    private int leftToPay;
+    private RefBillStatu refBillStatu;
+    private RefBillType refBillType;
+    private Customer customer;
+    private Customer customer1;
 
     public Bill() {
     }
@@ -45,92 +45,92 @@ public class Bill implements KvmSerializable {
             Object obj = soapObject.getProperty("IdBill");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idBill = Integer.parseInt(j.toString());
+                setIdBill(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idBill = (Integer) obj;
+                setIdBill((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdIssuingCustomer")) {
             Object obj = soapObject.getProperty("IdIssuingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idIssuingCustomer = Integer.parseInt(j.toString());
+                setIdIssuingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idIssuingCustomer = (Integer) obj;
+                setIdIssuingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPayingCustomer")) {
             Object obj = soapObject.getProperty("IdPayingCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPayingCustomer = Integer.parseInt(j.toString());
+                setIdPayingCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPayingCustomer = (Integer) obj;
+                setIdPayingCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CodeRefFactureType")) {
             Object obj = soapObject.getProperty("CodeRefFactureType");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeRefFactureType = j.toString();
+                setCodeRefFactureType(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeRefFactureType = (String) obj;
+                setCodeRefFactureType((String) obj);
             }
         }
         if (soapObject.hasProperty("CodeRefBillStatus")) {
             Object obj = soapObject.getProperty("CodeRefBillStatus");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                codeRefBillStatus = j.toString();
+                setCodeRefBillStatus(j.toString());
             } else if (obj != null && obj instanceof String) {
-                codeRefBillStatus = (String) obj;
+                setCodeRefBillStatus((String) obj);
             }
         }
         if (soapObject.hasProperty("DateIssued")) {
             Object obj = soapObject.getProperty("DateIssued");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dateIssued = j.toString();
+                setDateIssued(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dateIssued = (String) obj;
+                setDateIssued((String) obj);
             }
         }
         if (soapObject.hasProperty("TotalBillAmount")) {
             Object obj = soapObject.getProperty("TotalBillAmount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                totalBillAmount = Integer.parseInt(j.toString());
+                setTotalBillAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                totalBillAmount = (Integer) obj;
+                setTotalBillAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("LeftToPay")) {
             Object obj = soapObject.getProperty("LeftToPay");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                leftToPay = Integer.parseInt(j.toString());
+                setLeftToPay(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                leftToPay = (Integer) obj;
+                setLeftToPay((Integer) obj);
             }
         }
         if (soapObject.hasProperty("RefBillStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefBillStatu");
-            refBillStatu = new RefBillStatu(j);
+            setRefBillStatu(new RefBillStatu(j));
 
         }
         if (soapObject.hasProperty("RefBillType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefBillType");
-            refBillType = new RefBillType(j);
+            setRefBillType(new RefBillType(j));
 
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("Customer1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer1");
-            customer1 = new Customer(j);
+            setCustomer1(new Customer(j));
 
         }
     }
@@ -139,29 +139,29 @@ public class Bill implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idBill;
+                return getIdBill();
             case 1:
-                return idIssuingCustomer;
+                return getIdIssuingCustomer();
             case 2:
-                return idPayingCustomer;
+                return getIdPayingCustomer();
             case 3:
-                return codeRefFactureType;
+                return getCodeRefFactureType();
             case 4:
-                return codeRefBillStatus;
+                return getCodeRefBillStatus();
             case 5:
-                return dateIssued;
+                return getDateIssued();
             case 6:
-                return totalBillAmount;
+                return getTotalBillAmount();
             case 7:
-                return leftToPay;
+                return getLeftToPay();
             case 8:
-                return refBillStatu;
+                return getRefBillStatu();
             case 9:
-                return refBillType;
+                return getRefBillType();
             case 10:
-                return customer;
+                return getCustomer();
             case 11:
-                return customer1;
+                return getCustomer1();
         }
         return null;
     }
@@ -238,4 +238,99 @@ public class Bill implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdBill() {
+        return idBill;
+    }
+
+    public void setIdBill(int idBill) {
+        this.idBill = idBill;
+    }
+
+    public int getIdIssuingCustomer() {
+        return idIssuingCustomer;
+    }
+
+    public void setIdIssuingCustomer(int idIssuingCustomer) {
+        this.idIssuingCustomer = idIssuingCustomer;
+    }
+
+    public int getIdPayingCustomer() {
+        return idPayingCustomer;
+    }
+
+    public void setIdPayingCustomer(int idPayingCustomer) {
+        this.idPayingCustomer = idPayingCustomer;
+    }
+
+    public String getCodeRefFactureType() {
+        return codeRefFactureType;
+    }
+
+    public void setCodeRefFactureType(String codeRefFactureType) {
+        this.codeRefFactureType = codeRefFactureType;
+    }
+
+    public String getCodeRefBillStatus() {
+        return codeRefBillStatus;
+    }
+
+    public void setCodeRefBillStatus(String codeRefBillStatus) {
+        this.codeRefBillStatus = codeRefBillStatus;
+    }
+
+    public String getDateIssued() {
+        return dateIssued;
+    }
+
+    public void setDateIssued(String dateIssued) {
+        this.dateIssued = dateIssued;
+    }
+
+    public int getTotalBillAmount() {
+        return totalBillAmount;
+    }
+
+    public void setTotalBillAmount(int totalBillAmount) {
+        this.totalBillAmount = totalBillAmount;
+    }
+
+    public int getLeftToPay() {
+        return leftToPay;
+    }
+
+    public void setLeftToPay(int leftToPay) {
+        this.leftToPay = leftToPay;
+    }
+
+    public RefBillStatu getRefBillStatu() {
+        return refBillStatu;
+    }
+
+    public void setRefBillStatu(RefBillStatu refBillStatu) {
+        this.refBillStatu = refBillStatu;
+    }
+
+    public RefBillType getRefBillType() {
+        return refBillType;
+    }
+
+    public void setRefBillType(RefBillType refBillType) {
+        this.refBillType = refBillType;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer1() {
+        return customer1;
+    }
+
+    public void setCustomer1(Customer customer1) {
+        this.customer1 = customer1;
+    }
 }

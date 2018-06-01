@@ -21,20 +21,20 @@ import java.util.Hashtable;
 
 public class Person implements KvmSerializable {
 
-    public int idCustomer;
-    public String genderCode;
-    public String maritalStatusCode;
-    public String firstname;
-    public String middlename;
-    public String lastname;
-    public String dateOfBirth;
-    public String dateCreated;
-    public String countryCode;
-    public Country country;
-    public Customer customer;
-    public RefGender refGender;
-    public RefMaritalStatu refMaritalStatu;
-    public PersonRelationship personRelationship;
+    private int idCustomer;
+    private String genderCode;
+    private String maritalStatusCode;
+    private String firstname;
+    private String middlename;
+    private String lastname;
+    private String dateOfBirth;
+    private String dateCreated;
+    private String countryCode;
+    private Country country;
+    private Customer customer;
+    private RefGender refGender;
+    private RefMaritalStatu refMaritalStatu;
+    private PersonRelationship personRelationship;
 
     public Person() {
     }
@@ -46,106 +46,106 @@ public class Person implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("GenderCode")) {
             Object obj = soapObject.getProperty("GenderCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                genderCode = j.toString();
+                setGenderCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                genderCode = (String) obj;
+                setGenderCode((String) obj);
             }
         }
         if (soapObject.hasProperty("MaritalStatusCode")) {
             Object obj = soapObject.getProperty("MaritalStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                maritalStatusCode = j.toString();
+                setMaritalStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                maritalStatusCode = (String) obj;
+                setMaritalStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Firstname")) {
             Object obj = soapObject.getProperty("Firstname");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                firstname = j.toString();
+                setFirstname(j.toString());
             } else if (obj != null && obj instanceof String) {
-                firstname = (String) obj;
+                setFirstname((String) obj);
             }
         }
         if (soapObject.hasProperty("Middlename")) {
             Object obj = soapObject.getProperty("Middlename");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                middlename = j.toString();
+                setMiddlename(j.toString());
             } else if (obj != null && obj instanceof String) {
-                middlename = (String) obj;
+                setMiddlename((String) obj);
             }
         }
         if (soapObject.hasProperty("Lastname")) {
             Object obj = soapObject.getProperty("Lastname");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                lastname = j.toString();
+                setLastname(j.toString());
             } else if (obj != null && obj instanceof String) {
-                lastname = (String) obj;
+                setLastname((String) obj);
             }
         }
         if (soapObject.hasProperty("DateOfBirth")) {
             Object obj = soapObject.getProperty("DateOfBirth");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dateOfBirth = j.toString();
+                setDateOfBirth(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dateOfBirth = (String) obj;
+                setDateOfBirth((String) obj);
             }
         }
         if (soapObject.hasProperty("DateCreated")) {
             Object obj = soapObject.getProperty("DateCreated");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                dateCreated = j.toString();
+                setDateCreated(j.toString());
             } else if (obj != null && obj instanceof String) {
-                dateCreated = (String) obj;
+                setDateCreated((String) obj);
             }
         }
         if (soapObject.hasProperty("CountryCode")) {
             Object obj = soapObject.getProperty("CountryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                countryCode = j.toString();
+                setCountryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                countryCode = (String) obj;
+                setCountryCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Country")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Country");
-            country = new Country(j);
+            setCountry(new Country(j));
             
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
             
         }
         if (soapObject.hasProperty("RefGender")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefGender");
-            refGender = new RefGender(j);
+            setRefGender(new RefGender(j));
             
         }
         if (soapObject.hasProperty("RefMaritalStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefMaritalStatu");
-            refMaritalStatu = new RefMaritalStatu(j);
+            setRefMaritalStatu(new RefMaritalStatu(j));
             
         }
         if (soapObject.hasProperty("PersonRelationship")) {
             SoapObject j = (SoapObject) soapObject.getProperty("PersonRelationship");
-            personRelationship = new PersonRelationship(j);
+            setPersonRelationship(new PersonRelationship(j));
             
         }
     }
@@ -153,33 +153,33 @@ public class Person implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return genderCode;
+                return getGenderCode();
             case 2:
-                return maritalStatusCode;
+                return getMaritalStatusCode();
             case 3:
-                return firstname;
+                return getFirstname();
             case 4:
-                return middlename;
+                return getMiddlename();
             case 5:
-                return lastname;
+                return getLastname();
             case 6:
-                return dateOfBirth;
+                return getDateOfBirth();
             case 7:
-                return dateCreated;
+                return getDateCreated();
             case 8:
-                return countryCode;
+                return getCountryCode();
             case 9:
-                return country;
+                return getCountry();
             case 10:
-                return customer;
+                return getCustomer();
             case 11:
-                return refGender;
+                return getRefGender();
             case 12:
-                return refMaritalStatu;
+                return getRefMaritalStatu();
             case 13:
-                return personRelationship;
+                return getPersonRelationship();
         }
         return null;
     }
@@ -264,4 +264,115 @@ public class Person implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getGenderCode() {
+        return genderCode;
+    }
+
+    public void setGenderCode(String genderCode) {
+        this.genderCode = genderCode;
+    }
+
+    public String getMaritalStatusCode() {
+        return maritalStatusCode;
+    }
+
+    public void setMaritalStatusCode(String maritalStatusCode) {
+        this.maritalStatusCode = maritalStatusCode;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefGender getRefGender() {
+        return refGender;
+    }
+
+    public void setRefGender(RefGender refGender) {
+        this.refGender = refGender;
+    }
+
+    public RefMaritalStatu getRefMaritalStatu() {
+        return refMaritalStatu;
+    }
+
+    public void setRefMaritalStatu(RefMaritalStatu refMaritalStatu) {
+        this.refMaritalStatu = refMaritalStatu;
+    }
+
+    public PersonRelationship getPersonRelationship() {
+        return personRelationship;
+    }
+
+    public void setPersonRelationship(PersonRelationship personRelationship) {
+        this.personRelationship = personRelationship;
+    }
 }

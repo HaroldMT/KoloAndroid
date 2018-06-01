@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class Currency implements KvmSerializable {
 
-    public String currencyCode;
-    public String currencyName;
+    private String currencyCode;
+    private String currencyName;
 
     public Currency() {
     }
@@ -34,18 +34,18 @@ public class Currency implements KvmSerializable {
             Object obj = soapObject.getProperty("CurrencyCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                currencyCode = j.toString();
+                setCurrencyCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                currencyCode = (String) obj;
+                setCurrencyCode((String) obj);
             }
         }
         if (soapObject.hasProperty("CurrencyName")) {
             Object obj = soapObject.getProperty("CurrencyName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                currencyName = j.toString();
+                setCurrencyName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                currencyName = (String) obj;
+                setCurrencyName((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class Currency implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return currencyCode;
+                return getCurrencyCode();
             case 1:
-                return currencyName;
+                return getCurrencyName();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class Currency implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+
+    public String getCurrencyName() {
+        return currencyName;
+    }
+
+    public void setCurrencyName(String currencyName) {
+        this.currencyName = currencyName;
+    }
 }

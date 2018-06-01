@@ -22,12 +22,12 @@ import java.util.Hashtable;
 
 public class City implements KvmSerializable {
 
-    public int idCity;
-    public String cityName;
-    public String countryCode;
-    public int idDistrict;
-    public Country country;
-    public District district;
+    private int idCity;
+    private String cityName;
+    private String countryCode;
+    private int idDistrict;
+    private Country country;
+    private District district;
 
     public City() {
     }
@@ -39,46 +39,46 @@ public class City implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCity");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCity = Integer.parseInt(j.toString());
+                setIdCity(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCity = (Integer) obj;
+                setIdCity((Integer) obj);
             }
         }
         if (soapObject.hasProperty("CityName")) {
             Object obj = soapObject.getProperty("CityName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                cityName = j.toString();
+                setCityName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                cityName = (String) obj;
+                setCityName((String) obj);
             }
         }
         if (soapObject.hasProperty("CountryCode")) {
             Object obj = soapObject.getProperty("CountryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                countryCode = j.toString();
+                setCountryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                countryCode = (String) obj;
+                setCountryCode((String) obj);
             }
         }
         if (soapObject.hasProperty("IdDistrict")) {
             Object obj = soapObject.getProperty("IdDistrict");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idDistrict = Integer.parseInt(j.toString());
+                setIdDistrict(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idDistrict = (Integer) obj;
+                setIdDistrict((Integer) obj);
             }
         }
         if (soapObject.hasProperty("Country")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Country");
-            country = new Country(j);
+            setCountry(new Country(j));
 
         }
         if (soapObject.hasProperty("District")) {
             SoapObject j = (SoapObject) soapObject.getProperty("District");
-            district = new District(j);
+            setDistrict(new District(j));
 
         }
     }
@@ -87,17 +87,17 @@ public class City implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCity;
+                return getIdCity();
             case 1:
-                return cityName;
+                return getCityName();
             case 2:
-                return countryCode;
+                return getCountryCode();
             case 3:
-                return idDistrict;
+                return getIdDistrict();
             case 4:
-                return country;
+                return getCountry();
             case 5:
-                return district;
+                return getDistrict();
         }
         return null;
     }
@@ -150,4 +150,51 @@ public class City implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCity() {
+        return idCity;
+    }
+
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public int getIdDistrict() {
+        return idDistrict;
+    }
+
+    public void setIdDistrict(int idDistrict) {
+        this.idDistrict = idDistrict;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
 }

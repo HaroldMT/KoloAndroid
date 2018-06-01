@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class Country implements KvmSerializable {
 
-    public String countryCode;
-    public String countryName;
+    private String countryCode;
+    private String countryName;
 
     public Country() {
     }
@@ -34,18 +34,18 @@ public class Country implements KvmSerializable {
             Object obj = soapObject.getProperty("CountryCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                countryCode = j.toString();
+                setCountryCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                countryCode = (String) obj;
+                setCountryCode((String) obj);
             }
         }
         if (soapObject.hasProperty("CountryName")) {
             Object obj = soapObject.getProperty("CountryName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                countryName = j.toString();
+                setCountryName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                countryName = (String) obj;
+                setCountryName((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class Country implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return countryCode;
+                return getCountryCode();
             case 1:
-                return countryName;
+                return getCountryName();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class Country implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
 }

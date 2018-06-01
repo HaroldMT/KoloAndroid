@@ -22,17 +22,17 @@ import java.util.Hashtable;
 
 public class AccountOperation implements KvmSerializable {
 
-    public int idAccountOperation;
-    public int idPartnerAccount;
-    public String operationStatusCode;
-    public int idPatnerHistory;
-    public String operationTypeCode;
-    public int amount;
-    public RefOperationStatu refOperationStatu;
-    public Partner partner;
-    public RefOperationType refOperationType;
-    public PartnerBalanceHistory partnerBalanceHistory;
-    public AccountOperationRequest accountOperationRequest;
+    private int idAccountOperation;
+    private int idPartnerAccount;
+    private String operationStatusCode;
+    private int idPatnerHistory;
+    private String operationTypeCode;
+    private int amount;
+    private RefOperationStatu refOperationStatu;
+    private Partner partner;
+    private RefOperationType refOperationType;
+    private PartnerBalanceHistory partnerBalanceHistory;
+    private AccountOperationRequest accountOperationRequest;
 
     public AccountOperation() {
     }
@@ -44,79 +44,79 @@ public class AccountOperation implements KvmSerializable {
             Object obj = soapObject.getProperty("IdAccountOperation");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAccountOperation = Integer.parseInt(j.toString());
+                setIdAccountOperation(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAccountOperation = (Integer) obj;
+                setIdAccountOperation((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPartnerAccount")) {
             Object obj = soapObject.getProperty("IdPartnerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPartnerAccount = Integer.parseInt(j.toString());
+                setIdPartnerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPartnerAccount = (Integer) obj;
+                setIdPartnerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("OperationStatusCode")) {
             Object obj = soapObject.getProperty("OperationStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationStatusCode = j.toString();
+                setOperationStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationStatusCode = (String) obj;
+                setOperationStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("IdPatnerHistory")) {
             Object obj = soapObject.getProperty("IdPatnerHistory");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPatnerHistory = Integer.parseInt(j.toString());
+                setIdPatnerHistory(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPatnerHistory = (Integer) obj;
+                setIdPatnerHistory((Integer) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeCode")) {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("RefOperationStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
-            refOperationStatu = new RefOperationStatu(j);
+            setRefOperationStatu(new RefOperationStatu(j));
 
         }
         if (soapObject.hasProperty("Partner")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            partner = new Partner(j);
+            setPartner(new Partner(j));
 
         }
         if (soapObject.hasProperty("RefOperationType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            refOperationType = new RefOperationType(j);
+            setRefOperationType(new RefOperationType(j));
 
         }
         if (soapObject.hasProperty("PartnerBalanceHistory")) {
             SoapObject j = (SoapObject) soapObject.getProperty("PartnerBalanceHistory");
-            partnerBalanceHistory = new PartnerBalanceHistory(j);
+            setPartnerBalanceHistory(new PartnerBalanceHistory(j));
 
         }
         if (soapObject.hasProperty("AccountOperationRequest")) {
             SoapObject j = (SoapObject) soapObject.getProperty("AccountOperationRequest");
-            accountOperationRequest = new AccountOperationRequest(j);
+            setAccountOperationRequest(new AccountOperationRequest(j));
 
         }
     }
@@ -125,27 +125,27 @@ public class AccountOperation implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idAccountOperation;
+                return getIdAccountOperation();
             case 1:
-                return idPartnerAccount;
+                return getIdPartnerAccount();
             case 2:
-                return operationStatusCode;
+                return getOperationStatusCode();
             case 3:
-                return idPatnerHistory;
+                return getIdPatnerHistory();
             case 4:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 5:
-                return amount;
+                return getAmount();
             case 6:
-                return refOperationStatu;
+                return getRefOperationStatu();
             case 7:
-                return partner;
+                return getPartner();
             case 8:
-                return refOperationType;
+                return getRefOperationType();
             case 9:
-                return partnerBalanceHistory;
+                return getPartnerBalanceHistory();
             case 10:
-                return accountOperationRequest;
+                return getAccountOperationRequest();
         }
         return null;
     }
@@ -218,4 +218,91 @@ public class AccountOperation implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdAccountOperation() {
+        return idAccountOperation;
+    }
+
+    public void setIdAccountOperation(int idAccountOperation) {
+        this.idAccountOperation = idAccountOperation;
+    }
+
+    public int getIdPartnerAccount() {
+        return idPartnerAccount;
+    }
+
+    public void setIdPartnerAccount(int idPartnerAccount) {
+        this.idPartnerAccount = idPartnerAccount;
+    }
+
+    public String getOperationStatusCode() {
+        return operationStatusCode;
+    }
+
+    public void setOperationStatusCode(String operationStatusCode) {
+        this.operationStatusCode = operationStatusCode;
+    }
+
+    public int getIdPatnerHistory() {
+        return idPatnerHistory;
+    }
+
+    public void setIdPatnerHistory(int idPatnerHistory) {
+        this.idPatnerHistory = idPatnerHistory;
+    }
+
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public RefOperationStatu getRefOperationStatu() {
+        return refOperationStatu;
+    }
+
+    public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
+        this.refOperationStatu = refOperationStatu;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
+
+    public RefOperationType getRefOperationType() {
+        return refOperationType;
+    }
+
+    public void setRefOperationType(RefOperationType refOperationType) {
+        this.refOperationType = refOperationType;
+    }
+
+    public PartnerBalanceHistory getPartnerBalanceHistory() {
+        return partnerBalanceHistory;
+    }
+
+    public void setPartnerBalanceHistory(PartnerBalanceHistory partnerBalanceHistory) {
+        this.partnerBalanceHistory = partnerBalanceHistory;
+    }
+
+    public AccountOperationRequest getAccountOperationRequest() {
+        return accountOperationRequest;
+    }
+
+    public void setAccountOperationRequest(AccountOperationRequest accountOperationRequest) {
+        this.accountOperationRequest = accountOperationRequest;
+    }
 }

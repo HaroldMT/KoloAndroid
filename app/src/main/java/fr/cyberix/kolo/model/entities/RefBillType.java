@@ -22,8 +22,8 @@ import java.util.Hashtable;
 
 public class RefBillType implements KvmSerializable {
 
-    public String billTypeCode;
-    public String billTypeDescription;
+    private String billTypeCode;
+    private String billTypeDescription;
 
     public RefBillType() {
     }
@@ -35,18 +35,18 @@ public class RefBillType implements KvmSerializable {
             Object obj = soapObject.getProperty("BillTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                billTypeCode = j.toString();
+                setBillTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                billTypeCode = (String) obj;
+                setBillTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("BillTypeDescription")) {
             Object obj = soapObject.getProperty("BillTypeDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                billTypeDescription = j.toString();
+                setBillTypeDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                billTypeDescription = (String) obj;
+                setBillTypeDescription((String) obj);
             }
         }
     }
@@ -55,9 +55,9 @@ public class RefBillType implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return billTypeCode;
+                return getBillTypeCode();
             case 1:
-                return billTypeDescription;
+                return getBillTypeDescription();
         }
         return null;
     }
@@ -94,4 +94,19 @@ public class RefBillType implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getBillTypeCode() {
+        return billTypeCode;
+    }
+
+    public void setBillTypeCode(String billTypeCode) {
+        this.billTypeCode = billTypeCode;
+    }
+
+    public String getBillTypeDescription() {
+        return billTypeDescription;
+    }
+
+    public void setBillTypeDescription(String billTypeDescription) {
+        this.billTypeDescription = billTypeDescription;
+    }
 }

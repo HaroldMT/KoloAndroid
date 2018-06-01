@@ -22,16 +22,16 @@ import java.util.Hashtable;
 
 public class AccountOperationRequest implements KvmSerializable {
 
-    public int idAccountOperationRequest;
-    public int idCustomerAccount;
-    public String requestDate;
-    public String operationTypeCode;
-    public String operationStatusCode;
-    public int amount;
-    public AccountOperation accountOperation;
-    public RefOperationStatu refOperationStatu;
-    public RefOperationType refOperationType;
-    public Customer customer;
+    private int idAccountOperationRequest;
+    private int idCustomerAccount;
+    private String requestDate;
+    private String operationTypeCode;
+    private String operationStatusCode;
+    private int amount;
+    private AccountOperation accountOperation;
+    private RefOperationStatu refOperationStatu;
+    private RefOperationType refOperationType;
+    private Customer customer;
 
     public AccountOperationRequest() {
     }
@@ -43,74 +43,74 @@ public class AccountOperationRequest implements KvmSerializable {
             Object obj = soapObject.getProperty("IdAccountOperationRequest");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idAccountOperationRequest = Integer.parseInt(j.toString());
+                setIdAccountOperationRequest(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idAccountOperationRequest = (Integer) obj;
+                setIdAccountOperationRequest((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdCustomerAccount")) {
             Object obj = soapObject.getProperty("IdCustomerAccount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerAccount = Integer.parseInt(j.toString());
+                setIdCustomerAccount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerAccount = (Integer) obj;
+                setIdCustomerAccount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("RequestDate")) {
             Object obj = soapObject.getProperty("RequestDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                requestDate = j.toString();
+                setRequestDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                requestDate = (String) obj;
+                setRequestDate((String) obj);
             }
         }
         if (soapObject.hasProperty("OperationTypeCode")) {
             Object obj = soapObject.getProperty("OperationTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationTypeCode = j.toString();
+                setOperationTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationTypeCode = (String) obj;
+                setOperationTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("OperationStatusCode")) {
             Object obj = soapObject.getProperty("OperationStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                operationStatusCode = j.toString();
+                setOperationStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                operationStatusCode = (String) obj;
+                setOperationStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Amount")) {
             Object obj = soapObject.getProperty("Amount");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                amount = Integer.parseInt(j.toString());
+                setAmount(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                amount = (Integer) obj;
+                setAmount((Integer) obj);
             }
         }
         if (soapObject.hasProperty("AccountOperation")) {
             SoapObject j = (SoapObject) soapObject.getProperty("AccountOperation");
-            accountOperation = new AccountOperation(j);
+            setAccountOperation(new AccountOperation(j));
 
         }
         if (soapObject.hasProperty("RefOperationStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
-            refOperationStatu = new RefOperationStatu(j);
+            setRefOperationStatu(new RefOperationStatu(j));
 
         }
         if (soapObject.hasProperty("RefOperationType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            refOperationType = new RefOperationType(j);
+            setRefOperationType(new RefOperationType(j));
 
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
     }
@@ -119,25 +119,25 @@ public class AccountOperationRequest implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idAccountOperationRequest;
+                return getIdAccountOperationRequest();
             case 1:
-                return idCustomerAccount;
+                return getIdCustomerAccount();
             case 2:
-                return requestDate;
+                return getRequestDate();
             case 3:
-                return operationTypeCode;
+                return getOperationTypeCode();
             case 4:
-                return operationStatusCode;
+                return getOperationStatusCode();
             case 5:
-                return amount;
+                return getAmount();
             case 6:
-                return accountOperation;
+                return getAccountOperation();
             case 7:
-                return refOperationStatu;
+                return getRefOperationStatu();
             case 8:
-                return refOperationType;
+                return getRefOperationType();
             case 9:
-                return customer;
+                return getCustomer();
         }
         return null;
     }
@@ -206,4 +206,83 @@ public class AccountOperationRequest implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdAccountOperationRequest() {
+        return idAccountOperationRequest;
+    }
+
+    public void setIdAccountOperationRequest(int idAccountOperationRequest) {
+        this.idAccountOperationRequest = idAccountOperationRequest;
+    }
+
+    public int getIdCustomerAccount() {
+        return idCustomerAccount;
+    }
+
+    public void setIdCustomerAccount(int idCustomerAccount) {
+        this.idCustomerAccount = idCustomerAccount;
+    }
+
+    public String getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(String requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public String getOperationTypeCode() {
+        return operationTypeCode;
+    }
+
+    public void setOperationTypeCode(String operationTypeCode) {
+        this.operationTypeCode = operationTypeCode;
+    }
+
+    public String getOperationStatusCode() {
+        return operationStatusCode;
+    }
+
+    public void setOperationStatusCode(String operationStatusCode) {
+        this.operationStatusCode = operationStatusCode;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public AccountOperation getAccountOperation() {
+        return accountOperation;
+    }
+
+    public void setAccountOperation(AccountOperation accountOperation) {
+        this.accountOperation = accountOperation;
+    }
+
+    public RefOperationStatu getRefOperationStatu() {
+        return refOperationStatu;
+    }
+
+    public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
+        this.refOperationStatu = refOperationStatu;
+    }
+
+    public RefOperationType getRefOperationType() {
+        return refOperationType;
+    }
+
+    public void setRefOperationType(RefOperationType refOperationType) {
+        this.refOperationType = refOperationType;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

@@ -21,12 +21,12 @@ import java.util.Hashtable;
 
 public class PersonRelationship implements KvmSerializable {
 
-    public int idCustomer;
-    public int idPersonRelation;
-    public String relationshipTypeCode;
-    public Person person;
-    public Person person1;
-    public RefPersonRelationshipType refPersonRelationshipType;
+    private int idCustomer;
+    private int idPersonRelation;
+    private String relationshipTypeCode;
+    private Person person;
+    private Person person1;
+    private RefPersonRelationshipType refPersonRelationshipType;
 
     public PersonRelationship() {
     }
@@ -38,42 +38,42 @@ public class PersonRelationship implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomer = Integer.parseInt(j.toString());
+                setIdCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomer = (Integer) obj;
+                setIdCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdPersonRelation")) {
             Object obj = soapObject.getProperty("IdPersonRelation");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idPersonRelation = Integer.parseInt(j.toString());
+                setIdPersonRelation(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idPersonRelation = (Integer) obj;
+                setIdPersonRelation((Integer) obj);
             }
         }
         if (soapObject.hasProperty("RelationshipTypeCode")) {
             Object obj = soapObject.getProperty("RelationshipTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                relationshipTypeCode = j.toString();
+                setRelationshipTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                relationshipTypeCode = (String) obj;
+                setRelationshipTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("Person")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Person");
-            person = new Person(j);
+            setPerson(new Person(j));
             
         }
         if (soapObject.hasProperty("Person1")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Person1");
-            person1 = new Person(j);
+            setPerson1(new Person(j));
             
         }
         if (soapObject.hasProperty("RefPersonRelationshipType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefPersonRelationshipType");
-            refPersonRelationshipType = new RefPersonRelationshipType(j);
+            setRefPersonRelationshipType(new RefPersonRelationshipType(j));
             
         }
     }
@@ -81,17 +81,17 @@ public class PersonRelationship implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomer;
+                return getIdCustomer();
             case 1:
-                return idPersonRelation;
+                return getIdPersonRelation();
             case 2:
-                return relationshipTypeCode;
+                return getRelationshipTypeCode();
             case 3:
-                return person;
+                return getPerson();
             case 4:
-                return person1;
+                return getPerson1();
             case 5:
-                return refPersonRelationshipType;
+                return getRefPersonRelationshipType();
         }
         return null;
     }
@@ -144,4 +144,51 @@ public class PersonRelationship implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public int getIdPersonRelation() {
+        return idPersonRelation;
+    }
+
+    public void setIdPersonRelation(int idPersonRelation) {
+        this.idPersonRelation = idPersonRelation;
+    }
+
+    public String getRelationshipTypeCode() {
+        return relationshipTypeCode;
+    }
+
+    public void setRelationshipTypeCode(String relationshipTypeCode) {
+        this.relationshipTypeCode = relationshipTypeCode;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Person getPerson1() {
+        return person1;
+    }
+
+    public void setPerson1(Person person1) {
+        this.person1 = person1;
+    }
+
+    public RefPersonRelationshipType getRefPersonRelationshipType() {
+        return refPersonRelationshipType;
+    }
+
+    public void setRefPersonRelationshipType(RefPersonRelationshipType refPersonRelationshipType) {
+        this.refPersonRelationshipType = refPersonRelationshipType;
+    }
 }

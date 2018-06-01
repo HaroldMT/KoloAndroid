@@ -21,8 +21,8 @@ import java.util.Hashtable;
 
 public class RefLoginStatu implements KvmSerializable {
 
-    public String loginStatusCode;
-    public String loginStatusDescription;
+    private String loginStatusCode;
+    private String loginStatusDescription;
 
     public RefLoginStatu() {
     }
@@ -34,18 +34,18 @@ public class RefLoginStatu implements KvmSerializable {
             Object obj = soapObject.getProperty("LoginStatusCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                loginStatusCode = j.toString();
+                setLoginStatusCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                loginStatusCode = (String) obj;
+                setLoginStatusCode((String) obj);
             }
         }
         if (soapObject.hasProperty("LoginStatusDescription")) {
             Object obj = soapObject.getProperty("LoginStatusDescription");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                loginStatusDescription = j.toString();
+                setLoginStatusDescription(j.toString());
             } else if (obj != null && obj instanceof String) {
-                loginStatusDescription = (String) obj;
+                setLoginStatusDescription((String) obj);
             }
         }
     }
@@ -53,9 +53,9 @@ public class RefLoginStatu implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return loginStatusCode;
+                return getLoginStatusCode();
             case 1:
-                return loginStatusDescription;
+                return getLoginStatusDescription();
         }
         return null;
     }
@@ -92,4 +92,19 @@ public class RefLoginStatu implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public String getLoginStatusCode() {
+        return loginStatusCode;
+    }
+
+    public void setLoginStatusCode(String loginStatusCode) {
+        this.loginStatusCode = loginStatusCode;
+    }
+
+    public String getLoginStatusDescription() {
+        return loginStatusDescription;
+    }
+
+    public void setLoginStatusDescription(String loginStatusDescription) {
+        this.loginStatusDescription = loginStatusDescription;
+    }
 }

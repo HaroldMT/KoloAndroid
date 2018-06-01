@@ -22,14 +22,14 @@ import java.util.Hashtable;
 
 public class CustomerGroup implements KvmSerializable {
 
-    public int idCustomerGroup;
-    public int idMemberCustomer;
-    public String groupTypeCode;
-    public String groupName;
-    public String creationDate;
-    public Customer customer;
-    public RefGroupType refGroupType;
-    public GroupImage groupImage;
+    private int idCustomerGroup;
+    private int idMemberCustomer;
+    private String groupTypeCode;
+    private String groupName;
+    private String creationDate;
+    private Customer customer;
+    private RefGroupType refGroupType;
+    private GroupImage groupImage;
 
     public CustomerGroup() {
     }
@@ -41,60 +41,60 @@ public class CustomerGroup implements KvmSerializable {
             Object obj = soapObject.getProperty("IdCustomerGroup");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idCustomerGroup = Integer.parseInt(j.toString());
+                setIdCustomerGroup(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idCustomerGroup = (Integer) obj;
+                setIdCustomerGroup((Integer) obj);
             }
         }
         if (soapObject.hasProperty("IdMemberCustomer")) {
             Object obj = soapObject.getProperty("IdMemberCustomer");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                idMemberCustomer = Integer.parseInt(j.toString());
+                setIdMemberCustomer(Integer.parseInt(j.toString()));
             } else if (obj != null && obj instanceof Number) {
-                idMemberCustomer = (Integer) obj;
+                setIdMemberCustomer((Integer) obj);
             }
         }
         if (soapObject.hasProperty("GroupTypeCode")) {
             Object obj = soapObject.getProperty("GroupTypeCode");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                groupTypeCode = j.toString();
+                setGroupTypeCode(j.toString());
             } else if (obj != null && obj instanceof String) {
-                groupTypeCode = (String) obj;
+                setGroupTypeCode((String) obj);
             }
         }
         if (soapObject.hasProperty("GroupName")) {
             Object obj = soapObject.getProperty("GroupName");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                groupName = j.toString();
+                setGroupName(j.toString());
             } else if (obj != null && obj instanceof String) {
-                groupName = (String) obj;
+                setGroupName((String) obj);
             }
         }
         if (soapObject.hasProperty("CreationDate")) {
             Object obj = soapObject.getProperty("CreationDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                creationDate = j.toString();
+                setCreationDate(j.toString());
             } else if (obj != null && obj instanceof String) {
-                creationDate = (String) obj;
+                setCreationDate((String) obj);
             }
         }
         if (soapObject.hasProperty("Customer")) {
             SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            customer = new Customer(j);
+            setCustomer(new Customer(j));
 
         }
         if (soapObject.hasProperty("RefGroupType")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefGroupType");
-            refGroupType = new RefGroupType(j);
+            setRefGroupType(new RefGroupType(j));
 
         }
         if (soapObject.hasProperty("GroupImage")) {
             SoapObject j = (SoapObject) soapObject.getProperty("GroupImage");
-            groupImage = new GroupImage(j);
+            setGroupImage(new GroupImage(j));
 
         }
     }
@@ -103,21 +103,21 @@ public class CustomerGroup implements KvmSerializable {
     public Object getProperty(int arg0) {
         switch (arg0) {
             case 0:
-                return idCustomerGroup;
+                return getIdCustomerGroup();
             case 1:
-                return idMemberCustomer;
+                return getIdMemberCustomer();
             case 2:
-                return groupTypeCode;
+                return getGroupTypeCode();
             case 3:
-                return groupName;
+                return getGroupName();
             case 4:
-                return creationDate;
+                return getCreationDate();
             case 5:
-                return customer;
+                return getCustomer();
             case 6:
-                return refGroupType;
+                return getRefGroupType();
             case 7:
-                return groupImage;
+                return getGroupImage();
         }
         return null;
     }
@@ -178,4 +178,67 @@ public class CustomerGroup implements KvmSerializable {
     public void setInnerText(String s) {
     }
 
+    public int getIdCustomerGroup() {
+        return idCustomerGroup;
+    }
+
+    public void setIdCustomerGroup(int idCustomerGroup) {
+        this.idCustomerGroup = idCustomerGroup;
+    }
+
+    public int getIdMemberCustomer() {
+        return idMemberCustomer;
+    }
+
+    public void setIdMemberCustomer(int idMemberCustomer) {
+        this.idMemberCustomer = idMemberCustomer;
+    }
+
+    public String getGroupTypeCode() {
+        return groupTypeCode;
+    }
+
+    public void setGroupTypeCode(String groupTypeCode) {
+        this.groupTypeCode = groupTypeCode;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public RefGroupType getRefGroupType() {
+        return refGroupType;
+    }
+
+    public void setRefGroupType(RefGroupType refGroupType) {
+        this.refGroupType = refGroupType;
+    }
+
+    public GroupImage getGroupImage() {
+        return groupImage;
+    }
+
+    public void setGroupImage(GroupImage groupImage) {
+        this.groupImage = groupImage;
+    }
 }
