@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +22,16 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import fr.cyberix.kolo.helpers.ConfigHelper;
+import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
+import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.TelephonyInfo;
+import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.Registration;
 
 public class SignUpActivity extends AppCompatActivity
@@ -61,6 +66,8 @@ public class SignUpActivity extends AppCompatActivity
     private Calendar calendar;
     private int myYear, myMonth, myDay;
     private Registration registration;
+    @BindView(R.id.signup_progressBar)
+    ProgressBar signup_progressBar;
     private Date _dobValue;
     DatePickerDialog.OnDateSetListener datePickerDialog = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -74,15 +81,15 @@ public class SignUpActivity extends AppCompatActivity
             showDate();
         }
     };
+    private AccountInfo accountInfo;
 
-    //    @BindView(R.id.signup_progressBar)
-//    ProgressBar signup_progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-        loadConfig();
         loadConfig();
         View.OnClickListener onDateClickListener = new View.OnClickListener() {
             @Override
@@ -105,7 +112,7 @@ public class SignUpActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), ConfirmRegistrationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUpConfirmationActivity.class);
                 startActivity(intent);
                 finish();
 //                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -172,13 +179,14 @@ public class SignUpActivity extends AppCompatActivity
 
     public void loadConfig() {
         calendar = Calendar.getInstance();
+        accountInfo = ConfigHelper.getAccountInfo();
         registration = ConfigHelper.getAccountInfo().getRegistration();
         if (registration != null) {
-            _dobValue = new Date(registration.dob);
-            _emailText.setText(registration.email);
-            _firstNameText.setText(registration.firstName);
-            _lastnameText.setText(registration.lastName);
-            _mobileText.setText(registration.phoneNumber);
+            _dobValue = new Date(registration.getDob());
+            _emailText.setText(registration.getEmail());
+            _firstNameText.setText(registration.getFirstName());
+            _lastnameText.setText(registration.getLastName());
+            _mobileText.setText(registration.getPhoneNumber());
             if (_dobValue != null) {
                 myDay = _dobValue.getDay() + 1;
                 myMonth = _dobValue.getMonth() + 1;
@@ -254,7 +262,7 @@ public class SignUpActivity extends AppCompatActivity
             onSignupFailed();
             return;
         }
-        userSignUpTask = new UserSignUpTask(registration);
+        userSignUpTask = new UserSignUpTask(registration, accountInfo);
         userSignUpTask.execute((Void) null);
     }
 
@@ -269,8 +277,8 @@ public class SignUpActivity extends AppCompatActivity
 
     public void onSignupFailed() {
         if (userSignUpTask.mRegistration != null && userSignUpTask.mRegistration
-                .idRegistration == -10) {
-            Toast.makeText(getBaseContext(), "This number is already register; is it is your " +
+                .getIdRegistration() == -10) {
+            Toast.makeText(getBaseContext(), "This number is already register; it is your " +
                     "number, try to sign in", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getBaseContext(), "Registration failed", Toast.LENGTH_LONG).show();
@@ -282,22 +290,24 @@ public class SignUpActivity extends AppCompatActivity
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         ConfigHelper.saveConfig();
-        startActivity(new Intent(getBaseContext(), ConfirmRegistrationActivity.class));
+        startActivity(new Intent(getBaseContext(), SignUpConfirmationActivity.class));
         finish();
     }
 
     private class UserSignUpTask extends AsyncTask<Void, Void, Registration> {
 
         private Registration mRegistration;
+        private AccountInfo mAccountInfo;
 
-        UserSignUpTask(Registration registration) {
+        UserSignUpTask(Registration registration, AccountInfo accountInfo) {
             mRegistration = registration;
+            mAccountInfo = accountInfo;
         }
 
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                mRegistration = ServiceHelper.signUp(mRegistration);
+                mRegistration = MobileService.signUp(mRegistration);
             } catch (Exception e) {
                 return null;
             }
@@ -330,14 +340,16 @@ public class SignUpActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(final Registration myRegistration) {
             mRegistration = myRegistration;
-            final Boolean success = myRegistration != null && myRegistration.isRegistering();
+            final Boolean success = myRegistration != null && mAccountInfo.getRegistering();
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                             if (success) {
                                 registration = myRegistration;
                                 mRegistration = myRegistration;
-                                ConfigHelper.getAccountInfo().getRegistration().setRegistrationStatusCode(Registration.STATUS_NEEDCONFIRM);
+                                ConfigHelper.getAccountInfo().getRegistration()
+                                        .setRegistrationStatusCode
+                                                (KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
                                 ConfigHelper.getAccountInfo().getRegistration().setIdRegistration(myRegistration.getIdRegistration());
                                 onSignupSuccess();
                             } else onSignupFailed();
