@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Patterns;
@@ -16,18 +17,21 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.helpers.ConfigHelper;
+import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.helpers.SerializationHelper;
+import fr.cyberix.kolo.helpers.SystemServiceHelper;
+import fr.cyberix.kolo.model.TelephonyInfo;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.LoginAttempt;
+import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.RefResult;
 
 public class LoginActivity extends AppCompatActivity {
@@ -36,18 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.progressBar_login)
     ProgressBar loginProgressBar;
-    @BindView(R.id.input_phone)
+    @BindView(R.id.txt_edit_login_phone)
     EditText inputPhone;
-    @BindView(R.id.input_password)
+    @BindView(R.id.txt_input_login_passphrase)
     TextInputEditText inputPassword;
-    @BindView(R.id.btn_login)
+    @BindView(R.id.login_button)
     Button btnLogin;
-    @BindView(R.id.btn_signup)
+    @BindView(R.id.signUp_button)
     Button btnSignup;
-    @BindView(R.id.login_linearLayout)
-    LinearLayout loginLinearLayout;
-    @BindView(R.id.login_scrollView)
-    ScrollView loginScrollView;
     LoginAttempt loginAttempt = null;
     UserSignInTask userSignInTask = null;
     Customer customer = null;
@@ -71,6 +71,35 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
+                finish();
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+            }
+        });
+
+        AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+        alertDialog.setTitle("Alert test");
+        alertDialog.setMessage("Just want to make sure that i can show this alert");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
 
         login_creds = findViewById(R.id.login_creds);
         signUp_view = findViewById(R.id.signUp_view);
@@ -199,7 +228,7 @@ public class LoginActivity extends AppCompatActivity {
         ConfigHelper.getAccountInfo().setLastAuthenticationTime(Calendar.getInstance().getTime());
         ConfigHelper.getAccountInfo().setAuthenticated(true);
         ConfigHelper.saveConfig();
-        startActivity(new Intent(getBaseContext(), ForeasActivity.class));
+        startActivity(new Intent(getBaseContext(), DashboardActivity.class));
         finish();
     }
 
@@ -211,7 +240,7 @@ public class LoginActivity extends AppCompatActivity {
         protected RefResult doInBackground(Void... params) {
             RefResult loginResult;
             try {
-                loginResult = ServiceHelper.signIn(loginAttempt);
+                loginResult = MobileService.signIn(loginAttempt);
             } catch (Exception e) {
                 return null;
             }
@@ -236,16 +265,16 @@ public class LoginActivity extends AppCompatActivity {
             loginAttempt.setSubscriberId(telInfo.getSubscriberId());
             loginAttempt.setDeviceId(telInfo.getDeviceId());
             if (loc != null) {
-                loginAttempt.setLatitude(BigDecimal.valueOf(loc.getLatitude()));
-                loginAttempt.setLongitude(BigDecimal.valueOf(loc.getLongitude()));
-                loginAttempt.setAccuracy(BigDecimal.valueOf(loc.getAccuracy()));
+                loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
+                loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
+                loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
             }
         }
 
         @Override
         protected void onPostExecute(final RefResult myLoginResult) {
             final Boolean success = (myLoginResult != null) && myLoginResult.getResultCode().equals
-                    (RefResult.RESULT_SUCCESS);
+                    (KoloConstants.REFSTATUS_RESULT_SUCCESS);
             new Handler().postDelayed(
                     new Runnable() {
                         public void run() {

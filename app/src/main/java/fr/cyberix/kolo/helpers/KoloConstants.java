@@ -28,4 +28,7 @@ public final class KoloConstants {
     public static final String REGISTRATION_STATUS_COMPLETED = "COMPLETED";
     public static final String REGISTRATION_STATUS_DELETED = "DELETED";
     public static final String REGISTRATION_STATUS_NEEDCONFIRM = "NEEDCONFIRM";
+    public static final String REFSTATUS_RESULT_NONE = "NONE";
+    public static final String REFSTATUS_RESULT_FAIL = "FAIL";
+    public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
 }
