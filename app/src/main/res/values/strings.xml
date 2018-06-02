@@ -44,6 +44,9 @@
 
     <!-- Strings related to Settings -->
 
+
+    <string name="setting">Settings</string>
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 

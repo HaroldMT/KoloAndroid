@@ -38,6 +38,10 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".KoloTransferActivity" />
         <activity android:name=".SignUpConfirmationActivity"></activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
