@@ -32,7 +32,7 @@ import fr.cyberix.kolo.model.TelephonyInfo;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.LoginAttempt;
 import fr.cyberix.kolo.model.entities.RefResult;
-import fr.cyberix.kolo.services.MobileService;
+import fr.cyberix.kolo.services.KolOthenticor;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -238,13 +238,13 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected RefResult doInBackground(Void... params) {
-            RefResult loginResult;
+            LoginAttempt loginResult;
             try {
-                loginResult = MobileService.signIn(loginAttempt);
+                loginResult = new KolOthenticor().DoLogin(SerializationHelper.toJson(loginAttempt,loginAttempt.getClass()));
             } catch (Exception e) {
                 return null;
             }
-            return loginResult;
+            return loginResult.getRefResult();
         }
 
         @Override

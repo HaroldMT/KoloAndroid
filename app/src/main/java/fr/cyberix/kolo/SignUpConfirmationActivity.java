@@ -21,26 +21,27 @@ import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.entities.Customer;
+import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.Registration;
 import fr.cyberix.kolo.services.KolOthenticor;
 
 public class SignUpConfirmationActivity extends AppCompatActivity {
     private static final String TAG = "ConfirmationActivity";
 
-    @BindView(R.id.username)
+    @BindView(R.id.txt_signup_conf_names)
     TextView _usernameView;
-    @BindView(R.id.telephone)
+    @BindView(R.id.txt_signup_conf_phone)
     TextView _telephoneView;
-    @BindView(R.id.dob)
+    @BindView(R.id.txt_signup_conf_Dob)
     TextView _dobView;
-    @BindView(R.id.email)
+    @BindView(R.id.txt_signup_conf_email)
     TextView _emailView;
-    @BindView(R.id.txtCodeRegistration)
+    @BindView(R.id.btn_signup_conf_ent_conf_code)
     EditText _codeText;
-    @BindView(R.id.btnConfirmRegistration)
+    @BindView(R.id.btn_signup_conf_confirm)
     Button _btnConfirmRegistration;
-    @BindView(R.id.confirm_signup_progressBar)
-    ProgressBar confirm_signup_progressBar;
+    //@BindView(R.id.confirm_signup_progressBar)
+    //ProgressBar confirm_signup_progressBar;
     Registration registration = null;
     UserConfirmSignUpTask userConfirmSignUpTask = null;
     Customer customer = null;
@@ -50,21 +51,21 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_confirmation);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-        confirm_signup_progressBar.setVisibility(View.INVISIBLE);
+        //confirm_signup_progressBar.setVisibility(View.INVISIBLE);
         loadConfig();
     }
 
     public void loadConfig() {
         registration = ConfigHelper.getAccountInfo().getRegistration();
         if (registration != null) {
-            _dobView.setText(ForeasHelper.getDateFormat().format(registration.getDob()));
+            _dobView.setText(KoloHelper.getDateFormat().format(registration.getDob()));
             _emailView.setText(registration.getEmail());
             _usernameView.setText(registration.getFirstName() + " " + registration.getLastName());
             _telephoneView.setText(registration.getPhoneNumber());
         }
     }
 
-    @OnClick(R.id.btnConfirmRegistration)
+    @OnClick(R.id.btn_signup_conf_confirm)
     public void OnClickRegistration() {
         if (validate()) confirmRegistration();
     }
@@ -133,8 +134,7 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         protected Customer doInBackground(Void... params) {
             Customer myCustomer;
             try {
-                myCustomer = new KolOthenticor().DoConfirmRegistration(SerializationHelper
-                        .toJson(registration, registration.getClass()));
+                myCustomer = new KolOthenticor().DoConfirmRegistration(SerializationHelper.toJson(registration, registration.getClass()));
             } catch (Exception e) {
                 return null;
             }
@@ -144,7 +144,7 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             _btnConfirmRegistration.setEnabled(false);
-            confirm_signup_progressBar.setVisibility(View.VISIBLE);
+            //confirm_signup_progressBar.setVisibility(View.VISIBLE);
             registration.setRegistrationToken(_codeText.getText().toString());
         }
 
@@ -158,7 +158,7 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
                             if (success) {
                                 onConfirmSuccess();
                             } else onConfirmFailed();
-                            confirm_signup_progressBar.setVisibility(View.GONE);
+                            //confirm_signup_progressBar.setVisibility(View.GONE);
                         }
                     }, 3000);
         }
@@ -166,7 +166,7 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         @Override
         protected void onCancelled() {
             userConfirmSignUpTask = null;
-            confirm_signup_progressBar.setVisibility(View.GONE);
+            //confirm_signup_progressBar.setVisibility(View.GONE);
         }
     }
 }
