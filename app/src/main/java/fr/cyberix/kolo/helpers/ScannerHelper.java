@@ -51,18 +51,18 @@ public class ScannerHelper {
     public static void scanBarcode(Activity activity, View view) {
         IntentIntegrator integrator = new IntentIntegrator(activity);
         integrator.setCameraId(CAMERA_FACING_BACK);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);//Before QR_CODE_TYPES
         integrator.setPrompt("Scan QR Code");
         integrator.setBeepEnabled(true);
         integrator.setBarcodeImageEnabled(false);
         integrator.initiateScan();
     }
-    
+
 
     public static void scanBarcodeFrontCamera(Activity activity, View view) {
         IntentIntegrator integrator = new IntentIntegrator(activity);
         integrator.setCameraId(CAMERA_FACING_FRONT);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);//Before QR_CODE_TYPES
         integrator.setPrompt("Scan QR Code");
         integrator.setBeepEnabled(true);
         integrator.setBarcodeImageEnabled(false);
