@@ -16,8 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +31,6 @@ import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.TelephonyInfo;
-import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.Registration;
 import fr.cyberix.kolo.services.KolOthenticor;
 
@@ -310,7 +307,8 @@ public class SignUpActivity extends AppCompatActivity
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                mRegistration = new KolOthenticor().DoRegistration(new Gson().toJson((mRegistration)));
+                mRegistration = new KolOthenticor().DoRegistration(SerializationHelper
+                        .toJson(mRegistration, mRegistration.getClass()));
             } catch (Exception e) {
                 return null;
             }

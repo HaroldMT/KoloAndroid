@@ -1,4 +1,4 @@
-package fr.cyberix.kolo.model.entities;
+package fr.cyberix.kolo.services;
 
 //------------------------------------------------------------------------------
 // <wsdl2code-generated>
@@ -24,6 +24,11 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.List;
+
+import fr.cyberix.kolo.model.entities.IWsdl2CodeEvents;
+import fr.cyberix.kolo.model.entities.MyRefTypes;
+import fr.cyberix.kolo.model.entities.RefGender;
+import fr.cyberix.kolo.model.entities.WS_Enums;
 
 public class MobileService {
 

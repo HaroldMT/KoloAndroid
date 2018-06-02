@@ -31,8 +31,8 @@ import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.model.TelephonyInfo;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.LoginAttempt;
-import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.RefResult;
+import fr.cyberix.kolo.services.MobileService;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";

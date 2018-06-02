@@ -32,7 +32,7 @@ import fr.cyberix.kolo.model.entities.WS_Enums;
 
 public class KolOthenticor {
 
-    public String NAMESPACE = "http://tempuri.org/";
+    public String NAMESPACE = "http://kolo.cyberix.fr/";
     public String url = "";
     public int timeOut = 180000;
     public IWsdl2CodeEvents eventHandler;

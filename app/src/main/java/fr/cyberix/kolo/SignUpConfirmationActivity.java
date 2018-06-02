@@ -18,10 +18,11 @@ import butterknife.OnClick;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.entities.Customer;
-import fr.cyberix.kolo.model.entities.MobileService;
 import fr.cyberix.kolo.model.entities.Registration;
+import fr.cyberix.kolo.services.KolOthenticor;
 
 public class SignUpConfirmationActivity extends AppCompatActivity {
     private static final String TAG = "ConfirmationActivity";
@@ -132,7 +133,8 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         protected Customer doInBackground(Void... params) {
             Customer myCustomer;
             try {
-                myCustomer = MobileService.confirmRegistration(registration);
+                myCustomer = new KolOthenticor().DoConfirmRegistration(SerializationHelper
+                        .toJson(registration, registration.getClass()));
             } catch (Exception e) {
                 return null;
             }
