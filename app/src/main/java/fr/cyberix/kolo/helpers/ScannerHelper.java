@@ -57,6 +57,7 @@ public class ScannerHelper {
         integrator.setBarcodeImageEnabled(false);
         integrator.initiateScan();
     }
+    
 
     public static void scanBarcodeFrontCamera(Activity activity, View view) {
         IntentIntegrator integrator = new IntentIntegrator(activity);
