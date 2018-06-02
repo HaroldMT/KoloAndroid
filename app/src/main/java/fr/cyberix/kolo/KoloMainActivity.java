@@ -10,11 +10,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,25 +21,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class KoloMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int MY_PERMISSIONS_REQUEST_CODE = 123;
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     private Context mContext;
     private Activity mActivity;
     private ActionBarDrawerToggle mToggle;
-
-    private static final int MY_PERMISSIONS_REQUEST_CODE = 123;
-
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kolo_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -49,7 +46,7 @@ public class KoloMainActivity extends AppCompatActivity
 
         mToggle.syncState();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,43 +55,37 @@ public class KoloMainActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
-
-
-
-
-        if(ContextCompat.checkSelfPermission(mActivity,Manifest.permission.SEND_SMS)
+        if (ContextCompat.checkSelfPermission(mActivity, Manifest.permission.SEND_SMS)
                 + ContextCompat.checkSelfPermission(
-                mActivity,Manifest.permission.READ_SMS)
+                mActivity, Manifest.permission.READ_SMS)
                 + ContextCompat.checkSelfPermission(
-                mActivity,Manifest.permission.RECEIVE_SMS)
+                mActivity, Manifest.permission.RECEIVE_SMS)
                 + ContextCompat.checkSelfPermission(
-                mActivity,Manifest.permission.READ_CONTACTS)
+                mActivity, Manifest.permission.READ_CONTACTS)
                 + ContextCompat.checkSelfPermission(
-                mActivity,Manifest.permission.INTERNET)
-                != PackageManager.PERMISSION_GRANTED){
+                mActivity, Manifest.permission.INTERNET)
+                != PackageManager.PERMISSION_GRANTED) {
 
             // Do something, when permissions not granted
-            if(ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity,Manifest.permission.SEND_SMS)
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    mActivity, Manifest.permission.SEND_SMS)
                     || ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity,Manifest.permission.RECEIVE_SMS)
+                    mActivity, Manifest.permission.RECEIVE_SMS)
                     || ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity,Manifest.permission.READ_SMS)
+                    mActivity, Manifest.permission.READ_SMS)
                     || ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity,Manifest.permission.READ_CONTACTS)
+                    mActivity, Manifest.permission.READ_CONTACTS)
                     || ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity,Manifest.permission.INTERNET)){
+                    mActivity, Manifest.permission.INTERNET)) {
                 // If we should give explanation of requested permissions
 
                 // Show an alert dialog here with request explanation
@@ -118,10 +109,10 @@ public class KoloMainActivity extends AppCompatActivity
                         );
                     }
                 });
-                builder.setNeutralButton("Cancel",null);
+                builder.setNeutralButton("Cancel", null);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            }else{
+            } else {
                 // Directly request for required permissions, without explanation
                 ActivityCompat.requestPermissions(
                         mActivity,
@@ -135,34 +126,42 @@ public class KoloMainActivity extends AppCompatActivity
                         MY_PERMISSIONS_REQUEST_CODE
                 );
             }
-        }else {
+        } else {
             // Do something, when permissions are already granted
-            Toast.makeText(mContext,"Permissions already granted",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Permissions already granted", Toast.LENGTH_SHORT).show();
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
-        switch (requestCode){
-            case MY_PERMISSIONS_REQUEST_CODE:{
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CODE: {
                 // When request is cancelled, the results array are empty
-                if(
-                        (grantResults.length >0) &&
+                if (
+                        (grantResults.length > 0) &&
                                 (grantResults[0]
                                         + grantResults[1]
                                         + grantResults[2]
                                         + grantResults[3]
                                         == PackageManager.PERMISSION_GRANTED
                                 )
-                        ){
+                        ) {
                     // Permissions are granted
-                    Toast.makeText(mContext,"Permissions granted.",Toast.LENGTH_SHORT).show();
-                }else {
+                    Toast.makeText(mContext, "Permissions granted.", Toast.LENGTH_SHORT).show();
+                } else {
                     closeNow();
                     // Permissions are denied
-                    Toast.makeText(mContext,"Permissions denied.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Permissions denied.", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -174,17 +173,6 @@ public class KoloMainActivity extends AppCompatActivity
             finishAffinity();
         } else {
             finish();
-        }
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -235,7 +223,7 @@ public class KoloMainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

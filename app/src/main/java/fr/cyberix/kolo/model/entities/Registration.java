@@ -26,16 +26,16 @@ public class Registration implements KvmSerializable {
     private String lastName;
     private String firstName;
     private String phoneNumber;
-    private String dob;
+    private Date dob;
     private String email;
     private String registrationToken;
     private String registrationStatusCode;
-    private String registrationDate;
-    private String registrationConfirmDate;
+    private Date registrationDate;
+    private Date registrationConfirmDate;
     private String simSubscriberId;
     private String simSerialNumber;
     private String operatorDeviceSim;
-    private String registrationTokenExpiryDate;
+    private Date registrationTokenExpiryDate;
     private String pwd;
     private String deviceId;
     private RefRegistrationStatu refRegistrationStatu;
@@ -86,9 +86,9 @@ public class Registration implements KvmSerializable {
             Object obj = soapObject.getProperty("Dob");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                setDob(j.toString());
+                setDob(new Date(j.toString()));
             } else if (obj != null && obj instanceof String) {
-                setDob((String) obj);
+                setDob((Date) obj);
             }
         }
         if (soapObject.hasProperty("Email")) {
@@ -122,18 +122,18 @@ public class Registration implements KvmSerializable {
             Object obj = soapObject.getProperty("RegistrationDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                setRegistrationDate(j.toString());
+                setRegistrationDate(new Date(j.toString()));
             } else if (obj != null && obj instanceof String) {
-                setRegistrationDate((String) obj);
+                setRegistrationDate((Date) obj);
             }
         }
         if (soapObject.hasProperty("RegistrationConfirmDate")) {
             Object obj = soapObject.getProperty("RegistrationConfirmDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                setRegistrationConfirmDate(j.toString());
+                setRegistrationConfirmDate(new Date(j.toString()));
             } else if (obj != null && obj instanceof String) {
-                setRegistrationConfirmDate((String) obj);
+                setRegistrationConfirmDate((Date) obj);
             }
         }
         if (soapObject.hasProperty("SimSubscriberId")) {
@@ -167,9 +167,9 @@ public class Registration implements KvmSerializable {
             Object obj = soapObject.getProperty("RegistrationTokenExpiryDate");
             if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
                 SoapPrimitive j = (SoapPrimitive) obj;
-                setRegistrationTokenExpiryDate(j.toString());
+                setRegistrationTokenExpiryDate(new Date(j.toString()));
             } else if (obj != null && obj instanceof String) {
-                setRegistrationTokenExpiryDate((String) obj);
+                setRegistrationTokenExpiryDate((Date) obj);
             }
         }
         if (soapObject.hasProperty("Pwd")) {
@@ -193,8 +193,40 @@ public class Registration implements KvmSerializable {
         if (soapObject.hasProperty("RefRegistrationStatu")) {
             SoapObject j = (SoapObject) soapObject.getProperty("RefRegistrationStatu");
             setRefRegistrationStatu(new RefRegistrationStatu(j));
-            
+
         }
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public Date getRegistrationConfirmDate() {
+        return registrationConfirmDate;
+    }
+
+    public void setRegistrationConfirmDate(Date registrationConfirmDate) {
+        this.registrationConfirmDate = registrationConfirmDate;
+    }
+
+    public Date getRegistrationTokenExpiryDate() {
+        return registrationTokenExpiryDate;
+    }
+
+    public void setRegistrationTokenExpiryDate(Date registrationTokenExpiryDate) {
+        this.registrationTokenExpiryDate = registrationTokenExpiryDate;
     }
     @Override
     public Object getProperty(int arg0) {
@@ -361,21 +393,6 @@ public class Registration implements KvmSerializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public Date getDobDate() {
-        return new Date(dob);
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob.toString();
-    }
 
     public String getEmail() {
         return email;
@@ -401,22 +418,6 @@ public class Registration implements KvmSerializable {
         this.registrationStatusCode = registrationStatusCode;
     }
 
-    public String getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public String getRegistrationConfirmDate() {
-        return registrationConfirmDate;
-    }
-
-    public void setRegistrationConfirmDate(String registrationConfirmDate) {
-        this.registrationConfirmDate = registrationConfirmDate;
-    }
-
     public String getSimSubscriberId() {
         return simSubscriberId;
     }
@@ -439,14 +440,6 @@ public class Registration implements KvmSerializable {
 
     public void setOperatorDeviceSim(String operatorDeviceSim) {
         this.operatorDeviceSim = operatorDeviceSim;
-    }
-
-    public String getRegistrationTokenExpiryDate() {
-        return registrationTokenExpiryDate;
-    }
-
-    public void setRegistrationTokenExpiryDate(String registrationTokenExpiryDate) {
-        this.registrationTokenExpiryDate = registrationTokenExpiryDate;
     }
 
     public String getPwd() {
