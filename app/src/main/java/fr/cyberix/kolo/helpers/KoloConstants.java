@@ -31,4 +31,6 @@ public final class KoloConstants {
     public static final String REFSTATUS_RESULT_NONE = "NONE";
     public static final String REFSTATUS_RESULT_FAIL = "FAIL";
     public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
+    public static final String KolOthenticor_BaseUrl = BaseUrl+"KolOthenticor.asmx";
+    public static final String KolOSphere_BaseUrl = BaseUrl+"KolOSphere.asmx";
 }

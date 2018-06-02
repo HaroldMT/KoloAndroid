@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class KoloMainActivity extends AppCompatActivity
 
     private Context mContext;
     private Activity mActivity;
+    private ActionBarDrawerToggle mToggle;
 
     private static final int MY_PERMISSIONS_REQUEST_CODE = 123;
 
@@ -39,10 +41,13 @@ public class KoloMainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kolo_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mContext = getApplicationContext();
         mActivity = KoloMainActivity.this;
+
+        mToggle.syncState();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +204,11 @@ public class KoloMainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(KoloMainActivity.this, SettingsActivity.class));
+            return true;
+        }
+
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
