@@ -25,10 +25,10 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.List;
 
 import fr.cyberix.kolo.ksoap2.IWsdl2CodeEvents;
+import fr.cyberix.kolo.ksoap2.WS_Enums;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.LoginAttempt;
 import fr.cyberix.kolo.model.entities.Registration;
-import fr.cyberix.kolo.model.entities.WS_Enums;
 
 public class KolOthenticor {
 

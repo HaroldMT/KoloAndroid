@@ -20,6 +20,8 @@ import org.ksoap2.serialization.SoapPrimitive;
 
 import java.util.Hashtable;
 
+import fr.cyberix.kolo.ksoap2.VectorByte;
+
 public class GroupImage implements KvmSerializable {
 
     private int idCustomerGroup;
