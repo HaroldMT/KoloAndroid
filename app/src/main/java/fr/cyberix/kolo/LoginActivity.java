@@ -240,7 +240,8 @@ public class LoginActivity extends AppCompatActivity {
         protected RefResult doInBackground(Void... params) {
             LoginAttempt loginResult;
             try {
-                loginResult = new KolOthenticor().DoLogin(SerializationHelper.toJson(loginAttempt,loginAttempt.getClass()));
+                String loginResultString = new KolOthenticor().DoLogin(SerializationHelper.toJson(loginAttempt, loginAttempt.getClass()));
+                loginResult = SerializationHelper.fromJson(loginResultString, LoginAttempt.class);
             } catch (Exception e) {
                 return null;
             }

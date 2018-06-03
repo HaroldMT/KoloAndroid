@@ -307,9 +307,11 @@ public class SignUpActivity extends AppCompatActivity
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                mRegistration = new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl).DoRegistration
+                String registrationString = new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl).DoRegistration
                         (SerializationHelper
                                 .toJson(mRegistration, mRegistration.getClass()));
+                mRegistration = SerializationHelper.fromJson(registrationString, Registration
+                        .class);
             } catch (Exception e) {
                 return null;
             }

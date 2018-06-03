@@ -131,7 +131,8 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         protected Customer doInBackground(Void... params) {
             Customer myCustomer;
             try {
-                myCustomer = new KolOthenticor().DoConfirmRegistration(SerializationHelper.toJson(registration, registration.getClass()));
+                String customerString = new KolOthenticor().DoConfirmRegistration(SerializationHelper.toJson(registration, registration.getClass()));
+                myCustomer = SerializationHelper.fromJson(customerString, Customer.class);
             } catch (Exception e) {
                 return null;
             }
