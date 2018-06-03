@@ -20,7 +20,7 @@ public final class KoloConstants {
     public static final String ParamFileName = "refTypeHelper.frs";
     public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
     //    public static final String BaseUrl = "http://192.168.7.100/api/";
-    public static final String BaseUrl = "http://d5de7bd9.ngrok.io/KoloWin.CustomerService/";
+    public static final String BaseUrl = "http://d44086fe.ngrok.io/KoloWin.CustomerService/";
     //    public static final String BaseUrl = "http://192.168.1.15/";
     public static final int forceLoginAfterShutdownTimeLimit = 5;
     public static final String REGISTRATION_STATUS_NONE = "NONE";
@@ -33,4 +33,8 @@ public final class KoloConstants {
     public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
     public static final String KolOthenticor_BaseUrl = BaseUrl+"KolOthenticor.asmx";
     public static final String KolOSphere_BaseUrl = BaseUrl+"KolOSphere.asmx";
+    public static final String MobileService_BaseUrl = BaseUrl+"MobileService.asmx";
+
+    public static final  String DATE_FORMAT_FOR_SERVICE = "yyyy-MM-dd hh:mm:ss";
+
 }
