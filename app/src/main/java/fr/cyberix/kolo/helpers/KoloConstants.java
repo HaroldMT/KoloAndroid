@@ -20,7 +20,7 @@ public final class KoloConstants {
     public static final String ParamFileName = "refTypeHelper.frs";
     public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
     //    public static final String BaseUrl = "http://192.168.7.100/api/";
-    public static final String BaseUrl = "http://192.168.3.107/";
+    public static final String BaseUrl = "http://d5de7bd9.ngrok.io/KoloWin.CustomerService/";
     //    public static final String BaseUrl = "http://192.168.1.15/";
     public static final int forceLoginAfterShutdownTimeLimit = 5;
     public static final String REGISTRATION_STATUS_NONE = "NONE";
