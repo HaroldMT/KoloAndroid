@@ -139,6 +139,20 @@
     <string name="key_vibrate">key_vibrate</string>
     <string name="title_activity_settings">Settings</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_notif_rowimg">Notification list item image</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="notifications">Notifications</string>
+    <string name="creation_date">Creation Date</string>
+    <string name="operation_type">Operation type</string>
+    <string name="history_date">History date</string>
+    <string name="amount">Amount</string>
+    <string name="xaf">XAF</string>
+    <string name="sampleamount">8192</string>
+    <string name="oldbalance">Old balance</string>
+    <string name="newbalance">New balance</string>
 
 
 </resources>
