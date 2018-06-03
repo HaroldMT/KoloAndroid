@@ -74,16 +74,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public void selectitemDrawer(MenuItem menuItem) {
         Fragment myfragment = null;
         Class fragmentClass = null;
-        /*switch (menuItem.getItemId()) {
-            case R.id.drawer_dash:
-                fragmentClass = DashboardActivity.class;
+        switch (menuItem.getItemId()) {
+            case R.id.drawer_notifications:
+                fragmentClass = KoloNotificationFragment.class;
                 break;
-            case R.id.drawer_search:
-                fragmentClass = SearchFragment.class;
+            case R.id.drawer_historic:
+                fragmentClass = Customer_BalhistoryFragment.class;
                 break;
             default:
                 break;
-        }*/
+        }
         try {
             myfragment = (Fragment) fragmentClass.newInstance();
         }catch (Exception e){

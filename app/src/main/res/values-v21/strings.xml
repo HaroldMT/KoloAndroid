@@ -33,4 +33,16 @@
     <string name="signin">Sign In</string>
     <string name="hint_phone_number">Phone number...</string>
     <string name="hint_full_name">Full name...</string>
+    <string name="img_notif_rowimg">Notification list item image</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="notifications">Notifications</string>
+    <string name="creation_date">Creation Date</string>
+    <string name="operation_type">Operation type</string>
+    <string name="history_date">History date</string>
+    <string name="amount">Amount</string>
+    <string name="xaf">XAF</string>
+    <string name="sampleamount">8192</string>
+    <string name="oldbalance">Old balance</string>
+    <string name="newbalance">New balance</string>
 </resources>
