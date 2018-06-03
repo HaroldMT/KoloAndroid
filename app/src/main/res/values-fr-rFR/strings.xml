@@ -4,8 +4,8 @@
     <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
     <string name="action_settings">Paramètres</string>
     <string name="welcome">welcome</string>
-    <string name="lastname">lastname</string>
-    <string name="firstname">firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="firstname">First name</string>
     <string name="phone">Phone</string>
     <string name="password">password</string>
     <string name="email">Email</string>
@@ -48,4 +48,13 @@
     <string name="sampleamount">8192</string>
     <string name="oldbalance">Old balance</string>
     <string name="newbalance">New balance</string>
+    <string name="kolo_send">Kolo send</string>
+    <string name="kolo_recieved">Kolo received</string>
+    <string name="my_bills">My bills</string>
+    <string name="sampleemail">KoloApp@cyberix.fr</string>
+    <string name="samplephone">+237 671010101</string>
+    <string name="mynotif">My notifications</string>
+    <string name="showmyqrcode">Show my QR Code</string>
+    <string name="username">Username</string>
+    <string name="phonenum">Phone number</string>
 </resources>

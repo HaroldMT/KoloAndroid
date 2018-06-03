@@ -2,14 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.cyberix.kolo">
 
-      <!--Permissions-->
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.READ_MMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_MMS" />
 
     <application
         android:allowBackup="true"
@@ -37,11 +37,12 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".KoloTransferActivity" />
-        <activity android:name=".SignUpConfirmationActivity"></activity>
-
+        <activity android:name=".SignUpConfirmationActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".KoloUserProfilActivity" />
+        <activity android:name=".KoloUserQRCodeActivity"></activity>
     </application>
 
 </manifest>

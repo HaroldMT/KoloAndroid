@@ -17,7 +17,7 @@ import android.view.View;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CardView cardKoloRetrieve, cardKoloTransfer, cardKoloPayement;
+    private CardView cardKoloRetrieve, cardKoloTransfer, cardKoloPayement, cardDashDrawer;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     @Override
@@ -29,11 +29,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         cardKoloRetrieve = findViewById(R.id.card_view_kolo_retrait);
         cardKoloTransfer = findViewById(R.id.card_view_kolo_tranfer);
         cardKoloPayement = findViewById(R.id.card_view_kolo_payement);
+        cardDashDrawer = findViewById(R.id.card_dash_drawheader);
 
         //Click listeners to cards
         cardKoloRetrieve.setOnClickListener(this);
         cardKoloPayement.setOnClickListener(this);
         cardKoloTransfer.setOnClickListener(this);
+        cardDashDrawer.setOnClickListener(this);
 
 
         //Drawer animation and toggle
@@ -112,9 +114,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.card_view_kolo_tranfer : intent = new Intent(this, KoloTransferActivity.class);
                 startActivity(intent);
                 break;
-            /*case R.id.card_view_kolo_payement:
+            case R.id.card_dash_drawheader: intent = new Intent(this, KoloUserProfilActivity.class);
+                startActivity(intent);
                 break;
-            case R.id.card_view_kolo_retrait:
+            /*case R.id.card_view_kolo_retrait:
                 break;*/
             default: break;
         }
