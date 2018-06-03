@@ -19,6 +19,7 @@ public class KoloUserQRCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kolo_user_qrcode);
 
+        //QRcode generator
         String qrcodedata = String.valueOf(new QrCodeHelper());
         ImageView imageView = findViewById(R.id.img_usrprof_qrcode);
 
