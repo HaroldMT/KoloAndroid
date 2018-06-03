@@ -11,6 +11,8 @@ package fr.cyberix.kolo.helpers;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.nio.charset.Charset;
@@ -19,15 +21,27 @@ import java.security.NoSuchAlgorithmException;
 
 public final class SerializationHelper {
     private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    private static Gson gsonBuilder = CreateGsonBuilder();
 
+    private static Gson CreateGsonBuilder() {
+        Gson gson = new GsonBuilder()
+                .enableComplexMapKeySerialization()
+                .serializeNulls()
+                .setDateFormat("yyyy-MM-dd hh:mm:ss")
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .setVersion(1.0)
+                .create();
+        return gson;
+    }
     public static <T> String toJson(Object source, Class<T> typeOfSrc) {
         return source == null ? "" :
-                new GsonBuilder().create().toJson(source, typeOfSrc);
+                gsonBuilder.toJson(source, typeOfSrc);
     }
 
     public static <T> T fromJson(String jsonValue, Class<T> typeOfSrc) {
         return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
-                new GsonBuilder().create().fromJson(jsonValue, typeOfSrc);
+                gsonBuilder.fromJson(jsonValue, typeOfSrc);
     }
 
     public static Bitmap bytesToBitmap(byte[] imageBytes) {

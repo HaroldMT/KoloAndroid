@@ -18,6 +18,7 @@ import android.os.AsyncTask;
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
+import org.ksoap2.serialization.MarshalDate;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
@@ -99,6 +100,10 @@ public class KolOthenticor {
         SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "DoRegistration");
         soapReq.addProperty("jsonReg", jsonReg);
         soapEnvelope.setOutputSoapObject(soapReq);
+        /****** Added to handle date serialization *****/
+        MarshalDate mdt = new MarshalDate();
+        mdt.register(soapEnvelope);
+        /******/
         HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
         try {
             if (headers != null) {
