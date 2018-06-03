@@ -183,29 +183,29 @@ public class SplashActivity extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
+        KoloHelper.initialize(this, this, this);
+
+
+        if (ConfigHelper.getRegistering())
+            startActivity(new Intent(getApplicationContext(), SignUpConfirmationActivity.class));
+        else if (ConfigHelper.getRegistered()) {
+            Boolean gotoLoginActivity = true;
+            if (ConfigHelper.getAccountInfo().getAuthenticated()) {
+                Date date = ConfigHelper.getAccountInfo().getLastAuthenticationTime();
+                DateHelper dateHelper = DateHelper.DateDiff(date, Calendar.getInstance().getTime());
+                if (dateHelper.diffInMin < KoloConstants.forceLoginAfterShutdownTimeLimit) {
+                    gotoLoginActivity = false;
+                    startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                }
+            }
+            if (gotoLoginActivity)
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        } else startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
 
         Thread timer = new Thread(){
             public void run(){
                 try {
-
-                    KoloHelper.initialize(this, this, this);
-
-                    if (ConfigHelper.getRegistering())
-                        startActivity(new Intent(getApplicationContext(), SignUpConfirmationActivity.class));
-                    else if (ConfigHelper.getRegistered()) {
-                        Boolean gotoLoginActivity = true;
-                        if (ConfigHelper.getAccountInfo().getAuthenticated()) {
-                            Date date = ConfigHelper.getAccountInfo().getLastAuthenticationTime();
-                            DateHelper dateHelper = DateHelper.DateDiff(date, Calendar.getInstance().getTime());
-                            if (dateHelper.diffInMin < KoloConstants.forceLoginAfterShutdownTimeLimit) {
-                                gotoLoginActivity = false;
-                                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-                            }
-                        }
-                        if (gotoLoginActivity)
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    } else startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-
+                    sleep(500);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
