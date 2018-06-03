@@ -25,6 +25,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.List;
 
+import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.ksoap2.IWsdl2CodeEvents;
 import fr.cyberix.kolo.ksoap2.WS_Enums;
 import fr.cyberix.kolo.model.entities.Customer;
@@ -34,8 +35,9 @@ import fr.cyberix.kolo.model.entities.Registration;
 public class KolOthenticor {
 
     public String NAMESPACE = "http://kolo.cyberix.fr/";
-    public String url = "";
-    public int timeOut = 180;
+    /************  For WebService *************/
+    public String url = KoloConstants.KolOthenticor_BaseUrl;
+    public int timeOut = 180000;
     public IWsdl2CodeEvents eventHandler;
     public WS_Enums.SoapProtocolVersion soapVersion;
 

@@ -34,7 +34,7 @@ public class MobileService {
 
     public String NAMESPACE = "http://kolo.cyberix.fr/";
     public String url = "";
-    public int timeOut = 180;
+    public int timeOut = 180000;
     public IWsdl2CodeEvents eventHandler;
     public WS_Enums.SoapProtocolVersion soapVersion;
 

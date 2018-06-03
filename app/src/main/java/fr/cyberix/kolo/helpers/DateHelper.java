@@ -8,6 +8,8 @@
 
 package fr.cyberix.kolo.helpers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -31,4 +33,23 @@ public final class DateHelper {
         dateHelper.diffInSec = TimeUnit.MILLISECONDS.toSeconds(dateHelper.diffResult);
         return dateHelper;
     }
+
+    public static Date String2Date(String s)
+    {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(KoloConstants.DATE_FORMAT_FOR_SERVICE);
+        try {
+            return simpleDateFormat.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    public static String Date2String(Date d)
+    {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(KoloConstants.DATE_FORMAT_FOR_SERVICE);
+        return simpleDateFormat.format(d);
+    }
+
+
 }

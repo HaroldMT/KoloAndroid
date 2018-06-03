@@ -17,8 +17,14 @@ import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
+
+import fr.cyberix.kolo.helpers.DateHelper;
+import fr.cyberix.kolo.helpers.KoloConstants;
 
 public class Registration implements KvmSerializable {
 
@@ -26,16 +32,16 @@ public class Registration implements KvmSerializable {
     private String lastName;
     private String firstName;
     private String phoneNumber;
-    private Date dob;
+    private String dob;
     private String email;
     private String registrationToken;
     private String registrationStatusCode;
-    private Date registrationDate;
-    private Date registrationConfirmDate;
+    private String registrationDate;
+    private String registrationConfirmDate;
     private String simSubscriberId;
     private String simSerialNumber;
     private String operatorDeviceSim;
-    private Date registrationTokenExpiryDate;
+    private String registrationTokenExpiryDate;
     private String pwd;
     private String deviceId;
     private RefRegistrationStatu refRegistrationStatu;
@@ -198,35 +204,35 @@ public class Registration implements KvmSerializable {
     }
 
     public Date getDob() {
-        return dob;
+        return DateHelper.String2Date(dob);
     }
 
     public void setDob(Date dob) {
-        this.dob = dob;
+        this.dob = DateHelper.Date2String(dob);
     }
 
     public Date getRegistrationDate() {
-        return registrationDate;
+        return DateHelper.String2Date(registrationDate);
     }
 
     public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+        this.registrationDate = DateHelper.Date2String(registrationDate);
     }
 
     public Date getRegistrationConfirmDate() {
-        return registrationConfirmDate;
+        return DateHelper.String2Date(registrationConfirmDate);
     }
 
     public void setRegistrationConfirmDate(Date registrationConfirmDate) {
-        this.registrationConfirmDate = registrationConfirmDate;
+        this.registrationConfirmDate = DateHelper.Date2String(registrationConfirmDate);
     }
 
     public Date getRegistrationTokenExpiryDate() {
-        return registrationTokenExpiryDate;
+        return DateHelper.String2Date(registrationTokenExpiryDate);
     }
 
     public void setRegistrationTokenExpiryDate(Date registrationTokenExpiryDate) {
-        this.registrationTokenExpiryDate = registrationTokenExpiryDate;
+        this.registrationTokenExpiryDate = DateHelper.Date2String(registrationTokenExpiryDate);
     }
     @Override
     public Object getProperty(int arg0) {
