@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,8 +32,10 @@ import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.TelephonyInfo;
+import fr.cyberix.kolo.model.entities.MobileDevice;
 import fr.cyberix.kolo.model.entities.Registration;
 import fr.cyberix.kolo.services.KolOthenticor;
+import fr.cyberix.kolo.services.MobileService;
 
 public class SignUpActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener {
@@ -298,19 +301,39 @@ public class SignUpActivity extends AppCompatActivity
 
         private Registration mRegistration;
         private AccountInfo mAccountInfo;
+        private MobileDevice mMobileDevice;
 
         UserSignUpTask(Registration registration, AccountInfo accountInfo) {
             mRegistration = registration;
             mAccountInfo = accountInfo;
         }
 
+        UserSignUpTask(Registration registration, AccountInfo accountInfo, MobileDevice mobileDevice) {
+            mRegistration = registration;
+            mAccountInfo = accountInfo;
+            mMobileDevice = mobileDevice;
+        }
+
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                mRegistration = new KolOthenticor().DoRegistration(SerializationHelper.toJson(mRegistration, mRegistration.getClass()));
+                mRegistration.setDeviceId("1111111111");
+                mRegistration.setSimSerialNumber("1111111111");
+                mRegistration.setOperatorDeviceSim("TTelecom");
+                mRegistration.setSimSubscriberId(mRegistration.getFirstName());
+
+                mRegistration = SerializationHelper.fromJson(
+                        new KolOthenticor(null
+                        ,KoloConstants
+                        .KolOthenticor_BaseUrl)
+                        .DoRegistration(SerializationHelper
+                        .toJson(mRegistration, mRegistration.getClass()))
+                        ,mRegistration.getClass());
+
             } catch (Exception e) {
                 return null;
             }
+            mAccountInfo.setMobileDevice(mMobileDevice);
             return mRegistration;
         }
 

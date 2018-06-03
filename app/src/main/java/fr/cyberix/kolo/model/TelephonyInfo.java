@@ -13,6 +13,8 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
+import fr.cyberix.kolo.model.entities.MobileDevice;
+
 public final class TelephonyInfo {
     private String deviceId;
     private String deviceSoftwareVersion;
@@ -49,6 +51,9 @@ public final class TelephonyInfo {
             telInfo.simSerialNumber = telephonyManager.getSimSerialNumber();
             telInfo.simReady = isSimStateReadyorNotReady();
             telInfo.subscriberId = telephonyManager.getSubscriberId();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Please Give All required permission to Read phone state", Toast.LENGTH_LONG);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(context, "Could not get moile phone details", Toast.LENGTH_LONG);
