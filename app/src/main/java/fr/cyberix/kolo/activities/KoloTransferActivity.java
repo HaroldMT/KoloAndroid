@@ -12,7 +12,10 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class KoloTransferActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener{
@@ -21,6 +24,9 @@ public class KoloTransferActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(fr.cyberix.kolo.R.layout.activity_kolo_transfer);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
     }
 
     /**

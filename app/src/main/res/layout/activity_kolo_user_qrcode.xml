@@ -23,7 +23,7 @@
             android:id="@+id/img_usrprof_qrcode"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@mipmap/qr_code_sample" />
+            android:src="@drawable/ic_account_circle_white_150dp"/>
 
         <Button
             android:id="@+id/btn_usrprof_qrcode_close"

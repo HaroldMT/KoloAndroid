@@ -14,42 +14,72 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
-import fr.cyberix.kolo.fragments.*;
+import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
+import fr.cyberix.kolo.fragments.KoloNotificationFragment;
+import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private CardView cardKoloRetrieve, cardKoloTransfer, cardKoloPayement, cardDashDrawer;
-    private DrawerLayout drawerLayout;
+    @BindView(R.id.card_view_kolo_retrait)
+    CardView cardKoloRetrieve;
+    @BindView(R.id.card_view_kolo_tranfer)
+    CardView cardKoloTransfer;
+    @BindView(R.id.card_view_kolo_payement)
+    CardView cardKoloPayement;
+    @BindView(R.id.drawer_naview)
+    NavigationView nvdrawer;
+    @BindView(R.id.drawer_nav)
+    DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    private CardView cardDashDrawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
 
-        //Define Cards
-        cardKoloRetrieve = findViewById(R.id.card_view_kolo_retrait);
-        cardKoloTransfer = findViewById(R.id.card_view_kolo_tranfer);
-        cardKoloPayement = findViewById(R.id.card_view_kolo_payement);
-        //cardDashDrawer = findViewById(R.id.card_dash_drawheader);
+        View headerView = nvdrawer.getHeaderView(0);
+        cardDashDrawer = headerView.findViewById(R.id.card_dash_drawheader);
+        cardDashDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KoloHelper.ShowToast("test");
+                showProfile();
 
+            }
+        });
+//        LinearLayout header = (LinearLayout) headerView.findViewById(R.id.drawerHeaderLinearLayout);
+//        header.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showProfile();
+//            }
+//        });
+//        header.setClickable(true);
+//        header.setVisibility(View.INVISIBLE);
         //Click listeners to cards
         cardKoloRetrieve.setOnClickListener(this);
         cardKoloPayement.setOnClickListener(this);
         cardKoloTransfer.setOnClickListener(this);
-        //cardDashDrawer.setOnClickListener(this);
 
 
         //Drawer animation and toggle
-        drawerLayout = findViewById(R.id.drawer_nav);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //Navigation item click events handling
-        NavigationView nvdrawer = findViewById(R.id.drawer_naview);
         setupDrawerContent(nvdrawer);
+    }
+
+    public void showProfile() {
+        Intent intent = new Intent(this, KoloUserProfilActivity.class);
+//        startActivity(new Intent(getBaseContext(), KoloUserProfilActivity.class));
+        startActivity(intent);
     }
 
     @Override
@@ -65,11 +95,22 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         if (toggle.onOptionsItemSelected(item)) {
             return (true);
         }
-
-        switch (item.getItemId()){
-            case R.id.draw_menu_home: startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.draw_menu_home:
+                if (!KoloHelper.getMyActivity().getClass().equals(DashboardActivity.class)) {
+                    startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
+                }
                 break;
-            default: break;
+            case R.id.card_dash_drawheader:
+                intent = new Intent(this, KoloUserProfilActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.draw_menu_search:
+                showProfile();
+                break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -112,16 +153,17 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()){
-            case R.id.card_view_kolo_tranfer : intent = new Intent(this, KoloTransferActivity.class);
+        switch (v.getId()) {
+            case R.id.card_view_kolo_tranfer:
+                intent = new Intent(this, KoloTransferActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.card_dash_drawheader: intent = new Intent(this, KoloUserProfilActivity.class);
+            case R.id.card_dash_drawheader:
+                intent = new Intent(this, KoloUserProfilActivity.class);
                 startActivity(intent);
                 break;
-            /*case R.id.card_view_kolo_retrait:
-                break;*/
-            default: break;
+            default:
+                break;
         }
     }
 }

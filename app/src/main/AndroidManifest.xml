@@ -41,6 +41,8 @@
         <activity android:name=".activities.DashboardActivity" />
         <activity android:name=".activities.KoloTransferActivity" />
         <activity android:name=".activities.SignUpConfirmationActivity"></activity>
+        <activity android:name=".activities.KoloUserProfilActivity"></activity>
+        <activity android:name=".activities.KoloUserQRCodeActivity"></activity>
 
         <activity
             android:name=".activities.SettingsActivity"

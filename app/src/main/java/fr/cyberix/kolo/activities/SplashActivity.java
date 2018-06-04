@@ -11,23 +11,27 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.DateHelper;
 import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.PermissionHelper;
-import fr.cyberix.kolo.R;
 
 public class SplashActivity extends AppCompatActivity {
-    private TextView tv;
-    private ImageView iv;
+    @BindView(R.id.splash_text)
+    TextView tv;
+    @BindView(R.id.splash_image)
+    ImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(fr.cyberix.kolo.R.layout.activity_splash);
-
-        tv = findViewById(R.id.splash_text);
-        iv = findViewById(R.id.splash_image);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
 
         Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
         tv.startAnimation(myAnim);

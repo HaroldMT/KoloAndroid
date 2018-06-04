@@ -23,7 +23,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class KoloMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +41,9 @@ public class KoloMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kolo_main);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

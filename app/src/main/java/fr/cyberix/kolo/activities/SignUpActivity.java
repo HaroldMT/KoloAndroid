@@ -107,7 +107,10 @@ public class SignUpActivity extends AppCompatActivity
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()) signup();
+                if (validate()) {
+                    KoloHelper.ShowToast("Enregistrement sur la plateforme KOLO en cours");
+                    signup();
+                } else KoloHelper.ShowSimpleAlert("Erreur de validation", "Veuillez vérifier les informations saisies");
             }
         });
         _loginLink.setOnClickListener(new View.OnClickListener() {
@@ -147,8 +150,8 @@ public class SignUpActivity extends AppCompatActivity
     }
 
     public boolean validate() {
+        KoloHelper.ShowProgressBar();
         boolean valid = true;
-
         dob = _dobText.getText().toString();
         email = _emailText.getText().toString();
         firstname = _firstNameText.getText().toString();
@@ -197,7 +200,7 @@ public class SignUpActivity extends AppCompatActivity
         } else {
             _mobileText.setError(null);
         }
-
+        KoloHelper.HideProgressBar();
         return valid;
     }
 
@@ -345,7 +348,7 @@ public class SignUpActivity extends AppCompatActivity
         protected void onPreExecute() {
             _signupButton.setEnabled(false);
 
-//            signup_progressBar.setVisibility(View.VISIBLE);
+            signup_progressBar.setVisibility(View.VISIBLE);
 
             TelephonyInfo telInfo = SystemServiceHelper.getInfos();
             String pass = SerializationHelper.HashPassword(_pwdText.getText().toString());

@@ -10,13 +10,13 @@ package fr.cyberix.kolo.helpers;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 
 import static fr.cyberix.kolo.helpers.KoloConstants.UTF8_CHARSET;
@@ -91,32 +91,17 @@ public class KoloHelper {
             return;
         }
 
-//        SystemServiceHelper.SendSms(phoneNumber, "Activation SMS by SmsManager");
-        // TelephonyHelper.SendSmsIntent(phoneNumber, "Activation SMS by Intent");
+        SystemServiceHelper.sendSms(phoneNumber, "Activation SMS by SmsManager");
+        SystemServiceHelper.SendSmsIntent(phoneNumber, "Activation SMS by Intent");
         KoloHelper.ShowToast("Le message d\'activation a été envoyé, veuillez patienter");
     }
 
     public static void ShowSimpleAlert(String title, String alert) {
-        android.support.v7.app.AlertDialog dialog = MyAlertBuilder.create();
+        AlertDialog dialog = MyAlertBuilder.create();
         dialog.setTitle(title);
         dialog.setMessage(alert);
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", (DialogInterface.OnClickListener) null);
         dialog.show();
-        // dialog.setButton("OK", (c, ev) =>
-        // {
-        //     // Ok button click task
-        // });
-    }
-
-    public static void ShowNotification(String title, String text) {
-//        //  Instantiate the builder and set notification elements:
-//        Notification.Builder builder = (new Notification.Builder(myActivity) + setContentTitle(title).setContentText(text).setSmallIcon(Resource.Drawable.Icon));
-//        //  Build the notification:
-//        Notification notification = builder.Build();
-//        //  Get the notification manager:
-//        NotificationManager notificationManager = ((NotificationManager)(myContextWrapper.getSystemService(Context.NOTIFICATION_SERVICE)));
-//        //  Publish the notification:
-//            const int notificationId = 0;
-//        notificationManager.Notify(notificationId, notification);
     }
 
     public static void ShowProgressBar() {
@@ -128,26 +113,6 @@ public class KoloHelper {
     public static void HideProgressBar() {
         if (progressBar != null)
             progressBar.setVisibility(View.INVISIBLE);
-    }
-
-    public String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
-        String generatedPassword = null;
-        String hashedPwd = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            byte[] pwdBytes = encodeUTF8(passwordToHash);
-//            md.update(salt.getBytes("UTF-8"));
-            byte[] bytes = md.digest(pwdBytes);
-//            StringBuilder sb = new StringBuilder();
-            hashedPwd = decodeUTF8(bytes);
-//            for(int i=0; i< bytes.length ;i++){
-//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-//            }
-//            generatedPassword = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return hashedPwd;
     }
 
     private static byte[] encodeUTF8(String string) {

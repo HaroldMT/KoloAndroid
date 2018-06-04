@@ -8,10 +8,12 @@ import android.widget.ImageView;
 
 import com.google.zxing.WriterException;
 
+import butterknife.ButterKnife;
+import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.QrCodeHelper;
 
 import static fr.cyberix.kolo.helpers.ScannerHelper.generateQRCode_general;
-import fr.cyberix.kolo.R;
 
 public class KoloUserQRCodeActivity extends AppCompatActivity {
 
@@ -19,13 +21,16 @@ public class KoloUserQRCodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(fr.cyberix.kolo.R.layout.activity_kolo_user_qrcode);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
 
         //QR code generator
-        String qrcodedata = String.valueOf(new QrCodeHelper());
+        String qrCodeData = QrCodeHelper.GenerateQrCodeData();
         ImageView imageView = findViewById(R.id.img_usrprof_qrcode);
 
         try {
-            generateQRCode_general(qrcodedata, imageView);
+            generateQRCode_general(qrCodeData, imageView);
         } catch (WriterException e) {
             e.printStackTrace();
         }
