@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightgrayline"
     android:id="@+id/drawer_nav"
-    tools:context=".DashboardActivity">
+    tools:context=".activities.DashboardActivity">
 
     <FrameLayout
         android:orientation="vertical"
