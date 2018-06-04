@@ -18,8 +18,7 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
-import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
-import fr.cyberix.kolo.fragments.KoloNotificationFragment;
+import fr.cyberix.kolo.fragments.*;
 import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
@@ -95,16 +94,15 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         if (toggle.onOptionsItemSelected(item)) {
             return (true);
         }
-        Intent intent;
+
         switch (item.getItemId()) {
             case R.id.draw_menu_home:
                 if (!KoloHelper.getMyActivity().getClass().equals(DashboardActivity.class)) {
                     startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
                 }
                 break;
-            case R.id.card_dash_drawheader:
-                intent = new Intent(this, KoloUserProfilActivity.class);
-                startActivity(intent);
+            case R.id.drawMenuProfilloutline:
+                startActivity(new Intent(DashboardActivity.this, KoloUserProfilActivity.class));
                 break;
             case R.id.draw_menu_search:
                 showProfile();
