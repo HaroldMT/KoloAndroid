@@ -29,13 +29,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         cardKoloRetrieve = findViewById(R.id.card_view_kolo_retrait);
         cardKoloTransfer = findViewById(R.id.card_view_kolo_tranfer);
         cardKoloPayement = findViewById(R.id.card_view_kolo_payement);
-        cardDashDrawer = findViewById(R.id.card_dash_drawheader);
+        //cardDashDrawer = findViewById(R.id.card_dash_drawheader);
 
         //Click listeners to cards
         cardKoloRetrieve.setOnClickListener(this);
         cardKoloPayement.setOnClickListener(this);
         cardKoloTransfer.setOnClickListener(this);
-        cardDashDrawer.setOnClickListener(this);
+        //cardDashDrawer.setOnClickListener(this);
 
 
         //Drawer animation and toggle

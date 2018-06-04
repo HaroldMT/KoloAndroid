@@ -183,8 +183,22 @@ public class SplashActivity extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
-        KoloHelper.initialize(this, this, this);
 
+        Thread timer = new Thread(){
+            public void run(){
+                try {
+                    sleep(500);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally {
+                    //startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
+                }
+            }
+        };
+
+        timer.start();
+        KoloHelper.initialize(this, this, this);
 
         if (ConfigHelper.getRegistering())
             startActivity(new Intent(getApplicationContext(), SignUpConfirmationActivity.class));
@@ -201,21 +215,6 @@ public class SplashActivity extends AppCompatActivity {
             if (gotoLoginActivity)
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-
-        Thread timer = new Thread(){
-            public void run(){
-                try {
-                    sleep(500);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                finally {
-                    startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
-                }
-            }
-        };
-
-        timer.start();
 
         finish();
     }
