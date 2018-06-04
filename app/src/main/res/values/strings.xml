@@ -162,6 +162,8 @@
     <string name="showmyqrcode">Show my QR Code</string>
     <string name="username">Username</string>
     <string name="phonenum">Phone number</string>
+    <string name="welcomeback">Welcome back,</string>
+    <string name="accountbalance">Account balance</string>
 
 
 </resources>
