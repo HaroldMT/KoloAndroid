@@ -17,7 +17,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 public abstract class PermissionHelper {
-
+    private static final int MY_PERMISSIONS_REQUEST_CODE = 123;
     public static boolean verifyPermissions(int[] grantResults) {
         // At least one result must be checked.
         if (grantResults.length < 1) {
@@ -34,7 +34,7 @@ public abstract class PermissionHelper {
     }
 
     public static boolean checkPermissions(final Context mContext, final AppCompatActivity
-    mActivity, final int permissionRequestCode) {
+    mActivity) {
         if (android.support.v4.content.ContextCompat.checkSelfPermission(mActivity, Manifest.permission.SEND_SMS)
                 + ContextCompat.checkSelfPermission(
                 mActivity, Manifest.permission.READ_SMS)
@@ -76,7 +76,7 @@ public abstract class PermissionHelper {
                                         Manifest.permission.READ_CONTACTS,
                                         Manifest.permission.INTERNET,
                                 },
-                                permissionRequestCode
+                                MY_PERMISSIONS_REQUEST_CODE
                         );
                     }
                 });
@@ -94,7 +94,7 @@ public abstract class PermissionHelper {
                                 Manifest.permission.READ_CONTACTS,
                                 Manifest.permission.INTERNET,
                         },
-                        permissionRequestCode
+                        MY_PERMISSIONS_REQUEST_CODE
                 );
             }
         } else {
