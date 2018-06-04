@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import fr.cyberix.kolo.R;
 
 public class KoloTransferActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener{
@@ -19,7 +20,7 @@ public class KoloTransferActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kolo_transfer);
+        setContentView(fr.cyberix.kolo.R.layout.activity_kolo_transfer);
     }
 
     /**

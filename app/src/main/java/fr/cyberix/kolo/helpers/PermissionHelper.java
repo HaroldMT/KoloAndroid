@@ -36,14 +36,15 @@ public abstract class PermissionHelper {
     public static boolean checkPermissions(final Context mContext, final AppCompatActivity
     mActivity) {
         if (android.support.v4.content.ContextCompat.checkSelfPermission(mActivity, Manifest.permission.SEND_SMS)
-                + ContextCompat.checkSelfPermission(
-                mActivity, Manifest.permission.READ_SMS)
-                + ContextCompat.checkSelfPermission(
-                mActivity, Manifest.permission.RECEIVE_SMS)
-                + ContextCompat.checkSelfPermission(
-                mActivity, Manifest.permission.READ_CONTACTS)
-                + ContextCompat.checkSelfPermission(
-                mActivity, Manifest.permission.INTERNET)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.READ_SMS)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.RECEIVE_SMS)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.READ_CONTACTS)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.READ_PHONE_STATE)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.INTERNET)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_CONTACTS)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.ACCESS_FINE_LOCATION)
+                + ContextCompat.checkSelfPermission(mActivity, Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Do something, when permissions not granted
@@ -56,7 +57,15 @@ public abstract class PermissionHelper {
                     || ActivityCompat.shouldShowRequestPermissionRationale(
                     mActivity, Manifest.permission.READ_CONTACTS)
                     || ActivityCompat.shouldShowRequestPermissionRationale(
-                    mActivity, Manifest.permission.INTERNET)) {
+                    mActivity, Manifest.permission.INTERNET)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    mActivity, Manifest.permission.READ_PHONE_STATE)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    mActivity, Manifest.permission.WRITE_CONTACTS)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    mActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                    mActivity, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 // If we should give explanation of requested permissions
 
                 // Show an alert dialog here with request explanation
@@ -75,6 +84,10 @@ public abstract class PermissionHelper {
                                         Manifest.permission.READ_SMS,
                                         Manifest.permission.READ_CONTACTS,
                                         Manifest.permission.INTERNET,
+                                        Manifest.permission.READ_PHONE_STATE,
+                                        Manifest.permission.WRITE_CONTACTS,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                                        Manifest.permission.ACCESS_FINE_LOCATION,
                                 },
                                 MY_PERMISSIONS_REQUEST_CODE
                         );
@@ -93,6 +106,10 @@ public abstract class PermissionHelper {
                                 Manifest.permission.READ_SMS,
                                 Manifest.permission.READ_CONTACTS,
                                 Manifest.permission.INTERNET,
+                                Manifest.permission.READ_PHONE_STATE,
+                                Manifest.permission.WRITE_CONTACTS,
+                                Manifest.permission.ACCESS_COARSE_LOCATION,
+                                Manifest.permission.ACCESS_FINE_LOCATION,
                         },
                         MY_PERMISSIONS_REQUEST_CODE
                 );

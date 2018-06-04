@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import fr.cyberix.kolo.R;
 
 public class KoloMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

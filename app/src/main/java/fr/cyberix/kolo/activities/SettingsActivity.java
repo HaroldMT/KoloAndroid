@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 
 import java.util.List;
+import fr.cyberix.kolo.R;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -32,19 +33,7 @@ import java.util.List;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity {
-
-    /**
-     * A preference value change listener that updates the preference's summary
-     * to reflect its new value.
-     */
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), KoloMainActivity.class);
-        startActivityForResult(myIntent, 0);
-        return true;
-
-    }
+public class SettingsActivity extends fr.cyberix.kolo.activities.AppCompatPreferenceActivity {
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
@@ -68,7 +57,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 // using RingtoneManager.
                 if (TextUtils.isEmpty(stringValue)) {
                     // Empty values correspond to 'silent' (no ringtone).
-                    preference.setSummary(R.string.pref_ringtone_silent);
+                    preference.setSummary(fr.cyberix.kolo.R.string.pref_ringtone_silent);
 
                 } else {
                     Ringtone ringtone = RingtoneManager.getRingtone(
@@ -92,6 +81,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return true;
         }
     };
+
+    /**
+     * A preference value change listener that updates the preference's summary
+     * to reflect its new value.
+     */
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), fr.cyberix.kolo.activities.KoloMainActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+
+    }
 
     /**
      * Helper method to determine if the device has an extra-large screen. For

@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,28 +12,28 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import fr.cyberix.kolo.adapters.NotificationRowItemsAdapter;
-import fr.cyberix.kolo.model.entities.KoloNotification;
+import fr.cyberix.kolo.adapters.CustBalHistoryRowItemsAdapter;
+import fr.cyberix.kolo.model.entities.CustomerBalanceHistory;
+import fr.cyberix.kolo.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link KoloNotificationFragment.OnFragmentInteractionListener} interface
+ * {@link Customer_BalhistoryFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link KoloNotificationFragment#newInstance} factory method to
+ * Use the {@link Customer_BalhistoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KoloNotificationFragment extends Fragment {
+public class Customer_BalhistoryFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     //Notification list view parameters
-
     private RecyclerView recyclerview;
-    private List<KoloNotification> notifitems;
+    private List<CustomerBalanceHistory> custitems;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -41,7 +41,7 @@ public class KoloNotificationFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public KoloNotificationFragment() {
+    public Customer_BalhistoryFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +51,11 @@ public class KoloNotificationFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment KoloNotificationFragment.
+     * @return A new instance of fragment Customer_BalhistoryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static KoloNotificationFragment newInstance(String param1, String param2) {
-        KoloNotificationFragment fragment = new KoloNotificationFragment();
+    public static Customer_BalhistoryFragment newInstance(String param1, String param2) {
+        Customer_BalhistoryFragment fragment = new Customer_BalhistoryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,16 +72,15 @@ public class KoloNotificationFragment extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //notification recycler view code here
-        View view = inflater.inflate(R.layout.fragment_kolo_notification, container, false);
-        recyclerview = view.findViewById(R.id.rylv_notif_rowitems);
+        View view = inflater.inflate(fr.cyberix.kolo.R.layout.fragment_customer__balhistory, container, false);
+        recyclerview = view.findViewById(R.id.rylv_custbal_rowitems);
         recyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        NotificationRowItemsAdapter adapter = new NotificationRowItemsAdapter(this.getActivity(), notifitems);
+        CustBalHistoryRowItemsAdapter adapter = new CustBalHistoryRowItemsAdapter(this.getActivity(), custitems);
         recyclerview.setAdapter(adapter);
 
         return view;
@@ -97,7 +96,6 @@ public class KoloNotificationFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override

@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.fragments.*;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +11,14 @@ import com.google.zxing.WriterException;
 import fr.cyberix.kolo.helpers.QrCodeHelper;
 
 import static fr.cyberix.kolo.helpers.ScannerHelper.generateQRCode_general;
+import fr.cyberix.kolo.R;
 
 public class KoloUserQRCodeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kolo_user_qrcode);
+        setContentView(fr.cyberix.kolo.R.layout.activity_kolo_user_qrcode);
 
         //QR code generator
         String qrcodedata = String.valueOf(new QrCodeHelper());

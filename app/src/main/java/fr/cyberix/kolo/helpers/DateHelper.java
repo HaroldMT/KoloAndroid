@@ -36,11 +36,13 @@ public final class DateHelper {
 
     public static Date String2Date(String s)
     {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(KoloConstants.DATE_FORMAT_FOR_SERVICE);
-        try {
-            return simpleDateFormat.parse(s);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (s != null | s != "") {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(KoloConstants.DATE_FORMAT_FOR_SERVICE);
+            try {
+                return simpleDateFormat.parse(s);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         return  null;
     }

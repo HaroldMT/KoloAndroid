@@ -1,4 +1,4 @@
-package fr.cyberix.kolo;
+package fr.cyberix.kolo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import fr.cyberix.kolo.helpers.DateHelper;
 import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.PermissionHelper;
+import fr.cyberix.kolo.R;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView tv;
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(fr.cyberix.kolo.R.layout.activity_splash);
 
         tv = findViewById(R.id.splash_text);
         iv = findViewById(R.id.splash_image);

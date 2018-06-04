@@ -11,7 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.SparseIntArray;
 import android.view.View;
 
-import fr.cyberix.kolo.KoloMainActivity;
+import fr.cyberix.kolo.activities.KoloMainActivity;
 
 public abstract class AbsRuntimePermission extends KoloMainActivity{
     private SparseIntArray mErrorString;
