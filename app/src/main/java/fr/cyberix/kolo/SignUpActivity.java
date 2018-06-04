@@ -292,6 +292,8 @@ public class SignUpActivity extends AppCompatActivity
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        ConfigHelper.getAccountInfo().setRegistred(false);
+        ConfigHelper.getAccountInfo().setRegistring(true);
         ConfigHelper.saveConfig();
         startActivity(new Intent(getBaseContext(), SignUpConfirmationActivity.class));
         finish();
@@ -317,10 +319,10 @@ public class SignUpActivity extends AppCompatActivity
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                mRegistration.setDeviceId("1111111111");
-                mRegistration.setSimSerialNumber("1111111111");
-                mRegistration.setOperatorDeviceSim("TTelecom");
-                mRegistration.setSimSubscriberId(mRegistration.getFirstName());
+                //mRegistration.setDeviceId("1111111111");
+                //mRegistration.setSimSerialNumber("1111111111");
+                //mRegistration.setOperatorDeviceSim("TTelecom");
+                //mRegistration.setSimSubscriberId(mRegistration.getFirstName());
 
                 mRegistration = SerializationHelper.fromJson(
                         new KolOthenticor(null
@@ -333,7 +335,6 @@ public class SignUpActivity extends AppCompatActivity
             } catch (Exception e) {
                 return null;
             }
-            mAccountInfo.setMobileDevice(mMobileDevice);
             return mRegistration;
         }
 
@@ -362,8 +363,7 @@ public class SignUpActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(final Registration myRegistration) {
-            mRegistration = myRegistration;
-            final Boolean success = myRegistration != null && mAccountInfo.getRegistering();
+            final Boolean success = mRegistration != null && mRegistration.getRegistrationStatusCode().equalsIgnoreCase(KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {

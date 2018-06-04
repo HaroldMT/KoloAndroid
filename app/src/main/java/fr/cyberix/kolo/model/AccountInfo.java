@@ -43,12 +43,12 @@ public final class AccountInfo {
 
     @NonNull
     public Boolean getRegistered() {
-        return registration != null;
+        return isRegistred;
     }
 
     @NonNull
     public Boolean getRegistering() {
-        return registration != null;
+        return isRegistring ;
     }
 
     public Customer getCustomer() {

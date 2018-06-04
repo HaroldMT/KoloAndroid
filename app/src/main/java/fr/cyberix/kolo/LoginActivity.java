@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar loginProgressBar;
     @BindView(R.id.txt_edit_login_phone)
     EditText inputPhone;
-    @BindView(R.id.txt_input_login_passphrase)
+    @BindView(R.id.txt_edit_login_passphrase)
     TextInputEditText inputPassword;
     @BindView(R.id.login_button)
     Button btnLogin;

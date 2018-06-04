@@ -116,6 +116,8 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
         _btnConfirmRegistration.setEnabled(true);
         setResult(RESULT_OK, null);
         ConfigHelper.getAccountInfo().getRegistration().setRegistrationStatusCode(KoloConstants.REGISTRATION_STATUS_COMPLETED);
+        ConfigHelper.getAccountInfo().setRegistred(true);
+        ConfigHelper.getAccountInfo().setRegistring(false);
         ConfigHelper.getAccountInfo().setCustomer(customer);
         ConfigHelper.saveConfig();
         startActivity(new Intent(getBaseContext(), LoginActivity.class));
