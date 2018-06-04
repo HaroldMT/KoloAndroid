@@ -180,24 +180,9 @@ public class SplashActivity extends AppCompatActivity {
         tv = findViewById(R.id.splash_text);
         iv = findViewById(R.id.splash_image);
 
-        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
-        tv.startAnimation(myanim);
-        iv.startAnimation(myanim);
-
-        Thread timer = new Thread(){
-            public void run(){
-                try {
-                    sleep(500);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                finally {
-                    //startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
-                }
-            }
-        };
-
-        timer.start();
+        Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
+        tv.startAnimation(myAnim);
+        iv.startAnimation(myAnim);
         KoloHelper.initialize(this, this, this);
 
         if (ConfigHelper.getRegistering())
@@ -215,6 +200,21 @@ public class SplashActivity extends AppCompatActivity {
             if (gotoLoginActivity)
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+
+        Thread timer = new Thread(){
+            public void run(){
+                try {
+                    sleep(500);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally {
+                    startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
+                }
+            }
+        };
+
+        timer.start();
 
         finish();
     }
