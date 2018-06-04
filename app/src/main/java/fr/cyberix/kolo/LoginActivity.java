@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
     LoginAttempt loginAttempt = null;
     UserSignInTask userSignInTask = null;
     Customer customer = null;
-    private RefResult loginResult = null;
 
     RelativeLayout login_view, login_creds;
     LinearLayout signUp_view;
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-
+        loadConfig();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,30 +106,30 @@ public class LoginActivity extends AppCompatActivity {
         // 2000 is timeout for splash
 
         handler.postDelayed(runnable, 2000);
+//
+//        Button nbutton = findViewById(R.id.login_button);
+//        nbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+//            }
+//        });
 
-        Button nbutton = findViewById(R.id.login_button);
-        nbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, KoloMainActivity.class));
-            }
-        });
-
-        Button mbutton = findViewById(R.id.signUp_button);
-        mbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-            }
-        });
-
-        Button fbutton = findViewById(R.id.forgotten_pass_button);
-        fbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-            }
-        });
+//        Button mbutton = findViewById(R.id.signUp_button);
+//        mbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+//            }
+//        });
+//
+//        Button fbutton = findViewById(R.id.forgotten_pass_button);
+//        fbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+//            }
+//        });
 
     }
 
@@ -232,22 +231,23 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private class UserSignInTask extends AsyncTask<Void, Void, RefResult> {
+    private class UserSignInTask extends AsyncTask<Void, Void, LoginAttempt> {
         UserSignInTask() {
+
         }
 
         @Override
-        protected RefResult doInBackground(Void... params) {
-            LoginAttempt loginResult = new LoginAttempt();
+        protected LoginAttempt doInBackground(Void... params) {
+
             try {
-                loginResult = SerializationHelper.fromJson(new KolOthenticor()
+                loginAttempt = SerializationHelper.fromJson(new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl)
                         .DoLogin(SerializationHelper
                         .toJson(loginAttempt,loginAttempt.getClass()))
-                        ,loginResult.getClass());
+                        ,loginAttempt.getClass());
             } catch (Exception e) {
                 return null;
             }
-            return loginResult.getRefResult();
+            return loginAttempt;
         }
 
         @Override
@@ -275,14 +275,14 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(final RefResult myLoginResult) {
+        protected void onPostExecute(final LoginAttempt myLoginResult) {
             final Boolean success = (myLoginResult != null) && myLoginResult.getResultCode().equals
                     (KoloConstants.REFSTATUS_RESULT_SUCCESS);
             new Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                             if (success) {
-                                loginResult = myLoginResult;
+                                //loginResult = myLoginResult;
                                 onLoginSuccess();
                             } else onLoginFailed();
                             loginProgressBar.setVisibility(View.INVISIBLE);

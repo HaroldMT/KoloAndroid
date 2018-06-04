@@ -180,11 +180,10 @@ public class SplashActivity extends AppCompatActivity {
         tv = findViewById(R.id.splash_text);
         iv = findViewById(R.id.splash_image);
 
-        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
-        tv.startAnimation(myanim);
-        iv.startAnimation(myanim);
+        Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
+        tv.startAnimation(myAnim);
+        iv.startAnimation(myAnim);
         KoloHelper.initialize(this, this, this);
-
 
         if (ConfigHelper.getRegistering())
             startActivity(new Intent(getApplicationContext(), SignUpConfirmationActivity.class));
