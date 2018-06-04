@@ -14,8 +14,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
 import fr.cyberix.kolo.R;
-import fr.cyberix.kolo.fragments.*;
+import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
+import fr.cyberix.kolo.fragments.KoloNotificationFragment;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -69,7 +71,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         switch (item.getItemId()){
             case R.id.draw_menu_home: startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
                 break;
-            default: break;
+            case R.id.drawMenuProfilloutline: startActivity(new Intent(DashboardActivity.this, KoloUserProfilActivity.class));
+                break;
+                default: break;
         }
         return super.onOptionsItemSelected(item);
     }
