@@ -380,7 +380,6 @@ public class SignUpActivity extends AppCompatActivity
                         }
                     }, 3000);
         }
-
         @Override
         protected void onCancelled() {
             userSignUpTask = null;
