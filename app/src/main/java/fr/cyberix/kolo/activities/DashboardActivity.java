@@ -89,6 +89,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.drawer_historic:
                 fragmentClass = Customer_BalhistoryFragment.class;
                 break;
+            case R.id.drawer_dash:
+                //fragmentClass = TestFragment.class;
+                break;
             default:
                 break;
         }
@@ -100,6 +103,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fra_lay_nav, myfragment).commit();
+        menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         drawerLayout.closeDrawers();
     }

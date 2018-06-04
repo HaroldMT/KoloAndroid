@@ -165,6 +165,8 @@
     <string name="welcomeback">Welcome back,</string>
     <string name="accountbalance">Account balance</string>
     <string name="profil">Profil</string>
+    <string name="include_passphrase">Include passphrase</string>
+    <string name="needConfirmation">Need Confirmation</string>
 
 
 </resources>
