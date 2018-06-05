@@ -14,12 +14,23 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
 import fr.cyberix.kolo.fragments.KoloNotificationFragment;
+import fr.cyberix.kolo.helpers.ConfigHelper;
+import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //BindView initialisation
+    @BindView(R.id.txtDashFirstname)
+    TextView _firstnameTextview;
+    @BindView(R.id.txtDashMainBalance)
+    TextView _mainbalanceTextview;
 
     private CardView cardKoloRetrieve, cardKoloTransfer, cardKoloPayement, cardDashDrawer;
     private DrawerLayout drawerLayout;
@@ -28,7 +39,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
+        ButterKnife.bind(this);
+        KoloHelper.setActivity(this);
         //Define Cards
         cardKoloRetrieve = findViewById(R.id.card_view_kolo_retrait);
         cardKoloTransfer = findViewById(R.id.card_view_kolo_tranfer);
@@ -41,6 +53,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         cardKoloTransfer.setOnClickListener(this);
         //cardDashDrawer.setOnClickListener(this);
 
+        //Retieve User name and account balance
+        String accbalstring = String.valueOf(ConfigHelper.getAccountInfo().getCustomer().getBalance());
+        String firstnamestring = ConfigHelper.getAccountInfo().getPerson().getFirstname();
+
+        //Set data in textview
+        _firstnameTextview.setText(firstnamestring);
+        _mainbalanceTextview.setText(accbalstring);
 
         //Drawer animation and toggle
         drawerLayout = findViewById(R.id.drawer_nav);
