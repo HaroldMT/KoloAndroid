@@ -40,6 +40,8 @@
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.DashboardActivity" />
         <activity android:name=".activities.KoloTransferActivity" />
+        <activity android:name=".activities.KoloUserProfilActivity" />
+        <activity android:name=".activities.KoloUserQRCodeActivity" />
         <activity android:name=".activities.SignUpConfirmationActivity"></activity>
         <activity android:name=".activities.KoloUserProfilActivity"></activity>
         <activity android:name=".activities.KoloUserQRCodeActivity"></activity>

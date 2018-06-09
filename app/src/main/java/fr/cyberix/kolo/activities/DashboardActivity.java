@@ -14,11 +14,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.fragments.*;
+import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
@@ -32,8 +35,15 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     NavigationView nvdrawer;
     @BindView(R.id.drawer_nav)
     DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle toggle;
+
+    //BindView initialisation
+    @BindView(R.id.txtDashFirstname)
+    TextView _firstnameTextview;
+    @BindView(R.id.txtDashMainBalance)
+    TextView _mainbalanceTextview;
+
     private CardView cardDashDrawer;
+    private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,28 +60,29 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 KoloHelper.ShowToast("test");
                 showProfile();
 
-            }
-        });
-//        LinearLayout header = (LinearLayout) headerView.findViewById(R.id.drawerHeaderLinearLayout);
-//        header.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showProfile();
-//            }
-//        });
-//        header.setClickable(true);
-//        header.setVisibility(View.INVISIBLE);
         //Click listeners to cards
         cardKoloRetrieve.setOnClickListener(this);
         cardKoloPayement.setOnClickListener(this);
         cardKoloTransfer.setOnClickListener(this);
+        //cardDashDrawer.setOnClickListener(this);
 
+        //Retieve User name and account balance
+        String accbalstring = String.valueOf(ConfigHelper.getAccountInfo().getCustomer().getBalance());
+        String firstnamestring = ConfigHelper.getAccountInfo().getPerson().getFirstname();
+
+        //Set data in textview
+        _firstnameTextview.setText(firstnamestring);
+        _mainbalanceTextview.setText(accbalstring);
 
         //Drawer animation and toggle
+        drawerLayout = findViewById(R.id.drawer_nav);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Navigation item click events handling
+        NavigationView nvdrawer = findViewById(R.id.drawer_naview);
         setupDrawerContent(nvdrawer);
     }
 
@@ -102,9 +113,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 }
                 break;
             case R.id.drawMenuProfilloutline:
-                startActivity(new Intent(DashboardActivity.this, KoloUserProfilActivity.class));
-                break;
-            case R.id.draw_menu_search:
                 showProfile();
                 break;
             default:
@@ -124,6 +132,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.drawer_historic:
                 fragmentClass = Customer_BalhistoryFragment.class;
                 break;
+            case R.id.drawer_dash:
+                //fragmentClass = TestFragment.class;
+                break;
             default:
                 break;
         }
@@ -135,6 +146,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fra_lay_nav, myfragment).commit();
+        menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         drawerLayout.closeDrawers();
     }
@@ -157,8 +169,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.card_dash_drawheader:
-                intent = new Intent(this, KoloUserProfilActivity.class);
-                startActivity(intent);
+                showProfile();
                 break;
             default:
                 break;
