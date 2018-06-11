@@ -19,8 +19,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
-import fr.cyberix.kolo.fragments.*;
-import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
+import fr.cyberix.kolo.fragments.KoloNotificationFragment;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
 
@@ -35,8 +35,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     NavigationView nvdrawer;
     @BindView(R.id.drawer_nav)
     DrawerLayout drawerLayout;
-
-    //BindView initialisation
     @BindView(R.id.txtDashFirstname)
     TextView _firstnameTextview;
     @BindView(R.id.txtDashMainBalance)
@@ -51,14 +49,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-
-        View headerView = nvdrawer.getHeaderView(0);
-        cardDashDrawer = headerView.findViewById(R.id.card_dash_drawheader);
-        cardDashDrawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                KoloHelper.ShowToast("test");
-                showProfile();
 
         //Click listeners to cards
         cardKoloRetrieve.setOnClickListener(this);
@@ -75,15 +65,22 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         _mainbalanceTextview.setText(accbalstring);
 
         //Drawer animation and toggle
-        drawerLayout = findViewById(R.id.drawer_nav);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Navigation item click events handling
-        NavigationView nvdrawer = findViewById(R.id.drawer_naview);
         setupDrawerContent(nvdrawer);
+
+        View headerView = nvdrawer.getHeaderView(0);
+        cardDashDrawer = headerView.findViewById(R.id.card_dash_drawheader);
+        cardDashDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showProfile();
+            }
+        });
     }
 
     public void showProfile() {
@@ -165,7 +162,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         Intent intent;
         switch (v.getId()) {
             case R.id.card_view_kolo_tranfer:
-                intent = new Intent(this, KoloTransferActivity.class);
+                intent = new Intent(this, KoloTransferP2pSendActivity.class);
                 startActivity(intent);
                 break;
             case R.id.card_dash_drawheader:

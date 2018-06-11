@@ -1,11 +1,9 @@
 package fr.cyberix.kolo.activities;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +22,7 @@ import java.util.GregorianCalendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.fragments.DatePickerFragment;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
@@ -98,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
                 new DatePickerDialog(SignUpActivity.this, datePickerDialog, now.get(Calendar
-                        .YEAR), now.get
+                                                                                            .YEAR), now.get
                         (Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH)).show();
             }
         };
@@ -204,19 +203,6 @@ public class SignUpActivity extends AppCompatActivity
         return valid;
     }
 
-    /**
-     * To set date on TextView
-     *
-     * @param calendar
-     */
-    private void setDate(final Calendar calendar) {
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-
-        ((TextView) findViewById(R.id.txtSignUpDob))
-                .setText(dateFormat.format(calendar.getTime()));
-
-    }
-
     public void signup() {
         Log.d(TAG, "Signup");
         if (!validate()) {
@@ -225,6 +211,26 @@ public class SignUpActivity extends AppCompatActivity
         }
         userSignUpTask = new UserSignUpTask(registration, accountInfo);
         userSignUpTask.execute((Void) null);
+    }
+
+    public void onSignupFailed() {
+        if (userSignUpTask.mRegistration != null && userSignUpTask.mRegistration
+                .getIdRegistration() == -10) {
+            Toast.makeText(getBaseContext(), "This number is already register; it is your " +
+                    "number, try to sign in", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getBaseContext(), "Registration failed", Toast.LENGTH_LONG).show();
+        }
+        _signupButton.setEnabled(true);
+    }
+
+    private void showDate() {
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, myYear);
+        calendar.set(Calendar.MONTH, myMonth - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, myDay);
+        _dobValue = calendar.getTime();
+        _dobButton.setText(KoloHelper.getDateFormat().format(_dobValue));
     }
 
     /**
@@ -242,24 +248,17 @@ public class SignUpActivity extends AppCompatActivity
         // Do something with the date chosen by the user
     }
 
-    private void showDate() {
-        calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, myYear);
-        calendar.set(Calendar.MONTH, myMonth - 1);
-        calendar.set(Calendar.DAY_OF_MONTH, myDay);
-        _dobValue = calendar.getTime();
-        _dobButton.setText(KoloHelper.getDateFormat().format(_dobValue));
-    }
+    /**
+     * To set date on TextView
+     *
+     * @param calendar
+     */
+    private void setDate(final Calendar calendar) {
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
-    public void onSignupFailed() {
-        if (userSignUpTask.mRegistration != null && userSignUpTask.mRegistration
-                .getIdRegistration() == -10) {
-            Toast.makeText(getBaseContext(), "This number is already register; it is your " +
-                    "number, try to sign in", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getBaseContext(), "Registration failed", Toast.LENGTH_LONG).show();
-        }
-        _signupButton.setEnabled(true);
+        ((TextView) findViewById(R.id.txtSignUpDob))
+                .setText(dateFormat.format(calendar.getTime()));
+
     }
 
     /**
@@ -284,27 +283,6 @@ public class SignUpActivity extends AppCompatActivity
         finish();
     }
 
-    /**
-     * Create a DatePickerFragment class that extends DialogFragment.
-     * Define the onCreateDialog() method to return an instance of DatePickerDialog
-     */
-    public static class DatePickerFragment extends DialogFragment {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-
-            return new DatePickerDialog(getActivity(),
-                    (DatePickerDialog.OnDateSetListener)
-                            getActivity(), year, month, day);
-        }
-
-    }
-
     private class UserSignUpTask extends AsyncTask<Void, Void, Registration> {
 
         private Registration mRegistration;
@@ -325,17 +303,12 @@ public class SignUpActivity extends AppCompatActivity
         @Override
         protected Registration doInBackground(Void... params) {
             try {
-                //mRegistration.setDeviceId("1111111111");
-                //mRegistration.setSimSerialNumber("1111111111");
-                //mRegistration.setOperatorDeviceSim("TTelecom");
-                //mRegistration.setSimSubscriberId(mRegistration.getFirstName());
-
                 mRegistration = SerializationHelper.fromJson(
                         new KolOthenticor(null
                                 , KoloConstants
-                                .KolOthenticor_BaseUrl)
+                                                  .KolOthenticor_BaseUrl)
                                 .DoRegistration(SerializationHelper
-                                        .toJson(mRegistration, mRegistration.getClass()))
+                                                        .toJson(mRegistration, mRegistration.getClass()))
                         , mRegistration.getClass());
 
             } catch (Exception e) {
@@ -369,7 +342,8 @@ public class SignUpActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(final Registration myRegistration) {
-            final Boolean success = mRegistration != null && mRegistration.getRegistrationStatusCode().equalsIgnoreCase(KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
+            final Boolean success = mRegistration != null && mRegistration.getRegistrationStatusCode().equalsIgnoreCase(KoloConstants
+                                                                                                                                .REGISTRATION_STATUS_NEEDCONFIRM);
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
@@ -377,8 +351,8 @@ public class SignUpActivity extends AppCompatActivity
                                 registration = myRegistration;
                                 mRegistration = myRegistration;
                                 ConfigHelper.getAccountInfo().getRegistration()
-                                        .setRegistrationStatusCode
-                                                (KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
+                                            .setRegistrationStatusCode
+                                                    (KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
                                 ConfigHelper.getAccountInfo().getRegistration().setIdRegistration(myRegistration.getIdRegistration());
                                 onSignupSuccess();
                             } else onSignupFailed();
@@ -393,6 +367,4 @@ public class SignUpActivity extends AppCompatActivity
             signup_progressBar.setVisibility(View.GONE);
         }
     }
-
-
 }

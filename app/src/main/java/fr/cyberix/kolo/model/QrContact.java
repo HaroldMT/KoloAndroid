@@ -56,4 +56,9 @@ public class QrContact {
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
+
+    public String getFullName() {
+        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
+        return fullName;
+    }
 }

@@ -54,6 +54,7 @@ public class ScannerHelper {
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);//Before QR_CODE_TYPES
         integrator.setPrompt("Scan QR Code");
         integrator.setBeepEnabled(true);
+        integrator.addExtra("requestCode", KoloConstants.QR_SCAN_REQUEST_CODE);
         integrator.setBarcodeImageEnabled(false);
         integrator.initiateScan();
     }
