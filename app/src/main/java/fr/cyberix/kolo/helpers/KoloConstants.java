@@ -19,7 +19,7 @@ public final class KoloConstants {
     //    public static final String ForeasDefaultFolderName = "Foreas";
     public static final String ParamFileName = "refTypeHelper.frs";
     public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    public static final String BaseUrl = "http://4d9ab37f.ngrok.io/KoloWin.CustomerService/";
+    public static final String BaseUrl = "http://7a620a07.ngrok.io/KoloWin.CustomerService/";
     public static final int forceLoginAfterShutdownTimeLimit = 5;
     public static final String REGISTRATION_STATUS_NONE = "NONE";
     public static final String REGISTRATION_STATUS_CANCEL = "CANCEL";
@@ -31,9 +31,8 @@ public final class KoloConstants {
     public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
     public static final String KolOthenticor_BaseUrl = BaseUrl+"KolOthenticor.asmx";
     public static final String KolOSphere_BaseUrl = BaseUrl+"KolOSphere.asmx";
-    public static final String MobileService_BaseUrl = BaseUrl+"MobileService.asmx";
+    public static final String KolOMobileService_BaseUrl = BaseUrl + "MobileService.asmx";
 
     public static final  String DATE_FORMAT_FOR_SERVICE = "yyyy-MM-dd hh:mm:ss";
     public static final int QR_SCAN_REQUEST_CODE = 100;
-
 }

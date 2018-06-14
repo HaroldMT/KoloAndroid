@@ -62,4 +62,5 @@
     <string name="profil">Profil</string>
     <string name="include_passphrase">Include passphrase</string>
     <string name="needConfirmation">Need Confirmation</string>
+    <string name="enter_something">Enter Something</string>
 </resources>

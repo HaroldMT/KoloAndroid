@@ -11,13 +11,17 @@ package fr.cyberix.kolo.helpers;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+
+import fr.cyberix.kolo.R;
 
 import static fr.cyberix.kolo.helpers.KoloConstants.UTF8_CHARSET;
 
@@ -94,6 +98,37 @@ public class KoloHelper {
         SystemServiceHelper.sendSms(phoneNumber, "Activation SMS by SmsManager");
         SystemServiceHelper.SendSmsIntent(phoneNumber, "Activation SMS by Intent");
         KoloHelper.ShowToast("Le message d\'activation a été envoyé, veuillez patienter");
+    }
+
+    protected String showInputDialog() {
+        AppCompatActivity activity = getMyActivity();
+        final String userEntry = "";
+        // get prompts.xml view
+        LayoutInflater layoutInflater = LayoutInflater.from(activity);
+        View promptView = layoutInflater.inflate(R.layout.input_layout, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+        alertDialogBuilder.setView(promptView);
+
+        final TextInputEditText editText = promptView.findViewById(R.id.txt_user_input);
+        // setup a dialog window
+        alertDialogBuilder.setCancelable(false)
+                          .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                              public void onClick(DialogInterface dialog, int id) {
+                                  String tmpUserEntry = editText.getText().toString();
+//                                  userEntry = tmpUserEntry;
+                              }
+                          })
+                          .setNegativeButton("Cancel",
+                                             new DialogInterface.OnClickListener() {
+                                                 public void onClick(DialogInterface dialog, int id) {
+                                                     dialog.cancel();
+                                                 }
+                                             });
+
+        // create an alert dialog
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+        return userEntry;
     }
 
     public static void ShowSimpleAlert(String title, String alert) {

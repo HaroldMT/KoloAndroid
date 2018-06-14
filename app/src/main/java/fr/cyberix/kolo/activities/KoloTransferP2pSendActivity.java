@@ -1,17 +1,21 @@
 package fr.cyberix.kolo.activities;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,20 +39,22 @@ import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.QrCodeHelper;
 import fr.cyberix.kolo.helpers.ScannerHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
+import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.QrContact;
 import fr.cyberix.kolo.model.entities.TransfertP2p;
 import fr.cyberix.kolo.services.KolOSphere;
+import fr.cyberix.kolo.services.MobileService;
 
 public class KoloTransferP2pSendActivity extends AppCompatActivity
         implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = KoloTransferP2pSendActivity.class.getSimpleName();
     @BindView(R.id.btn_trans_search)
-    Button btnAddPersonFromSearch;
+    ImageButton btnAddPersonFromSearch;
     @BindView(R.id.btn_trans_add_contact)
-    Button btnAddPersonFromContact;
+    ImageButton btnAddPersonFromContact;
     @BindView(R.id.btn_trans_scan_qr)
-    Button btnAddPersonFromQr;
+    ImageButton btnAddPersonFromQr;
     @BindView(R.id.switchIncludePassphrase)
     SwitchCompat inclpassswitchcompat;
     @BindView(R.id.switchNeedConfirmation)
@@ -145,8 +151,39 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 
     @OnClick(R.id.btn_trans_search)
     public void QueryNumber(View v) {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.input_layout, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptView);
 
+        final TextInputEditText editText = promptView.findViewById(R.id.txt_user_input);
+        editText.setHint("Numéro de téléphone");
+
+        // setup a dialog window
+        alertDialogBuilder.setCancelable(false)
+                          .setPositiveButton("Rechercher", new DialogInterface.OnClickListener() {
+                              public void onClick(DialogInterface dialog, int id) {
+                                  String telephone = editText.getText().toString();
+                                  if (!ValidationHelper.isValidPhone(telephone)) {
+                                      KoloHelper.ShowSimpleAlert("Erreur", "Numéro de téléphone incorrect");
+                                  } else {
+                                      FindContactByNumberAsync findContactByNumberAsync = new FindContactByNumberAsync(telephone);
+                                      findContactByNumberAsync.execute((Void) null);
+                                  }
+                              }
+                          })
+                          .setNegativeButton("Cancel",
+                                             new DialogInterface.OnClickListener() {
+                                                 public void onClick(DialogInterface dialog, int id) {
+                                                     dialog.cancel();
+                                                 }
+                                             });
+
+        // create an alert dialog
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -246,6 +283,11 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 
     public void onSendMoneyFailed() {
         Log.d(TAG, "onSendMoneyFailed");
+        KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
+    }
+
+    private void onSearchNumberContactFailed() {
+        KoloHelper.ShowSimpleAlert("Échec", "Erreur lors de la recherche du contact");
     }
 
     @OnClick(R.id.btn_trans_cancel)
@@ -254,8 +296,20 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         finish();
     }
 
+    private void setDate(final Calendar calendar) {
+        Log.d(TAG, "setDate");
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+
+        ((TextView) findViewById(R.id.txt_trans_sche_date))
+                .setText(dateFormat.format(calendar.getTime()));
+    }
+
     public void onSendMoneySuccess() {
-        Log.d(TAG, "onSendMoneySuccess");
+        KoloHelper.ShowToast("Fin de l'opération");
+    }
+
+    private void onSearchNumberContactSucces() {
+        KoloHelper.ShowToast("Fin de la recherche");
     }
 
     private class TransfertP2pAsync extends AsyncTask<Void, Void, TransfertP2p> {
@@ -317,13 +371,56 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         }
     }
 
-    private void setDate(final Calendar calendar) {
-        Log.d(TAG, "setDate");
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    private class FindContactByNumberAsync extends AsyncTask<Void, Void, QrContact> {
+        String numberToFind;
 
-        ((TextView) findViewById(R.id.txt_trans_sche_date))
-                .setText(dateFormat.format(calendar.getTime()));
+        public FindContactByNumberAsync(String number) {
+            numberToFind = number;
+        }
+
+        @Override
+        protected QrContact doInBackground(Void... voids) {
+            try {
+                String transResult = new MobileService(null, KoloConstants.KolOMobileService_BaseUrl).GetCustomerByIdCustomerAndNumber(0, numberToFind);
+                QrContact contact = SerializationHelper.fromJson(transResult, QrContact.class);
+                return contact;
+            } catch (Exception ex) {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            sendBtn.setEnabled(false);
+            cancelBtn.setEnabled(false);
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(final QrContact contact) {
+            super.onPostExecute(contact);
+
+            final Boolean success = contact != null;
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            if (success) {
+                                SetQrContact(contact);
+                                onSearchNumberContactSucces();
+                            } else onSearchNumberContactFailed();
+                            progressBar.setVisibility(View.GONE);
+                            sendBtn.setEnabled(true);
+                            cancelBtn.setEnabled(true);
+                        }
+                    }, 3000);
+        }
+
+        @Override
+        protected void onCancelled() {
+            qrContact = null;
+            super.onCancelled();
+        }
     }
-
-
 }

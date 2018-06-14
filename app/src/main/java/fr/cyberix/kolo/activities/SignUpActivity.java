@@ -194,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity
         }
 
         if (!ValidationHelper.isValidPhone(mobile)) {
-            _mobileText.setError("Invalid date of birth");
+            _mobileText.setError("Invalid mobile number");
             valid = false;
         } else {
             _mobileText.setError(null);
