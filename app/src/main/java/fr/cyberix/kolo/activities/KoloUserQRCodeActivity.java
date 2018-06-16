@@ -12,8 +12,9 @@ import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.QrCodeHelper;
+import fr.cyberix.kolo.model.QrContact;
 
-import static fr.cyberix.kolo.helpers.ScannerHelper.generateQRCode_general;
+import static fr.cyberix.kolo.helpers.ScannerHelper.generateQrCode_general;
 
 public class KoloUserQRCodeActivity extends AppCompatActivity {
 
@@ -26,11 +27,12 @@ public class KoloUserQRCodeActivity extends AppCompatActivity {
         KoloHelper.setActivity(this);
 
         //QR code generator
-        String qrCodeData = QrCodeHelper.GenerateQrCodeData();
+        QrContact me = new QrContact();
+        String qrCodeData = QrCodeHelper.GenerateQrCodeData(me, QrContact.class);
         ImageView imageView = findViewById(R.id.img_usrprof_qrcode);
 
         try {
-            generateQRCode_general(qrCodeData, imageView);
+            generateQrCode_general(qrCodeData, imageView);
         } catch (WriterException e) {
             e.printStackTrace();
         }

@@ -34,6 +34,7 @@ public final class SerializationHelper {
                 .create();
         return gson;
     }
+
     public static <T> String toJson(Object source, Class<T> typeOfSrc) {
         return source == null ? "" :
                 gsonBuilder.toJson(source, typeOfSrc);

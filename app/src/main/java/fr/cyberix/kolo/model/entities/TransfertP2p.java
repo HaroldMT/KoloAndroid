@@ -20,6 +20,8 @@ import org.ksoap2.serialization.SoapPrimitive;
 
 import java.util.Hashtable;
 
+import fr.cyberix.kolo.helpers.ConfigHelper;
+
 public class TransfertP2p implements KvmSerializable {
 
     private int idTransfertP2p;
@@ -36,6 +38,7 @@ public class TransfertP2p implements KvmSerializable {
     private Customer customer;
 
     public TransfertP2p() {
+        idSendingCustomer = ConfigHelper.getAccountInfo().getCustomer().getIdCustomer();
     }
 
     public TransfertP2p(SoapObject soapObject) {

@@ -4,14 +4,14 @@ import fr.cyberix.kolo.helpers.ConfigHelper;
 
 public class QrContact {
     int idCustomer;
-    String lineNumber;
+    String telephone;
     String lastName;
     String firstName;
     String middleName;
 
     public QrContact() {
         idCustomer = ConfigHelper.getAccountInfo().getCustomer().getIdCustomer();
-        lineNumber = ConfigHelper.getAccountInfo().getMobileDevice().getLineNumber();
+        telephone = ConfigHelper.getAccountInfo().getMobileDevice().getLineNumber();
         lastName = ConfigHelper.getAccountInfo().getCustomer().getPerson().getLastname();
         firstName = ConfigHelper.getAccountInfo().getCustomer().getPerson().getFirstname();
         middleName = ConfigHelper.getAccountInfo().getCustomer().getPerson().getMiddlename();
@@ -26,11 +26,11 @@ public class QrContact {
     }
 
     public String getLineNumber() {
-        return lineNumber;
+        return telephone;
     }
 
-    public void setLineNumber(String lineNumber) {
-        this.lineNumber = lineNumber;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getLastName() {
@@ -58,7 +58,13 @@ public class QrContact {
     }
 
     public String getFullName() {
-        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
+        StringBuilder sb = new StringBuilder();
+        if (lastName != null) sb.append(lastName + ' ');
+        if (middleName != null) sb.append(lastName + ' ');
+        if (firstName != null) sb.append(lastName + ' ');
+        String fName = sb.toString();
+        String fullName = fName.trim();
+//        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
         return fullName;
     }
 }

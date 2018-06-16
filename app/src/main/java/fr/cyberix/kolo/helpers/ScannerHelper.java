@@ -11,7 +11,6 @@ package fr.cyberix.kolo.helpers;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -54,11 +53,11 @@ public class ScannerHelper {
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);//Before QR_CODE_TYPES
         integrator.setPrompt("Scan QR Code");
         integrator.setBeepEnabled(true);
-        integrator.addExtra("requestCode", KoloConstants.QR_SCAN_REQUEST_CODE);
+        integrator.setRequestCode(KoloConstants.QR_SCAN_REQUEST_CODE);
+//        integrator.addExtra("requestCode", KoloConstants.QR_SCAN_REQUEST_CODE);
         integrator.setBarcodeImageEnabled(false);
         integrator.initiateScan();
     }
-
 
     public static void scanBarcodeFrontCamera(Activity activity, View view) {
         IntentIntegrator integrator = new IntentIntegrator(activity);
@@ -93,11 +92,9 @@ public class ScannerHelper {
         return null;
     }
 
-    public static void generateQRCode_general(String data, ImageView img) throws WriterException {
+    public static void generateQrCode_general(String data, ImageView img) throws WriterException {
         com.google.zxing.Writer writer = new QRCodeWriter();
-        String finaldata = Uri.encode(data, "utf-8");
-
-        BitMatrix bm = writer.encode(finaldata, BarcodeFormat.QR_CODE, 150, 150);
+        BitMatrix bm = writer.encode(data, BarcodeFormat.QR_CODE, 150, 150);
         Bitmap ImageBitmap = Bitmap.createBitmap(150, 150, Bitmap.Config.ARGB_8888);
 
         for (int i = 0; i < 150; i++) {//width
@@ -110,6 +107,7 @@ public class ScannerHelper {
             img.setImageBitmap(ImageBitmap);
         }
     }
+
 
     static Bitmap encodeAsBitmap(String str) {
         BitMatrix result;

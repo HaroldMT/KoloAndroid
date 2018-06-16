@@ -1,14 +1,17 @@
 package fr.cyberix.kolo.helpers;
 
-import fr.cyberix.kolo.model.QrContact;
+import android.net.Uri;
 
 public class QrCodeHelper {
-    public static String GenerateQrCodeData() {
-        QrContact me = new QrContact();
-        return SerializationHelper.toJson(me, QrContact.class);
+    public static <T> String GenerateQrCodeData(T object, Class<T> typeOfSrc) {
+        String jsonContact = SerializationHelper.toJson(object, typeOfSrc);
+        String qrData = Uri.encode(jsonContact, "utf-8");
+        return qrData;
     }
 
-    public static QrContact GetDataFromQrCode(String qrCodeData) {
-        return SerializationHelper.fromJson(qrCodeData, QrContact.class);
+    public static <T> T GetQrContactFromQrCode(String data, Class<T> typeOfSrc) {
+        String jsonObject = Uri.decode(data);
+        T object = SerializationHelper.fromJson(jsonObject, typeOfSrc);
+        return object;
     }
 }

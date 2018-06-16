@@ -3,8 +3,11 @@ package fr.cyberix.kolo.activities;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +76,8 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
     ProgressBar progressBar;
     @BindView(R.id.txtTransSecret)
     TextInputEditText txtTransSecret;
+    @BindView(R.id.txtTransEnterAmt)
+    TextInputEditText txtAmount;
     @BindView(R.id.txt_trans_sche_date)
     TextView txtScheduledDate;
     @BindView(R.id.txt_trans_full_name)
@@ -116,20 +121,45 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == KoloConstants.QR_SCAN_REQUEST_CODE) {
-            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-            if (result != null) {
-                if (result.getContents() == null) {
-                    KoloHelper.ShowToast("Cancelled");
+        try {
+            if (requestCode == KoloConstants.QR_SCAN_REQUEST_CODE) {
+//                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
+                if (result != null) {
+                    if (result.getContents() == null) {
+                        KoloHelper.ShowToast("Cancelled");
+                    } else {
+                        String qrContactString = result.getContents();
+                        QrContact contact = QrCodeHelper.GetQrContactFromQrCode(qrContactString, QrContact.class);
+                        SetQrContact(contact);
+                    }
                 } else {
-                    String qrData = result.getContents();
-                    SetQrContact(QrCodeHelper.GetDataFromQrCode(qrData));
+                    super.onActivityResult(requestCode, resultCode, data);
                 }
-            } else {
-                super.onActivityResult(requestCode, resultCode, data);
+            } else if (requestCode == KoloConstants.PICK_CONTACT_REQUEST_CODE) {
+                Uri contactUri = data.getData();
+                Cursor cursor = getContentResolver().query(contactUri, null, null, null, null);
+                cursor.moveToFirst();
+                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(column);
+                KoloHelper.ShowSimpleAlert("Vérification", "Recherche du compte Kolo pour le numéro " + number);
+                FindContactByNumberAsync findContactByNumberAsync = new FindContactByNumberAsync(number);
+                findContactByNumberAsync.execute((Void) null);
+//                (new normalizePhoneNumberTask()).execute();
+//                Log.d("phone number", cursor.getString(column));
+//                if (resultCode == Activity.RESULT_OK) {
+//                    Uri contactData = data.getData();
+//                    Cursor c = managedQuery(contactData, null, null, null, null);
+//                    if (c.moveToFirst()) {
+//                        String number = c.getString(c.getColumnIndexOrThrow(Contacts.People.NUMBER));
+//                        KoloHelper.ShowSimpleAlert("Vérification", "Recherche du compte Kolo pour le numéro " + number);
+//                        FindContactByNumberAsync findContactByNumberAsync = new FindContactByNumberAsync(number);
+//                        findContactByNumberAsync.execute((Void) null);
+//                    }
+//                }
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+        } catch (Exception ex) {
+            KoloHelper.ShowToast(ex.getMessage());
         }
     }
 
@@ -146,7 +176,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 
     @OnClick(R.id.btn_trans_add_contact)
     public void SelectContact(View v) {
-
+        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+//        Intent intent = new Intent(Intent.ACTION_PICK, Contacts.People.CONTENT_URI);
+        startActivityForResult(intent, KoloConstants.PICK_CONTACT_REQUEST_CODE);
     }
 
     @OnClick(R.id.btn_trans_search)
@@ -252,10 +284,19 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
     @OnClick(R.id.btn_trans_ok)
     public void SendMoney(View v) {
         Log.d(TAG, "SendMoney");
+        String strAmount = txtAmount.getText().toString();
+        int amount;
+        try {
+            amount = Integer.parseInt(strAmount);
+            transfertP2p.setAmount(amount);
+        } catch (NumberFormatException nfe) {
+            KoloHelper.ShowToast("Montant invalide");
+        }
         if (!isDataValid()) {
-            onSendMoneyFailed();
+            KoloHelper.ShowSimpleAlert("Erreur", "Veuillez vérifier les informations saisies");
             return;
         }
+
         transfertP2pAsync = new KoloTransferP2pSendActivity.TransfertP2pAsync(transfertP2p, accountInfo);
         transfertP2pAsync.execute((Void) null);
     }
@@ -278,7 +319,8 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 
     private boolean isDataValid() {
         Log.d(TAG, "isDataValid");
-        return false;
+//        return false;
+        return true;
     }
 
     public void onSendMoneyFailed() {
@@ -325,8 +367,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         protected TransfertP2p doInBackground(Void... voids) {
             try {
                 String transJson = SerializationHelper.toJson(myTransfer, TransfertP2p.class);
-                TransfertP2p transResult = new KolOSphere(null, KoloConstants.KolOSphere_BaseUrl).DoTransfertA2A(transJson);
-                return transResult;
+                String transResult = new KolOSphere(null, KoloConstants.KolOSphere_BaseUrl).DoTransfertA2A(transJson);
+                TransfertP2p transferResult = SerializationHelper.fromJson(transResult, TransfertP2p.class);
+                return transferResult;
             } catch (Exception ex) {
 
             }

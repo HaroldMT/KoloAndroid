@@ -353,7 +353,8 @@ public class SignUpActivity extends AppCompatActivity
                                 ConfigHelper.getAccountInfo().getRegistration()
                                             .setRegistrationStatusCode
                                                     (KoloConstants.REGISTRATION_STATUS_NEEDCONFIRM);
-                                ConfigHelper.getAccountInfo().getRegistration().setIdRegistration(myRegistration.getIdRegistration());
+//                                ConfigHelper.getAccountInfo().getRegistration().setIdRegistration(myRegistration.getIdRegistration());
+                                ConfigHelper.getAccountInfo().setRegistration(myRegistration);
                                 onSignupSuccess();
                             } else onSignupFailed();
                             signup_progressBar.setVisibility(View.GONE);
