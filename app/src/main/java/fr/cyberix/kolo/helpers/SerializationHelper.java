@@ -37,12 +37,11 @@ public final class SerializationHelper {
 
     public static <T> String toJson(Object source, Class<T> typeOfSrc) {
         return source == null ? "" :
-                gsonBuilder.toJson(source, typeOfSrc);
+                getGsonBuilder().toJson(source, typeOfSrc);
     }
-
-    public static <T> T fromJson(String jsonValue, Class<T> typeOfSrc) {
-        return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
-                gsonBuilder.fromJson(jsonValue, typeOfSrc);
+    
+    public static Gson getGsonBuilder() {
+        return gsonBuilder;
     }
 
     public static Bitmap bytesToBitmap(byte[] imageBytes) {
@@ -73,5 +72,10 @@ public final class SerializationHelper {
 
     private static String decodeUTF8(byte[] bytes) {
         return new String(bytes, UTF8_CHARSET);
+    }
+    
+    public static <T> T fromJson(String jsonValue, Class<T> typeOfSrc) {
+        return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
+                getGsonBuilder().fromJson(jsonValue, typeOfSrc);
     }
 }

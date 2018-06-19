@@ -19,7 +19,8 @@ public final class KoloConstants {
     //    public static final String ForeasDefaultFolderName = "Foreas";
     public static final String ParamFileName = "refTypeHelper.frs";
     public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    public static final String BaseUrl = "http://a33a2bbc.ngrok.io/KoloWin.CustomerService/";
+	public static final String ngrokId = "c2020ebb";
+	public static final String BaseUrl = "http://" + ngrokId + ".ngrok.io/KoloWin.CustomerService/";
     public static final int forceLoginAfterShutdownTimeLimit = 5;
     public static final String REGISTRATION_STATUS_NONE = "NONE";
     public static final String REGISTRATION_STATUS_CANCEL = "CANCEL";

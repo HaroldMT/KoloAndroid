@@ -82,11 +82,24 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
     }
-
-    public void showProfile() {
-        Intent intent = new Intent(this, KoloUserProfilActivity.class);
-//        startActivity(new Intent(getBaseContext(), KoloUserProfilActivity.class));
-        startActivity(intent);
+	
+	@Override
+	public void onClick(View v) {
+		Intent intent;
+		switch (v.getId()) {
+			case R.id.card_view_kolo_tranfer:
+//                intent = new Intent(this, KoloTransferP2pSendActivity.class);
+//                startActivity(intent);
+				KoloHelper.startActivity(KoloTransferP2pSendActivity.class);
+				break;
+			case R.id.card_dash_drawheader:
+				showProfile();
+				break;
+			case R.id.card_view_kolo_retrait:
+				KoloHelper.startActivity(KoloTransferP2pReceiveActivity.class);
+			default:
+				break;
+		}
     }
 
     @Override
@@ -156,20 +169,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
     }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.card_view_kolo_tranfer:
-                intent = new Intent(this, KoloTransferP2pSendActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.card_dash_drawheader:
-                showProfile();
-                break;
-            default:
-                break;
-        }
+	
+	public void showProfile() {
+//        Intent intent = new Intent(this, KoloUserProfilActivity.class);
+//        startActivity(intent);
+		KoloHelper.startActivity(KoloUserProfilActivity.class);
     }
 }

@@ -108,7 +108,6 @@ public class ScannerHelper {
         }
     }
 
-
     static Bitmap encodeAsBitmap(String str) {
         BitMatrix result;
         Bitmap bitmap = null;

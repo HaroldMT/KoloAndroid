@@ -11,6 +11,7 @@ package fr.cyberix.kolo.helpers;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -157,4 +158,9 @@ public class KoloHelper {
     private static String decodeUTF8(byte[] bytes) {
         return new String(bytes, UTF8_CHARSET);
     }
+	
+	public static <T> void startActivity(Class<T> activityClass) {
+		Intent intent = new Intent(myActivity, activityClass);
+		myActivity.startActivity(intent);
+	}
 }

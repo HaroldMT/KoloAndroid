@@ -300,7 +300,22 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         transfertP2pAsync = new KoloTransferP2pSendActivity.TransfertP2pAsync(transfertP2p, accountInfo);
         transfertP2pAsync.execute((Void) null);
     }
-
+    
+    private boolean isDataValid() {
+        Log.d(TAG, "isDataValid");
+//        return false;
+        return true;
+    }
+    
+    public void onSendMoneyFailed() {
+        Log.d(TAG, "onSendMoneyFailed");
+        KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
+    }
+    
+    private void onSearchNumberContactFailed() {
+        KoloHelper.ShowSimpleAlert("Échec", "Erreur lors de la recherche du contact");
+    }
+    
     /**
      * To receive a callback when the user sets the date.
      *
@@ -317,33 +332,10 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         // Do something with the date chosen by the user
     }
 
-    private boolean isDataValid() {
-        Log.d(TAG, "isDataValid");
-//        return false;
-        return true;
-    }
-
-    public void onSendMoneyFailed() {
-        Log.d(TAG, "onSendMoneyFailed");
-        KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
-    }
-
-    private void onSearchNumberContactFailed() {
-        KoloHelper.ShowSimpleAlert("Échec", "Erreur lors de la recherche du contact");
-    }
-
     @OnClick(R.id.btn_trans_cancel)
     public void CancelOperation(View v) {
         Log.d(TAG, "CancelOperation");
         finish();
-    }
-
-    private void setDate(final Calendar calendar) {
-        Log.d(TAG, "setDate");
-        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-
-        ((TextView) findViewById(R.id.txt_trans_sche_date))
-                .setText(dateFormat.format(calendar.getTime()));
     }
 
     public void onSendMoneySuccess() {
@@ -465,5 +457,13 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
             qrContact = null;
             super.onCancelled();
         }
+    }
+    
+    private void setDate(final Calendar calendar) {
+        Log.d(TAG, "setDate");
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        
+        ((TextView) findViewById(R.id.txt_trans_sche_date))
+                .setText(dateFormat.format(calendar.getTime()));
     }
 }

@@ -64,6 +64,8 @@
             android:name=".activities.SimpleBillActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activities.KoloTransferP2pReceiveActivity">
+        </activity>
     </application>
 
 </manifest>

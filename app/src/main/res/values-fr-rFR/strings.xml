@@ -63,4 +63,5 @@
     <string name="include_passphrase">Include passphrase</string>
     <string name="needConfirmation">Need Confirmation</string>
     <string name="enter_something">Enter Something</string>
+    <string name="dummy_status">Status</string>
 </resources>

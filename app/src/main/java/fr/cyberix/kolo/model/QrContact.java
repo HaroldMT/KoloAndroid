@@ -60,8 +60,8 @@ public class QrContact {
     public String getFullName() {
         StringBuilder sb = new StringBuilder();
         if (lastName != null) sb.append(lastName + ' ');
-        if (middleName != null) sb.append(lastName + ' ');
-        if (firstName != null) sb.append(lastName + ' ');
+	    if (middleName != null) sb.append(middleName + ' ');
+	    if (firstName != null) sb.append(firstName + ' ');
         String fName = sb.toString();
         String fullName = fName.trim();
 //        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
