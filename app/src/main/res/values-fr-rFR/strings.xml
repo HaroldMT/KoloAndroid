@@ -64,4 +64,14 @@
     <string name="needConfirmation">Need Confirmation</string>
     <string name="enter_something">Enter Something</string>
     <string name="dummy_status">Status</string>
+    <string name="provider_promt">provider_promt</string>
+    <string name="buy_airtime">buy_airtime</string>
+    <string name="msg">Veuillez activer toutes les permissions</string>
+    <string name="provider_prompt">Provider</string>
+    <string name="eneo_contract_number">Eneo contract number</string>
+    <string name="eneo_bill_number">Eneo bill number</string>
+    <string name="default_status_code">SENT</string>
+    <string name="prompt_phone">Telephone</string>
+    <string name="full_name">Fullname</string>
+    <string name="contact_image">Contact image</string>
 </resources>

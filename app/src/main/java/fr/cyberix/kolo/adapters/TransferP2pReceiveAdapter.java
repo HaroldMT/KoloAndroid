@@ -36,7 +36,7 @@ public class TransferP2pReceiveAdapter extends RecyclerView.Adapter<TransferP2pR
 	@Override
 	public TransferP2pReceiveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		transferView = LayoutInflater.from(parent.getContext())
-		                             .inflate(R.layout.kolo_transfer_p2p_receive_row, parent, false);
+		                             .inflate(R.layout.kolo_transfer_p2p_row, parent, false);
 		return new TransferP2pReceiveViewHolder(transferView);
 	}
 	

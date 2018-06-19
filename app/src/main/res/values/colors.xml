@@ -18,4 +18,5 @@
     <color name="thirdPrimaryDark">#303F9F</color>
     <color name="Dark">#000</color>
     <color name="black_overlay">#66000000</color>
+    <color name="Green">#33b333</color>
 </resources>

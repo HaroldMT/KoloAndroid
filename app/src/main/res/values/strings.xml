@@ -170,6 +170,22 @@
     <string name="dialog_title">Dialog Title</string>
     <string name="enter_something">Enter Something</string>
     <string name="dummy_status">Status</string>
+    <string name="title_activity_top_up" translatable="false">TopUpActivity</string>
+    <string name="provider_promt">Operator</string>
+    <string name="buy_airtime">Buy Airtime</string>
+    <string name="provider_prompt">Provider</string>
+    <string name="eneo_logo">Eneo logo</string>
+    <string name="eneo_contract_number">Eneo contract number</string>
+    <string name="eneo_bill_number">Eneo bill number</string>
+    <string name="pay_eneo_bill">Pay eneo bill</string>
+    <string name="eneo_pub">Eneo pub</string>
+    <string name="default_status_code">SENT</string>
+    <string name="default_amount">15 000</string>
+    <string name="default_operation_date">01 june 18</string>
+    <string name="default_operation_id">10235</string>
+    <string name="prompt_phone">Telephone</string>
+    <string name="full_name">Fullname</string>
+    <string name="contact_image">Contact image</string>
 
 
 </resources>

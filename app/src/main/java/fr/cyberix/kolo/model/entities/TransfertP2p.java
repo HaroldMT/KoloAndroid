@@ -35,7 +35,11 @@ public class TransfertP2p implements KvmSerializable {
     private String transfertDate;
     private String reference;
     private boolean transfert2Cash;
-    private Customer customer;
+    public String receiveDate;
+    public String confirmationDate;
+    public String cancelationDate;
+    public Customer receiver;
+    public Customer sender;
 
     public TransfertP2p() {
         idSendingCustomer = ConfigHelper.getAccountInfo().getCustomer().getIdCustomer();
@@ -143,10 +147,40 @@ public class TransfertP2p implements KvmSerializable {
                 setTransfert2Cash((Boolean) obj);
             }
         }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
+        if (soapObject.hasProperty("ReceiveDate")) {
+            Object obj = soapObject.getProperty("ReceiveDate");
+            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+                SoapPrimitive j = (SoapPrimitive) obj;
+                receiveDate = j.toString();
+            } else if (obj != null && obj instanceof String) {
+                receiveDate = (String) obj;
+            }
+        }
+        if (soapObject.hasProperty("ConfirmationDate")) {
+            Object obj = soapObject.getProperty("ConfirmationDate");
+            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+                SoapPrimitive j = (SoapPrimitive) obj;
+                confirmationDate = j.toString();
+            } else if (obj != null && obj instanceof String) {
+                confirmationDate = (String) obj;
+            }
+        }
+        if (soapObject.hasProperty("CancelationDate")) {
+            Object obj = soapObject.getProperty("CancelationDate");
+            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+                SoapPrimitive j = (SoapPrimitive) obj;
+                cancelationDate = j.toString();
+            } else if (obj != null && obj instanceof String) {
+                cancelationDate = (String) obj;
+            }
+        }
+        if (soapObject.hasProperty("Receiver")) {
+            SoapObject j = (SoapObject) soapObject.getProperty("Receiver");
+            receiver = new Customer(j);
+        }
+        if (soapObject.hasProperty("Sender")) {
+            SoapObject j = (SoapObject) soapObject.getProperty("Sender");
+            sender = new Customer(j);
         }
     }
 
@@ -176,7 +210,15 @@ public class TransfertP2p implements KvmSerializable {
             case 10:
                 return isTransfert2Cash();
             case 11:
-                return getCustomer();
+                return getReceiveDate();
+            case 12:
+                return getConfirmationDate();
+            case 13:
+                return getCancelationDate();
+            case 14:
+                return getReceiver();
+            case 15:
+                return getSender();
         }
         return null;
     }
@@ -324,7 +366,47 @@ public class TransfertP2p implements KvmSerializable {
     public void setTransfertDate(String transfertDate) {
         this.transfertDate = transfertDate;
     }
-
+    
+    public String getReceiveDate() {
+        return receiveDate;
+    }
+    
+    public void setReceiveDate(String receiveDate) {
+        this.receiveDate = receiveDate;
+    }
+    
+    public String getConfirmationDate() {
+        return confirmationDate;
+    }
+    
+    public void setConfirmationDate(String confirmationDate) {
+        this.confirmationDate = confirmationDate;
+    }
+    
+    public String getCancelationDate() {
+        return cancelationDate;
+    }
+    
+    public void setCancelationDate(String cancelationDate) {
+        this.cancelationDate = cancelationDate;
+    }
+    
+    public Customer getReceiver() {
+        return receiver;
+    }
+    
+    public void setReceiver(Customer receiver) {
+        this.receiver = receiver;
+    }
+    
+    public Customer getSender() {
+        return sender;
+    }
+    
+    public void setSender(Customer sender) {
+        this.sender = sender;
+    }
+    
     public String getReference() {
         return reference;
     }
@@ -341,11 +423,4 @@ public class TransfertP2p implements KvmSerializable {
         this.transfert2Cash = transfert2Cash;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }

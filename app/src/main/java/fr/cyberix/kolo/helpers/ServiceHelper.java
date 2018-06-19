@@ -1,5 +1,6 @@
 package fr.cyberix.kolo.helpers;
 
+import fr.cyberix.kolo.services.KolOPartVice;
 import fr.cyberix.kolo.services.KolOSphere;
 import fr.cyberix.kolo.services.KolOthenticor;
 import fr.cyberix.kolo.services.MobileService;
@@ -8,6 +9,7 @@ public final class ServiceHelper {
 	private static KolOSphere kolOSphere;
 	private static KolOthenticor kolOthenticor;
 	private static MobileService mobileService;
+	private static KolOPartVice kolOPartVice;
 	
 	public static KolOSphere getSphereService() {
 		if (kolOSphere == null)
@@ -25,5 +27,11 @@ public final class ServiceHelper {
 		if (mobileService == null)
 			mobileService = new MobileService(null, KoloConstants.KolOMobileService_BaseUrl);
 		return mobileService;
+	}
+	
+	public static KolOPartVice getKolOPartVice() {
+		if (kolOPartVice == null)
+			kolOPartVice = new KolOPartVice(null, KoloConstants.KolOPartVice_BaseUrl);
+		return kolOPartVice;
 	}
 }

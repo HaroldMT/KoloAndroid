@@ -11,9 +11,9 @@ public class TransferP2pReceiveViewHolder extends RecyclerView.ViewHolder {
 	
 	public TransferP2pReceiveViewHolder(View view) {
 		super(view);
-		fullname = view.findViewById(R.id.receiveP2pFullname);
-		amount = view.findViewById(R.id.receiveP2pAmount);
-		number = view.findViewById(R.id.receiveP2pNumber);
-		status = view.findViewById(R.id.receiveP2pStatus);
+		fullname = view.findViewById(R.id.contact_name);
+		amount = view.findViewById(R.id.trans_amount);
+		number = view.findViewById(R.id.contact_number);
+		status = view.findViewById(R.id.trans_status);
 	}
 }

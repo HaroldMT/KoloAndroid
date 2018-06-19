@@ -66,6 +66,10 @@
         </activity>
         <activity android:name=".activities.KoloTransferP2pReceiveActivity">
         </activity>
+        <activity android:name=".activities.KoloTopUpActivity">
+        </activity>
+        <activity android:name=".activities.EneoBillPaymentActivity">
+        </activity>
     </application>
 
 </manifest>
