@@ -193,6 +193,8 @@
     <string name="kolo_top_up_desc">Kolo some AirTime credit</string>
     <string name="kolo_visa">Kolo Visa</string>
     <string name="kolo_visa_scann_desc">Kolo a visa card easily</string>
+    <string name="kolo_mad">Kolo Mad</string>
+    <string name="kolo_mad_desc">Kolo a Mad to your grandma or your grandpa</string>
 
 
 </resources>
