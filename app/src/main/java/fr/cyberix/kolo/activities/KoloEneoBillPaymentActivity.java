@@ -19,6 +19,7 @@ import fr.cyberix.kolo.model.EneoBillDetailsList;
 import fr.cyberix.kolo.services.KolOPartVice;
 
 public class KoloEneoBillPaymentActivity extends AppCompatActivity {
+	String TAG;
 	@BindView(R.id.eneo_pay_btn)
 	Button payBtn;
 	@BindView(R.id.eneo_bill_no)
@@ -33,6 +34,7 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kolo_eneo_bill_payment);
+		TAG = this.getLocalClassName();
 		ButterKnife.setDebug(true);
 		ButterKnife.bind(this);
 		KoloHelper.setActivity(this);

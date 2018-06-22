@@ -70,5 +70,8 @@
         </activity>
         <activity android:name=".activities.KoloEneoBillPaymentActivity">
         </activity>
+        <activity android:name=".activities.CreditCardInputActivity">
+        </activity>
     </application>
+
 </manifest>

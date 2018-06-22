@@ -40,4 +40,5 @@ public final class KoloConstants {
     public static final int PICK_CONTACT_REQUEST_CODE = 101;
 	public static final int CREDIT_CARD_SCAN_REQUEST_CODE1 = 102;
 	public static final int CREDIT_CARD_SCAN_REQUEST_CODE2 = 103;
+	public static final int PAYPAL_REQUEST_CODE2 = 104;
 }

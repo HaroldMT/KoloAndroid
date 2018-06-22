@@ -196,6 +196,11 @@ public class DashboardActivity extends AppCompatActivity {// implements View.OnC
 		paypal(view);
 	}
 	
+	@OnClick(R.id.card_view_kolo_card_form)
+	public void onClickKoloCreditCardForm(View view) {
+		KoloHelper.startActivity(CreditCardInputActivity.class);
+	}
+	
 	public void scanVisaCardPayCard(View v) {
 		Intent intent = new ScanCardIntent.Builder(this).build();
 		startActivityForResult(intent, CREDIT_CARD_SCAN_REQUEST_CODE2);
@@ -214,31 +219,6 @@ public class DashboardActivity extends AppCompatActivity {// implements View.OnC
 		paymentConfig.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
 		startActivityForResult(paymentConfig, PAYPAL_REQUEST_CODE2);
 	}
-
-//	@Override
-//	public void onClick(View v) {
-//		Intent intent;
-//		switch (v.getId()) {
-//			case R.id.card_view_kolo_tranfer:
-////                intent = new Intent(this, KoloTransferP2pSendActivity.class);
-////                startActivity(intent);
-//				KoloHelper.startActivity(KoloTransferP2pSendActivity.class);
-//				break;
-//			case R.id.card_dash_drawheader:
-//				showProfile();
-//				break;
-//			case R.id.card_view_kolo_retrait:
-//				KoloHelper.startActivity(KoloTransferP2pReceiveActivity.class);
-//            case R.id.card_view_kolo_eneo:
-//                KoloHelper.startActivity(KoloEneoBillPaymentActivity.class);
-//            case R.id.card_view_kolo_top_up:
-//                KoloHelper.startActivity(KoloTopUpActivity.class);
-//            case R.id.card_view_kolo_visa_scan:
-//                scanVisaCard(v);
-//			default:
-//				break;
-//		}
-//    }
 	
 	public void scanVisaCardCardIo(View v) {
 		Intent scanIntent = new Intent(this, CardIOActivity.class);

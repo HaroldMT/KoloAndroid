@@ -77,4 +77,7 @@
     <string name="kolo_eneo_desc">Kolo your Eneo bill easily</string>
     <string name="kolo_top_up_desc">Kolo some AirTime credit</string>
     <string name="kolo_visa_scann_desc">Kolo a visa card easily</string>
+    <string name="kolo_card_form_desc">Save your Kolo credit card information for easy payment</string>
+    <string name="label_buy_now">Buy now</string>
+    <string name="label_scan_now">Scan credit card</string>
 </resources>
