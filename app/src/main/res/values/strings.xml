@@ -186,6 +186,13 @@
     <string name="prompt_phone">Telephone</string>
     <string name="full_name">Fullname</string>
     <string name="contact_image">Contact image</string>
+    <string name="eneo_image">Eneo detail row image</string>
+    <string name="kolo_eneo">Kolo Eneo</string>
+    <string name="kolo_eneo_desc">Kolo your Eneo bill easily</string>
+    <string name="kolo_top_up">Kolo TopUp</string>
+    <string name="kolo_top_up_desc">Kolo some AirTime credit</string>
+    <string name="kolo_visa">Kolo Visa</string>
+    <string name="kolo_visa_scann_desc">Kolo a visa card easily</string>
 
 
 </resources>

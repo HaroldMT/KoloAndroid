@@ -216,7 +216,6 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
         alert.show();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");

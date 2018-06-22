@@ -10,29 +10,29 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/contact_image"
+            android:id="@+id/eneo_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:contentDescription="@string/contact_image"
+            android:contentDescription="@string/eneo_image"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_portrait_black_48dp"/>
+            app:srcCompat="@drawable/ic_shopping_cart_black_36dp"/>
 
         <TextView
-            android:id="@+id/contact_name"
+            android:id="@+id/eneo_detail_bill_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/full_name"
+            android:text="@string/eneo_bill_number"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+            android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@+id/eneo_detail_contract_no"
             app:layout_constraintTop_toBottomOf="@+id/eneo_detail_contract_no"
             tools:ignore="UnusedAttribute"/>
@@ -45,28 +45,15 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="serif"
-            android:text="@string/prompt_phone"
+            android:text="@string/eneo_contract_number"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
             android:textColor="@color/colorAccent"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/contact_image"
+            app:layout_constraintLeft_toRightOf="@+id/eneo_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnusedAttribute"/>
 
-        <TextView
-            android:id="@+id/operation_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/default_operation_id"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintLeft_toRightOf="@+id/dateOpCardView"
-            app:layout_constraintTop_toTopOf="@+id/dateOpCardView"
-            tools:ignore="UnusedAttribute"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/dateOpCardView"
@@ -75,8 +62,8 @@
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintLeft_toLeftOf="@+id/contact_name"
-            app:layout_constraintTop_toBottomOf="@+id/contact_name">
+            app:layout_constraintLeft_toLeftOf="@+id/eneo_detail_bill_no"
+            app:layout_constraintTop_toBottomOf="@+id/eneo_detail_bill_no">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -85,13 +72,15 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/eneo_detail_due_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="end"
                     android:text="@string/default_operation_date"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="16sp"
                     tools:ignore="UnusedAttribute"
                     tools:layout_editor_absoluteX="64dp"
                     tools:layout_editor_absoluteY="105dp"/>
@@ -103,11 +92,10 @@
             android:id="@+id/amountCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/eneo_detail_contract_no">
+            app:layout_constraintTop_toBottomOf="@+id/eneo_detail_bill_no">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -128,36 +116,6 @@
                     tools:layout_editor_absoluteY="-76dp"/>
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/statusCodeCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintLeft_toRightOf="@+id/operation_id"
-            app:layout_constraintTop_toTopOf="@+id/dateOpCardView">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/trans_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:gravity="end"
-                    android:text="@string/default_status_code"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    tools:ignore="UnusedAttribute"
-                    tools:layout_editor_absoluteX="130dp"
-                    tools:layout_editor_absoluteY="-399dp"/>
-            </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </android.support.constraint.ConstraintLayout>
