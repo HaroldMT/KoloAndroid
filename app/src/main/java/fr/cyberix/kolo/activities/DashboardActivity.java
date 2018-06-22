@@ -1,5 +1,6 @@
 package fr.cyberix.kolo.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +21,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cards.pay.paycardsrecognizer.sdk.Card;
+import cards.pay.paycardsrecognizer.sdk.ScanCardIntent;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.fragments.Customer_BalhistoryFragment;
 import fr.cyberix.kolo.fragments.KoloNotificationFragment;
@@ -27,9 +31,11 @@ import fr.cyberix.kolo.helpers.KoloHelper;
 import io.card.payment.CardIOActivity;
 import io.card.payment.CreditCard;
 
-import static fr.cyberix.kolo.helpers.KoloConstants.MY_SCAN_REQUEST_CODE;
+import static fr.cyberix.kolo.helpers.KoloConstants.CREDIT_CARD_SCAN_REQUEST_CODE1;
+import static fr.cyberix.kolo.helpers.KoloConstants.CREDIT_CARD_SCAN_REQUEST_CODE2;
 
 public class DashboardActivity extends AppCompatActivity {// implements View.OnClickListener {
+	String TAG;
     @BindView(R.id.card_view_kolo_retrait)
     CardView cardKoloRetrieve;
     @BindView(R.id.card_view_kolo_tranfer)
@@ -54,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {// implements View.OnC
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-
+	    TAG = this.getLocalClassName();
         //Click listeners to cards
 //        cardKoloRetrieve.setOnClickListener(this);
 //        cardKoloPayement.setOnClickListener(this);
@@ -115,19 +121,41 @@ public class DashboardActivity extends AppCompatActivity {// implements View.OnC
     
     @OnClick(R.id.card_view_kolo_visa_scan)
     public void onClickKoloVisaScan(View view) {
-        scanVisaCard(view);
+	    scanVisaCardPayCard(view);
     }
-    
-    public void scanVisaCard(View v) {
+	
+	public void scanVisaCardPayCard(View v) {
+		Intent intent = new ScanCardIntent.Builder(this).build();
+		startActivityForResult(intent, CREDIT_CARD_SCAN_REQUEST_CODE2);
+	}
+	
+	public void scanVisaCardCardIo(View v) {
         Intent scanIntent = new Intent(this, CardIOActivity.class);
         
         // customize these values to suit your needs.
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true); // default: false
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, false); // default: false
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_POSTAL_CODE, false); // default: false
-        
-        // MY_SCAN_REQUEST_CODE is arbitrary and is only used within this activity.
-        startActivityForResult(scanIntent, MY_SCAN_REQUEST_CODE);
+		
+		// CREDIT_CARD_SCAN_REQUEST_CODE1 is arbitrary and is only used within this activity.
+		startActivityForResult(scanIntent, CREDIT_CARD_SCAN_REQUEST_CODE1);
+	}
+	
+	@OnClick(R.id.card_view_kolo_mad)
+	public void onClickKoloSoon(View view) {
+	
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if (requestCode == CREDIT_CARD_SCAN_REQUEST_CODE1) {
+			onScanVisaCardCardIoResult(requestCode, resultCode, data);
+		} else if (requestCode == CREDIT_CARD_SCAN_REQUEST_CODE2) {
+			onScanVisaCardPayCardResult(requestCode, resultCode, data);
+		}
+		// else handle other activity results
     }
 
 //	@Override
@@ -154,47 +182,53 @@ public class DashboardActivity extends AppCompatActivity {// implements View.OnC
 //				break;
 //		}
 //    }
-    
-    @OnClick(R.id.card_view_kolo_soon)
-    public void onClickKoloSoon(View view) {
-    
-    }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        
-        if (requestCode == MY_SCAN_REQUEST_CODE) {
-            String resultDisplayStr;
-            if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
-                CreditCard scanResult = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT);
-                
-                // Never log a raw card number. Avoid displaying it, but if necessary use getFormattedCardNumber()
-                resultDisplayStr = "Card Number: " + scanResult.getRedactedCardNumber() + "\n";
-                
-                // Do something with the raw number, e.g.:
-                // myService.setCardNumber( scanResult.cardNumber );
-                
-                if (scanResult.isExpiryValid()) {
-                    resultDisplayStr += "Expiration Date: " + scanResult.expiryMonth + "/" + scanResult.expiryYear + "\n";
-                }
-                
-                if (scanResult.cvv != null) {
-                    // Never log or display a CVV
-                    resultDisplayStr += "CVV has " + scanResult.cvv.length() + " digits.\n";
-                }
-                
-                if (scanResult.postalCode != null) {
-                    resultDisplayStr += "Postal Code: " + scanResult.postalCode + "\n";
-                }
-            } else {
-                resultDisplayStr = "Scan was canceled.";
-            }
-            // do something with resultDisplayStr, maybe display it in a textView
-            // resultTextView.setText(resultDisplayStr);
-            KoloHelper.ShowSimpleAlert("Visa Scan Result", resultDisplayStr);
-        }
-        // else handle other activity results
+	
+	public void onScanVisaCardCardIoResult(int requestCode, int resultCode, Intent data) {
+		String resultDisplayStr;
+		if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
+			CreditCard scanResult = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT);
+			
+			// Never log a raw card number. Avoid displaying it, but if necessary use getFormattedCardNumber()
+			resultDisplayStr = "Card Number: " + scanResult.getRedactedCardNumber() + "\n";
+			
+			// Do something with the raw number, e.g.:
+			// myService.setCardNumber( scanResult.cardNumber );
+			
+			if (scanResult.isExpiryValid()) {
+				resultDisplayStr += "Expiration Date: " + scanResult.expiryMonth + "/" + scanResult.expiryYear + "\n";
+			}
+			
+			if (scanResult.cvv != null) {
+				// Never log or display a CVV
+				resultDisplayStr += "CVV has " + scanResult.cvv.length() + " digits.\n";
+			}
+			
+			if (scanResult.postalCode != null) {
+				resultDisplayStr += "Postal Code: " + scanResult.postalCode + "\n";
+			}
+		} else {
+			resultDisplayStr = "Scan was canceled.";
+		}
+		// do something with resultDisplayStr, maybe display it in a textView
+		// resultTextView.setText(resultDisplayStr);
+		KoloHelper.ShowSimpleAlert("Visa Scan Result", resultDisplayStr);
+	}
+	
+	public void onScanVisaCardPayCardResult(int requestCode, int resultCode, Intent data) {
+		String resultDisplayStr;
+		if (resultCode == Activity.RESULT_OK) {
+			Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
+			String cardData = "Card number: " + card.getCardNumberRedacted() + "\n"
+					+ "Card holder: " + card.getCardHolderName() + "\n"
+					+ "Card expiration date: " + card.getExpirationDate();
+			resultDisplayStr = "Card info: " + cardData;
+		} else if (resultCode == Activity.RESULT_CANCELED) {
+			resultDisplayStr = "Scan canceled";
+		} else {
+			resultDisplayStr = "Scan failed";
+		}
+		Log.i(TAG, resultDisplayStr);
+		KoloHelper.ShowSimpleAlert("Visa Scan Result", resultDisplayStr);
     }
 
     @Override

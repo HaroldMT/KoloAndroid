@@ -38,5 +38,6 @@ public final class KoloConstants {
     public static final  String DATE_FORMAT_FOR_SERVICE = "yyyy-MM-dd hh:mm:ss";
     public static final int QR_SCAN_REQUEST_CODE = 100;
     public static final int PICK_CONTACT_REQUEST_CODE = 101;
-	public static final int MY_SCAN_REQUEST_CODE = 102;
+	public static final int CREDIT_CARD_SCAN_REQUEST_CODE1 = 102;
+	public static final int CREDIT_CARD_SCAN_REQUEST_CODE2 = 103;
 }

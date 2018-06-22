@@ -18,6 +18,7 @@ android {
     }
     repositories {
         maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
+        maven { url "http://pay.cards/maven" }
     }
 }
 
@@ -27,6 +28,8 @@ dependencies {
     implementation 'com.google.code.ksoap2-android:ksoap2-base:3.6.2'
     implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
     implementation 'com.google.code.ksoap2-android:ksoap2-android-assembly:3.6.2'
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    implementation 'com.braintreepayments.api:drop-in:3.+'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
@@ -38,6 +41,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'io.card:android-sdk:5.5.1'
+    implementation 'cards.pay:paycardsrecognizer:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
