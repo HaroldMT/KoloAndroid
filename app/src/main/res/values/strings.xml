@@ -103,6 +103,16 @@
         <item>3</item>
     </string-array>
 
+    <string name="airtime_providers_prompt">Chose à Provider</string>
+
+    <string-array name="airtime_providers_list">
+        <item>ORANGE</item>
+        <item>MTN</item>
+        <item>NEXTTEL</item>
+        <item>CAMTEL</item>
+        <item>YOOMEE</item>
+    </string-array>
+
     <string-array name="multi_select_list_preference_default_value"/>
 
     <string name="pref_title_system_sync_settings">System sync settings</string>

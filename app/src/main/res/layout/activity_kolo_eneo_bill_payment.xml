@@ -67,17 +67,19 @@
                     android:id="@+id/eneo_contract_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/textColorHighlight"
                     android:fontFamily="casual"
                     android:gravity="end"
                     android:hint="@string/eneo_contract_number"
                     android:textAlignment="viewEnd"
-                    android:textColor="@color/lightgrayline"
                     android:textColorHint="#1458a6"
                     android:textColorLink="#1458a6"
                     android:textStyle="bold"
                     tools:ignore="UnusedAttribute"
                     tools:text="@string/eneo_contract_number"/>
+
+                <!--android:background="?android:attr/textColorHighlight"-->
+                <!--android:textColor="@color/lightgrayline"-->
+
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -88,17 +90,20 @@
                     android:id="@+id/eneo_bill_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/textColorHighlightInverse"
                     android:fontFamily="casual"
                     android:gravity="end"
                     android:hint="@string/eneo_bill_number"
                     android:textAlignment="viewEnd"
-                    android:textColor="@color/lightgrayline"
                     android:textColorHint="#1458a6"
                     android:textColorLink="#1458a6"
                     android:textStyle="bold"
                     tools:ignore="UnusedAttribute"
                     tools:text="@string/eneo_bill_number"/>
+
+                <!--android:background="?android:attr/textColorHighlightInverse"-->
+                <!--android:textColor="@color/lightgrayline"-->
+
+
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
