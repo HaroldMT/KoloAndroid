@@ -63,6 +63,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="24dp"
                     android:layout_weight="1"
+                    android:prompt="@string/airtime_providers_prompt"
+                    android:entries="@array/airtime_providers_list"
                     android:dropDownWidth="match_parent"/>
 
                 <android.support.design.widget.TextInputLayout
