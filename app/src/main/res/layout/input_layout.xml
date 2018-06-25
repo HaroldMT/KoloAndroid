@@ -5,14 +5,12 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/custom_dialog_layout_design_user_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/dialogTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dialog_title"

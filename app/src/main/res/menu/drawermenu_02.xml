@@ -12,7 +12,7 @@
            app:showAsAction="ifRoom"
            android:title="@string/profil" />
 
-        <item android:id="@+id/draw_menu_settings"
+    <item
             android:title="Settings" />
 
 
