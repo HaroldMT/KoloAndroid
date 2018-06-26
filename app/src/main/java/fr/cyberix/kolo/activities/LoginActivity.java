@@ -28,6 +28,7 @@ import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
+import fr.cyberix.kolo.helpers.ServiceHelper;
 import fr.cyberix.kolo.helpers.SystemServiceHelper;
 import fr.cyberix.kolo.model.TelephonyInfo;
 import fr.cyberix.kolo.model.entities.Customer;
@@ -202,10 +203,10 @@ public class LoginActivity extends AppCompatActivity {
         protected LoginAttempt doInBackground(Void... params) {
 
             try {
-                loginAttempt = SerializationHelper.fromJson(new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl)
-                                .DoLogin(SerializationHelper
-                                        .toJson(loginAttempt, loginAttempt.getClass()))
-                        , loginAttempt.getClass());
+	            KolOthenticor service = ServiceHelper.getOthenticorService();
+	            String loginJson = SerializationHelper.toJson(loginAttempt, loginAttempt.getClass());
+	            String resultJson = service.DoLogin(loginJson);
+	            loginAttempt = SerializationHelper.fromJson(resultJson, loginAttempt.getClass());
             } catch (Exception e) {
                 return null;
             }

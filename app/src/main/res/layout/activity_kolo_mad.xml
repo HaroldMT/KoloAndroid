@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightgrayline"
     android:padding="20dp"
-    tools:context=".activities.SimpleBillActivity">
+    tools:context=".activities.KoloMadActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

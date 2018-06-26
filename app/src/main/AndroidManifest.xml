@@ -72,6 +72,8 @@
         </activity>
         <activity android:name=".activities.CreditCardInputActivity">
         </activity>
+        <activity android:name=".activities.KoloMadActivity">
+        </activity>
     </application>
 
 </manifest>

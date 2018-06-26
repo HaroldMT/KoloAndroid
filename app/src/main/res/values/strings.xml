@@ -70,6 +70,23 @@
         <item>-1</item>
     </string-array>
 
+    <string name="airtime_providers_prompt">Chose à Provider</string>
+    +
+    +
+    <string-array name="airtime_providers_list">
+        +
+        <item>ORANGE</item>
+        +
+        <item>MTN</item>
+        +
+        <item>NEXTTEL</item>
+        +
+        <item>CAMTEL</item>
+        +
+        <item>YOOMEE</item>
+        +
+    </string-array>
+
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
