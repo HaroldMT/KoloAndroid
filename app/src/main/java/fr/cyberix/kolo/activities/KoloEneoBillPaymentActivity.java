@@ -8,21 +8,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.fragments.EneoBillDetailsFragment;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
+import fr.cyberix.kolo.model.EneoBillDetails;
 import fr.cyberix.kolo.model.EneoBillDetailsList;
 import fr.cyberix.kolo.services.KolOPartVice;
 
-public class KoloEneoBillPaymentActivity extends AppCompatActivity {
+public class KoloEneoBillPaymentActivity extends AppCompatActivity implements EneoBillDetailsFragment.OnListFragmentInteractionListener {
 	String TAG;
-	//	@BindView(R.id.eneo_pay_btn)
+	@BindView(R.id.eneo_pay_btn)
 	Button payBtn;
-	//	@BindView(R.id.eneo_bill_no)
+	@BindView(R.id.eneo_bill_no)
 	EditText eneo_bill_number;
-	//	@BindView(R.id.eneo_contract_no)
+	@BindView(R.id.eneo_contract_no)
 	EditText eneo_contract_number;
 	
 	boolean isContractSearch = false;
@@ -33,12 +37,12 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kolo_eneo_bill_payment);
 		TAG = this.getLocalClassName();
-//		ButterKnife.setDebug(true);
-//		ButterKnife.bind(this);
+		ButterKnife.setDebug(true);
+		ButterKnife.bind(this);
 		KoloHelper.setActivity(this);
-		payBtn = findViewById(R.id.eneo_pay_btn);
-		eneo_bill_number = findViewById(R.id.eneo_bill_no);
-		eneo_contract_number = findViewById(R.id.eneo_contract_no);
+//		payBtn = findViewById(R.id.eneo_pay_btn);
+//		eneo_bill_number = findViewById(R.id.eneo_bill_no);
+//		eneo_contract_number = findViewById(R.id.eneo_contract_no);
 		eneo_bill_number.setVisibility(View.GONE);
 		eneo_contract_number.setVisibility(View.GONE);
 	}
@@ -83,6 +87,16 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 		}
 	}
 	
+	@Override
+	public void onListFragmentInteraction(EneoBillDetails billDetails) {
+	
+	}
+	
+	@Override
+	public void onPointerCaptureChanged(boolean hasCapture) {
+	
+	}
+	
 	public class QueryEneoBillAsync extends AsyncTask<Void, Void, EneoBillDetailsList> {
 		String eneoCode;
 		boolean isContractNo;
@@ -107,6 +121,7 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 		@Override
 		protected void onPostExecute(EneoBillDetailsList eneoBillDetailsList) {
 			super.onPostExecute(eneoBillDetailsList);
+			setBillList(eneoBillDetailsList);
 		}
 	}
 }

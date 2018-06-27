@@ -66,8 +66,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(android.R.style.Theme_Material_Light_Dialog);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.setFinishOnTouchOutside(false);
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);

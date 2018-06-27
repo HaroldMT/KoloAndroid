@@ -46,8 +46,10 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(android.R.style.Theme_Material_Light_Dialog);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_confirmation);
+        this.setFinishOnTouchOutside(false);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
         //confirm_signup_progressBar.setVisibility(View.INVISIBLE);
