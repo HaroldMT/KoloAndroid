@@ -1,33 +1,33 @@
 package fr.cyberix.kolo.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import fr.cyberix.kolo.R;
-import fr.cyberix.kolo.fragments.EneoBillDetailsFragment;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
-import fr.cyberix.kolo.model.EneoBillDetails;
 import fr.cyberix.kolo.model.EneoBillDetailsList;
 import fr.cyberix.kolo.services.KolOPartVice;
 
-public class KoloEneoBillPaymentActivity extends AppCompatActivity implements EneoBillDetailsFragment.OnListFragmentInteractionListener {
+public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 	String TAG;
-	@BindView(R.id.eneo_pay_btn)
-	Button payBtn;
+	//	@BindView(R.id.eneo_pay_btn)
+//	Button payBtn;
 	@BindView(R.id.eneo_bill_no)
 	EditText eneo_bill_number;
 	@BindView(R.id.eneo_contract_no)
 	EditText eneo_contract_number;
+	@BindView(R.id.eneo_pay_btn_card)
+	CardView payCardBtn;
 	
 	boolean isContractSearch = false;
 	EneoBillDetailsList eneoBillList;
@@ -40,26 +40,35 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity implements En
 		ButterKnife.setDebug(true);
 		ButterKnife.bind(this);
 		KoloHelper.setActivity(this);
-//		payBtn = findViewById(R.id.eneo_pay_btn);
-//		eneo_bill_number = findViewById(R.id.eneo_bill_no);
-//		eneo_contract_number = findViewById(R.id.eneo_contract_no);
 		eneo_bill_number.setVisibility(View.GONE);
 		eneo_contract_number.setVisibility(View.GONE);
+		payCardBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				payEneoBill(v);
+			}
+		});
 	}
 	
-	@OnClick(R.id.eneo_pay_btn)
+	//	@OnClick(R.id.eneo_pay_btn)
 	public void payEneoBill(View v) {
 		String eneoCode;
 		if (!isContractSearch)
 			eneoCode = eneo_bill_number.getText().toString();
 		else
 			eneoCode = eneo_contract_number.getText().toString();
-		QueryEneoBillAsync eneoQuery = new QueryEneoBillAsync(eneoCode, isContractSearch);
-		eneoQuery.execute();
+		Intent intent = new Intent(getBaseContext(), KoloEneoPayBillActivity.class);
+		intent.putExtra("ENEO_CODE", eneoCode);
+		intent.putExtra("IS_CONTRACT_SEARCH", isContractSearch);
+		startActivity(intent);
+		finish();
+//		QueryEneoBillAsync eneoQuery = new QueryEneoBillAsync(eneoCode, isContractSearch);
+//		eneoQuery.execute();
 	}
 	
 	public void setBillList(EneoBillDetailsList billList) {
 		eneoBillList = billList;
+		KoloHelper.ShowSimpleAlert("Eneo bills found", billList.size() + " bills");
 	}
 	
 	public void onRadioButtonClicked(View view) {
@@ -85,11 +94,6 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity implements En
 					break;
 				}
 		}
-	}
-	
-	@Override
-	public void onListFragmentInteraction(EneoBillDetails billDetails) {
-	
 	}
 	
 	@Override

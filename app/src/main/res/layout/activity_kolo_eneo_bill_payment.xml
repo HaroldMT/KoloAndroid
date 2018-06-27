@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="fr.cyberix.kolo.activities.KoloEneoBillPaymentActivity">
+    tools:context="activities.KoloEneoBillPaymentActivity">
 
     <ImageView
         android:id="@+id/eneo_logo"
@@ -17,6 +17,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
         app:srcCompat="@drawable/eneo_logo"/>
 
     <android.support.v7.widget.CardView
@@ -60,91 +61,75 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:textStyle="bold">
+
                 <EditText
                     android:id="@+id/eneo_contract_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="abcdefghijkmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:fontFamily="casual"
                     android:gravity="end"
                     android:hint="@string/eneo_contract_number"
+                    android:inputType="text"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:ignore="UnusedAttribute"
                     tools:text="@string/eneo_contract_number"/>
-                <!--<EditText-->
-                <!--android:id="@+id/eneo_contract_no"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="?android:attr/textColorHighlight"-->
-                <!--android:fontFamily="casual"-->
-                <!--android:gravity="end"-->
-                <!--android:hint="@string/eneo_contract_number"-->
-                <!--android:textAlignment="viewEnd"-->
-                <!--android:textColor="@color/lightgrayline"-->
-                <!--android:textColorHint="#1458a6"-->
-                <!--android:textColorLink="#1458a6"-->
-                <!--android:textStyle="bold"-->
-                <!--tools:ignore="UnusedAttribute"-->
-                <!--tools:text="@string/eneo_contract_number"/>-->
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:textStyle="bold">
 
                 <EditText
                     android:id="@+id/eneo_bill_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="abcdefghijkmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:fontFamily="casual"
                     android:gravity="end"
                     android:hint="@string/eneo_bill_number"
+                    android:inputType="text"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/white"
+                    android:textColorHint="#1458a6"
+                    android:textColorLink="#1458a6"
+                    android:textStyle="bold"
+                    tools:ignore="UnusedAttribute"
                     tools:text="@string/eneo_bill_number"/>
-                <!--<EditText-->
-                <!--android:id="@+id/eneo_bill_no"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="?android:attr/textColorHighlightInverse"-->
-                <!--android:fontFamily="casual"-->
-                <!--android:gravity="end"-->
-                <!--android:hint="@string/eneo_bill_number"-->
-                <!--android:textAlignment="viewEnd"-->
-                <!--android:textColor="@color/lightgrayline"-->
-                <!--android:textColorHint="#1458a6"-->
-                <!--android:textColorLink="#1458a6"-->
-                <!--android:textStyle="bold"-->
-                <!--tools:ignore="UnusedAttribute"-->
-                <!--tools:text="@string/eneo_bill_number"/>-->
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <Button
-        android:id="@+id/eneo_pay_btn"
-        android:layout_width="151dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="#1458a6"
-        android:elevation="15dp"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
+    <android.support.v7.widget.CardView
+        android:id="@+id/eneo_pay_btn_card"
+        android:layout_width="149dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#1458a6"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:ignore="UnusedAttribute"
-        tools:text="@string/pay_eneo_bill"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-    <ImageView
-        android:layout_width="379dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/eneo_pub"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eneo_pay_btn"
-        app:layout_constraintVertical_bias="0.533"
-        app:srcCompat="@drawable/eneo_pub"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@android:color/white"
+            tools:text="@string/pay_eneo_bill"/>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

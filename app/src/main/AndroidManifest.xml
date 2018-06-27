@@ -32,24 +32,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- <activity -->
-        <!-- android:name=".activities.KoloMainActivity" -->
-        <!-- android:label="@string/app_name" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
-        <!--android:theme="@android:style/Theme.Holo.Light.Dialog"-->
         <activity
             android:name=".activities.LoginActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity
             android:name=".activities.SettingsActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SignUpActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity
             android:name=".activities.DashboardActivity"
             android:screenOrientation="portrait"/>
@@ -59,29 +54,39 @@
         <activity
             android:name=".activities.KoloUserQRCodeActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity
             android:name=".activities.KoloTransferP2pSendActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SignUpConfirmationActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity
             android:name=".activities.SimpleBillActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activities.KoloTransferP2pReceiveActivity">
-        </activity>
-        <activity android:name=".activities.KoloTopUpActivity">
-        </activity>
-        <activity android:name=".activities.KoloEneoBillPaymentActivity">
-        </activity>
-        <activity android:name=".activities.CreditCardInputActivity">
-        </activity>
-        <activity android:name=".activities.KoloMadActivity">
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.KoloTransferP2pReceiveActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.KoloTopUpActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".activities.KoloEneoBillPaymentActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".activities.CreditCardInputActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.KoloMadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.KoloEneoPayBillActivity">
         </activity>
     </application>
 

@@ -2,15 +2,15 @@
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/receive_p2p_swipe_container"
+    android:id="@+id/eneo_pay_bill_swipe_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".activities.KoloTransferP2pReceiveActivity">
+    android:layout_height="match_parent"
+    tools:context=".activities.KoloEneoPayBillActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/trans_receive_p2p_recycler_view"
+        android:id="@+id/eneo_pay_bill_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/kolo_transfer_p2p_row"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        tools:listitem="@layout/kolo_eneo_bill_detail_row"/>
 </android.support.v4.widget.SwipeRefreshLayout>

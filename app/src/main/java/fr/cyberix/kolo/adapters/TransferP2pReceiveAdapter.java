@@ -44,13 +44,11 @@ public class TransferP2pReceiveAdapter extends RecyclerView.Adapter<TransferP2pR
 		return transferList.size();
 	}
 	
-	// Clean all elements of the recycler
 	public void clear() {
 		transferList.clear();
 		notifyDataSetChanged();
 	}
 	
-	// Add a list of items -- change to type used
 	public void addAll(List<TransferP2pDetails> list) {
 		if (list == null || list.size() == 0)
 			return;

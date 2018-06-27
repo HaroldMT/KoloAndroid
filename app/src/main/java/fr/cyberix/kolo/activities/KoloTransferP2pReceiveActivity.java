@@ -55,8 +55,6 @@ public class KoloTransferP2pReceiveActivity extends AppCompatActivity {
 				refreshItems();
 			}
 		});
-
-//        prepareTransferData();
 	}
 	
 	void refreshItems() {
