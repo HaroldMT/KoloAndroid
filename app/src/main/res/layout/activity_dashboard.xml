@@ -161,7 +161,7 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundyellow"
+                                android:background="@drawable/circlebackgroundpurple"
                                 android:padding="8dp"
                                 android:src="@drawable/ic_import_export_black_24dp"/>
 
@@ -208,9 +208,9 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundgreen"
+                                android:background="@drawable/circlebackgroundyellow"
                                 android:padding="8dp"
-                                android:src="@drawable/ic_attach_money_black_24dp"/>
+                                android:src="@drawable/ic_battery_charging_50_black_24dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -255,9 +255,9 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundyellow"
+                                android:background="@drawable/circlebackgroundblue"
                                 android:padding="8dp"
-                                android:src="@drawable/ic_import_export_black_24dp"/>
+                                android:src="@drawable/ic_credit_card_black_24dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -302,9 +302,9 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundyellow"
+                                android:background="@drawable/circlebackgroundorange"
                                 android:padding="8dp"
-                                android:src="@drawable/ic_import_export_black_24dp"/>
+                                android:src="@drawable/ic_backup_black_24dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -349,9 +349,9 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundgreen"
+                                android:background="@drawable/circlebackgroundrasberry"
                                 android:padding="8dp"
-                                android:src="@drawable/ic_attach_money_black_24dp"/>
+                                android:src="@drawable/ic_if_paypal_logo"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -396,9 +396,9 @@
                             <ImageView
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
-                                android:background="@drawable/circlebackgroundyellow"
+                                android:background="@drawable/circlebackgroundred"
                                 android:padding="8dp"
-                                android:src="@drawable/ic_import_export_black_24dp"/>
+                                android:src="@drawable/ic_audition_mad"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
