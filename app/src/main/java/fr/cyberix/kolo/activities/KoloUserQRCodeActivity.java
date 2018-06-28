@@ -20,12 +20,13 @@ public class KoloUserQRCodeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(android.R.style.Theme_Material_Light_Dialog);
         super.onCreate(savedInstanceState);
         setContentView(fr.cyberix.kolo.R.layout.activity_kolo_user_qrcode);
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
-
+        setTitle("My Kolo Code");
         //QR code generator
         QrContact me = new QrContact();
         String qrCodeData = QrCodeHelper.GenerateQrCodeData(me, QrContact.class);

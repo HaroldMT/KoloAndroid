@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -52,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
     LoginAttempt loginAttempt = null;
     UserSignInTask userSignInTask = null;
     Customer customer = null;
-
-    RelativeLayout login_view, login_creds;
+    
+    LinearLayout login_view, login_creds;
     LinearLayout signUp_view;
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
@@ -73,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         KoloHelper.setActivity(this);
+        setTitle("Kolo Login");
         loadConfig();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

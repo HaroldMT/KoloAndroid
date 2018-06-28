@@ -35,12 +35,14 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(android.R.style.Theme_Material_Light_Dialog);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kolo_eneo_bill_payment);
 		TAG = this.getLocalClassName();
 		ButterKnife.setDebug(true);
 		ButterKnife.bind(this);
 		KoloHelper.setActivity(this);
+		setTitle("Kolo Eneo");
 		eneo_bill_number.setVisibility(View.GONE);
 		eneo_contract_number.setVisibility(View.GONE);
 //		payCardBtn.setOnClickListener(new View.OnClickListener() {
