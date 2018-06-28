@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
@@ -42,29 +43,29 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 		KoloHelper.setActivity(this);
 		eneo_bill_number.setVisibility(View.GONE);
 		eneo_contract_number.setVisibility(View.GONE);
-		payCardBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				payEneoBill(v);
-			}
-		});
+//		payCardBtn.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				payEneoBill(v);
+//			}
+//		});
 	}
-	
-	//	@OnClick(R.id.eneo_pay_btn)
-	public void payEneoBill(View v) {
-		String eneoCode;
-		if (!isContractSearch)
-			eneoCode = eneo_bill_number.getText().toString();
-		else
-			eneoCode = eneo_contract_number.getText().toString();
-		Intent intent = new Intent(getBaseContext(), KoloEneoPayBillActivity.class);
-		intent.putExtra("ENEO_CODE", eneoCode);
-		intent.putExtra("IS_CONTRACT_SEARCH", isContractSearch);
-		startActivity(intent);
-		finish();
-//		QueryEneoBillAsync eneoQuery = new QueryEneoBillAsync(eneoCode, isContractSearch);
-//		eneoQuery.execute();
-	}
+
+//	//	@OnClick(R.id.eneo_pay_btn)
+//	public void payEneoBill(View v) {
+//		String eneoCode;
+//		if (!isContractSearch)
+//			eneoCode = eneo_bill_number.getText().toString();
+//		else
+//			eneoCode = eneo_contract_number.getText().toString();
+//		Intent intent = new Intent(getBaseContext(), KoloEneoPayBillActivity.class);
+//		intent.putExtra("ENEO_CODE", eneoCode);
+//		intent.putExtra("IS_CONTRACT_SEARCH", isContractSearch);
+//		startActivity(intent);
+//		finish();
+////		QueryEneoBillAsync eneoQuery = new QueryEneoBillAsync(eneoCode, isContractSearch);
+////		eneoQuery.execute();
+//	}
 	
 	public void setBillList(EneoBillDetailsList billList) {
 		eneoBillList = billList;
@@ -99,6 +100,41 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 	@Override
 	public void onPointerCaptureChanged(boolean hasCapture) {
 	
+	}
+	
+	public void onClickPayMyBill(View view) {
+		isContractSearch = true;
+		String eneoCode = ConfigHelper.getAccountInfo().getCustomer().getEneoContractNo();
+		checkEneoBills(isContractSearch, eneoCode);
+	}
+	
+	public void checkEneoBills(boolean isContract, String code) {
+		if (verifyEneoCode(code)) {
+			Intent intent = new Intent(getBaseContext(), KoloEneoPayBillActivity.class);
+			intent.putExtra("ENEO_CODE", code);
+			intent.putExtra("IS_CONTRACT_SEARCH", isContract);
+			startActivity(intent);
+			finish();
+		}
+	}
+	
+	public boolean verifyEneoCode(String code) {
+		boolean isValid = false;
+		if (code == null || code.length() < 5) KoloHelper.ShowSimpleAlert("Code eneo manquand ou invalide",
+		                                                                  "Veuillez renseigner le code Eneo. S'il s'agit de votre propre facture, veuillez" +
+				                                                                  " enregistrer votre numéro de contrat Eneo au préalable dans les préférences" +
+				                                                                  " de l'application");
+		else isValid = true;
+		return isValid;
+	}
+	
+	public void onClickPaySomeoneBill(View view) {
+		String eneoCode;
+		if (!isContractSearch)
+			eneoCode = eneo_bill_number.getText().toString();
+		else
+			eneoCode = eneo_contract_number.getText().toString();
+		checkEneoBills(isContractSearch, eneoCode);
 	}
 	
 	public class QueryEneoBillAsync extends AsyncTask<Void, Void, EneoBillDetailsList> {

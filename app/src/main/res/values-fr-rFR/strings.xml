@@ -77,5 +77,6 @@
     <string name="label_buy_now">Buy now</string>
     <string name="label_scan_now">Scan credit card</string>
     <string name="airtime_providers_prompt">Chosissez un opérateur</string>
+    <string name="pay_my_own_bill">Pay my own Eneo bill</string>
 
 </resources>
