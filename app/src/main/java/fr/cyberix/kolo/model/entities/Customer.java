@@ -19,6 +19,39 @@ public class Customer implements KvmSerializable {
     public CustomerLogin customerLogin;
     public Partner partner;
     public Person person;
+    
+    public CustomerImage getCustomerImage() {
+        return customerImage;
+    }
+    
+    public void setCustomerImage(CustomerImage customerImage) {
+        this.customerImage = customerImage;
+    }
+    
+    public CustomerLogin getCustomerLogin() {
+        return customerLogin;
+    }
+    
+    public void setCustomerLogin(CustomerLogin customerLogin) {
+        this.customerLogin = customerLogin;
+    }
+    
+    public Partner getPartner() {
+        return partner;
+    }
+    
+    public void setPartner(Partner partner) {
+        this.partner = partner;
+    }
+    
+    public Person getPerson() {
+        return person;
+    }
+    
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    
     private int balanceUnavailable;
     private String eneoContractNo;
     private int eneoPercentage;
