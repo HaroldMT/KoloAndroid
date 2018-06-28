@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_person_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_credit_card_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,12 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="height" value="36" />
-                            <entry key="outputName" value="ic_person_white_36dp" />
+                            <entry key="outputName" value="ic_credit_card_black_24dp" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="F:\Ipic\Kolo images containers\if_Account_2202250.svg" />
-                            <entry key="width" value="36" />
+                            <entry key="sourceFile" value="F:\Ipic\Kolo images containers\if_paypal-logo.svg" />
                           </map>
                         </option>
                       </PersistentState>
