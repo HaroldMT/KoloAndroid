@@ -194,7 +194,7 @@
     <string name="eneo_logo">Eneo logo</string>
     <string name="eneo_contract_number">Eneo contract number</string>
     <string name="eneo_bill_number">Eneo bill number</string>
-    <string name="pay_eneo_bill">Pay eneo bill</string>
+    <string name="pay_eneo_bill">Pay someone eneo bill</string>
     <string name="eneo_pub">Eneo pub</string>
     <string name="default_status_code">SENT</string>
     <string name="default_amount">15 000</string>
@@ -216,6 +216,7 @@
     <string name="kolo_card_form_desc">Save your Kolo credit card information for easy payment</string>
     <string name="label_buy_now">Buy now</string>
     <string name="label_scan_now">Scan credit card</string>
+    <string name="pay_my_own_bill">Pay my Eneo bill</string>
 
 
 </resources>
