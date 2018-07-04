@@ -21,156 +21,156 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class BusinessContact implements KvmSerializable {
-
-    private int idBusiness;
-    private int idContact;
-    private String jobTitle;
-    private Business business;
-    private Person person;
-
-    public BusinessContact() {
-    }
-
-    public BusinessContact(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdBusiness")) {
-            Object obj = soapObject.getProperty("IdBusiness");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdBusiness(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdBusiness((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdContact")) {
-            Object obj = soapObject.getProperty("IdContact");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdContact(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdContact((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("JobTitle")) {
-            Object obj = soapObject.getProperty("JobTitle");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setJobTitle(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setJobTitle((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Business")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Business");
-            setBusiness(new Business(j));
-
-        }
-        if (soapObject.hasProperty("Person")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Person");
-            setPerson(new Person(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdBusiness();
-            case 1:
-                return getIdContact();
-            case 2:
-                return getJobTitle();
-            case 3:
-                return getBusiness();
-            case 4:
-                return getPerson();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 5;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdBusiness";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdContact";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "JobTitle";
-                break;
-            case 3:
-                info.type = Business.class;
-                info.name = "Business";
-                break;
-            case 4:
-                info.type = Person.class;
-                info.name = "Person";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdBusiness() {
-        return idBusiness;
-    }
-
-    public void setIdBusiness(int idBusiness) {
-        this.idBusiness = idBusiness;
-    }
-
-    public int getIdContact() {
-        return idContact;
-    }
-
-    public void setIdContact(int idContact) {
-        this.idContact = idContact;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+	
+	private int idBusiness;
+	private int idContact;
+	private String jobTitle;
+	private Business business;
+	private Person person;
+	
+	public BusinessContact() {
+	}
+	
+	public BusinessContact(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdBusiness")) {
+			Object obj = soapObject.getProperty("IdBusiness");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdBusiness(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdBusiness((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdContact")) {
+			Object obj = soapObject.getProperty("IdContact");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdContact(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdContact((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("JobTitle")) {
+			Object obj = soapObject.getProperty("JobTitle");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setJobTitle(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setJobTitle((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Business")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Business");
+			setBusiness(new Business(j));
+			
+		}
+		if (soapObject.hasProperty("Person")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Person");
+			setPerson(new Person(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdBusiness();
+			case 1:
+				return getIdContact();
+			case 2:
+				return getJobTitle();
+			case 3:
+				return getBusiness();
+			case 4:
+				return getPerson();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 5;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdBusiness";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdContact";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "JobTitle";
+				break;
+			case 3:
+				info.type = Business.class;
+				info.name = "Business";
+				break;
+			case 4:
+				info.type = Person.class;
+				info.name = "Person";
+				break;
+		}
+	}
+	
+	public int getIdBusiness() {
+		return idBusiness;
+	}
+	
+	public void setIdBusiness(int idBusiness) {
+		this.idBusiness = idBusiness;
+	}
+	
+	public int getIdContact() {
+		return idContact;
+	}
+	
+	public void setIdContact(int idContact) {
+		this.idContact = idContact;
+	}
+	
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+	
+	public Business getBusiness() {
+		return business;
+	}
+	
+	public void setBusiness(Business business) {
+		this.business = business;
+	}
+	
+	public Person getPerson() {
+		return person;
+	}
+	
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

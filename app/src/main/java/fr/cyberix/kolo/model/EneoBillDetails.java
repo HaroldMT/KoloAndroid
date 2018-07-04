@@ -73,4 +73,14 @@ public class EneoBillDetails implements Parcelable {
 		parcel.writeString(billNumber);
 		parcel.writeString(contractNumber);
 	}
+	
+	@Override
+	public String toString() {
+		return "Détails de la facture {" +
+				"dueDate=" + dueDate +
+				", amount=" + amount +
+				", billNumber='" + billNumber + '\'' +
+				", contractNumber='" + contractNumber + '\'' +
+				'}';
+	}
 }

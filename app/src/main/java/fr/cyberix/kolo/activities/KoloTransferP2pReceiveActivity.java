@@ -57,23 +57,19 @@ public class KoloTransferP2pReceiveActivity extends AppCompatActivity {
 		});
 	}
 	
-	void refreshItems() {
+	private void refreshItems() {
 		swipeContainer.setRefreshing(true);
-		prepareTransferData();
-	}
-	
-	private void prepareTransferData() {
 		RefreshReceiveAsync receiveAsync = new RefreshReceiveAsync(ConfigHelper.getAccountInfo().getCustomer().getIdCustomer());
 		receiveAsync.execute();
 	}
 	
-	void setTransferList(List<TransferP2pDetails> transferList) {
+	private void setTransferList(List<TransferP2pDetails> transferList) {
 		transferAdapter.clear();
 		transferAdapter.addAll(transferList);
 		onItemsLoadComplete();
 	}
 	
-	void onItemsLoadComplete() {
+	private void onItemsLoadComplete() {
 		transferAdapter.notifyDataSetChanged();
 		swipeContainer.setRefreshing(false);
 		int nb = transferAdapter.getItemCount();
@@ -100,5 +96,11 @@ public class KoloTransferP2pReceiveActivity extends AppCompatActivity {
 			super.onPostExecute(transferP2pDetailsList);
 			setTransferList(transferP2pDetailsList);
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		KoloHelper.setActivity(this);
 	}
 }

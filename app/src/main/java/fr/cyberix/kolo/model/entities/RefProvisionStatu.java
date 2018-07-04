@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefProvisionStatu implements KvmSerializable {
-
-    private String provisionStatusCode;
-    private String provisionStatusDescription;
-
-    public RefProvisionStatu() {
-    }
-
-    public RefProvisionStatu(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("ProvisionStatusCode")) {
-            Object obj = soapObject.getProperty("ProvisionStatusCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setProvisionStatusCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setProvisionStatusCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("ProvisionStatusDescription")) {
-            Object obj = soapObject.getProperty("ProvisionStatusDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setProvisionStatusDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setProvisionStatusDescription((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getProvisionStatusCode();
-            case 1:
-                return getProvisionStatusDescription();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "ProvisionStatusCode";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "ProvisionStatusDescription";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getProvisionStatusCode() {
-        return provisionStatusCode;
-    }
-
-    public void setProvisionStatusCode(String provisionStatusCode) {
-        this.provisionStatusCode = provisionStatusCode;
-    }
-
-    public String getProvisionStatusDescription() {
-        return provisionStatusDescription;
-    }
-
-    public void setProvisionStatusDescription(String provisionStatusDescription) {
-        this.provisionStatusDescription = provisionStatusDescription;
-    }
+	
+	private String provisionStatusCode;
+	private String provisionStatusDescription;
+	
+	public RefProvisionStatu() {
+	}
+	
+	public RefProvisionStatu(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("ProvisionStatusCode")) {
+			Object obj = soapObject.getProperty("ProvisionStatusCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setProvisionStatusCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setProvisionStatusCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("ProvisionStatusDescription")) {
+			Object obj = soapObject.getProperty("ProvisionStatusDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setProvisionStatusDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setProvisionStatusDescription((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getProvisionStatusCode();
+			case 1:
+				return getProvisionStatusDescription();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "ProvisionStatusCode";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "ProvisionStatusDescription";
+				break;
+		}
+	}
+	
+	public String getProvisionStatusCode() {
+		return provisionStatusCode;
+	}
+	
+	public void setProvisionStatusCode(String provisionStatusCode) {
+		this.provisionStatusCode = provisionStatusCode;
+	}
+	
+	public String getProvisionStatusDescription() {
+		return provisionStatusDescription;
+	}
+	
+	public void setProvisionStatusDescription(String provisionStatusDescription) {
+		this.provisionStatusDescription = provisionStatusDescription;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

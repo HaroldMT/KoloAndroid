@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefTransfertStatu implements KvmSerializable {
-
-    private String transfertStatusCode;
-    private String transfertStatusDescription;
-
-    public RefTransfertStatu() {
-    }
-
-    public RefTransfertStatu(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("TransfertStatusCode")) {
-            Object obj = soapObject.getProperty("TransfertStatusCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTransfertStatusCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTransfertStatusCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("TransfertStatusDescription")) {
-            Object obj = soapObject.getProperty("TransfertStatusDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTransfertStatusDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTransfertStatusDescription((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getTransfertStatusCode();
-            case 1:
-                return getTransfertStatusDescription();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "TransfertStatusCode";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "TransfertStatusDescription";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getTransfertStatusCode() {
-        return transfertStatusCode;
-    }
-
-    public void setTransfertStatusCode(String transfertStatusCode) {
-        this.transfertStatusCode = transfertStatusCode;
-    }
-
-    public String getTransfertStatusDescription() {
-        return transfertStatusDescription;
-    }
-
-    public void setTransfertStatusDescription(String transfertStatusDescription) {
-        this.transfertStatusDescription = transfertStatusDescription;
-    }
+	
+	private String transfertStatusCode;
+	private String transfertStatusDescription;
+	
+	public RefTransfertStatu() {
+	}
+	
+	public RefTransfertStatu(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("TransfertStatusCode")) {
+			Object obj = soapObject.getProperty("TransfertStatusCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTransfertStatusCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTransfertStatusCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("TransfertStatusDescription")) {
+			Object obj = soapObject.getProperty("TransfertStatusDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTransfertStatusDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTransfertStatusDescription((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getTransfertStatusCode();
+			case 1:
+				return getTransfertStatusDescription();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "TransfertStatusCode";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "TransfertStatusDescription";
+				break;
+		}
+	}
+	
+	public String getTransfertStatusCode() {
+		return transfertStatusCode;
+	}
+	
+	public void setTransfertStatusCode(String transfertStatusCode) {
+		this.transfertStatusCode = transfertStatusCode;
+	}
+	
+	public String getTransfertStatusDescription() {
+		return transfertStatusDescription;
+	}
+	
+	public void setTransfertStatusDescription(String transfertStatusDescription) {
+		this.transfertStatusDescription = transfertStatusDescription;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

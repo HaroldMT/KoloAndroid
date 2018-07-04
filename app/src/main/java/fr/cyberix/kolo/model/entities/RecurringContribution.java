@@ -21,156 +21,156 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RecurringContribution implements KvmSerializable {
-
-    private int idRecurringContribution;
-    private int idTreasurerCustomer;
-    private int idCustomerGroup;
-    private Customer customer;
-    private CustomerGroup customerGroup;
-
-    public RecurringContribution() {
-    }
-
-    public RecurringContribution(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdRecurringContribution")) {
-            Object obj = soapObject.getProperty("IdRecurringContribution");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdRecurringContribution(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdRecurringContribution((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdTreasurerCustomer")) {
-            Object obj = soapObject.getProperty("IdTreasurerCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdTreasurerCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdTreasurerCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdCustomerGroup")) {
-            Object obj = soapObject.getProperty("IdCustomerGroup");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdCustomerGroup(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdCustomerGroup((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
-        }
-        if (soapObject.hasProperty("CustomerGroup")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            setCustomerGroup(new CustomerGroup(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdRecurringContribution();
-            case 1:
-                return getIdTreasurerCustomer();
-            case 2:
-                return getIdCustomerGroup();
-            case 3:
-                return getCustomer();
-            case 4:
-                return getCustomerGroup();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 5;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdRecurringContribution";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdTreasurerCustomer";
-                break;
-            case 2:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdCustomerGroup";
-                break;
-            case 3:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-            case 4:
-                info.type = CustomerGroup.class;
-                info.name = "CustomerGroup";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdRecurringContribution() {
-        return idRecurringContribution;
-    }
-
-    public void setIdRecurringContribution(int idRecurringContribution) {
-        this.idRecurringContribution = idRecurringContribution;
-    }
-
-    public int getIdTreasurerCustomer() {
-        return idTreasurerCustomer;
-    }
-
-    public void setIdTreasurerCustomer(int idTreasurerCustomer) {
-        this.idTreasurerCustomer = idTreasurerCustomer;
-    }
-
-    public int getIdCustomerGroup() {
-        return idCustomerGroup;
-    }
-
-    public void setIdCustomerGroup(int idCustomerGroup) {
-        this.idCustomerGroup = idCustomerGroup;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public CustomerGroup getCustomerGroup() {
-        return customerGroup;
-    }
-
-    public void setCustomerGroup(CustomerGroup customerGroup) {
-        this.customerGroup = customerGroup;
-    }
+	
+	private int idRecurringContribution;
+	private int idTreasurerCustomer;
+	private int idCustomerGroup;
+	private Customer customer;
+	private CustomerGroup customerGroup;
+	
+	public RecurringContribution() {
+	}
+	
+	public RecurringContribution(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdRecurringContribution")) {
+			Object obj = soapObject.getProperty("IdRecurringContribution");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdRecurringContribution(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdRecurringContribution((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdTreasurerCustomer")) {
+			Object obj = soapObject.getProperty("IdTreasurerCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdTreasurerCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdTreasurerCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdCustomerGroup")) {
+			Object obj = soapObject.getProperty("IdCustomerGroup");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdCustomerGroup(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdCustomerGroup((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("Customer")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Customer");
+			setCustomer(new Customer(j));
+			
+		}
+		if (soapObject.hasProperty("CustomerGroup")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
+			setCustomerGroup(new CustomerGroup(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdRecurringContribution();
+			case 1:
+				return getIdTreasurerCustomer();
+			case 2:
+				return getIdCustomerGroup();
+			case 3:
+				return getCustomer();
+			case 4:
+				return getCustomerGroup();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 5;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdRecurringContribution";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdTreasurerCustomer";
+				break;
+			case 2:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdCustomerGroup";
+				break;
+			case 3:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+			case 4:
+				info.type = CustomerGroup.class;
+				info.name = "CustomerGroup";
+				break;
+		}
+	}
+	
+	public int getIdRecurringContribution() {
+		return idRecurringContribution;
+	}
+	
+	public void setIdRecurringContribution(int idRecurringContribution) {
+		this.idRecurringContribution = idRecurringContribution;
+	}
+	
+	public int getIdTreasurerCustomer() {
+		return idTreasurerCustomer;
+	}
+	
+	public void setIdTreasurerCustomer(int idTreasurerCustomer) {
+		this.idTreasurerCustomer = idTreasurerCustomer;
+	}
+	
+	public int getIdCustomerGroup() {
+		return idCustomerGroup;
+	}
+	
+	public void setIdCustomerGroup(int idCustomerGroup) {
+		this.idCustomerGroup = idCustomerGroup;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public CustomerGroup getCustomerGroup() {
+		return customerGroup;
+	}
+	
+	public void setCustomerGroup(CustomerGroup customerGroup) {
+		this.customerGroup = customerGroup;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

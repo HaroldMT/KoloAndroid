@@ -21,268 +21,268 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class AccountOperationRequest implements KvmSerializable {
-
-    private int idAccountOperationRequest;
-    private int idCustomerAccount;
-    private String requestDate;
-    private String operationTypeCode;
-    private String operationStatusCode;
-    private int amount;
-    private AccountOperation accountOperation;
-    private RefOperationStatu refOperationStatu;
-    private RefOperationType refOperationType;
-    private Customer customer;
-
-    public AccountOperationRequest() {
-    }
-
-    public AccountOperationRequest(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdAccountOperationRequest")) {
-            Object obj = soapObject.getProperty("IdAccountOperationRequest");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdAccountOperationRequest(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdAccountOperationRequest((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdCustomerAccount")) {
-            Object obj = soapObject.getProperty("IdCustomerAccount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdCustomerAccount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdCustomerAccount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("RequestDate")) {
-            Object obj = soapObject.getProperty("RequestDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setRequestDate(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setRequestDate((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("OperationTypeCode")) {
-            Object obj = soapObject.getProperty("OperationTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setOperationTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setOperationTypeCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("OperationStatusCode")) {
-            Object obj = soapObject.getProperty("OperationStatusCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setOperationStatusCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setOperationStatusCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Amount")) {
-            Object obj = soapObject.getProperty("Amount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAmount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setAmount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("AccountOperation")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("AccountOperation");
-            setAccountOperation(new AccountOperation(j));
-
-        }
-        if (soapObject.hasProperty("RefOperationStatu")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
-            setRefOperationStatu(new RefOperationStatu(j));
-
-        }
-        if (soapObject.hasProperty("RefOperationType")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            setRefOperationType(new RefOperationType(j));
-
-        }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdAccountOperationRequest();
-            case 1:
-                return getIdCustomerAccount();
-            case 2:
-                return getRequestDate();
-            case 3:
-                return getOperationTypeCode();
-            case 4:
-                return getOperationStatusCode();
-            case 5:
-                return getAmount();
-            case 6:
-                return getAccountOperation();
-            case 7:
-                return getRefOperationStatu();
-            case 8:
-                return getRefOperationType();
-            case 9:
-                return getCustomer();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 10;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdAccountOperationRequest";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdCustomerAccount";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "RequestDate";
-                break;
-            case 3:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "OperationTypeCode";
-                break;
-            case 4:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "OperationStatusCode";
-                break;
-            case 5:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "Amount";
-                break;
-            case 6:
-                info.type = AccountOperation.class;
-                info.name = "AccountOperation";
-                break;
-            case 7:
-                info.type = RefOperationStatu.class;
-                info.name = "RefOperationStatu";
-                break;
-            case 8:
-                info.type = RefOperationType.class;
-                info.name = "RefOperationType";
-                break;
-            case 9:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdAccountOperationRequest() {
-        return idAccountOperationRequest;
-    }
-
-    public void setIdAccountOperationRequest(int idAccountOperationRequest) {
-        this.idAccountOperationRequest = idAccountOperationRequest;
-    }
-
-    public int getIdCustomerAccount() {
-        return idCustomerAccount;
-    }
-
-    public void setIdCustomerAccount(int idCustomerAccount) {
-        this.idCustomerAccount = idCustomerAccount;
-    }
-
-    public String getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(String requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public String getOperationTypeCode() {
-        return operationTypeCode;
-    }
-
-    public void setOperationTypeCode(String operationTypeCode) {
-        this.operationTypeCode = operationTypeCode;
-    }
-
-    public String getOperationStatusCode() {
-        return operationStatusCode;
-    }
-
-    public void setOperationStatusCode(String operationStatusCode) {
-        this.operationStatusCode = operationStatusCode;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public AccountOperation getAccountOperation() {
-        return accountOperation;
-    }
-
-    public void setAccountOperation(AccountOperation accountOperation) {
-        this.accountOperation = accountOperation;
-    }
-
-    public RefOperationStatu getRefOperationStatu() {
-        return refOperationStatu;
-    }
-
-    public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
-        this.refOperationStatu = refOperationStatu;
-    }
-
-    public RefOperationType getRefOperationType() {
-        return refOperationType;
-    }
-
-    public void setRefOperationType(RefOperationType refOperationType) {
-        this.refOperationType = refOperationType;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	
+	private int idAccountOperationRequest;
+	private int idCustomerAccount;
+	private String requestDate;
+	private String operationTypeCode;
+	private String operationStatusCode;
+	private int amount;
+	private AccountOperation accountOperation;
+	private RefOperationStatu refOperationStatu;
+	private RefOperationType refOperationType;
+	private Customer customer;
+	
+	public AccountOperationRequest() {
+	}
+	
+	public AccountOperationRequest(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdAccountOperationRequest")) {
+			Object obj = soapObject.getProperty("IdAccountOperationRequest");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdAccountOperationRequest(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdAccountOperationRequest((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdCustomerAccount")) {
+			Object obj = soapObject.getProperty("IdCustomerAccount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdCustomerAccount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdCustomerAccount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("RequestDate")) {
+			Object obj = soapObject.getProperty("RequestDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setRequestDate(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setRequestDate((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("OperationTypeCode")) {
+			Object obj = soapObject.getProperty("OperationTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setOperationTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setOperationTypeCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("OperationStatusCode")) {
+			Object obj = soapObject.getProperty("OperationStatusCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setOperationStatusCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setOperationStatusCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Amount")) {
+			Object obj = soapObject.getProperty("Amount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAmount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setAmount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("AccountOperation")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("AccountOperation");
+			setAccountOperation(new AccountOperation(j));
+			
+		}
+		if (soapObject.hasProperty("RefOperationStatu")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
+			setRefOperationStatu(new RefOperationStatu(j));
+			
+		}
+		if (soapObject.hasProperty("RefOperationType")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
+			setRefOperationType(new RefOperationType(j));
+			
+		}
+		if (soapObject.hasProperty("Customer")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Customer");
+			setCustomer(new Customer(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdAccountOperationRequest();
+			case 1:
+				return getIdCustomerAccount();
+			case 2:
+				return getRequestDate();
+			case 3:
+				return getOperationTypeCode();
+			case 4:
+				return getOperationStatusCode();
+			case 5:
+				return getAmount();
+			case 6:
+				return getAccountOperation();
+			case 7:
+				return getRefOperationStatu();
+			case 8:
+				return getRefOperationType();
+			case 9:
+				return getCustomer();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 10;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdAccountOperationRequest";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdCustomerAccount";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "RequestDate";
+				break;
+			case 3:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "OperationTypeCode";
+				break;
+			case 4:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "OperationStatusCode";
+				break;
+			case 5:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "Amount";
+				break;
+			case 6:
+				info.type = AccountOperation.class;
+				info.name = "AccountOperation";
+				break;
+			case 7:
+				info.type = RefOperationStatu.class;
+				info.name = "RefOperationStatu";
+				break;
+			case 8:
+				info.type = RefOperationType.class;
+				info.name = "RefOperationType";
+				break;
+			case 9:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+		}
+	}
+	
+	public int getIdAccountOperationRequest() {
+		return idAccountOperationRequest;
+	}
+	
+	public void setIdAccountOperationRequest(int idAccountOperationRequest) {
+		this.idAccountOperationRequest = idAccountOperationRequest;
+	}
+	
+	public int getIdCustomerAccount() {
+		return idCustomerAccount;
+	}
+	
+	public void setIdCustomerAccount(int idCustomerAccount) {
+		this.idCustomerAccount = idCustomerAccount;
+	}
+	
+	public String getRequestDate() {
+		return requestDate;
+	}
+	
+	public void setRequestDate(String requestDate) {
+		this.requestDate = requestDate;
+	}
+	
+	public String getOperationTypeCode() {
+		return operationTypeCode;
+	}
+	
+	public void setOperationTypeCode(String operationTypeCode) {
+		this.operationTypeCode = operationTypeCode;
+	}
+	
+	public String getOperationStatusCode() {
+		return operationStatusCode;
+	}
+	
+	public void setOperationStatusCode(String operationStatusCode) {
+		this.operationStatusCode = operationStatusCode;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	public AccountOperation getAccountOperation() {
+		return accountOperation;
+	}
+	
+	public void setAccountOperation(AccountOperation accountOperation) {
+		this.accountOperation = accountOperation;
+	}
+	
+	public RefOperationStatu getRefOperationStatu() {
+		return refOperationStatu;
+	}
+	
+	public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
+		this.refOperationStatu = refOperationStatu;
+	}
+	
+	public RefOperationType getRefOperationType() {
+		return refOperationType;
+	}
+	
+	public void setRefOperationType(RefOperationType refOperationType) {
+		this.refOperationType = refOperationType;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

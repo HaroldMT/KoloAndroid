@@ -87,6 +87,12 @@ public class CreditCardInputActivity extends AppCompatActivity {
 			}
 		});
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		KoloHelper.setActivity(this);
+	}
 
 //	@OnClick(R.id.card_form_btn_buy)
 //	public void onConfirmClick(View v) {

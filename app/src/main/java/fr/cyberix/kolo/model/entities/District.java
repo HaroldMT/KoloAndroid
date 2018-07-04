@@ -21,116 +21,116 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class District implements KvmSerializable {
-
-    private int idDistrict;
-    private String districtName;
-    private String countryCode;
-
-    public District() {
-    }
-
-    public District(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdDistrict")) {
-            Object obj = soapObject.getProperty("IdDistrict");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdDistrict(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdDistrict((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("DistrictName")) {
-            Object obj = soapObject.getProperty("DistrictName");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setDistrictName(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setDistrictName((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("CountryCode")) {
-            Object obj = soapObject.getProperty("CountryCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setCountryCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setCountryCode((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdDistrict();
-            case 1:
-                return getDistrictName();
-            case 2:
-                return getCountryCode();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 3;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdDistrict";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "DistrictName";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "CountryCode";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdDistrict() {
-        return idDistrict;
-    }
-
-    public void setIdDistrict(int idDistrict) {
-        this.idDistrict = idDistrict;
-    }
-
-    public String getDistrictName() {
-        return districtName;
-    }
-
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
+	
+	private int idDistrict;
+	private String districtName;
+	private String countryCode;
+	
+	public District() {
+	}
+	
+	public District(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdDistrict")) {
+			Object obj = soapObject.getProperty("IdDistrict");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdDistrict(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdDistrict((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("DistrictName")) {
+			Object obj = soapObject.getProperty("DistrictName");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setDistrictName(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setDistrictName((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("CountryCode")) {
+			Object obj = soapObject.getProperty("CountryCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setCountryCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setCountryCode((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdDistrict();
+			case 1:
+				return getDistrictName();
+			case 2:
+				return getCountryCode();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 3;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdDistrict";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "DistrictName";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "CountryCode";
+				break;
+		}
+	}
+	
+	public int getIdDistrict() {
+		return idDistrict;
+	}
+	
+	public void setIdDistrict(int idDistrict) {
+		this.idDistrict = idDistrict;
+	}
+	
+	public String getDistrictName() {
+		return districtName;
+	}
+	
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
+	}
+	
+	public String getCountryCode() {
+		return countryCode;
+	}
+	
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

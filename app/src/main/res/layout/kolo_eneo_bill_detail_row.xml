@@ -47,7 +47,7 @@
             android:fontFamily="serif"
             android:text="@string/eneo_contract_number"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/eneo_image"

@@ -17,33 +17,38 @@ import fr.cyberix.kolo.model.QrContact;
 import static fr.cyberix.kolo.helpers.ScannerHelper.generateQrCode_general;
 
 public class KoloUserQRCodeActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(android.R.style.Theme_Material_Light_Dialog);
-        super.onCreate(savedInstanceState);
-        setContentView(fr.cyberix.kolo.R.layout.activity_kolo_user_qrcode);
-        ButterKnife.setDebug(true);
-        ButterKnife.bind(this);
-        KoloHelper.setActivity(this);
-        setTitle("My Kolo Code");
-        //QR code generator
-        QrContact me = new QrContact();
-        String qrCodeData = QrCodeHelper.GenerateQrCodeData(me, QrContact.class);
-        ImageView imageView = findViewById(R.id.img_usrprof_qrcode);
-
-        try {
-            generateQrCode_general(qrCodeData, imageView);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
-        Button button = findViewById(R.id.btn_usrprof_qrcode_close);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(android.R.style.Theme_Material_Light_Dialog);
+		super.onCreate(savedInstanceState);
+		setContentView(fr.cyberix.kolo.R.layout.activity_kolo_user_qrcode);
+		ButterKnife.setDebug(true);
+		ButterKnife.bind(this);
+		setTitle("My Kolo Code");
+		//QR code generator
+		QrContact me = new QrContact();
+		String qrCodeData = QrCodeHelper.GenerateQrCodeData(me, QrContact.class);
+		ImageView imageView = findViewById(R.id.img_usrprof_qrcode);
+		
+		try {
+			generateQrCode_general(qrCodeData, imageView);
+		} catch (WriterException e) {
+			e.printStackTrace();
+		}
+		
+		Button button = findViewById(R.id.btn_usrprof_qrcode_close);
+		button.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		KoloHelper.setActivity(this);
+	}
 }

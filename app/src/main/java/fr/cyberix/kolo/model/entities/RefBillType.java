@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefBillType implements KvmSerializable {
-
-    private String billTypeCode;
-    private String billTypeDescription;
-
-    public RefBillType() {
-    }
-
-    public RefBillType(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("BillTypeCode")) {
-            Object obj = soapObject.getProperty("BillTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setBillTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setBillTypeCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("BillTypeDescription")) {
-            Object obj = soapObject.getProperty("BillTypeDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setBillTypeDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setBillTypeDescription((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getBillTypeCode();
-            case 1:
-                return getBillTypeDescription();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "BillTypeCode";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "BillTypeDescription";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getBillTypeCode() {
-        return billTypeCode;
-    }
-
-    public void setBillTypeCode(String billTypeCode) {
-        this.billTypeCode = billTypeCode;
-    }
-
-    public String getBillTypeDescription() {
-        return billTypeDescription;
-    }
-
-    public void setBillTypeDescription(String billTypeDescription) {
-        this.billTypeDescription = billTypeDescription;
-    }
+	
+	private String billTypeCode;
+	private String billTypeDescription;
+	
+	public RefBillType() {
+	}
+	
+	public RefBillType(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("BillTypeCode")) {
+			Object obj = soapObject.getProperty("BillTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setBillTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setBillTypeCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("BillTypeDescription")) {
+			Object obj = soapObject.getProperty("BillTypeDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setBillTypeDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setBillTypeDescription((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getBillTypeCode();
+			case 1:
+				return getBillTypeDescription();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "BillTypeCode";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "BillTypeDescription";
+				break;
+		}
+	}
+	
+	public String getBillTypeCode() {
+		return billTypeCode;
+	}
+	
+	public void setBillTypeCode(String billTypeCode) {
+		this.billTypeCode = billTypeCode;
+	}
+	
+	public String getBillTypeDescription() {
+		return billTypeDescription;
+	}
+	
+	public void setBillTypeDescription(String billTypeDescription) {
+		this.billTypeDescription = billTypeDescription;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

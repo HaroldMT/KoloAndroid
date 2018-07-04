@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefAddressType implements KvmSerializable {
-
-    private String addressTypeDescription;
-    private String addressTypeCode;
-
-    public RefAddressType() {
-    }
-
-    public RefAddressType(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("AddressTypeDescription")) {
-            Object obj = soapObject.getProperty("AddressTypeDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAddressTypeDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setAddressTypeDescription((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("AddressTypeCode")) {
-            Object obj = soapObject.getProperty("AddressTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAddressTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setAddressTypeCode((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getAddressTypeDescription();
-            case 1:
-                return getAddressTypeCode();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "AddressTypeDescription";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "AddressTypeCode";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getAddressTypeDescription() {
-        return addressTypeDescription;
-    }
-
-    public void setAddressTypeDescription(String addressTypeDescription) {
-        this.addressTypeDescription = addressTypeDescription;
-    }
-
-    public String getAddressTypeCode() {
-        return addressTypeCode;
-    }
-
-    public void setAddressTypeCode(String addressTypeCode) {
-        this.addressTypeCode = addressTypeCode;
-    }
+	
+	private String addressTypeDescription;
+	private String addressTypeCode;
+	
+	public RefAddressType() {
+	}
+	
+	public RefAddressType(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("AddressTypeDescription")) {
+			Object obj = soapObject.getProperty("AddressTypeDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAddressTypeDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setAddressTypeDescription((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("AddressTypeCode")) {
+			Object obj = soapObject.getProperty("AddressTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAddressTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setAddressTypeCode((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getAddressTypeDescription();
+			case 1:
+				return getAddressTypeCode();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "AddressTypeDescription";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "AddressTypeCode";
+				break;
+		}
+	}
+	
+	public String getAddressTypeDescription() {
+		return addressTypeDescription;
+	}
+	
+	public void setAddressTypeDescription(String addressTypeDescription) {
+		this.addressTypeDescription = addressTypeDescription;
+	}
+	
+	public String getAddressTypeCode() {
+		return addressTypeCode;
+	}
+	
+	public void setAddressTypeCode(String addressTypeCode) {
+		this.addressTypeCode = addressTypeCode;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

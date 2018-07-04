@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefExternalAccountType implements KvmSerializable {
-
-    private String externalAccountTypeCode;
-    private String externalAccountTypeDescription;
-
-    public RefExternalAccountType() {
-    }
-
-    public RefExternalAccountType(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("ExternalAccountTypeCode")) {
-            Object obj = soapObject.getProperty("ExternalAccountTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setExternalAccountTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setExternalAccountTypeCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("ExternalAccountTypeDescription")) {
-            Object obj = soapObject.getProperty("ExternalAccountTypeDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setExternalAccountTypeDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setExternalAccountTypeDescription((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getExternalAccountTypeCode();
-            case 1:
-                return getExternalAccountTypeDescription();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "ExternalAccountTypeCode";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "ExternalAccountTypeDescription";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getExternalAccountTypeCode() {
-        return externalAccountTypeCode;
-    }
-
-    public void setExternalAccountTypeCode(String externalAccountTypeCode) {
-        this.externalAccountTypeCode = externalAccountTypeCode;
-    }
-
-    public String getExternalAccountTypeDescription() {
-        return externalAccountTypeDescription;
-    }
-
-    public void setExternalAccountTypeDescription(String externalAccountTypeDescription) {
-        this.externalAccountTypeDescription = externalAccountTypeDescription;
-    }
+	
+	private String externalAccountTypeCode;
+	private String externalAccountTypeDescription;
+	
+	public RefExternalAccountType() {
+	}
+	
+	public RefExternalAccountType(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("ExternalAccountTypeCode")) {
+			Object obj = soapObject.getProperty("ExternalAccountTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setExternalAccountTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setExternalAccountTypeCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("ExternalAccountTypeDescription")) {
+			Object obj = soapObject.getProperty("ExternalAccountTypeDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setExternalAccountTypeDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setExternalAccountTypeDescription((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getExternalAccountTypeCode();
+			case 1:
+				return getExternalAccountTypeDescription();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "ExternalAccountTypeCode";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "ExternalAccountTypeDescription";
+				break;
+		}
+	}
+	
+	public String getExternalAccountTypeCode() {
+		return externalAccountTypeCode;
+	}
+	
+	public void setExternalAccountTypeCode(String externalAccountTypeCode) {
+		this.externalAccountTypeCode = externalAccountTypeCode;
+	}
+	
+	public String getExternalAccountTypeDescription() {
+		return externalAccountTypeDescription;
+	}
+	
+	public void setExternalAccountTypeDescription(String externalAccountTypeDescription) {
+		this.externalAccountTypeDescription = externalAccountTypeDescription;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

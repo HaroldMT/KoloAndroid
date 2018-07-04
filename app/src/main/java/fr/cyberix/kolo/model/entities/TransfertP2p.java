@@ -23,404 +23,404 @@ import java.util.Hashtable;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 
 public class TransfertP2p implements KvmSerializable {
-
-    private int idTransfertP2p;
-    private int idSendingCustomer;
-    private int idReceiverCustomer;
-    private int idTransfertScheduled;
-    private String transfertStatusCode;
-    private int amount;
-    private boolean needsConfirmation;
-    private String secret;
-    private String transfertDate;
-    private String reference;
-    private boolean transfert2Cash;
-    public String receiveDate;
-    public String confirmationDate;
-    public String cancelationDate;
-    public Customer receiver;
-    public Customer sender;
-
-    public TransfertP2p() {
-        idSendingCustomer = ConfigHelper.getAccountInfo().getCustomer().getIdCustomer();
-    }
-
-    public TransfertP2p(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdTransfertP2p")) {
-            Object obj = soapObject.getProperty("IdTransfertP2p");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdTransfertP2p(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdTransfertP2p((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdSendingCustomer")) {
-            Object obj = soapObject.getProperty("IdSendingCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdSendingCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdSendingCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdReceiverCustomer")) {
-            Object obj = soapObject.getProperty("IdReceiverCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdReceiverCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdReceiverCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdTransfertScheduled")) {
-            Object obj = soapObject.getProperty("IdTransfertScheduled");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdTransfertScheduled(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdTransfertScheduled((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("TransfertStatusCode")) {
-            Object obj = soapObject.getProperty("TransfertStatusCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTransfertStatusCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTransfertStatusCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Amount")) {
-            Object obj = soapObject.getProperty("Amount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAmount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setAmount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("NeedsConfirmation")) {
-            Object obj = soapObject.getProperty("NeedsConfirmation");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setNeedsConfirmation(Boolean.parseBoolean(j.toString()));
-            } else if (obj != null && obj instanceof Boolean) {
-                setNeedsConfirmation((Boolean) obj);
-            }
-        }
-        if (soapObject.hasProperty("Secret")) {
-            Object obj = soapObject.getProperty("Secret");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setSecret(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setSecret((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("TransfertDate")) {
-            Object obj = soapObject.getProperty("TransfertDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTransfertDate(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTransfertDate((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Reference")) {
-            Object obj = soapObject.getProperty("Reference");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setReference(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setReference((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Transfert2Cash")) {
-            Object obj = soapObject.getProperty("Transfert2Cash");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTransfert2Cash(Boolean.parseBoolean(j.toString()));
-            } else if (obj != null && obj instanceof Boolean) {
-                setTransfert2Cash((Boolean) obj);
-            }
-        }
-        if (soapObject.hasProperty("ReceiveDate")) {
-            Object obj = soapObject.getProperty("ReceiveDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                receiveDate = j.toString();
-            } else if (obj != null && obj instanceof String) {
-                receiveDate = (String) obj;
-            }
-        }
-        if (soapObject.hasProperty("ConfirmationDate")) {
-            Object obj = soapObject.getProperty("ConfirmationDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                confirmationDate = j.toString();
-            } else if (obj != null && obj instanceof String) {
-                confirmationDate = (String) obj;
-            }
-        }
-        if (soapObject.hasProperty("CancelationDate")) {
-            Object obj = soapObject.getProperty("CancelationDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                cancelationDate = j.toString();
-            } else if (obj != null && obj instanceof String) {
-                cancelationDate = (String) obj;
-            }
-        }
-        if (soapObject.hasProperty("Receiver")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Receiver");
-            receiver = new Customer(j);
-        }
-        if (soapObject.hasProperty("Sender")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Sender");
-            sender = new Customer(j);
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdTransfertP2p();
-            case 1:
-                return getIdSendingCustomer();
-            case 2:
-                return getIdReceiverCustomer();
-            case 3:
-                return getIdTransfertScheduled();
-            case 4:
-                return getTransfertStatusCode();
-            case 5:
-                return getAmount();
-            case 6:
-                return isNeedsConfirmation();
-            case 7:
-                return getSecret();
-            case 8:
-                return getTransfertDate();
-            case 9:
-                return getReference();
-            case 10:
-                return isTransfert2Cash();
-            case 11:
-                return getReceiveDate();
-            case 12:
-                return getConfirmationDate();
-            case 13:
-                return getCancelationDate();
-            case 14:
-                return getReceiver();
-            case 15:
-                return getSender();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 12;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdTransfertP2p";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdSendingCustomer";
-                break;
-            case 2:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdReceiverCustomer";
-                break;
-            case 3:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdTransfertScheduled";
-                break;
-            case 4:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "TransfertStatusCode";
-                break;
-            case 5:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "Amount";
-                break;
-            case 6:
-                info.type = PropertyInfo.BOOLEAN_CLASS;
-                info.name = "NeedsConfirmation";
-                break;
-            case 7:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "Secret";
-                break;
-            case 8:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "TransfertDate";
-                break;
-            case 9:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "Reference";
-                break;
-            case 10:
-                info.type = PropertyInfo.BOOLEAN_CLASS;
-                info.name = "Transfert2Cash";
-                break;
-            case 11:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdTransfertP2p() {
-        return idTransfertP2p;
-    }
-
-    public void setIdTransfertP2p(int idTransfertP2p) {
-        this.idTransfertP2p = idTransfertP2p;
-    }
-
-    public int getIdSendingCustomer() {
-        return idSendingCustomer;
-    }
-
-    public void setIdSendingCustomer(int idSendingCustomer) {
-        this.idSendingCustomer = idSendingCustomer;
-    }
-
-    public int getIdReceiverCustomer() {
-        return idReceiverCustomer;
-    }
-
-    public void setIdReceiverCustomer(int idReceiverCustomer) {
-        this.idReceiverCustomer = idReceiverCustomer;
-    }
-
-    public int getIdTransfertScheduled() {
-        return idTransfertScheduled;
-    }
-
-    public void setIdTransfertScheduled(int idTransfertScheduled) {
-        this.idTransfertScheduled = idTransfertScheduled;
-    }
-
-    public String getTransfertStatusCode() {
-        return transfertStatusCode;
-    }
-
-    public void setTransfertStatusCode(String transfertStatusCode) {
-        this.transfertStatusCode = transfertStatusCode;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public boolean isNeedsConfirmation() {
-        return needsConfirmation;
-    }
-
-    public void setNeedsConfirmation(boolean needsConfirmation) {
-        this.needsConfirmation = needsConfirmation;
-    }
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public String getTransfertDate() {
-        return transfertDate;
-    }
-
-    public void setTransfertDate(String transfertDate) {
-        this.transfertDate = transfertDate;
-    }
-    
-    public String getReceiveDate() {
-        return receiveDate;
-    }
-    
-    public void setReceiveDate(String receiveDate) {
-        this.receiveDate = receiveDate;
-    }
-    
-    public String getConfirmationDate() {
-        return confirmationDate;
-    }
-    
-    public void setConfirmationDate(String confirmationDate) {
-        this.confirmationDate = confirmationDate;
-    }
-    
-    public String getCancelationDate() {
-        return cancelationDate;
-    }
-    
-    public void setCancelationDate(String cancelationDate) {
-        this.cancelationDate = cancelationDate;
-    }
-    
-    public Customer getReceiver() {
-        return receiver;
-    }
-    
-    public void setReceiver(Customer receiver) {
-        this.receiver = receiver;
-    }
-    
-    public Customer getSender() {
-        return sender;
-    }
-    
-    public void setSender(Customer sender) {
-        this.sender = sender;
-    }
-    
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public boolean isTransfert2Cash() {
-        return transfert2Cash;
-    }
-
-    public void setTransfert2Cash(boolean transfert2Cash) {
-        this.transfert2Cash = transfert2Cash;
-    }
-
+	
+	public String receiveDate;
+	public String confirmationDate;
+	public String cancelationDate;
+	public Customer receiver;
+	public Customer sender;
+	private int idTransfertP2p;
+	private int idSendingCustomer;
+	private int idReceiverCustomer;
+	private int idTransfertScheduled;
+	private String transfertStatusCode;
+	private int amount;
+	private boolean needsConfirmation;
+	private String secret;
+	private String transfertDate;
+	private String reference;
+	private boolean transfert2Cash;
+	
+	public TransfertP2p() {
+		idSendingCustomer = ConfigHelper.getAccountInfo().getCustomer().getIdCustomer();
+	}
+	
+	public TransfertP2p(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdTransfertP2p")) {
+			Object obj = soapObject.getProperty("IdTransfertP2p");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdTransfertP2p(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdTransfertP2p((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdSendingCustomer")) {
+			Object obj = soapObject.getProperty("IdSendingCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdSendingCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdSendingCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdReceiverCustomer")) {
+			Object obj = soapObject.getProperty("IdReceiverCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdReceiverCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdReceiverCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdTransfertScheduled")) {
+			Object obj = soapObject.getProperty("IdTransfertScheduled");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdTransfertScheduled(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdTransfertScheduled((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("TransfertStatusCode")) {
+			Object obj = soapObject.getProperty("TransfertStatusCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTransfertStatusCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTransfertStatusCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Amount")) {
+			Object obj = soapObject.getProperty("Amount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAmount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setAmount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("NeedsConfirmation")) {
+			Object obj = soapObject.getProperty("NeedsConfirmation");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setNeedsConfirmation(Boolean.parseBoolean(j.toString()));
+			} else if (obj != null && obj instanceof Boolean) {
+				setNeedsConfirmation((Boolean) obj);
+			}
+		}
+		if (soapObject.hasProperty("Secret")) {
+			Object obj = soapObject.getProperty("Secret");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setSecret(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setSecret((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("TransfertDate")) {
+			Object obj = soapObject.getProperty("TransfertDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTransfertDate(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTransfertDate((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Reference")) {
+			Object obj = soapObject.getProperty("Reference");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setReference(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setReference((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Transfert2Cash")) {
+			Object obj = soapObject.getProperty("Transfert2Cash");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTransfert2Cash(Boolean.parseBoolean(j.toString()));
+			} else if (obj != null && obj instanceof Boolean) {
+				setTransfert2Cash((Boolean) obj);
+			}
+		}
+		if (soapObject.hasProperty("ReceiveDate")) {
+			Object obj = soapObject.getProperty("ReceiveDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				receiveDate = j.toString();
+			} else if (obj != null && obj instanceof String) {
+				receiveDate = (String) obj;
+			}
+		}
+		if (soapObject.hasProperty("ConfirmationDate")) {
+			Object obj = soapObject.getProperty("ConfirmationDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				confirmationDate = j.toString();
+			} else if (obj != null && obj instanceof String) {
+				confirmationDate = (String) obj;
+			}
+		}
+		if (soapObject.hasProperty("CancelationDate")) {
+			Object obj = soapObject.getProperty("CancelationDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				cancelationDate = j.toString();
+			} else if (obj != null && obj instanceof String) {
+				cancelationDate = (String) obj;
+			}
+		}
+		if (soapObject.hasProperty("Receiver")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Receiver");
+			receiver = new Customer(j);
+		}
+		if (soapObject.hasProperty("Sender")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Sender");
+			sender = new Customer(j);
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdTransfertP2p();
+			case 1:
+				return getIdSendingCustomer();
+			case 2:
+				return getIdReceiverCustomer();
+			case 3:
+				return getIdTransfertScheduled();
+			case 4:
+				return getTransfertStatusCode();
+			case 5:
+				return getAmount();
+			case 6:
+				return isNeedsConfirmation();
+			case 7:
+				return getSecret();
+			case 8:
+				return getTransfertDate();
+			case 9:
+				return getReference();
+			case 10:
+				return isTransfert2Cash();
+			case 11:
+				return getReceiveDate();
+			case 12:
+				return getConfirmationDate();
+			case 13:
+				return getCancelationDate();
+			case 14:
+				return getReceiver();
+			case 15:
+				return getSender();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 12;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdTransfertP2p";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdSendingCustomer";
+				break;
+			case 2:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdReceiverCustomer";
+				break;
+			case 3:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdTransfertScheduled";
+				break;
+			case 4:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "TransfertStatusCode";
+				break;
+			case 5:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "Amount";
+				break;
+			case 6:
+				info.type = PropertyInfo.BOOLEAN_CLASS;
+				info.name = "NeedsConfirmation";
+				break;
+			case 7:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "Secret";
+				break;
+			case 8:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "TransfertDate";
+				break;
+			case 9:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "Reference";
+				break;
+			case 10:
+				info.type = PropertyInfo.BOOLEAN_CLASS;
+				info.name = "Transfert2Cash";
+				break;
+			case 11:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+		}
+	}
+	
+	public int getIdTransfertP2p() {
+		return idTransfertP2p;
+	}
+	
+	public void setIdTransfertP2p(int idTransfertP2p) {
+		this.idTransfertP2p = idTransfertP2p;
+	}
+	
+	public int getIdSendingCustomer() {
+		return idSendingCustomer;
+	}
+	
+	public void setIdSendingCustomer(int idSendingCustomer) {
+		this.idSendingCustomer = idSendingCustomer;
+	}
+	
+	public int getIdReceiverCustomer() {
+		return idReceiverCustomer;
+	}
+	
+	public void setIdReceiverCustomer(int idReceiverCustomer) {
+		this.idReceiverCustomer = idReceiverCustomer;
+	}
+	
+	public int getIdTransfertScheduled() {
+		return idTransfertScheduled;
+	}
+	
+	public void setIdTransfertScheduled(int idTransfertScheduled) {
+		this.idTransfertScheduled = idTransfertScheduled;
+	}
+	
+	public String getTransfertStatusCode() {
+		return transfertStatusCode;
+	}
+	
+	public void setTransfertStatusCode(String transfertStatusCode) {
+		this.transfertStatusCode = transfertStatusCode;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	public boolean isNeedsConfirmation() {
+		return needsConfirmation;
+	}
+	
+	public void setNeedsConfirmation(boolean needsConfirmation) {
+		this.needsConfirmation = needsConfirmation;
+	}
+	
+	public String getSecret() {
+		return secret;
+	}
+	
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+	
+	public String getTransfertDate() {
+		return transfertDate;
+	}
+	
+	public void setTransfertDate(String transfertDate) {
+		this.transfertDate = transfertDate;
+	}
+	
+	public String getReference() {
+		return reference;
+	}
+	
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+	
+	public boolean isTransfert2Cash() {
+		return transfert2Cash;
+	}
+	
+	public String getReceiveDate() {
+		return receiveDate;
+	}
+	
+	public void setReceiveDate(String receiveDate) {
+		this.receiveDate = receiveDate;
+	}
+	
+	public String getConfirmationDate() {
+		return confirmationDate;
+	}
+	
+	public void setConfirmationDate(String confirmationDate) {
+		this.confirmationDate = confirmationDate;
+	}
+	
+	public String getCancelationDate() {
+		return cancelationDate;
+	}
+	
+	public void setCancelationDate(String cancelationDate) {
+		this.cancelationDate = cancelationDate;
+	}
+	
+	public Customer getReceiver() {
+		return receiver;
+	}
+	
+	public void setReceiver(Customer receiver) {
+		this.receiver = receiver;
+	}
+	
+	public Customer getSender() {
+		return sender;
+	}
+	
+	public void setSender(Customer sender) {
+		this.sender = sender;
+	}
+	
+	public void setTransfert2Cash(boolean transfert2Cash) {
+		this.transfert2Cash = transfert2Cash;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
+	
 }

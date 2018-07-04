@@ -21,288 +21,288 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class AccountOperation implements KvmSerializable {
-
-    private int idAccountOperation;
-    private int idPartnerAccount;
-    private String operationStatusCode;
-    private int idPatnerHistory;
-    private String operationTypeCode;
-    private int amount;
-    private RefOperationStatu refOperationStatu;
-    private Partner partner;
-    private RefOperationType refOperationType;
-    private PartnerBalanceHistory partnerBalanceHistory;
-    private AccountOperationRequest accountOperationRequest;
-
-    public AccountOperation() {
-    }
-
-    public AccountOperation(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdAccountOperation")) {
-            Object obj = soapObject.getProperty("IdAccountOperation");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdAccountOperation(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdAccountOperation((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdPartnerAccount")) {
-            Object obj = soapObject.getProperty("IdPartnerAccount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdPartnerAccount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdPartnerAccount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("OperationStatusCode")) {
-            Object obj = soapObject.getProperty("OperationStatusCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setOperationStatusCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setOperationStatusCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdPatnerHistory")) {
-            Object obj = soapObject.getProperty("IdPatnerHistory");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdPatnerHistory(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdPatnerHistory((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("OperationTypeCode")) {
-            Object obj = soapObject.getProperty("OperationTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setOperationTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setOperationTypeCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Amount")) {
-            Object obj = soapObject.getProperty("Amount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAmount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setAmount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("RefOperationStatu")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
-            setRefOperationStatu(new RefOperationStatu(j));
-
-        }
-        if (soapObject.hasProperty("Partner")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Partner");
-            setPartner(new Partner(j));
-
-        }
-        if (soapObject.hasProperty("RefOperationType")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
-            setRefOperationType(new RefOperationType(j));
-
-        }
-        if (soapObject.hasProperty("PartnerBalanceHistory")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("PartnerBalanceHistory");
-            setPartnerBalanceHistory(new PartnerBalanceHistory(j));
-
-        }
-        if (soapObject.hasProperty("AccountOperationRequest")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("AccountOperationRequest");
-            setAccountOperationRequest(new AccountOperationRequest(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdAccountOperation();
-            case 1:
-                return getIdPartnerAccount();
-            case 2:
-                return getOperationStatusCode();
-            case 3:
-                return getIdPatnerHistory();
-            case 4:
-                return getOperationTypeCode();
-            case 5:
-                return getAmount();
-            case 6:
-                return getRefOperationStatu();
-            case 7:
-                return getPartner();
-            case 8:
-                return getRefOperationType();
-            case 9:
-                return getPartnerBalanceHistory();
-            case 10:
-                return getAccountOperationRequest();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 11;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdAccountOperation";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdPartnerAccount";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "OperationStatusCode";
-                break;
-            case 3:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdPatnerHistory";
-                break;
-            case 4:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "OperationTypeCode";
-                break;
-            case 5:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "Amount";
-                break;
-            case 6:
-                info.type = RefOperationStatu.class;
-                info.name = "RefOperationStatu";
-                break;
-            case 7:
-                info.type = Partner.class;
-                info.name = "Partner";
-                break;
-            case 8:
-                info.type = RefOperationType.class;
-                info.name = "RefOperationType";
-                break;
-            case 9:
-                info.type = PartnerBalanceHistory.class;
-                info.name = "PartnerBalanceHistory";
-                break;
-            case 10:
-                info.type = AccountOperationRequest.class;
-                info.name = "AccountOperationRequest";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdAccountOperation() {
-        return idAccountOperation;
-    }
-
-    public void setIdAccountOperation(int idAccountOperation) {
-        this.idAccountOperation = idAccountOperation;
-    }
-
-    public int getIdPartnerAccount() {
-        return idPartnerAccount;
-    }
-
-    public void setIdPartnerAccount(int idPartnerAccount) {
-        this.idPartnerAccount = idPartnerAccount;
-    }
-
-    public String getOperationStatusCode() {
-        return operationStatusCode;
-    }
-
-    public void setOperationStatusCode(String operationStatusCode) {
-        this.operationStatusCode = operationStatusCode;
-    }
-
-    public int getIdPatnerHistory() {
-        return idPatnerHistory;
-    }
-
-    public void setIdPatnerHistory(int idPatnerHistory) {
-        this.idPatnerHistory = idPatnerHistory;
-    }
-
-    public String getOperationTypeCode() {
-        return operationTypeCode;
-    }
-
-    public void setOperationTypeCode(String operationTypeCode) {
-        this.operationTypeCode = operationTypeCode;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public RefOperationStatu getRefOperationStatu() {
-        return refOperationStatu;
-    }
-
-    public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
-        this.refOperationStatu = refOperationStatu;
-    }
-
-    public Partner getPartner() {
-        return partner;
-    }
-
-    public void setPartner(Partner partner) {
-        this.partner = partner;
-    }
-
-    public RefOperationType getRefOperationType() {
-        return refOperationType;
-    }
-
-    public void setRefOperationType(RefOperationType refOperationType) {
-        this.refOperationType = refOperationType;
-    }
-
-    public PartnerBalanceHistory getPartnerBalanceHistory() {
-        return partnerBalanceHistory;
-    }
-
-    public void setPartnerBalanceHistory(PartnerBalanceHistory partnerBalanceHistory) {
-        this.partnerBalanceHistory = partnerBalanceHistory;
-    }
-
-    public AccountOperationRequest getAccountOperationRequest() {
-        return accountOperationRequest;
-    }
-
-    public void setAccountOperationRequest(AccountOperationRequest accountOperationRequest) {
-        this.accountOperationRequest = accountOperationRequest;
-    }
+	
+	private int idAccountOperation;
+	private int idPartnerAccount;
+	private String operationStatusCode;
+	private int idPatnerHistory;
+	private String operationTypeCode;
+	private int amount;
+	private RefOperationStatu refOperationStatu;
+	private Partner partner;
+	private RefOperationType refOperationType;
+	private PartnerBalanceHistory partnerBalanceHistory;
+	private AccountOperationRequest accountOperationRequest;
+	
+	public AccountOperation() {
+	}
+	
+	public AccountOperation(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdAccountOperation")) {
+			Object obj = soapObject.getProperty("IdAccountOperation");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdAccountOperation(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdAccountOperation((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdPartnerAccount")) {
+			Object obj = soapObject.getProperty("IdPartnerAccount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdPartnerAccount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdPartnerAccount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("OperationStatusCode")) {
+			Object obj = soapObject.getProperty("OperationStatusCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setOperationStatusCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setOperationStatusCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdPatnerHistory")) {
+			Object obj = soapObject.getProperty("IdPatnerHistory");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdPatnerHistory(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdPatnerHistory((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("OperationTypeCode")) {
+			Object obj = soapObject.getProperty("OperationTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setOperationTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setOperationTypeCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Amount")) {
+			Object obj = soapObject.getProperty("Amount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAmount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setAmount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("RefOperationStatu")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("RefOperationStatu");
+			setRefOperationStatu(new RefOperationStatu(j));
+			
+		}
+		if (soapObject.hasProperty("Partner")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Partner");
+			setPartner(new Partner(j));
+			
+		}
+		if (soapObject.hasProperty("RefOperationType")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("RefOperationType");
+			setRefOperationType(new RefOperationType(j));
+			
+		}
+		if (soapObject.hasProperty("PartnerBalanceHistory")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("PartnerBalanceHistory");
+			setPartnerBalanceHistory(new PartnerBalanceHistory(j));
+			
+		}
+		if (soapObject.hasProperty("AccountOperationRequest")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("AccountOperationRequest");
+			setAccountOperationRequest(new AccountOperationRequest(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdAccountOperation();
+			case 1:
+				return getIdPartnerAccount();
+			case 2:
+				return getOperationStatusCode();
+			case 3:
+				return getIdPatnerHistory();
+			case 4:
+				return getOperationTypeCode();
+			case 5:
+				return getAmount();
+			case 6:
+				return getRefOperationStatu();
+			case 7:
+				return getPartner();
+			case 8:
+				return getRefOperationType();
+			case 9:
+				return getPartnerBalanceHistory();
+			case 10:
+				return getAccountOperationRequest();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 11;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdAccountOperation";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdPartnerAccount";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "OperationStatusCode";
+				break;
+			case 3:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdPatnerHistory";
+				break;
+			case 4:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "OperationTypeCode";
+				break;
+			case 5:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "Amount";
+				break;
+			case 6:
+				info.type = RefOperationStatu.class;
+				info.name = "RefOperationStatu";
+				break;
+			case 7:
+				info.type = Partner.class;
+				info.name = "Partner";
+				break;
+			case 8:
+				info.type = RefOperationType.class;
+				info.name = "RefOperationType";
+				break;
+			case 9:
+				info.type = PartnerBalanceHistory.class;
+				info.name = "PartnerBalanceHistory";
+				break;
+			case 10:
+				info.type = AccountOperationRequest.class;
+				info.name = "AccountOperationRequest";
+				break;
+		}
+	}
+	
+	public int getIdAccountOperation() {
+		return idAccountOperation;
+	}
+	
+	public void setIdAccountOperation(int idAccountOperation) {
+		this.idAccountOperation = idAccountOperation;
+	}
+	
+	public int getIdPartnerAccount() {
+		return idPartnerAccount;
+	}
+	
+	public void setIdPartnerAccount(int idPartnerAccount) {
+		this.idPartnerAccount = idPartnerAccount;
+	}
+	
+	public String getOperationStatusCode() {
+		return operationStatusCode;
+	}
+	
+	public void setOperationStatusCode(String operationStatusCode) {
+		this.operationStatusCode = operationStatusCode;
+	}
+	
+	public int getIdPatnerHistory() {
+		return idPatnerHistory;
+	}
+	
+	public void setIdPatnerHistory(int idPatnerHistory) {
+		this.idPatnerHistory = idPatnerHistory;
+	}
+	
+	public String getOperationTypeCode() {
+		return operationTypeCode;
+	}
+	
+	public void setOperationTypeCode(String operationTypeCode) {
+		this.operationTypeCode = operationTypeCode;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	public RefOperationStatu getRefOperationStatu() {
+		return refOperationStatu;
+	}
+	
+	public void setRefOperationStatu(RefOperationStatu refOperationStatu) {
+		this.refOperationStatu = refOperationStatu;
+	}
+	
+	public Partner getPartner() {
+		return partner;
+	}
+	
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+	
+	public RefOperationType getRefOperationType() {
+		return refOperationType;
+	}
+	
+	public void setRefOperationType(RefOperationType refOperationType) {
+		this.refOperationType = refOperationType;
+	}
+	
+	public PartnerBalanceHistory getPartnerBalanceHistory() {
+		return partnerBalanceHistory;
+	}
+	
+	public void setPartnerBalanceHistory(PartnerBalanceHistory partnerBalanceHistory) {
+		this.partnerBalanceHistory = partnerBalanceHistory;
+	}
+	
+	public AccountOperationRequest getAccountOperationRequest() {
+		return accountOperationRequest;
+	}
+	
+	public void setAccountOperationRequest(AccountOperationRequest accountOperationRequest) {
+		this.accountOperationRequest = accountOperationRequest;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

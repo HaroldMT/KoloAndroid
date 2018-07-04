@@ -19,7 +19,7 @@ public class KolOPartVice {
 	
 	public String NAMESPACE = "http://kolo.cyberix.fr/";
 	public String url = "";
-	public int timeOut = 180;
+	public int timeOut = 180000;
 	public IWsdl2CodeEvents eventHandler;
 	public WS_Enums.SoapProtocolVersion soapVersion;
 	
@@ -731,5 +731,5 @@ public class KolOPartVice {
 	public String DoTopUp(String jsonTopUp) {
 		return DoTopUp(jsonTopUp, null);
 	}
-    
+	
 }

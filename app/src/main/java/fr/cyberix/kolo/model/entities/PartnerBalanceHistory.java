@@ -21,188 +21,188 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class PartnerBalanceHistory implements KvmSerializable {
-
-    private int idPatnerHistory;
-    private int idPartnerAccount;
-    private String historyDate;
-    private int oldBalance;
-    private int newBalance;
-    private int amount;
-
-    public PartnerBalanceHistory() {
-    }
-
-    public PartnerBalanceHistory(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdPatnerHistory")) {
-            Object obj = soapObject.getProperty("IdPatnerHistory");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdPatnerHistory(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdPatnerHistory((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdPartnerAccount")) {
-            Object obj = soapObject.getProperty("IdPartnerAccount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdPartnerAccount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdPartnerAccount((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("HistoryDate")) {
-            Object obj = soapObject.getProperty("HistoryDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setHistoryDate(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setHistoryDate((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("OldBalance")) {
-            Object obj = soapObject.getProperty("OldBalance");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setOldBalance(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setOldBalance((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("NewBalance")) {
-            Object obj = soapObject.getProperty("NewBalance");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setNewBalance(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setNewBalance((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("Amount")) {
-            Object obj = soapObject.getProperty("Amount");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setAmount(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setAmount((Integer) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdPatnerHistory();
-            case 1:
-                return getIdPartnerAccount();
-            case 2:
-                return getHistoryDate();
-            case 3:
-                return getOldBalance();
-            case 4:
-                return getNewBalance();
-            case 5:
-                return getAmount();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 6;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdPatnerHistory";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdPartnerAccount";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "HistoryDate";
-                break;
-            case 3:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "OldBalance";
-                break;
-            case 4:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "NewBalance";
-                break;
-            case 5:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "Amount";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdPatnerHistory() {
-        return idPatnerHistory;
-    }
-
-    public void setIdPatnerHistory(int idPatnerHistory) {
-        this.idPatnerHistory = idPatnerHistory;
-    }
-
-    public int getIdPartnerAccount() {
-        return idPartnerAccount;
-    }
-
-    public void setIdPartnerAccount(int idPartnerAccount) {
-        this.idPartnerAccount = idPartnerAccount;
-    }
-
-    public String getHistoryDate() {
-        return historyDate;
-    }
-
-    public void setHistoryDate(String historyDate) {
-        this.historyDate = historyDate;
-    }
-
-    public int getOldBalance() {
-        return oldBalance;
-    }
-
-    public void setOldBalance(int oldBalance) {
-        this.oldBalance = oldBalance;
-    }
-
-    public int getNewBalance() {
-        return newBalance;
-    }
-
-    public void setNewBalance(int newBalance) {
-        this.newBalance = newBalance;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+	
+	private int idPatnerHistory;
+	private int idPartnerAccount;
+	private String historyDate;
+	private int oldBalance;
+	private int newBalance;
+	private int amount;
+	
+	public PartnerBalanceHistory() {
+	}
+	
+	public PartnerBalanceHistory(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdPatnerHistory")) {
+			Object obj = soapObject.getProperty("IdPatnerHistory");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdPatnerHistory(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdPatnerHistory((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdPartnerAccount")) {
+			Object obj = soapObject.getProperty("IdPartnerAccount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdPartnerAccount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdPartnerAccount((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("HistoryDate")) {
+			Object obj = soapObject.getProperty("HistoryDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setHistoryDate(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setHistoryDate((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("OldBalance")) {
+			Object obj = soapObject.getProperty("OldBalance");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setOldBalance(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setOldBalance((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("NewBalance")) {
+			Object obj = soapObject.getProperty("NewBalance");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setNewBalance(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setNewBalance((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("Amount")) {
+			Object obj = soapObject.getProperty("Amount");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setAmount(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setAmount((Integer) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdPatnerHistory();
+			case 1:
+				return getIdPartnerAccount();
+			case 2:
+				return getHistoryDate();
+			case 3:
+				return getOldBalance();
+			case 4:
+				return getNewBalance();
+			case 5:
+				return getAmount();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 6;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdPatnerHistory";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdPartnerAccount";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "HistoryDate";
+				break;
+			case 3:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "OldBalance";
+				break;
+			case 4:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "NewBalance";
+				break;
+			case 5:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "Amount";
+				break;
+		}
+	}
+	
+	public int getIdPatnerHistory() {
+		return idPatnerHistory;
+	}
+	
+	public void setIdPatnerHistory(int idPatnerHistory) {
+		this.idPatnerHistory = idPatnerHistory;
+	}
+	
+	public int getIdPartnerAccount() {
+		return idPartnerAccount;
+	}
+	
+	public void setIdPartnerAccount(int idPartnerAccount) {
+		this.idPartnerAccount = idPartnerAccount;
+	}
+	
+	public String getHistoryDate() {
+		return historyDate;
+	}
+	
+	public void setHistoryDate(String historyDate) {
+		this.historyDate = historyDate;
+	}
+	
+	public int getOldBalance() {
+		return oldBalance;
+	}
+	
+	public void setOldBalance(int oldBalance) {
+		this.oldBalance = oldBalance;
+	}
+	
+	public int getNewBalance() {
+		return newBalance;
+	}
+	
+	public void setNewBalance(int newBalance) {
+		this.newBalance = newBalance;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

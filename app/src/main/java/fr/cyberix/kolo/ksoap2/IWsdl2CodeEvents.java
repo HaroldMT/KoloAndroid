@@ -14,8 +14,11 @@ package fr.cyberix.kolo.ksoap2;
 //
 
 public interface IWsdl2CodeEvents {
-    void Wsdl2CodeStartedRequest();
-    void Wsdl2CodeFinished(String methodName, Object Data);
-    void Wsdl2CodeFinishedWithException(Exception ex);
-    void Wsdl2CodeEndedRequest();
+	void Wsdl2CodeStartedRequest();
+	
+	void Wsdl2CodeFinished(String methodName, Object Data);
+	
+	void Wsdl2CodeFinishedWithException(Exception ex);
+	
+	void Wsdl2CodeEndedRequest();
 }

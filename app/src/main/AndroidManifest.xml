@@ -25,7 +25,7 @@
             android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -34,16 +34,13 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
-            android:excludeFromRecents="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SettingsActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SignUpActivity"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.DashboardActivity"
             android:screenOrientation="portrait"/>
@@ -52,17 +49,13 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.KoloUserQRCodeActivity"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.KoloTransferP2pSendActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SignUpConfirmationActivity"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SimpleBillActivity"
             android:screenOrientation="portrait"/>
@@ -71,12 +64,9 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.KoloTopUpActivity"
-            android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.KoloEneoBillPaymentActivity"
-            android:excludeFromRecents="true"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.CreditCardInputActivity"
@@ -85,6 +75,20 @@
             android:name=".activities.KoloMadActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.KoloEneoPayBillActivity">
+        </activity>
+        <activity
+            android:name=".activities.KoloHomeActivity"
+            android:label="@string/title_activity_kolo_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activities.AboutUsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activities.PrivacyPolicyActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

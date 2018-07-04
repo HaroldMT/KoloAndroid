@@ -118,4 +118,10 @@ public class KoloEneoPayBillActivity extends AppCompatActivity {
 			setBillList(eneoBillDetailsList);
 		}
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		KoloHelper.setActivity(this);
+	}
 }

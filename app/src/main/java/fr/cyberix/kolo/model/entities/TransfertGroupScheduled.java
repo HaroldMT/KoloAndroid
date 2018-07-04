@@ -21,156 +21,156 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class TransfertGroupScheduled implements KvmSerializable {
-
-    private int idTransfertGroupScheduled;
-    private int idReceiverGroup;
-    private int idSendingCustomer;
-    private Customer customer;
-    private CustomerGroup customerGroup;
-
-    public TransfertGroupScheduled() {
-    }
-
-    public TransfertGroupScheduled(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdTransfertGroupScheduled")) {
-            Object obj = soapObject.getProperty("IdTransfertGroupScheduled");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdTransfertGroupScheduled(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdTransfertGroupScheduled((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdReceiverGroup")) {
-            Object obj = soapObject.getProperty("IdReceiverGroup");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdReceiverGroup(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdReceiverGroup((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdSendingCustomer")) {
-            Object obj = soapObject.getProperty("IdSendingCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdSendingCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdSendingCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
-        }
-        if (soapObject.hasProperty("CustomerGroup")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
-            setCustomerGroup(new CustomerGroup(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdTransfertGroupScheduled();
-            case 1:
-                return getIdReceiverGroup();
-            case 2:
-                return getIdSendingCustomer();
-            case 3:
-                return getCustomer();
-            case 4:
-                return getCustomerGroup();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 5;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdTransfertGroupScheduled";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdReceiverGroup";
-                break;
-            case 2:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdSendingCustomer";
-                break;
-            case 3:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-            case 4:
-                info.type = CustomerGroup.class;
-                info.name = "CustomerGroup";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdTransfertGroupScheduled() {
-        return idTransfertGroupScheduled;
-    }
-
-    public void setIdTransfertGroupScheduled(int idTransfertGroupScheduled) {
-        this.idTransfertGroupScheduled = idTransfertGroupScheduled;
-    }
-
-    public int getIdReceiverGroup() {
-        return idReceiverGroup;
-    }
-
-    public void setIdReceiverGroup(int idReceiverGroup) {
-        this.idReceiverGroup = idReceiverGroup;
-    }
-
-    public int getIdSendingCustomer() {
-        return idSendingCustomer;
-    }
-
-    public void setIdSendingCustomer(int idSendingCustomer) {
-        this.idSendingCustomer = idSendingCustomer;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public CustomerGroup getCustomerGroup() {
-        return customerGroup;
-    }
-
-    public void setCustomerGroup(CustomerGroup customerGroup) {
-        this.customerGroup = customerGroup;
-    }
+	
+	private int idTransfertGroupScheduled;
+	private int idReceiverGroup;
+	private int idSendingCustomer;
+	private Customer customer;
+	private CustomerGroup customerGroup;
+	
+	public TransfertGroupScheduled() {
+	}
+	
+	public TransfertGroupScheduled(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdTransfertGroupScheduled")) {
+			Object obj = soapObject.getProperty("IdTransfertGroupScheduled");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdTransfertGroupScheduled(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdTransfertGroupScheduled((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdReceiverGroup")) {
+			Object obj = soapObject.getProperty("IdReceiverGroup");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdReceiverGroup(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdReceiverGroup((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdSendingCustomer")) {
+			Object obj = soapObject.getProperty("IdSendingCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdSendingCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdSendingCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("Customer")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Customer");
+			setCustomer(new Customer(j));
+			
+		}
+		if (soapObject.hasProperty("CustomerGroup")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("CustomerGroup");
+			setCustomerGroup(new CustomerGroup(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdTransfertGroupScheduled();
+			case 1:
+				return getIdReceiverGroup();
+			case 2:
+				return getIdSendingCustomer();
+			case 3:
+				return getCustomer();
+			case 4:
+				return getCustomerGroup();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 5;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdTransfertGroupScheduled";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdReceiverGroup";
+				break;
+			case 2:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdSendingCustomer";
+				break;
+			case 3:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+			case 4:
+				info.type = CustomerGroup.class;
+				info.name = "CustomerGroup";
+				break;
+		}
+	}
+	
+	public int getIdTransfertGroupScheduled() {
+		return idTransfertGroupScheduled;
+	}
+	
+	public void setIdTransfertGroupScheduled(int idTransfertGroupScheduled) {
+		this.idTransfertGroupScheduled = idTransfertGroupScheduled;
+	}
+	
+	public int getIdReceiverGroup() {
+		return idReceiverGroup;
+	}
+	
+	public void setIdReceiverGroup(int idReceiverGroup) {
+		this.idReceiverGroup = idReceiverGroup;
+	}
+	
+	public int getIdSendingCustomer() {
+		return idSendingCustomer;
+	}
+	
+	public void setIdSendingCustomer(int idSendingCustomer) {
+		this.idSendingCustomer = idSendingCustomer;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public CustomerGroup getCustomerGroup() {
+		return customerGroup;
+	}
+	
+	public void setCustomerGroup(CustomerGroup customerGroup) {
+		this.customerGroup = customerGroup;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

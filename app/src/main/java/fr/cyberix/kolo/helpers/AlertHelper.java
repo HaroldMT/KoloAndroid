@@ -18,24 +18,24 @@ import fr.cyberix.kolo.R;
  */
 
 public class AlertHelper {
-    public static void ShowAlert(Context context, String title, String message) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        AlertDialog alert = dialog.create();
-        alert.setTitle(title);
-        alert.setMessage(message);
-        //  Ok button click task
-        alert.show();
-    }
-
-    public static boolean ShowAlert(Context context, String title, String message, String okText, String cancelText) {
-        boolean result = false;
-        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        AlertDialog alert = dialog.create();
-        alert.setTitle("Title");
-        alert.setMessage("Complex Alert");
-        alert.setIcon(R.drawable.ic_portrait_black_48dp);
-        result = true;
-        alert.show();
-        return result;
-    }
+	public static void ShowAlert(Context context, String title, String message) {
+		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+		AlertDialog alert = dialog.create();
+		alert.setTitle(title);
+		alert.setMessage(message);
+		//  Ok button click task
+		alert.show();
+	}
+	
+	public static boolean ShowAlert(Context context, String title, String message, String okText, String cancelText) {
+		boolean result = false;
+		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+		AlertDialog alert = dialog.create();
+		alert.setTitle("Title");
+		alert.setMessage("Complex Alert");
+		alert.setIcon(R.drawable.ic_portrait_black_48dp);
+		result = true;
+		alert.show();
+		return result;
+	}
 }

@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class RefGroupType implements KvmSerializable {
-
-    private String groupTypeCode;
-    private String groupTypeDescription;
-
-    public RefGroupType() {
-    }
-
-    public RefGroupType(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("GroupTypeCode")) {
-            Object obj = soapObject.getProperty("GroupTypeCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setGroupTypeCode(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setGroupTypeCode((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("GroupTypeDescription")) {
-            Object obj = soapObject.getProperty("GroupTypeDescription");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setGroupTypeDescription(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setGroupTypeDescription((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getGroupTypeCode();
-            case 1:
-                return getGroupTypeDescription();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "GroupTypeCode";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "GroupTypeDescription";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public String getGroupTypeCode() {
-        return groupTypeCode;
-    }
-
-    public void setGroupTypeCode(String groupTypeCode) {
-        this.groupTypeCode = groupTypeCode;
-    }
-
-    public String getGroupTypeDescription() {
-        return groupTypeDescription;
-    }
-
-    public void setGroupTypeDescription(String groupTypeDescription) {
-        this.groupTypeDescription = groupTypeDescription;
-    }
+	
+	private String groupTypeCode;
+	private String groupTypeDescription;
+	
+	public RefGroupType() {
+	}
+	
+	public RefGroupType(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("GroupTypeCode")) {
+			Object obj = soapObject.getProperty("GroupTypeCode");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setGroupTypeCode(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setGroupTypeCode((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("GroupTypeDescription")) {
+			Object obj = soapObject.getProperty("GroupTypeDescription");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setGroupTypeDescription(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setGroupTypeDescription((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getGroupTypeCode();
+			case 1:
+				return getGroupTypeDescription();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "GroupTypeCode";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "GroupTypeDescription";
+				break;
+		}
+	}
+	
+	public String getGroupTypeCode() {
+		return groupTypeCode;
+	}
+	
+	public void setGroupTypeCode(String groupTypeCode) {
+		this.groupTypeCode = groupTypeCode;
+	}
+	
+	public String getGroupTypeDescription() {
+		return groupTypeDescription;
+	}
+	
+	public void setGroupTypeDescription(String groupTypeDescription) {
+		this.groupTypeDescription = groupTypeDescription;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

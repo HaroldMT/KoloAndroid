@@ -13,12 +13,13 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,230 +36,247 @@ import fr.cyberix.kolo.model.entities.LoginAttempt;
 import fr.cyberix.kolo.services.KolOthenticor;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "LoginActivity";
-    private static final int REQUEST_SIGNUP = 0;
-
-    @BindView(R.id.progressBar_login)
-    ProgressBar loginProgressBar;
-    @BindView(R.id.txt_edit_login_phone)
-    EditText inputPhone;
-    @BindView(R.id.txt_edit_login_passphrase)
-    TextInputEditText inputPassword;
-    @BindView(R.id.login_button)
-    Button btnLogin;
-    @BindView(R.id.signUp_button)
-    Button btnSignup;
-    LoginAttempt loginAttempt = null;
-    UserSignInTask userSignInTask = null;
-    Customer customer = null;
-    
-    LinearLayout login_view, login_creds;
-    LinearLayout signUp_view;
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            login_creds.setVisibility(View.VISIBLE);
-            signUp_view.setVisibility(View.VISIBLE);
-        }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(android.R.style.Theme_Material_Light_Dialog);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        this.setFinishOnTouchOutside(false);
-        ButterKnife.setDebug(true);
-        ButterKnife.bind(this);
-        KoloHelper.setActivity(this);
-        setTitle("Kolo Login");
-        loadConfig();
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
-
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-                finish();
-                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-            }
-        });
-
-        login_creds = findViewById(R.id.login_creds);
-        signUp_view = findViewById(R.id.signUp_view);
-
-        handler.postDelayed(runnable, 2000);
-    }
-
-    public void loadConfig() {
-        if (!ConfigHelper.getRegistered()) {
-            AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
-            alertDialog.setTitle("No account found");
-            alertDialog.setMessage("There is no registered account on this device. You should " +
-                    "sign up first");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-        } else {
-            customer = ConfigHelper.getAccountInfo().getCustomer();
-            if (customer != null) {
-                inputPhone.setText(ConfigHelper.getAccountInfo().getMobileDevice().getLineNumber());
-                inputPhone.setEnabled(false);
-            } else {
-                AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
-                alertDialog.setTitle("No account found");
-                alertDialog.setMessage("There is no customer data on this device. You " +
-                        "should sign up first");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-            }
-        }
-    }
-
-    public void login() {
-        Log.d(TAG, "Login");
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
-        userSignInTask = new UserSignInTask();
-        userSignInTask.execute((Void) null);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String phone = inputPhone.getText().toString();
-        String password = inputPassword.getText().toString();
-
-        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
-            inputPhone.setError("enter a valid phone number");
-            valid = false;
-        } else {
-            inputPhone.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            inputPassword.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            inputPassword.setError(null);
-        }
-
-        return valid;
-    }
-
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-        btnLogin.setEnabled(true);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SIGNUP) {
-            if (resultCode == RESULT_OK) {
-                btnLogin.setEnabled(true);
-                ConfigHelper.saveConfig();
-                startActivity(new Intent(getBaseContext(), fr.cyberix.kolo.activities.DashboardActivity.class));
-                finish();
-            }
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
-
-    public void onLoginSuccess() {
-        btnLogin.setEnabled(true);
-        ConfigHelper.getAccountInfo().setLastAuthenticationTime(Calendar.getInstance().getTime());
-        ConfigHelper.getAccountInfo().setAuthenticated(true);
-        ConfigHelper.saveConfig();
-        startActivity(new Intent(getBaseContext(), DashboardActivity.class));
-        finish();
-    }
-
-    private class UserSignInTask extends AsyncTask<Void, Void, LoginAttempt> {
-        UserSignInTask() {
-
-        }
-
-        @Override
-        protected LoginAttempt doInBackground(Void... params) {
-
-            try {
-	            KolOthenticor service = ServiceHelper.getOthenticorService();
-	            String loginJson = SerializationHelper.toJson(loginAttempt, loginAttempt.getClass());
-	            String resultJson = service.DoLogin(loginJson);
-	            loginAttempt = SerializationHelper.fromJson(resultJson, loginAttempt.getClass());
-            } catch (Exception e) {
-                return null;
-            }
-            return loginAttempt;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            btnLogin.setEnabled(false);
-
-            loginProgressBar.setVisibility(View.VISIBLE);
-
-            TelephonyInfo telInfo = SystemServiceHelper.getInfos();
-            Location loc = SystemServiceHelper.getLocation();
-            String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
-            loginAttempt = new LoginAttempt();
-            loginAttempt.setNumber(inputPhone.getText().toString());
-            loginAttempt.setPwd(pass);
-            loginAttempt.setIdCustomer(customer.getIdCustomer());
-            loginAttempt.setSimOperator(telInfo.getSimOperatorName());
-            loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
-            loginAttempt.setSubscriberId(telInfo.getSubscriberId());
-            loginAttempt.setDeviceId(telInfo.getDeviceId());
-            if (loc != null) {
-                loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
-                loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
-                loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
-            }
-        }
-
-        @Override
-        protected void onPostExecute(final LoginAttempt myLoginResult) {
-            final Boolean success = (myLoginResult != null) && myLoginResult.getResultCode().equals
-                    (KoloConstants.REFSTATUS_RESULT_SUCCESS);
-            new Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            if (success) {
-                                //loginResult = myLoginResult;
-                                onLoginSuccess();
-                            } else onLoginFailed();
-                            loginProgressBar.setVisibility(View.INVISIBLE);
-                        }
-                    }, 3000);
-        }
-
-        @Override
-        protected void onCancelled() {
-            userSignInTask = null;
-            loginProgressBar.setVisibility(View.INVISIBLE);
-        }
-    }
+	private static final String TAG = "LoginActivity";
+	private static final int REQUEST_SIGNUP = 0;
+	
+	@BindView(R.id.progressBar_login)
+	ProgressBar loginProgressBar;
+	@BindView(R.id.txt_edit_login_phone)
+	TextView inputPhone;
+	@BindView(R.id.txt_edit_login_passphrase)
+	TextInputEditText inputPassword;
+	@BindView(R.id.login_button)
+	Button btnLogin;
+	@BindView(R.id.signUp_button)
+	Button btnSignup;
+	@BindView(R.id.forgot_button)
+	Button btnForgot;
+	LoginAttempt loginAttempt;
+	UserSignInTask userSignInTask;
+	Customer customer;
+	
+	//    LinearLayout login_view, ;
+	LinearLayout signUp_view, login_creds;
+	Handler handler = new Handler();
+	Runnable runnable = new Runnable() {
+		@Override
+		public void run() {
+			login_creds.setVisibility(View.VISIBLE);
+			signUp_view.setVisibility(View.VISIBLE);
+		}
+	};
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppTheme_Dialog);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_login);
+		this.setFinishOnTouchOutside(false);
+		ButterKnife.setDebug(true);
+		ButterKnife.bind(this);
+		setTitle("Kolo Login");
+		loadConfig();
+		btnLogin.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				login();
+			}
+		});
+		btnSignup.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Start the Signup activity
+				Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+				startActivityForResult(intent, REQUEST_SIGNUP);
+				finish();
+				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+			}
+		});
+		
+		login_creds = findViewById(R.id.login_creds);
+		signUp_view = findViewById(R.id.signUp_view);
+		
+		handler.postDelayed(runnable, 2000);
+	}
+	
+	public void loadConfig() {
+		if (!ConfigHelper.getRegistered()) {
+			AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+			alertDialog.setTitle("No account found");
+			alertDialog.setMessage("There is no registered account on this device. You should " +
+					                       "sign up first");
+			alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+			                      new DialogInterface.OnClickListener() {
+				                      public void onClick(DialogInterface dialog, int which) {
+					                      dialog.dismiss();
+				                      }
+			                      });
+			alertDialog.show();
+		} else {
+			customer = ConfigHelper.getAccountInfo().getCustomer();
+			if (customer != null) {
+				inputPhone.setText(ConfigHelper.getAccountInfo().getMobileDevice().getLineNumber());
+				inputPhone.setEnabled(false);
+			} else {
+				AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+				alertDialog.setTitle("No account found");
+				alertDialog.setMessage("There is no customer data on this device. You " +
+						                       "should sign up first");
+				alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+				                      new DialogInterface.OnClickListener() {
+					                      public void onClick(DialogInterface dialog, int which) {
+						                      dialog.dismiss();
+					                      }
+				                      });
+				alertDialog.show();
+			}
+		}
+	}
+	
+	public void login() {
+		Log.d(TAG, "Login");
+		if (!validate()) {
+			onLoginFailed();
+			return;
+		}
+		userSignInTask = new UserSignInTask();
+		userSignInTask.execute((Void) null);
+	}
+	
+	public boolean validate() {
+		boolean valid = true;
+		
+		String phone = inputPhone.getText().toString();
+		String password = inputPassword.getText().toString();
+		
+		if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
+			inputPhone.setError("enter a valid phone number");
+			valid = false;
+		} else {
+			inputPhone.setError(null);
+		}
+		
+		if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+			inputPassword.setError("between 4 and 10 alphanumeric characters");
+			valid = false;
+		} else {
+			inputPassword.setError(null);
+		}
+		
+		return valid;
+	}
+	
+	public void onLoginFailed() {
+		Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+		btnLogin.setEnabled(true);
+		btnSignup.setEnabled(true);
+		btnForgot.setEnabled(true);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_SIGNUP) {
+			if (resultCode == RESULT_OK) {
+				btnLogin.setEnabled(true);
+				ConfigHelper.saveConfig();
+				startActivity(new Intent(getBaseContext(), fr.cyberix.kolo.activities.DashboardActivity.class));
+				finish();
+			}
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		moveTaskToBack(true);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		KoloHelper.setActivity(this);
+	}
+	
+	public void onLoginSuccess(LoginAttempt attempt) {
+//        btnLogin.setEnabled(true);
+//        btnSignup.setEnabled(false);
+		Date time = Calendar.getInstance().getTime();
+		ConfigHelper.getAccountInfo().setLastAuthenticationTime(time);
+		ConfigHelper.getAccountInfo().setAuthenticated(true);
+		Customer customer = attempt.getCustomerLogin().getCustomer();
+		if (customer != null)
+			ConfigHelper.getAccountInfo().setCustomer(customer);
+		else
+			ConfigHelper.getAccountInfo().getCustomer().setIdCustomer(attempt.getIdCustomer());
+		ConfigHelper.saveConfig();
+//		startActivity(new Intent(getBaseContext(), DashboardActivity.class));
+		startActivity(new Intent(getBaseContext(), KoloHomeActivity.class));
+		finish();
+	}
+	
+	private class UserSignInTask extends AsyncTask<Void, Void, LoginAttempt> {
+		UserSignInTask() {
+		
+		}
+		
+		@Override
+		protected LoginAttempt doInBackground(Void... params) {
+			
+			try {
+				KolOthenticor service = ServiceHelper.getOthenticorService();
+				String loginJson = SerializationHelper.toJson(loginAttempt, loginAttempt.getClass());
+				String resultJson = service.DoLogin(loginJson);
+				loginAttempt = SerializationHelper.fromJson(resultJson, loginAttempt.getClass());
+			} catch (Exception e) {
+				return null;
+			}
+			return loginAttempt;
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			btnLogin.setEnabled(false);
+			btnSignup.setEnabled(false);
+			btnForgot.setEnabled(false);
+			loginProgressBar.setVisibility(View.VISIBLE);
+			
+			TelephonyInfo telInfo = SystemServiceHelper.getInfos();
+			Location loc = SystemServiceHelper.getLocation();
+			String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
+			loginAttempt = new LoginAttempt();
+			loginAttempt.setNumber(inputPhone.getText().toString());
+			loginAttempt.setPwd(pass);
+			loginAttempt.setIdCustomer(customer.getIdCustomer());
+			loginAttempt.setSimOperator(telInfo.getSimOperatorName());
+			loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
+			loginAttempt.setSubscriberId(telInfo.getSubscriberId());
+			loginAttempt.setDeviceId(telInfo.getDeviceId());
+			if (loc != null) {
+				loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
+				loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
+				loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
+			}
+		}
+		
+		@Override
+		protected void onPostExecute(final LoginAttempt myLoginResult) {
+			final Boolean success = (myLoginResult != null) && myLoginResult.getResultCode().equals
+					(KoloConstants.REFSTATUS_RESULT_SUCCESS);
+			new Handler().postDelayed(
+					new Runnable() {
+						public void run() {
+							if (success) {
+								//loginResult = myLoginResult;
+								onLoginSuccess(myLoginResult);
+							} else onLoginFailed();
+							loginProgressBar.setVisibility(View.INVISIBLE);
+						}
+					}, 3000);
+		}
+		
+		@Override
+		protected void onCancelled() {
+			userSignInTask = null;
+			loginProgressBar.setVisibility(View.INVISIBLE);
+		}
+	}
 }

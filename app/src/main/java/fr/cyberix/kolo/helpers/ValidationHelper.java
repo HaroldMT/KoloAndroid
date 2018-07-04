@@ -11,35 +11,35 @@ package fr.cyberix.kolo.helpers;
 import android.util.Patterns;
 
 public class ValidationHelper {
-    private static final String NAME_REGEX = "^[A-Za-z]+$";
-    //    private static final String PWD_REGEX = "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$";
-    private static final String PWD_REGEX = "^(?=.*\\d).{4,8}$";
-
-    public static boolean isValidPhone(String phone) {
-        return phone.isEmpty() || Patterns.PHONE.matcher(phone).matches();
-    }
-
-    public static boolean isValidEmail(String email) {
-        return email.isEmpty() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    public static boolean isValidName(String name) {
-        return name.isEmpty() || name.matches(NAME_REGEX);
-    }
-
-    public static boolean isValidPassword(String password) {
-        return password.isEmpty() || password.matches(PWD_REGEX);
-    }
-
-    public static boolean isValidRegistrationCode(String code) {
-        return code.isEmpty() || code.length() >= 4;
-    }
-
-    public static boolean isValidOperationDate(String date) {
-        return true;
-    }
-
-    public static boolean isValidDateOfBirth(String date) {
-        return true;
-    }
+	private static final String NAME_REGEX = "^[A-Za-z]+$";
+	//    private static final String PWD_REGEX = "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$";
+	private static final String PWD_REGEX = "^(?=.*\\d).{4,8}$";
+	
+	public static boolean isValidPhone(String phone) {
+		return phone.isEmpty() || Patterns.PHONE.matcher(phone).matches();
+	}
+	
+	public static boolean isValidEmail(String email) {
+		return email.isEmpty() || android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+	}
+	
+	public static boolean isValidName(String name) {
+		return name.isEmpty() || name.matches(NAME_REGEX);
+	}
+	
+	public static boolean isValidPassword(String password) {
+		return password.isEmpty() || password.matches(PWD_REGEX);
+	}
+	
+	public static boolean isValidRegistrationCode(String code) {
+		return code.isEmpty() || code.length() >= 4;
+	}
+	
+	public static boolean isValidOperationDate(String date) {
+		return true;
+	}
+	
+	public static boolean isValidDateOfBirth(String date) {
+		return true;
+	}
 }

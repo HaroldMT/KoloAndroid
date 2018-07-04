@@ -18,15 +18,23 @@ public class KoloTopUpActivity extends AppCompatActivity {
 	@BindView(R.id.airtime_buy_btn)
 	Button buyAirtime;
 	@BindView(R.id.airtime_provider_spinner)
-    Spinner airtimeProvider;
-
+	Spinner airtimeProvider;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppTheme_Dialog);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kolo_top_up);
 		TAG = this.getLocalClassName();
 		ButterKnife.setDebug(true);
 		ButterKnife.bind(this);
+		KoloHelper.setActivity(this);
+		setTitle("Kolo TopUp");
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
 		KoloHelper.setActivity(this);
 	}
 }

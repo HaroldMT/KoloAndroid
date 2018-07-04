@@ -21,92 +21,92 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class Tag implements KvmSerializable {
-
-    private int idTag;
-    private String tagName;
-
-    public Tag() {
-    }
-
-    public Tag(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdTag")) {
-            Object obj = soapObject.getProperty("IdTag");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdTag(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdTag((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("TagName")) {
-            Object obj = soapObject.getProperty("TagName");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTagName(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTagName((String) obj);
-            }
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdTag();
-            case 1:
-                return getTagName();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 2;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdTag";
-                break;
-            case 1:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "TagName";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdTag() {
-        return idTag;
-    }
-
-    public void setIdTag(int idTag) {
-        this.idTag = idTag;
-    }
-
-    public String getTagName() {
-        return tagName;
-    }
-
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
-    }
+	
+	private int idTag;
+	private String tagName;
+	
+	public Tag() {
+	}
+	
+	public Tag(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdTag")) {
+			Object obj = soapObject.getProperty("IdTag");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdTag(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdTag((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("TagName")) {
+			Object obj = soapObject.getProperty("TagName");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTagName(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTagName((String) obj);
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdTag();
+			case 1:
+				return getTagName();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 2;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdTag";
+				break;
+			case 1:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "TagName";
+				break;
+		}
+	}
+	
+	public int getIdTag() {
+		return idTag;
+	}
+	
+	public void setIdTag(int idTag) {
+		this.idTag = idTag;
+	}
+	
+	public String getTagName() {
+		return tagName;
+	}
+	
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

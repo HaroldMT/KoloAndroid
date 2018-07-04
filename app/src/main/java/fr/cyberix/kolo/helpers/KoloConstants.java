@@ -15,29 +15,30 @@ import java.nio.charset.Charset;
  */
 
 public final class KoloConstants {
-    public static final String ConfigFileName = "config.frs";
-    //    public static final String ForeasDefaultFolderName = "Foreas";
-    public static final String ParamFileName = "refTypeHelper.frs";
-    public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
-	public static final String ngrokId = "764fcff1";
+	public static final String ConfigFileName = "config.frs";
+	//    public static final String ForeasDefaultFolderName = "Foreas";
+	public static final String ParamFileName = "refTypeHelper.frs";
+	public static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+	public static final String ngrokId = "50034bf0";
 	public static final String BaseUrl = "http://" + ngrokId + ".ngrok.io/KoloWin.CustomerService/";
-    public static final int forceLoginAfterShutdownTimeLimit = 5;
-    public static final String REGISTRATION_STATUS_NONE = "NONE";
-    public static final String REGISTRATION_STATUS_CANCEL = "CANCEL";
-    public static final String REGISTRATION_STATUS_COMPLETED = "COMPLETED";
-    public static final String REGISTRATION_STATUS_DELETED = "DELETED";
-    public static final String REGISTRATION_STATUS_NEEDCONFIRM = "NEEDCONFIRM";
-    public static final String REFSTATUS_RESULT_NONE = "NONE";
-    public static final String REFSTATUS_RESULT_FAIL = "FAIL";
-    public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
-    public static final String KolOthenticor_BaseUrl = BaseUrl+"KolOthenticor.asmx";
-    public static final String KolOSphere_BaseUrl = BaseUrl+"KolOSphere.asmx";
-    public static final String KolOPartVice_BaseUrl = BaseUrl + "KolOPartVice.asmx";
-    public static final String KolOMobileService_BaseUrl = BaseUrl + "MobileService.asmx";
-
-    public static final  String DATE_FORMAT_FOR_SERVICE = "yyyy-MM-dd hh:mm:ss";
-    public static final int QR_SCAN_REQUEST_CODE = 100;
-    public static final int PICK_CONTACT_REQUEST_CODE = 101;
+	public static final int forceLoginAfterShutdownTimeLimit = 60;
+	public static final String REGISTRATION_STATUS_NONE = "NONE";
+	public static final String REGISTRATION_STATUS_CANCEL = "CANCEL";
+	public static final String REGISTRATION_STATUS_COMPLETED = "COMPLETED";
+	public static final String REGISTRATION_STATUS_DELETED = "DELETED";
+	public static final String REGISTRATION_STATUS_NEEDCONFIRM = "NEEDCONFIRM";
+	public static final String REFSTATUS_RESULT_NONE = "NONE";
+	public static final String REFSTATUS_RESULT_FAIL = "FAIL";
+	public static final String REFSTATUS_RESULT_SUCCESS = "SUCCESS";
+	public static final String KolOthenticor_BaseUrl = BaseUrl + "KolOthenticor.asmx";
+	public static final String KolOSphere_BaseUrl = BaseUrl + "KolOSphere.asmx";
+	public static final String KolOPartVice_BaseUrl = BaseUrl + "KolOPartVice.asmx";
+	public static final String KolOMobileService_BaseUrl = BaseUrl + "MobileService.asmx";
+	public static final String PAYPAL_CLIENT_ID = "<KOLO_CLIENT_ID>";
+	
+	public static final String DATE_FORMAT_FOR_SERVICE = "yyyy-MM-dd hh:mm:ss";
+	public static final int QR_SCAN_REQUEST_CODE = 100;
+	public static final int PICK_CONTACT_REQUEST_CODE = 101;
 	public static final int CREDIT_CARD_SCAN_REQUEST_CODE1 = 102;
 	public static final int CREDIT_CARD_SCAN_REQUEST_CODE2 = 103;
 	public static final int PAYPAL_REQUEST_CODE2 = 104;

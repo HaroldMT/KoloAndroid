@@ -21,232 +21,232 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class KoloNotification implements KvmSerializable {
-
-    private int idNotification;
-    private int idCustomer;
-    private String title;
-    private String message;
-    private String creationDate;
-    private String expiryDate;
-    private boolean readed;
-    private Customer customer;
-
-    public KoloNotification() {
-    }
-
-    public KoloNotification(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdNotification")) {
-            Object obj = soapObject.getProperty("IdNotification");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdNotification(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdNotification((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdCustomer")) {
-            Object obj = soapObject.getProperty("IdCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("Title")) {
-            Object obj = soapObject.getProperty("Title");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setTitle(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setTitle((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Message")) {
-            Object obj = soapObject.getProperty("Message");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setMessage(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setMessage((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("CreationDate")) {
-            Object obj = soapObject.getProperty("CreationDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setCreationDate(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setCreationDate((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("ExpiryDate")) {
-            Object obj = soapObject.getProperty("ExpiryDate");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setExpiryDate(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setExpiryDate((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Readed")) {
-            Object obj = soapObject.getProperty("Readed");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setReaded(Boolean.parseBoolean(j.toString()));
-            } else if (obj != null && obj instanceof Boolean) {
-                setReaded((Boolean) obj);
-            }
-        }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdNotification();
-            case 1:
-                return getIdCustomer();
-            case 2:
-                return getTitle();
-            case 3:
-                return getMessage();
-            case 4:
-                return getCreationDate();
-            case 5:
-                return getExpiryDate();
-            case 6:
-                return isReaded();
-            case 7:
-                return getCustomer();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 8;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdNotification";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdCustomer";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "Title";
-                break;
-            case 3:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "Message";
-                break;
-            case 4:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "CreationDate";
-                break;
-            case 5:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "ExpiryDate";
-                break;
-            case 6:
-                info.type = PropertyInfo.BOOLEAN_CLASS;
-                info.name = "Readed";
-                break;
-            case 7:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdNotification() {
-        return idNotification;
-    }
-
-    public void setIdNotification(int idNotification) {
-        this.idNotification = idNotification;
-    }
-
-    public int getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public boolean isReaded() {
-        return readed;
-    }
-
-    public void setReaded(boolean readed) {
-        this.readed = readed;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	
+	private int idNotification;
+	private int idCustomer;
+	private String title;
+	private String message;
+	private String creationDate;
+	private String expiryDate;
+	private boolean readed;
+	private Customer customer;
+	
+	public KoloNotification() {
+	}
+	
+	public KoloNotification(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdNotification")) {
+			Object obj = soapObject.getProperty("IdNotification");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdNotification(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdNotification((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdCustomer")) {
+			Object obj = soapObject.getProperty("IdCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("Title")) {
+			Object obj = soapObject.getProperty("Title");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setTitle(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setTitle((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Message")) {
+			Object obj = soapObject.getProperty("Message");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setMessage(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setMessage((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("CreationDate")) {
+			Object obj = soapObject.getProperty("CreationDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setCreationDate(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setCreationDate((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("ExpiryDate")) {
+			Object obj = soapObject.getProperty("ExpiryDate");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setExpiryDate(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setExpiryDate((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Readed")) {
+			Object obj = soapObject.getProperty("Readed");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setReaded(Boolean.parseBoolean(j.toString()));
+			} else if (obj != null && obj instanceof Boolean) {
+				setReaded((Boolean) obj);
+			}
+		}
+		if (soapObject.hasProperty("Customer")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Customer");
+			setCustomer(new Customer(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdNotification();
+			case 1:
+				return getIdCustomer();
+			case 2:
+				return getTitle();
+			case 3:
+				return getMessage();
+			case 4:
+				return getCreationDate();
+			case 5:
+				return getExpiryDate();
+			case 6:
+				return isReaded();
+			case 7:
+				return getCustomer();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 8;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdNotification";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdCustomer";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "Title";
+				break;
+			case 3:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "Message";
+				break;
+			case 4:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "CreationDate";
+				break;
+			case 5:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "ExpiryDate";
+				break;
+			case 6:
+				info.type = PropertyInfo.BOOLEAN_CLASS;
+				info.name = "Readed";
+				break;
+			case 7:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+		}
+	}
+	
+	public int getIdNotification() {
+		return idNotification;
+	}
+	
+	public void setIdNotification(int idNotification) {
+		this.idNotification = idNotification;
+	}
+	
+	public int getIdCustomer() {
+		return idCustomer;
+	}
+	
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getCreationDate() {
+		return creationDate;
+	}
+	
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+	
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+	
+	public boolean isReaded() {
+		return readed;
+	}
+	
+	public void setReaded(boolean readed) {
+		this.readed = readed;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

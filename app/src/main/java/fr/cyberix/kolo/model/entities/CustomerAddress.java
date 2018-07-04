@@ -21,156 +21,156 @@ import org.ksoap2.serialization.SoapPrimitive;
 import java.util.Hashtable;
 
 public class CustomerAddress implements KvmSerializable {
-
-    private int idCustomer;
-    private int idAddress;
-    private String codeAddresseType;
-    private Adresse adresse;
-    private Customer customer;
-
-    public CustomerAddress() {
-    }
-
-    public CustomerAddress(SoapObject soapObject) {
-        if (soapObject == null)
-            return;
-        if (soapObject.hasProperty("IdCustomer")) {
-            Object obj = soapObject.getProperty("IdCustomer");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdCustomer(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdCustomer((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("IdAddress")) {
-            Object obj = soapObject.getProperty("IdAddress");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setIdAddress(Integer.parseInt(j.toString()));
-            } else if (obj != null && obj instanceof Number) {
-                setIdAddress((Integer) obj);
-            }
-        }
-        if (soapObject.hasProperty("CodeAddresseType")) {
-            Object obj = soapObject.getProperty("CodeAddresseType");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-                SoapPrimitive j = (SoapPrimitive) obj;
-                setCodeAddresseType(j.toString());
-            } else if (obj != null && obj instanceof String) {
-                setCodeAddresseType((String) obj);
-            }
-        }
-        if (soapObject.hasProperty("Adresse")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Adresse");
-            setAdresse(new Adresse(j));
-
-        }
-        if (soapObject.hasProperty("Customer")) {
-            SoapObject j = (SoapObject) soapObject.getProperty("Customer");
-            setCustomer(new Customer(j));
-
-        }
-    }
-
-    @Override
-    public Object getProperty(int arg0) {
-        switch (arg0) {
-            case 0:
-                return getIdCustomer();
-            case 1:
-                return getIdAddress();
-            case 2:
-                return getCodeAddresseType();
-            case 3:
-                return getAdresse();
-            case 4:
-                return getCustomer();
-        }
-        return null;
-    }
-
-    @Override
-    public int getPropertyCount() {
-        return 5;
-    }
-
-    @Override
-    public void setProperty(int arg0, Object arg1) {
-    }
-
-    @Override
-    public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch (index) {
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdCustomer";
-                break;
-            case 1:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "IdAddress";
-                break;
-            case 2:
-                info.type = PropertyInfo.STRING_CLASS;
-                info.name = "CodeAddresseType";
-                break;
-            case 3:
-                info.type = Adresse.class;
-                info.name = "Adresse";
-                break;
-            case 4:
-                info.type = Customer.class;
-                info.name = "Customer";
-                break;
-        }
-    }
-
-    //    @Override
-    public String getInnerText() {
-        return null;
-    }
-
-    //    @Override
-    public void setInnerText(String s) {
-    }
-
-    public int getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
-    }
-
-    public int getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
-    }
-
-    public String getCodeAddresseType() {
-        return codeAddresseType;
-    }
-
-    public void setCodeAddresseType(String codeAddresseType) {
-        this.codeAddresseType = codeAddresseType;
-    }
-
-    public Adresse getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	
+	private int idCustomer;
+	private int idAddress;
+	private String codeAddresseType;
+	private Adresse adresse;
+	private Customer customer;
+	
+	public CustomerAddress() {
+	}
+	
+	public CustomerAddress(SoapObject soapObject) {
+		if (soapObject == null)
+			return;
+		if (soapObject.hasProperty("IdCustomer")) {
+			Object obj = soapObject.getProperty("IdCustomer");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdCustomer(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdCustomer((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("IdAddress")) {
+			Object obj = soapObject.getProperty("IdAddress");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setIdAddress(Integer.parseInt(j.toString()));
+			} else if (obj != null && obj instanceof Number) {
+				setIdAddress((Integer) obj);
+			}
+		}
+		if (soapObject.hasProperty("CodeAddresseType")) {
+			Object obj = soapObject.getProperty("CodeAddresseType");
+			if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+				SoapPrimitive j = (SoapPrimitive) obj;
+				setCodeAddresseType(j.toString());
+			} else if (obj != null && obj instanceof String) {
+				setCodeAddresseType((String) obj);
+			}
+		}
+		if (soapObject.hasProperty("Adresse")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Adresse");
+			setAdresse(new Adresse(j));
+			
+		}
+		if (soapObject.hasProperty("Customer")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("Customer");
+			setCustomer(new Customer(j));
+			
+		}
+	}
+	
+	@Override
+	public Object getProperty(int arg0) {
+		switch (arg0) {
+			case 0:
+				return getIdCustomer();
+			case 1:
+				return getIdAddress();
+			case 2:
+				return getCodeAddresseType();
+			case 3:
+				return getAdresse();
+			case 4:
+				return getCustomer();
+		}
+		return null;
+	}
+	
+	@Override
+	public int getPropertyCount() {
+		return 5;
+	}
+	
+	@Override
+	public void setProperty(int arg0, Object arg1) {
+	}
+	
+	@Override
+	public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
+		switch (index) {
+			case 0:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdCustomer";
+				break;
+			case 1:
+				info.type = PropertyInfo.INTEGER_CLASS;
+				info.name = "IdAddress";
+				break;
+			case 2:
+				info.type = PropertyInfo.STRING_CLASS;
+				info.name = "CodeAddresseType";
+				break;
+			case 3:
+				info.type = Adresse.class;
+				info.name = "Adresse";
+				break;
+			case 4:
+				info.type = Customer.class;
+				info.name = "Customer";
+				break;
+		}
+	}
+	
+	public int getIdCustomer() {
+		return idCustomer;
+	}
+	
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
+	}
+	
+	public int getIdAddress() {
+		return idAddress;
+	}
+	
+	public void setIdAddress(int idAddress) {
+		this.idAddress = idAddress;
+	}
+	
+	public String getCodeAddresseType() {
+		return codeAddresseType;
+	}
+	
+	public void setCodeAddresseType(String codeAddresseType) {
+		this.codeAddresseType = codeAddresseType;
+	}
+	
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	//    @Override
+	public String getInnerText() {
+		return null;
+	}
+	
+	//    @Override
+	public void setInnerText(String s) {
+	}
 }

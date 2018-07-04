@@ -78,5 +78,11 @@
     <string name="label_scan_now">Scan credit card</string>
     <string name="airtime_providers_prompt">Chosissez un opérateur</string>
     <string name="pay_my_own_bill">Pay my own Eneo bill</string>
+    <string name="find">Find</string>
+    <string name="drawer_open">Choose an action</string>
+    <string name="drawer_close">Welcome to KOLO</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="available_balance">Available Balance</string>
+    <string name="unavailable_balance">Unavailable</string>
 
 </resources>
