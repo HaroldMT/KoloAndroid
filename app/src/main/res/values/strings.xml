@@ -259,6 +259,8 @@
     <string name="total_balance">Balance</string>
     <string name="available_balance">Available</string>
     <string name="unavailable_balance">Pending</string>
+    <string name="names">Names</string>
+    <string name="samplenames">Marcus Brown</string>
 
 
 </resources>

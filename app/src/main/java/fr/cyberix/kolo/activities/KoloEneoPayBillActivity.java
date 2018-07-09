@@ -55,6 +55,8 @@ public class KoloEneoPayBillActivity extends AppCompatActivity {
 				refreshItems();
 			}
 		});
+		
+		refreshItems();
 	}
 	
 	void readParameters() {
@@ -108,7 +110,7 @@ public class KoloEneoPayBillActivity extends AppCompatActivity {
 				result = service.GetEneoBillsByBillAccount(eneoCode);
 			else
 				result = service.GetEneoBillByBillNumber(eneoCode);
-			EneoBillDetailsList resultList = SerializationHelper.fromJson(result, EneoBillDetailsList.class);
+			EneoBillDetailsList resultList = SerializationHelper.fromKoloJson(result, EneoBillDetailsList.class);
 			return resultList;
 		}
 		

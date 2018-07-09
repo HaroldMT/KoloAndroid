@@ -51,7 +51,7 @@ public class KoloNotificationAdapter extends RecyclerView.Adapter<KoloNotificati
 	public void addAll(List<KoloNotification> list) {
 		if (list == null || list.size() == 0)
 			return;
-		notificationList.addAll(notificationList);
+		notificationList.addAll(list);
 		notifyDataSetChanged();
 	}
 }

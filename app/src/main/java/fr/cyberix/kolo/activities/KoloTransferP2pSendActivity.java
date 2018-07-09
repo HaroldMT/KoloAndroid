@@ -42,6 +42,7 @@ import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.QrCodeHelper;
 import fr.cyberix.kolo.helpers.ScannerHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
+import fr.cyberix.kolo.helpers.ServiceHelper;
 import fr.cyberix.kolo.helpers.ValidationHelper;
 import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.QrContact;
@@ -364,7 +365,8 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		protected TransfertP2p doInBackground(Void... voids) {
 			try {
 				String transJson = SerializationHelper.toJson(myTransfer, TransfertP2p.class);
-				String transResult = new KolOSphere(null, KoloConstants.KolOSphere_BaseUrl).DoTransfertA2A(transJson);
+				KolOSphere service = ServiceHelper.getSphereService();
+				String transResult = service.DoTransfertA2A(transJson);
 				TransfertP2p transferResult = SerializationHelper.fromJson(transResult, TransfertP2p.class);
 				return transferResult;
 			} catch (Exception ex) {

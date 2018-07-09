@@ -22,6 +22,7 @@ import java.security.NoSuchAlgorithmException;
 public final class SerializationHelper {
 	private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
 	private static Gson gsonBuilder = CreateGsonBuilder();
+	private static Gson koloGsonBuilder = CreateKoloGsonBuilder();
 	
 	private static Gson CreateGsonBuilder() {
 		Gson gson = new GsonBuilder()
@@ -35,13 +36,34 @@ public final class SerializationHelper {
 		return gson;
 	}
 	
+	private static Gson CreateKoloGsonBuilder() {
+		Gson gson = new GsonBuilder()
+				.enableComplexMapKeySerialization()
+				.serializeNulls()
+				.setDateFormat("yyyy-MM-dd hh:mm:ss")
+				.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+				.setPrettyPrinting()
+				.setVersion(1.0)
+				.create();
+		return gson;
+	}
+	
 	public static <T> String toJson(Object source, Class<T> typeOfSrc) {
 		return source == null ? "" :
 				getGsonBuilder().toJson(source, typeOfSrc);
 	}
 	
+	public static <T> String toKoloJson(Object source, Class<T> typeOfSrc) {
+		return source == null ? "" :
+				getKoloGsonBuilder().toJson(source, typeOfSrc);
+	}
+	
 	public static Gson getGsonBuilder() {
 		return gsonBuilder;
+	}
+	
+	public static Gson getKoloGsonBuilder() {
+		return koloGsonBuilder;
 	}
 	
 	public static Bitmap bytesToBitmap(byte[] imageBytes) {
@@ -77,5 +99,10 @@ public final class SerializationHelper {
 	public static <T> T fromJson(String jsonValue, Class<T> typeOfSrc) {
 		return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
 				getGsonBuilder().fromJson(jsonValue, typeOfSrc);
+	}
+	
+	public static <T> T fromKoloJson(String jsonValue, Class<T> typeOfSrc) {
+		return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
+				getKoloGsonBuilder().fromJson(jsonValue, typeOfSrc);
 	}
 }

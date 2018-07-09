@@ -47,6 +47,7 @@ import fr.cyberix.kolo.fragments.HomeFragment;
 import fr.cyberix.kolo.fragments.NotificationsFragment;
 import fr.cyberix.kolo.fragments.OperationsFragment;
 import fr.cyberix.kolo.fragments.SettingsFragment;
+import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.other.CircleTransform;
 import io.card.payment.CardIOActivity;
@@ -145,6 +146,8 @@ public class KoloHomeActivity extends AppCompatActivity
 			CURRENT_TAG = TAG_HOME;
 			loadHomeFragment();
 		}
+		
+		ConfigHelper.getAccountInfo().getCustomer().setEneoContractNo("200050721");
 	}
 	
 	private void loadNavHeader() {

@@ -10,15 +10,17 @@ import java.util.List;
 
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.adapters.viewHolders.TransferP2pReceiveViewHolder;
+import fr.cyberix.kolo.interfaces.KoloRecyclerViewClickListener;
 import fr.cyberix.kolo.model.TransferP2pDetails;
 
 public class TransferP2pReceiveAdapter extends RecyclerView.Adapter<TransferP2pReceiveViewHolder> {
-	
+	private KoloRecyclerViewClickListener koloItemListener;
 	private View transferView;
 	private List<TransferP2pDetails> transferList;
 	
-	public TransferP2pReceiveAdapter(List<TransferP2pDetails> transfersDetails) {
-		transferList = transfersDetails;
+	public TransferP2pReceiveAdapter(List<TransferP2pDetails> transfersDetails, KoloRecyclerViewClickListener itemListener) {
+		this.transferList = transfersDetails;
+		this.koloItemListener = itemListener;
 	}
 	
 	@NonNull
@@ -26,7 +28,7 @@ public class TransferP2pReceiveAdapter extends RecyclerView.Adapter<TransferP2pR
 	public TransferP2pReceiveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		transferView = LayoutInflater.from(parent.getContext())
 		                             .inflate(R.layout.kolo_transfer_p2p_row, parent, false);
-		return new TransferP2pReceiveViewHolder(transferView);
+		return new TransferP2pReceiveViewHolder(transferView, koloItemListener);
 	}
 	
 	@Override
@@ -37,6 +39,7 @@ public class TransferP2pReceiveAdapter extends RecyclerView.Adapter<TransferP2pR
 		holder.fullname.setText(transferP2pDetails.getSenderFullname());
 		holder.number.setText(transferP2pDetails.getSenderTelephone());
 		holder.status.setText(transferP2pDetails.getStatus());
+		holder.data = transferP2pDetails;
 	}
 	
 	@Override

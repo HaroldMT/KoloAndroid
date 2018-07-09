@@ -169,4 +169,12 @@ public class TransferP2pDetails {
 	public void setScheduleDate(Date scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
+	
+	public String toReceptionString() {
+		return getSenderFullname() + " has send " + getAmount() + "XAF on " + getTransferDate().toString() + ". Do you accept it?";
+	}
+	
+	public String toSendingString() {
+		return getReceiverFullname() + " will receive " + getAmount() + "XAF. Do you accept it?";
+	}
 }

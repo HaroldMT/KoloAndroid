@@ -58,4 +58,6 @@
     <string name="profil">Profil</string>
     <string name="include_passphrase">Include passphrase</string>
     <string name="needConfirmation">Need Confirmation</string>
+    <string name="names">Names</string>
+    <string name="samplenames">Marcus Brown</string>
 </resources>

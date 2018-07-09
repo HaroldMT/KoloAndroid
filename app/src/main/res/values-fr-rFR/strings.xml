@@ -84,5 +84,7 @@
     <string name="total_balance">Total Balance</string>
     <string name="available_balance">Available Balance</string>
     <string name="unavailable_balance">Unavailable</string>
+    <string name="names">Names</string>
+    <string name="samplenames">Marcus Brown</string>
 
 </resources>

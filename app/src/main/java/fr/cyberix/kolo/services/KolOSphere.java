@@ -134,8 +134,54 @@ public class KolOSphere {
 		return "";
 	}
 	
+	public String DoReceiveA2A(String jsonTransfertP2p) {
+		return DoReceiveA2A(jsonTransfertP2p, null);
+	}
+	
 	public String DoTransfertA2A(String jsonTransfertP2p) {
 		return DoTransfertA2A(jsonTransfertP2p, null);
+	}
+	
+	public String DoReceiveA2A(String jsonTransfertP2p, List<HeaderProperty> headers) {
+		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		soapEnvelope.implicitTypes = true;
+		soapEnvelope.dotNet = true;
+		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "DoTransfertA2A");
+		soapReq.addProperty("jsonTransfertP2p", jsonTransfertP2p);
+		soapEnvelope.setOutputSoapObject(soapReq);
+		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
+		try {
+			if (headers != null) {
+				httpTransport.call("http://kolo.cyberix.fr/DoTransfertA2A", soapEnvelope, headers);
+			} else {
+				httpTransport.call("http://kolo.cyberix.fr/DoTransfertA2A", soapEnvelope);
+			}
+			Object retObj = soapEnvelope.bodyIn;
+			if (retObj instanceof SoapFault) {
+				SoapFault fault = (SoapFault) retObj;
+				Exception ex = new Exception(fault.faultstring);
+				if (eventHandler != null)
+					eventHandler.Wsdl2CodeFinishedWithException(ex);
+			} else {
+				SoapObject result = (SoapObject) retObj;
+				if (result.getPropertyCount() > 0) {
+					Object obj = result.getProperty(0);
+					if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+						SoapPrimitive j = (SoapPrimitive) obj;
+						String resultVariable = j.toString();
+						return resultVariable;
+					} else if (obj != null && obj instanceof String) {
+						String resultVariable = (String) obj;
+						return resultVariable;
+					}
+				}
+			}
+		} catch (Exception e) {
+			if (eventHandler != null)
+				eventHandler.Wsdl2CodeFinishedWithException(e);
+			e.printStackTrace();
+		}
+		return "";
 	}
 	
 	public void DoTransfertA2CAsync(String jsonTransfert2c) throws Exception {

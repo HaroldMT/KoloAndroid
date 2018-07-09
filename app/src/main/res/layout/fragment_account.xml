@@ -5,41 +5,55 @@
              android:layout_height="match_parent"
              tools:context=".fragments.AccountFragment">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/lightgrayline"
-                    tools:context=".activities.KoloUserQRCodeActivity">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/lightgrayline"
+                  android:orientation="vertical"
+                  tools:context=".activities.KoloUserQRCodeActivity">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:background="@color/colorPrimary"></RelativeLayout>
+            android:layout_height="220dp"
+            android:background="@drawable/headerimage"></RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="3dp"
+                android:text="@string/names"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"/>
 
-            <ImageView
-                android:id="@+id/img_usrprof_qrcode"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:src="@drawable/ic_account_circle_white_150dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorPrimary"/>
 
-            <Button
-                android:id="@+id/btn_usrprof_qrcode_close"
-                android:layout_width="125dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="3dp"
+                android:text="@string/samplenames"
+                android:textSize="16sp"/>
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/close"/>
+                android:visibility="gone"/>
+
 
         </LinearLayout>
 
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
