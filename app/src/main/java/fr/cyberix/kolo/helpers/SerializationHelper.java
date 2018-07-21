@@ -15,6 +15,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -102,7 +103,14 @@ public final class SerializationHelper {
 	}
 	
 	public static <T> T fromKoloJson(String jsonValue, Class<T> typeOfSrc) {
-		return ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
+		T result = ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
 				getKoloGsonBuilder().fromJson(jsonValue, typeOfSrc);
+		return result;
+	}
+	
+	public static <T> T fromKoloJson(String jsonValue, Type typeOfSrc) {
+		T result = ((jsonValue == null) | (jsonValue.length() == 0)) ? null :
+				(T) getKoloGsonBuilder().fromJson(jsonValue, typeOfSrc);
+		return result;
 	}
 }

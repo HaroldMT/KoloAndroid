@@ -2,8 +2,8 @@ package fr.cyberix.kolo.fragments;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,8 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,27 +22,51 @@ import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.adapters.KoloNotificationAdapter;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
-import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
+import fr.cyberix.kolo.interfaces.ServiceOperationInterface;
 import fr.cyberix.kolo.model.KoloNotificationList;
+import fr.cyberix.kolo.model.KoloWsObject;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.KoloNotification;
-import fr.cyberix.kolo.services.MobileService;
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends Fragment implements OnRecyclerItemClickListener {
 	@BindView(R.id.notification_recycler)
 	RecyclerView recyclerView;
 	@BindView(R.id.notification_swipe_container)
 	SwipeRefreshLayout swipeContainer;
 	View notificationView;
-	private List<KoloNotification> notificationList = new ArrayList<>();
+	ServiceOperationInterface<Customer, KoloWsObject<KoloNotificationList>> refreshNotifications = new ServiceOperationInterface<Customer,
+			KoloWsObject<KoloNotificationList>>() {
+		
+		
+		@Override
+		public void onOperationSuccess(String message, KoloWsObject<KoloNotificationList> data) {
+			KoloNotificationList notifications = data.getDataObject();
+			setNotificationList(notifications);
+		}
+		
+		@Override
+		public void onOperationFailure(String errorMessage) {
+			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+		}
+		
+		@Override
+		public void onPreExecute() {
+		
+		}
+		
+		@Override
+		public KoloWsObject<KoloNotificationList> doInBackground(Customer parameter) {
+			return ServiceHelper.getNotifications(parameter);
+		}
+	};
 	private KoloNotificationAdapter notificationAdapter;
-	
 	private OnFragmentInteractionListener mListener;
 	
 	public NotificationsFragment() {
 		// Required empty public constructor
 	}
+	
 	
 	@Override
 	public void onAttach(Context context) {
@@ -63,6 +86,7 @@ public class NotificationsFragment extends Fragment {
 		}
 	}
 	
+	@NonNull
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -71,25 +95,16 @@ public class NotificationsFragment extends Fragment {
 		RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 		recyclerView.setLayoutManager(mLayoutManager);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
-		notificationAdapter = new KoloNotificationAdapter(notificationList);
+		notificationAdapter = new KoloNotificationAdapter(getActivity(), this);
 		recyclerView.setAdapter(notificationAdapter);
-		Customer customer = ConfigHelper.getAccountInfo().getCustomer();
-		swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				// Refresh items
-				refreshItems();
-			}
-		});
+		swipeContainer.setOnRefreshListener(this::refreshItems);
+		refreshItems();
 		return notificationView;
 	}
 	
 	private void refreshItems() {
 		swipeContainer.setRefreshing(true);
-		NotificationsFragment.RefreshNotificationAsync notificationAsync = new NotificationsFragment.RefreshNotificationAsync(ConfigHelper.getAccountInfo()
-		                                                                                                                                  .getCustomer
-				().getIdCustomer());
-		notificationAsync.execute();
+		ServiceHelper.doInBackground(ConfigHelper.getCustomer(), refreshNotifications);
 	}
 	
 	@Override
@@ -98,43 +113,20 @@ public class NotificationsFragment extends Fragment {
 		mListener = null;
 	}
 	
-	private void setHistoryList(KoloNotificationList notifications) {
-		notificationAdapter.clear();
-		notificationAdapter.addAll(notifications);
-		onItemsLoadComplete();
+	private void setNotificationList(KoloNotificationList notifications) {
+		notificationAdapter.updateItems(notifications);
+		swipeContainer.setRefreshing(false);
+		if (notificationAdapter.getItemCount() == 0)
+			Toast.makeText(KoloHelper.getMyContext(), "Aucun résultat", Toast.LENGTH_LONG).show();
 	}
 	
-	private void onItemsLoadComplete() {
-		notificationAdapter.notifyDataSetChanged();
-		swipeContainer.setRefreshing(false);
-		int nb = notificationAdapter.getItemCount();
-		Toast.makeText(KoloHelper.getMyContext(), nb + " lignes trouvées", Toast.LENGTH_LONG);
+	@Override
+	public void onItemClick(int position) {
+		KoloNotification selectedNotification = notificationAdapter.getItem(position);
 	}
 	
 	public interface OnFragmentInteractionListener {
 		// TODO: Update argument type and name
 		void onFragmentInteraction(Uri uri);
-	}
-	
-	public class RefreshNotificationAsync extends AsyncTask<Void, Void, KoloNotificationList> {
-		int customerId;
-		
-		public RefreshNotificationAsync(int id) {
-			customerId = id;
-		}
-		
-		@Override
-		protected KoloNotificationList doInBackground(Void... voids) {
-			MobileService service = ServiceHelper.getMobileService();
-			String transResult = service.GetCustomerNotifications(customerId);
-			KoloNotificationList koloNotifications = SerializationHelper.fromJson(transResult, KoloNotificationList.class);
-			return koloNotifications;
-		}
-		
-		@Override
-		protected void onPostExecute(KoloNotificationList histList) {
-			super.onPostExecute(histList);
-			setHistoryList(histList);
-		}
 	}
 }

@@ -1,18 +1,32 @@
 package fr.cyberix.kolo.adapters.viewHolders;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import fr.cyberix.kolo.R;
+import com.leodroidcoder.genericadapter.BaseViewHolder;
+import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 
-public class KoloNotificationViewHolder extends RecyclerView.ViewHolder {
+import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.model.entities.KoloNotification;
+
+public class KoloNotificationViewHolder extends BaseViewHolder<KoloNotification, OnRecyclerItemClickListener> {
+	public View notificationView;
 	public TextView txtnotiftitle, txtnotifmessage, txtnotifcreationdate;
+	public KoloNotification data;
 	
-	public KoloNotificationViewHolder(View itemView) {
-		super(itemView);
+	public KoloNotificationViewHolder(View itemView, OnRecyclerItemClickListener listener) {
+		super(itemView, listener);
 		txtnotiftitle = itemView.findViewById(R.id.txt_notif_title);
 		txtnotifmessage = itemView.findViewById(R.id.txt_notif_message);
 		txtnotifcreationdate = itemView.findViewById(R.id.txt_notif_creationdate);
 	}
+	
+	@Override
+	public void onBind(KoloNotification item) {
+		data = item;
+		txtnotiftitle.setText(data.getTitle());
+		txtnotifmessage.setText(data.getMessage());
+		txtnotifcreationdate.setText(data.getCreationDate());
+	}
+	
 }

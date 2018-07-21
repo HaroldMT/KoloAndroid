@@ -15,19 +15,19 @@ import java.util.List;
 
 import fr.cyberix.kolo.ksoap2.IWsdl2CodeEvents;
 import fr.cyberix.kolo.ksoap2.WS_Enums;
-import fr.cyberix.kolo.model.entities.MobileDevice;
 import fr.cyberix.kolo.model.entities.MyRefTypes;
 import fr.cyberix.kolo.model.entities.RefGender;
 
 public class MobileService {
 	
-	public String NAMESPACE ="http://kolo.cyberix.fr/";
+	public String NAMESPACE = "http://kolo.cyberix.fr/";
 	public String url = "";
     public int timeOut = 180000;
     public IWsdl2CodeEvents eventHandler;
     public WS_Enums.SoapProtocolVersion soapVersion;
 	
-	public MobileService(){}
+	public MobileService() {
+	}
 	
 	public MobileService(IWsdl2CodeEvents eventHandler)
     {
@@ -38,7 +38,8 @@ public class MobileService {
         this.eventHandler = eventHandler;
         this.url = url;
     }
-    public MobileService(IWsdl2CodeEvents eventHandler,String url,int timeOutInSeconds)
+	
+	public MobileService(IWsdl2CodeEvents eventHandler, String url, int timeOutInSeconds)
     {
         this.eventHandler = eventHandler;
         this.url = url;
@@ -50,6 +51,83 @@ public class MobileService {
     public void setUrl(String url){
         this.url = url;
     }
+	
+	public void GetCustomerNotificationsAsync(int jsonIdCustomer) throws Exception {
+		if (this.eventHandler == null)
+			throw new Exception("Async Methods Requires IWsdl2CodeEvents");
+		GetCustomerNotificationsAsync(jsonIdCustomer, null);
+	}
+	
+	public void GetCustomerNotificationsAsync(final int jsonIdCustomer, final List<HeaderProperty> headers) {
+		
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected String doInBackground(Void... params) {
+				return GetCustomerNotifications(jsonIdCustomer, headers);
+			}
+			
+			@Override
+			protected void onPreExecute() {
+				eventHandler.Wsdl2CodeStartedRequest();
+			}
+			
+			
+			@Override
+			protected void onPostExecute(String result) {
+				eventHandler.Wsdl2CodeEndedRequest();
+				if (result != null) {
+					eventHandler.Wsdl2CodeFinished("GetCustomerNotifications", result);
+				}
+			}
+		}.execute();
+	}
+	
+	public String GetCustomerNotifications(int jsonIdCustomer, List<HeaderProperty> headers) {
+		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		soapEnvelope.implicitTypes = true;
+		soapEnvelope.dotNet = true;
+		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "GetCustomerNotifications");
+		soapReq.addProperty("jsonIdCustomer", jsonIdCustomer);
+		soapEnvelope.setOutputSoapObject(soapReq);
+		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
+		try {
+			if (headers != null) {
+				httpTransport.call("http://kolo.cyberix.fr/GetCustomerNotifications", soapEnvelope, headers);
+			} else {
+				httpTransport.call("http://kolo.cyberix.fr/GetCustomerNotifications", soapEnvelope);
+			}
+			Object retObj = soapEnvelope.bodyIn;
+			if (retObj instanceof SoapFault) {
+				SoapFault fault = (SoapFault) retObj;
+				Exception ex = new Exception(fault.faultstring);
+				if (eventHandler != null)
+					eventHandler.Wsdl2CodeFinishedWithException(ex);
+			} else {
+				SoapObject result = (SoapObject) retObj;
+				if (result.getPropertyCount() > 0) {
+					Object obj = result.getProperty(0);
+					if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+						SoapPrimitive j = (SoapPrimitive) obj;
+						String resultVariable = j.toString();
+						return resultVariable;
+					} else if (obj != null && obj instanceof String) {
+						String resultVariable = (String) obj;
+						return resultVariable;
+					}
+				}
+			}
+		} catch (Exception e) {
+			if (eventHandler != null)
+				eventHandler.Wsdl2CodeFinishedWithException(e);
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	public String GetCustomerNotifications(int jsonIdCustomer) {
+		return GetCustomerNotifications(jsonIdCustomer, null);
+	}
+    
     public void GetRefGenderAsync() throws Exception{
         if (this.eventHandler == null)
             throw new Exception("Async Methods Requires IWsdl2CodeEvents");
@@ -58,7 +136,7 @@ public class MobileService {
 	
 	public void GetRefGenderAsync(final List<HeaderProperty> headers) {
 		
-		new AsyncTask<Void, Void, RefGender>(){
+		new AsyncTask<Void, Void, RefGender>() {
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
@@ -79,11 +157,7 @@ public class MobileService {
         }.execute();
     }
 	
-	public RefGender GetRefGender(){
-        return GetRefGender(null);
-    }
-	
-	public RefGender GetRefGender(List<HeaderProperty> headers){
+	public RefGender GetRefGender(List<HeaderProperty> headers) {
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -120,7 +194,11 @@ public class MobileService {
         return null;
     }
 	
-	public void CreatePersonAsync(String jsonPerson) throws Exception{
+	public RefGender GetRefGender() {
+		return GetRefGender(null);
+	}
+	
+	public void CreatePersonAsync(String jsonPerson) throws Exception {
         if (this.eventHandler == null)
             throw new Exception("Async Methods Requires IWsdl2CodeEvents");
         CreatePersonAsync(jsonPerson, null);
@@ -150,11 +228,7 @@ public class MobileService {
         }.execute();
     }
 	
-	public void CreatePerson(String jsonPerson){
-        CreatePerson(jsonPerson, null);
-    }
-	
-	public void CreatePerson(String jsonPerson,List<HeaderProperty> headers){
+	public void CreatePerson(String jsonPerson, List<HeaderProperty> headers) {
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -175,7 +249,11 @@ public class MobileService {
         }
     }
 	
-	public void TestServiceAsync(MyRefTypes myRefTypes) throws Exception{
+	public void CreatePerson(String jsonPerson) {
+		CreatePerson(jsonPerson, null);
+	}
+	
+	public void TestServiceAsync(MyRefTypes myRefTypes) throws Exception {
         if (this.eventHandler == null)
             throw new Exception("Async Methods Requires IWsdl2CodeEvents");
         TestServiceAsync(myRefTypes, null);
@@ -202,10 +280,6 @@ public class MobileService {
                 }
             }
         }.execute();
-    }
-	
-	public MyRefTypes TestService(MyRefTypes myRefTypes){
-        return TestService(myRefTypes, null);
     }
 	
 	public MyRefTypes TestService(MyRefTypes myRefTypes, List<HeaderProperty> headers) {
@@ -249,26 +323,30 @@ public class MobileService {
         return null;
     }
 	
-	public void InsertMobileDeviceAsync(String jsonMobileDevice) throws Exception{
+	public MyRefTypes TestService(MyRefTypes myRefTypes) {
+		return TestService(myRefTypes, null);
+	}
+	
+	public void InsertMobileDeviceAsync(String jsonMobileDevice) throws Exception {
         if (this.eventHandler == null)
             throw new Exception("Async Methods Requires IWsdl2CodeEvents");
         InsertMobileDeviceAsync(jsonMobileDevice, null);
     }
 	
 	public void InsertMobileDeviceAsync(final String jsonMobileDevice, final List<HeaderProperty> headers) {
-        
-        new AsyncTask<Void, Void, MobileDevice>(){
+		
+		new AsyncTask<Void, Void, String>() {
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             }
 	
 	        @Override
-            protected MobileDevice doInBackground(Void... params) {
+	        protected String doInBackground(Void... params) {
                 return InsertMobileDevice(jsonMobileDevice, headers);
             }
             @Override
-            protected void onPostExecute(MobileDevice result)
+            protected void onPostExecute(String result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -278,11 +356,7 @@ public class MobileService {
         }.execute();
     }
 	
-	public MobileDevice InsertMobileDevice(String jsonMobileDevice){
-        return InsertMobileDevice(jsonMobileDevice, null);
-    }
-	
-	public MobileDevice InsertMobileDevice(String jsonMobileDevice,List<HeaderProperty> headers){
+	public String InsertMobileDevice(String jsonMobileDevice, List<HeaderProperty> headers) {
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -306,10 +380,14 @@ public class MobileService {
                 SoapObject result=(SoapObject)retObj;
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
-                    SoapObject j = (SoapObject)obj;
-                    MobileDevice resultVariable =  new MobileDevice (j);
-                    return resultVariable;
-	
+	                if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+		                SoapPrimitive j = (SoapPrimitive) obj;
+		                String resultVariable = j.toString();
+		                return resultVariable;
+	                } else if (obj != null && obj instanceof String) {
+		                String resultVariable = (String) obj;
+		                return resultVariable;
+	                }
                 }
             }
         }catch (Exception e) {
@@ -317,7 +395,11 @@ public class MobileService {
                 eventHandler.Wsdl2CodeFinishedWithException(e);
             e.printStackTrace();
         }
-        return null;
+		return "";
+	}
+	
+	public String InsertMobileDevice(String jsonMobileDevice) {
+		return InsertMobileDevice(jsonMobileDevice, null);
     }
 	
 	public void GetCustomerByIdCustomerAndNumberAsync(int idCustomer, String number) throws Exception {
@@ -468,6 +550,80 @@ public class MobileService {
 	
 	public String GetCustomerAccount(int idCustomer) {
 		return GetCustomerAccount(idCustomer, null);
+	}
+	
+	public void GetParametersAsync() throws Exception {
+		if (this.eventHandler == null)
+			throw new Exception("Async Methods Requires IWsdl2CodeEvents");
+		GetParametersAsync(null);
+	}
+	
+	public void GetParametersAsync(final List<HeaderProperty> headers) {
+		
+		new AsyncTask<Void, Void, String>() {
+			@Override
+			protected void onPreExecute() {
+				eventHandler.Wsdl2CodeStartedRequest();
+			}
+			
+			@Override
+			protected String doInBackground(Void... params) {
+				return GetParameters(headers);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				eventHandler.Wsdl2CodeEndedRequest();
+				if (result != null) {
+					eventHandler.Wsdl2CodeFinished("GetParameters", result);
+				}
+			}
+		}.execute();
+	}
+	
+	public String GetParameters(List<HeaderProperty> headers) {
+		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		soapEnvelope.implicitTypes = true;
+		soapEnvelope.dotNet = true;
+		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "GetParameters");
+		soapEnvelope.setOutputSoapObject(soapReq);
+		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
+		try {
+			if (headers != null) {
+				httpTransport.call("http://kolo.cyberix.fr/GetParameters", soapEnvelope, headers);
+			} else {
+				httpTransport.call("http://kolo.cyberix.fr/GetParameters", soapEnvelope);
+			}
+			Object retObj = soapEnvelope.bodyIn;
+			if (retObj instanceof SoapFault) {
+				SoapFault fault = (SoapFault) retObj;
+				Exception ex = new Exception(fault.faultstring);
+				if (eventHandler != null)
+					eventHandler.Wsdl2CodeFinishedWithException(ex);
+			} else {
+				SoapObject result = (SoapObject) retObj;
+				if (result.getPropertyCount() > 0) {
+					Object obj = result.getProperty(0);
+					if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
+						SoapPrimitive j = (SoapPrimitive) obj;
+						String resultVariable = j.toString();
+						return resultVariable;
+					} else if (obj != null && obj instanceof String) {
+						String resultVariable = (String) obj;
+						return resultVariable;
+					}
+				}
+			}
+		} catch (Exception e) {
+			if (eventHandler != null)
+				eventHandler.Wsdl2CodeFinishedWithException(e);
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	public String GetParameters() {
+		return GetParameters(null);
 	}
 	
 	public void GetCustomerContactsAsync(String contacts, String idCustomer) throws Exception {
@@ -993,81 +1149,6 @@ public class MobileService {
 	
 	public String GetCustomerBalanceHistory(int jsonIdCustomer) {
 		return GetCustomerBalanceHistory(jsonIdCustomer, null);
-	}
-	
-	public void GetCustomerNotificationsAsync(int jsonIdCustomer) throws Exception {
-		if (this.eventHandler == null)
-			throw new Exception("Async Methods Requires IWsdl2CodeEvents");
-		GetCustomerNotificationsAsync(jsonIdCustomer, null);
-	}
-	
-	public void GetCustomerNotificationsAsync(final int jsonIdCustomer, final List<HeaderProperty> headers) {
-		
-		new AsyncTask<Void, Void, String>() {
-			@Override
-			protected void onPreExecute() {
-				eventHandler.Wsdl2CodeStartedRequest();
-			}
-			
-			@Override
-			protected String doInBackground(Void... params) {
-				return GetCustomerNotifications(jsonIdCustomer, headers);
-			}
-			
-			@Override
-			protected void onPostExecute(String result) {
-				eventHandler.Wsdl2CodeEndedRequest();
-				if (result != null) {
-					eventHandler.Wsdl2CodeFinished("GetCustomerNotifications", result);
-				}
-			}
-		}.execute();
-	}
-	
-	public String GetCustomerNotifications(int jsonIdCustomer, List<HeaderProperty> headers) {
-		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-		soapEnvelope.implicitTypes = true;
-		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "GetCustomerNotifications");
-		soapReq.addProperty("jsonIdCustomer", jsonIdCustomer);
-		soapEnvelope.setOutputSoapObject(soapReq);
-		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
-		try {
-			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/GetCustomerNotifications", soapEnvelope, headers);
-			} else {
-				httpTransport.call("http://kolo.cyberix.fr/GetCustomerNotifications", soapEnvelope);
-			}
-			Object retObj = soapEnvelope.bodyIn;
-			if (retObj instanceof SoapFault) {
-				SoapFault fault = (SoapFault) retObj;
-				Exception ex = new Exception(fault.faultstring);
-				if (eventHandler != null)
-					eventHandler.Wsdl2CodeFinishedWithException(ex);
-			} else {
-				SoapObject result = (SoapObject) retObj;
-				if (result.getPropertyCount() > 0) {
-					Object obj = result.getProperty(0);
-					if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
-						SoapPrimitive j = (SoapPrimitive) obj;
-						String resultVariable = j.toString();
-						return resultVariable;
-					} else if (obj != null && obj instanceof String) {
-						String resultVariable = (String) obj;
-						return resultVariable;
-					}
-				}
-			}
-		} catch (Exception e) {
-			if (eventHandler != null)
-				eventHandler.Wsdl2CodeFinishedWithException(e);
-			e.printStackTrace();
-		}
-		return "";
-	}
-	
-	public String GetCustomerNotifications(int jsonIdCustomer) {
-		return GetCustomerNotifications(jsonIdCustomer, null);
 	}
     
 }

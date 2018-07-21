@@ -2,8 +2,8 @@ package fr.cyberix.kolo.fragments;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,8 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,23 +22,47 @@ import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.adapters.CustomerHistoryAdapter;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
-import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
+import fr.cyberix.kolo.interfaces.ServiceOperationInterface;
 import fr.cyberix.kolo.model.CustomerBalanceHistoryList;
+import fr.cyberix.kolo.model.KoloWsObject;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.CustomerBalanceHistory;
-import fr.cyberix.kolo.services.MobileService;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends Fragment implements OnRecyclerItemClickListener {
 	@BindView(R.id.history_recycler)
 	RecyclerView recyclerView;
 	@BindView(R.id.history_swipe_container)
 	SwipeRefreshLayout swipeContainer;
 	View historyView;
-	private List<CustomerBalanceHistory> historyList = new ArrayList<>();
 	private CustomerHistoryAdapter historyAdapter;
-	
 	private OnFragmentInteractionListener mListener;
+	ServiceOperationInterface<Customer, KoloWsObject<CustomerBalanceHistoryList>> refreshHistory = new ServiceOperationInterface<Customer,
+			KoloWsObject<CustomerBalanceHistoryList>>() {
+		
+		
+		@Override
+		public void onOperationSuccess(String message, KoloWsObject<CustomerBalanceHistoryList> data) {
+			CustomerBalanceHistoryList notifications = data.getDataObject();
+			setHistoryList(notifications);
+		}
+		
+		@Override
+		public void onOperationFailure(String errorMessage) {
+			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+		}
+		
+		@Override
+		public void onPreExecute() {
+		
+		}
+		
+		@Override
+		public KoloWsObject<CustomerBalanceHistoryList> doInBackground(Customer parameter) {
+			return ServiceHelper.getHistory(parameter);
+		}
+	};
+	private Customer customer = ConfigHelper.getAccountInfo().getCustomer();
 	
 	public HistoryFragment() {
 		// Required empty public constructor
@@ -63,6 +86,7 @@ public class HistoryFragment extends Fragment {
 		}
 	}
 	
+	@NonNull
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -71,24 +95,16 @@ public class HistoryFragment extends Fragment {
 		RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 		recyclerView.setLayoutManager(mLayoutManager);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
-		historyAdapter = new CustomerHistoryAdapter(historyList);
+		historyAdapter = new CustomerHistoryAdapter(getActivity(), this);
 		recyclerView.setAdapter(historyAdapter);
-		Customer customer = ConfigHelper.getAccountInfo().getCustomer();
-		swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				// Refresh items
-				refreshItems();
-			}
-		});
+		swipeContainer.setOnRefreshListener(this::refreshItems);
+		refreshItems();
 		return historyView;
 	}
 	
 	private void refreshItems() {
 		swipeContainer.setRefreshing(true);
-		HistoryFragment.RefreshHistoryAsync historyAsync = new HistoryFragment.RefreshHistoryAsync(ConfigHelper.getAccountInfo().getCustomer
-				().getIdCustomer());
-		historyAsync.execute();
+		ServiceHelper.doInBackground(ConfigHelper.getCustomer(), refreshHistory);
 	}
 	
 	@Override
@@ -98,42 +114,19 @@ public class HistoryFragment extends Fragment {
 	}
 	
 	private void setHistoryList(CustomerBalanceHistoryList transferList) {
-		historyAdapter.clear();
-		historyAdapter.addAll(transferList);
-		onItemsLoadComplete();
+		historyAdapter.updateItems(transferList);
+		swipeContainer.setRefreshing(false);
+		if (historyAdapter.getItemCount() == 0)
+			Toast.makeText(KoloHelper.getMyContext(), "Aucun résultat", Toast.LENGTH_LONG).show();
 	}
 	
-	private void onItemsLoadComplete() {
-		historyAdapter.notifyDataSetChanged();
-		swipeContainer.setRefreshing(false);
-		int nb = historyAdapter.getItemCount();
-		Toast.makeText(KoloHelper.getMyContext(), nb + " lignes trouvées", Toast.LENGTH_LONG);
+	@Override
+	public void onItemClick(int position) {
+		CustomerBalanceHistory selectedHistory = historyAdapter.getItem(position);
 	}
 	
 	public interface OnFragmentInteractionListener {
 		// TODO: Update argument type and name
 		void onFragmentInteraction(Uri uri);
-	}
-	
-	public class RefreshHistoryAsync extends AsyncTask<Void, Void, CustomerBalanceHistoryList> {
-		int customerId;
-		
-		public RefreshHistoryAsync(int id) {
-			customerId = id;
-		}
-		
-		@Override
-		protected CustomerBalanceHistoryList doInBackground(Void... voids) {
-			MobileService service = ServiceHelper.getMobileService();
-			String transResult = service.GetCustomerBalanceHistory(customerId);
-			CustomerBalanceHistoryList customerBalanceHistories = SerializationHelper.fromJson(transResult, CustomerBalanceHistoryList.class);
-			return customerBalanceHistories;
-		}
-		
-		@Override
-		protected void onPostExecute(CustomerBalanceHistoryList histList) {
-			super.onPostExecute(histList);
-			setHistoryList(histList);
-		}
 	}
 }

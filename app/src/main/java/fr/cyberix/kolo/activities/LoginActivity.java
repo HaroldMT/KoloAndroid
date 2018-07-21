@@ -30,6 +30,8 @@ import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.SerializationHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
 import fr.cyberix.kolo.helpers.SystemServiceHelper;
+import fr.cyberix.kolo.interfaces.ServiceOperationInterface;
+import fr.cyberix.kolo.model.KoloWsObject;
 import fr.cyberix.kolo.model.TelephonyInfo;
 import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.model.entities.LoginAttempt;
@@ -65,7 +67,62 @@ public class LoginActivity extends AppCompatActivity {
 			signUp_view.setVisibility(View.VISIBLE);
 		}
 	};
-	
+	ServiceOperationInterface<LoginAttempt, KoloWsObject<LoginAttempt>> tryToLogIn = new ServiceOperationInterface<LoginAttempt, KoloWsObject<LoginAttempt>>
+			() {
+		@Override
+		public void onOperationSuccess(String message, KoloWsObject<LoginAttempt> data) {
+			LoginAttempt attempt = data.getDataObject();
+			Date time = Calendar.getInstance().getTime();
+			ConfigHelper.getAccountInfo().setLastAuthenticationTime(time);
+			ConfigHelper.getAccountInfo().setAuthenticated(true);
+			Customer customer = attempt.getCustomerLogin().getCustomer();
+			if (customer != null)
+				ConfigHelper.getAccountInfo().setCustomer(customer);
+			else
+				ConfigHelper.getAccountInfo().getCustomer().setIdCustomer(attempt.getIdCustomer());
+			ConfigHelper.saveConfig();
+			startActivity(new Intent(getBaseContext(), KoloHomeActivity.class));
+			finish();
+		}
+		
+		@Override
+		public void onOperationFailure(String errorMessage) {
+			Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+			btnLogin.setEnabled(true);
+			btnSignup.setEnabled(true);
+			btnForgot.setEnabled(true);
+		}
+		
+		@Override
+		public void onPreExecute() {
+			btnLogin.setEnabled(false);
+			btnSignup.setEnabled(false);
+			btnForgot.setEnabled(false);
+			loginProgressBar.setVisibility(View.VISIBLE);
+			
+			TelephonyInfo telInfo = SystemServiceHelper.getInfos();
+			Location loc = SystemServiceHelper.getLocation();
+			String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
+			loginAttempt = new LoginAttempt();
+			loginAttempt.setNumber(inputPhone.getText().toString());
+			loginAttempt.setPwd(pass);
+			loginAttempt.setIdCustomer(customer.getIdCustomer());
+			loginAttempt.setSimOperator(telInfo.getSimOperatorName());
+			loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
+			loginAttempt.setSubscriberId(telInfo.getSubscriberId());
+			loginAttempt.setDeviceId(telInfo.getDeviceId());
+			if (loc != null) {
+				loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
+				loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
+				loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
+			}
+		}
+		
+		@Override
+		public KoloWsObject<LoginAttempt> doInBackground(LoginAttempt parameter) {
+			return ServiceHelper.doLogin(parameter);
+		}
+	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(R.style.AppTheme_Dialog);
@@ -139,8 +196,31 @@ public class LoginActivity extends AppCompatActivity {
 			onLoginFailed();
 			return;
 		}
-		userSignInTask = new UserSignInTask();
-		userSignInTask.execute((Void) null);
+		
+		btnLogin.setEnabled(false);
+		btnSignup.setEnabled(false);
+		btnForgot.setEnabled(false);
+		loginProgressBar.setVisibility(View.VISIBLE);
+		
+		TelephonyInfo telInfo = SystemServiceHelper.getInfos();
+		Location loc = SystemServiceHelper.getLocation();
+		String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
+		loginAttempt = new LoginAttempt();
+		loginAttempt.setNumber(inputPhone.getText().toString());
+		loginAttempt.setPwd(pass);
+		loginAttempt.setIdCustomer(customer.getIdCustomer());
+		loginAttempt.setSimOperator(telInfo.getSimOperatorName());
+		loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
+		loginAttempt.setSubscriberId(telInfo.getSubscriberId());
+		loginAttempt.setDeviceId(telInfo.getDeviceId());
+		if (loc != null) {
+			loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
+			loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
+			loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
+		}
+		ServiceHelper.doInBackground(loginAttempt, tryToLogIn);
+//		userSignInTask = new UserSignInTask();
+//		userSignInTask.execute((Void) null);
 	}
 	
 	public boolean validate() {
@@ -220,13 +300,14 @@ public class LoginActivity extends AppCompatActivity {
 		
 		@Override
 		protected LoginAttempt doInBackground(Void... params) {
-			
 			try {
 				KolOthenticor service = ServiceHelper.getOthenticorService();
 				String loginJson = SerializationHelper.toJson(loginAttempt, loginAttempt.getClass());
 				String resultJson = service.DoLogin(loginJson);
-				loginAttempt = SerializationHelper.fromJson(resultJson, loginAttempt.getClass());
-			} catch (Exception e) {
+				KoloWsObject<LoginAttempt> result = SerializationHelper.fromKoloJson(resultJson, new KoloWsObject<LoginAttempt>().getClass());
+				loginAttempt = result.getDataObject();
+			} catch (final Exception e) {
+				
 				return null;
 			}
 			return loginAttempt;
@@ -234,27 +315,7 @@ public class LoginActivity extends AppCompatActivity {
 		
 		@Override
 		protected void onPreExecute() {
-			btnLogin.setEnabled(false);
-			btnSignup.setEnabled(false);
-			btnForgot.setEnabled(false);
-			loginProgressBar.setVisibility(View.VISIBLE);
-			
-			TelephonyInfo telInfo = SystemServiceHelper.getInfos();
-			Location loc = SystemServiceHelper.getLocation();
-			String pass = SerializationHelper.HashPassword(inputPassword.getText().toString());
-			loginAttempt = new LoginAttempt();
-			loginAttempt.setNumber(inputPhone.getText().toString());
-			loginAttempt.setPwd(pass);
-			loginAttempt.setIdCustomer(customer.getIdCustomer());
-			loginAttempt.setSimOperator(telInfo.getSimOperatorName());
-			loginAttempt.setSimSerialNumber(telInfo.getSimSerialNumber());
-			loginAttempt.setSubscriberId(telInfo.getSubscriberId());
-			loginAttempt.setDeviceId(telInfo.getDeviceId());
-			if (loc != null) {
-				loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
-				loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
-				loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
-			}
+		
 		}
 		
 		@Override

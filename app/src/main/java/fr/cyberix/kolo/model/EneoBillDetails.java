@@ -83,4 +83,8 @@ public class EneoBillDetails implements Parcelable {
 				", contractNumber='" + contractNumber + '\'' +
 				'}';
 	}
+	
+	public String toReceptionString() {
+		return null;
+	}
 }

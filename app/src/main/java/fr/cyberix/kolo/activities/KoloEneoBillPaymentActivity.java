@@ -1,7 +1,6 @@
 package fr.cyberix.kolo.activities;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +16,7 @@ import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
-import fr.cyberix.kolo.helpers.SerializationHelper;
-import fr.cyberix.kolo.helpers.ServiceHelper;
 import fr.cyberix.kolo.model.EneoBillDetailsList;
-import fr.cyberix.kolo.services.KolOPartVice;
 
 public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 	String TAG;
@@ -225,34 +221,6 @@ public class KoloEneoBillPaymentActivity extends AppCompatActivity {
 					handler.postDelayed(r, 100);
 					break;
 				}
-		}
-	}
-	
-	public class QueryEneoBillAsync extends AsyncTask<Void, Void, EneoBillDetailsList> {
-		String eneoCode;
-		boolean isContractNo;
-		String result;
-		
-		public QueryEneoBillAsync(String code, boolean isContractNumber) {
-			eneoCode = code;
-			isContractNo = isContractNumber;
-		}
-		
-		@Override
-		protected EneoBillDetailsList doInBackground(Void... voids) {
-			KolOPartVice service = ServiceHelper.getKolOPartVice();
-			if (isContractNo)
-				result = service.GetEneoBillsByBillAccount(eneoCode);
-			else
-				result = service.GetEneoBillByBillNumber(eneoCode);
-			EneoBillDetailsList eneoBillDetailsList = SerializationHelper.fromJson(result, EneoBillDetailsList.class);
-			return eneoBillDetailsList;
-		}
-		
-		@Override
-		protected void onPostExecute(EneoBillDetailsList eneoBillDetailsList) {
-			super.onPostExecute(eneoBillDetailsList);
-			setBillList(eneoBillDetailsList);
 		}
 	}
 	

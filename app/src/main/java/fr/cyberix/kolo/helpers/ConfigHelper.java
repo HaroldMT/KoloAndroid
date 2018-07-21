@@ -12,10 +12,13 @@ import android.util.Log;
 
 import fr.cyberix.kolo.model.AccountInfo;
 import fr.cyberix.kolo.model.ParameterInfo;
+import fr.cyberix.kolo.model.RunningInfo;
+import fr.cyberix.kolo.model.entities.Customer;
 
 public class ConfigHelper {
 	private static AccountInfo accountInfo = new AccountInfo();
 	private static ParameterInfo parameterInfo = new ParameterInfo();
+	private static RunningInfo runningInfo = new RunningInfo();
 	
 	public static AccountInfo getAccountInfo() {
 		return accountInfo;
@@ -55,12 +58,8 @@ public class ConfigHelper {
 		return parameterInfo;
 	}
 	
-	public static void setParameterInfo(ParameterInfo paramInfo) {
-		parameterInfo = paramInfo;
-	}
-	
 	public static boolean initialize() {
-		return initializeParameters() & initializeConfig();
+		return initializeParameters() & initializeConfig() & initializeRunningInfo();
 	}
 	
 	public static boolean initializeParameters() {
@@ -78,6 +77,21 @@ public class ConfigHelper {
 		return result;
 	}
 	
+	public static boolean initializeRunningInfo() {
+		boolean result = false;
+		try {
+			String configString = StorageHelper.readFileInternal(KoloConstants.RunningFileName);
+			if (((configString != null) ? configString.length() : 0) > 0) {
+				RunningInfo runningInfo1 = SerializationHelper.fromJson(configString, RunningInfo.class);
+				runningInfo = runningInfo1 != null ? runningInfo1 : new RunningInfo();
+				result = true;
+			} else runningInfo = new RunningInfo();
+		} catch (Exception ignored) {
+			ignored.printStackTrace();
+		}
+		return result;
+	}
+	
 	public static boolean initializeConfig() {
 		boolean result = false;
 		try {
@@ -87,9 +101,6 @@ public class ConfigHelper {
 				accountInfo = accountInfo1 != null ? accountInfo1 : new AccountInfo();
 				result = true;
 			} else accountInfo = new AccountInfo();
-//            if (accountInfo.getRegistration().getIdRegistration() > 0) {
-//                accountInfo.setCustomer(ServiceHelper.getCustomer(accountInfo.getRegistration()));
-//            }
 		} catch (Exception ignored) {
 			ignored.printStackTrace();
 		}
@@ -104,6 +115,14 @@ public class ConfigHelper {
 	public static boolean getRegistering() {
 		boolean result = (accountInfo != null) ? accountInfo.getRegistering() : false;
 		return result;
+	}
+	
+	public static int getCustomerId() {
+		return accountInfo.getCustomer().getIdCustomer();
+	}
+	
+	public static Customer getCustomer() {
+		return accountInfo.getCustomer();
 	}
 	
 	public static void resetParameters() {
@@ -127,12 +146,45 @@ public class ConfigHelper {
 		}
 	}
 	
-	public static void save() {
-		saveConfig();
-		saveParameters();
+	public static void setParameterInfo(ParameterInfo paramInfo) {
+		parameterInfo = paramInfo;
 	}
 	
 	public static boolean hasParameters() {
 		return parameterInfo.getCurrencyList().size() > 0;
+	}
+	
+	public static void setRunningInfo(RunningInfo runningInfo1) {
+		runningInfo = runningInfo1;
+	}
+	
+	public static void resetRunningInfo() {
+		boolean result = false;
+		try {
+			runningInfo = new RunningInfo();
+			saveRunningInfo();
+		} catch (Exception ignored) {
+			Log.e("resetRunningInfo", ignored.getMessage());
+		}
+	}
+	
+	public static void saveRunningInfo() {
+		boolean result = false;
+		try {
+			String configString = SerializationHelper.toJson(runningInfo, RunningInfo.class);
+			StorageHelper.writeFileInternal(KoloConstants.RunningFileName, configString, false);
+			result = true;
+		} catch (Exception ignored) {
+			Log.e("resetRunningInfo", ignored.getMessage());
+		}
+	}
+	
+	public static boolean hasRunningInfo() {
+		return runningInfo == null;
+	}
+	
+	public static void save() {
+		saveConfig();
+		saveParameters();
 	}
 }

@@ -90,7 +90,6 @@
                         android:contentDescription="TODO"
                         android:src="@drawable/ic_qr_code"
                         android:tint="@color/white"/>
-
                 </LinearLayout>
 
                 <LinearLayout

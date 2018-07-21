@@ -3,28 +3,30 @@ package fr.cyberix.kolo.model;
 import java.util.Date;
 
 public class TransferP2pDetails {
-	int senderIdCustomer;
-	String senderTelephone;
-	String senderLastName;
-	String senderFirstName;
-	String senderMiddleName;
-	int receiverIdCustomer;
-	String receiverTelephone;
-	String receiverLastName;
-	String receiverFirstName;
-	String receiverMiddleName;
-	int amount;
-	String status;
-	Date transferDate;
-	String passPhrase;
-	boolean needsConfirmation;
-	Date scheduleDate;
+	private int transferId;
+	private String reference;
+	private int senderIdCustomer;
+	private String senderTelephone;
+	private String senderLastName;
+	private String senderFirstName;
+	private String senderMiddleName;
+	private int receiverIdCustomer;
+	private String receiverTelephone;
+	private String receiverLastName;
+	private String receiverFirstName;
+	private String receiverMiddleName;
+	private int amount;
+	private String status;
+	private Date transferDate;
+	private String passPhrase;
+	private boolean needsConfirmation;
+	private Date scheduleDate;
 	
 	public String getReceiverFullname() {
 		StringBuilder sb = new StringBuilder();
-		if (receiverLastName != null) sb.append(receiverLastName + ' ');
-		if (receiverMiddleName != null) sb.append(receiverMiddleName + ' ');
-		if (receiverFirstName != null) sb.append(receiverFirstName + ' ');
+		if (getReceiverLastName() != null) sb.append(getReceiverLastName() + ' ');
+		if (getReceiverMiddleName() != null) sb.append(getReceiverMiddleName() + ' ');
+		if (getReceiverFirstName() != null) sb.append(getReceiverFirstName() + ' ');
 		String fName = sb.toString();
 		String fullName = fName.trim();
 //        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
@@ -33,9 +35,9 @@ public class TransferP2pDetails {
 	
 	public String getSenderFullname() {
 		StringBuilder sb = new StringBuilder();
-		if (senderLastName != null) sb.append(senderLastName + ' ');
-		if (senderMiddleName != null) sb.append(senderMiddleName + ' ');
-		if (senderFirstName != null) sb.append(senderFirstName + ' ');
+		if (getSenderLastName() != null) sb.append(getSenderLastName() + ' ');
+		if (getSenderMiddleName() != null) sb.append(getSenderMiddleName() + ' ');
+		if (getSenderFirstName() != null) sb.append(getSenderFirstName() + ' ');
 		String fName = sb.toString();
 		String fullName = fName.trim();
 //        String fullName = (lastName + ' ' + middleName + ' ' + firstName).replace("  ", " ");
@@ -176,5 +178,21 @@ public class TransferP2pDetails {
 	
 	public String toSendingString() {
 		return getReceiverFullname() + " will receive " + getAmount() + "XAF. Do you accept it?";
+	}
+	
+	public int getTransferId() {
+		return transferId;
+	}
+	
+	public void setTransferId(int transferId) {
+		this.transferId = transferId;
+	}
+	
+	public String getReference() {
+		return reference;
+	}
+	
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 }

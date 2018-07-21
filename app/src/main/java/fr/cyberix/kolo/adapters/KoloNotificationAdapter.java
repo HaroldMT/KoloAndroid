@@ -1,57 +1,35 @@
 package fr.cyberix.kolo.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.v7.util.DiffUtil;
 import android.view.ViewGroup;
+
+import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter;
+import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 
 import java.util.List;
 
 import fr.cyberix.kolo.R;
+import fr.cyberix.kolo.adapters.diffCallBacks.NotificationDiffCallback;
 import fr.cyberix.kolo.adapters.viewHolders.KoloNotificationViewHolder;
 import fr.cyberix.kolo.model.entities.KoloNotification;
 
-public class KoloNotificationAdapter extends RecyclerView.Adapter<KoloNotificationViewHolder> {
+public class KoloNotificationAdapter extends GenericRecyclerViewAdapter<KoloNotification, OnRecyclerItemClickListener, KoloNotificationViewHolder> {
 	
-	private View notificationView;
-	private List<KoloNotification> notificationList;
-	
-	public KoloNotificationAdapter(List<KoloNotification> notifData) {
-		this.notificationList = notifData;
+	public KoloNotificationAdapter(Context context, OnRecyclerItemClickListener listener) {
+		super(context, listener);
 	}
 	
 	@NonNull
 	@Override
-	public KoloNotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		notificationView = LayoutInflater.from(parent.getContext())
-		                                 .inflate(R.layout.notification_row, parent, false);
-		return new KoloNotificationViewHolder(notificationView);
+	public KoloNotificationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		return new KoloNotificationViewHolder(inflate(R.layout.notification_row, parent), getListener());
 	}
 	
 	@Override
-	public void onBindViewHolder(@NonNull KoloNotificationViewHolder holder, int position) {
-		KoloNotification notification = notificationList.get(position);
-		holder.txtnotiftitle.setText(notification.getTitle());
-		holder.txtnotifmessage.setText(notification.getMessage());
-		holder.txtnotifcreationdate.setText(notification.getCreationDate());
-	}
-	
-	@Override
-	public int getItemCount() {
-		if (notificationList == null) return 0;
-		return notificationList.size();
-	}
-	
-	public void clear() {
-		notificationList.clear();
-		notifyDataSetChanged();
-	}
-	
-	public void addAll(List<KoloNotification> list) {
-		if (list == null || list.size() == 0)
-			return;
-		notificationList.addAll(list);
-		notifyDataSetChanged();
+	public void updateItems(List<KoloNotification> newItems) {
+		DiffUtil.Callback diffCallback = new NotificationDiffCallback(getItems(), newItems);
+		super.updateItems(newItems, diffCallback);
 	}
 }

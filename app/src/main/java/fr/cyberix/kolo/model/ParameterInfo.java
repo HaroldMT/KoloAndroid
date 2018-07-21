@@ -71,6 +71,7 @@ public class ParameterInfo {
 	private List<RefRegistrationStatu> refRegistrationStatus = new ArrayList<>();
 	
 	private List<RefResult> refResults = new ArrayList<>();
+	
 	private List<RefTransfertStatu> refTransfertStatus;
 	
 	public List<Currency> getCurrencyList() {
