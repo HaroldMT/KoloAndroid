@@ -8,12 +8,16 @@
 
 package fr.cyberix.kolo.helpers;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +30,7 @@ import java.text.DateFormat;
 
 import fr.cyberix.kolo.R;
 
+import static fr.cyberix.kolo.helpers.KoloConstants.MY_PERMISSIONS_REQUEST_CODE;
 import static fr.cyberix.kolo.helpers.KoloConstants.UTF8_CHARSET;
 
 public class KoloHelper {
@@ -176,5 +181,58 @@ public class KoloHelper {
 	
 	public static AppCompatActivity getMyActivity() {
 		return myActivity;
+	}
+	
+	public static void checkPermissions() {
+		String[] myPermissions = new String[]{
+				Manifest.permission.SEND_SMS,
+				Manifest.permission.RECEIVE_SMS,
+				Manifest.permission.READ_SMS,
+				Manifest.permission.READ_CONTACTS,
+				Manifest.permission.INTERNET,
+		};
+		if (ContextCompat.checkSelfPermission(myActivity, Manifest.permission.SEND_SMS)
+				+ ContextCompat.checkSelfPermission(
+				myActivity, Manifest.permission.READ_SMS)
+				+ ContextCompat.checkSelfPermission(
+				myActivity, Manifest.permission.RECEIVE_SMS)
+				+ ContextCompat.checkSelfPermission(
+				myActivity, Manifest.permission.READ_CONTACTS)
+				+ ContextCompat.checkSelfPermission(
+				myActivity, Manifest.permission.INTERNET)
+				!= PackageManager.PERMISSION_GRANTED) {
+			
+			// Do something, when permissions not granted
+			if (ActivityCompat.shouldShowRequestPermissionRationale(
+					myActivity, Manifest.permission.SEND_SMS)
+					|| ActivityCompat.shouldShowRequestPermissionRationale(
+					myActivity, Manifest.permission.RECEIVE_SMS)
+					|| ActivityCompat.shouldShowRequestPermissionRationale(
+					myActivity, Manifest.permission.READ_SMS)
+					|| ActivityCompat.shouldShowRequestPermissionRationale(
+					myActivity, Manifest.permission.READ_CONTACTS)
+					|| ActivityCompat.shouldShowRequestPermissionRationale(
+					myActivity, Manifest.permission.INTERNET)) {
+				// If we should give explanation of requested permissions
+				
+				// Show an alert dialog here with request explanation
+				android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(myActivity);
+				builder.setMessage("Contacts permissions" +
+						                   " SMS Permissions are required to access kolo App.");
+				builder.setTitle("Please grant those permissions");
+				builder.setPositiveButton("OK", (dialogInterface, i) -> ActivityCompat.requestPermissions(
+						myActivity, myPermissions, MY_PERMISSIONS_REQUEST_CODE));
+				builder.setNeutralButton("Cancel", null);
+				android.app.AlertDialog dialog = builder.create();
+				dialog.show();
+			} else {
+				// Directly request for required permissions, without explanation
+				ActivityCompat.requestPermissions(
+						myActivity, myPermissions, MY_PERMISSIONS_REQUEST_CODE);
+			}
+		} else {
+			// Do something, when permissions are already granted
+			Toast.makeText(myContext, "Permissions already granted", Toast.LENGTH_SHORT).show();
+		}
 	}
 }

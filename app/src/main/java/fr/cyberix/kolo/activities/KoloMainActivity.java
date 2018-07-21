@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -28,11 +27,11 @@ import butterknife.ButterKnife;
 import fr.cyberix.kolo.R;
 import fr.cyberix.kolo.helpers.KoloHelper;
 
+import static fr.cyberix.kolo.helpers.KoloConstants.MY_PERMISSIONS_REQUEST_CODE;
+
 public class KoloMainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
 	
-	private static final int MY_PERMISSIONS_REQUEST_CODE = 123;
-	private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 	private Context mContext;
 	private Activity mActivity;
 	private ActionBarDrawerToggle mToggle;
@@ -100,22 +99,17 @@ public class KoloMainActivity extends AppCompatActivity
 				builder.setMessage("Contacts permissions" +
 						                   " SMS Permissions are required to access kolo App.");
 				builder.setTitle("Please grant those permissions");
-				builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialogInterface, int i) {
-						ActivityCompat.requestPermissions(
-								mActivity,
-								new String[]{
-										Manifest.permission.SEND_SMS,
-										Manifest.permission.RECEIVE_SMS,
-										Manifest.permission.READ_SMS,
-										Manifest.permission.READ_CONTACTS,
-										Manifest.permission.INTERNET,
-								},
-								MY_PERMISSIONS_REQUEST_CODE
-						                                 );
-					}
-				});
+				builder.setPositiveButton("OK", (dialogInterface, i) -> ActivityCompat.requestPermissions(
+						mActivity,
+						new String[]{
+								Manifest.permission.SEND_SMS,
+								Manifest.permission.RECEIVE_SMS,
+								Manifest.permission.READ_SMS,
+								Manifest.permission.READ_CONTACTS,
+								Manifest.permission.INTERNET,
+						},
+						MY_PERMISSIONS_REQUEST_CODE
+				                                                                                         ));
 				builder.setNeutralButton("Cancel", null);
 				AlertDialog dialog = builder.create();
 				dialog.show();

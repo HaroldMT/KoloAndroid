@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
 		ButterKnife.bind(this);
 		KoloHelper.setActivity(this);
 		ServiceHelper.initialize();
-		
+		PermissionHelper.checkPermissions();
 		Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.splashtransition);
 		tv.startAnimation(myAnim);
 		iv.startAnimation(myAnim);
