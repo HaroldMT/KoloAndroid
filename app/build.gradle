@@ -4,16 +4,29 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "fr.cyberix.kolo"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            versionNameSuffix "-debug"
+            buildConfigField "String", "BASE_URL", '"http://192.168.100.114/KoloWin.CustomerService/"'
+        }
+        staging {
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+            buildConfigField "String", "BASE_URL", '"http://192.168.100.23:6543/KoloWin.CustomerService/"'
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", '"http://kolo.cyberix.fr/KoloWin.CustomerService/"'
         }
     }
     repositories {

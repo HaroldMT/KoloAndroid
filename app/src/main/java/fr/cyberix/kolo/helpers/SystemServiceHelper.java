@@ -19,6 +19,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Telephony;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.telecom.TelecomManager;
 import android.telephony.SmsManager;
@@ -50,6 +51,7 @@ public class SystemServiceHelper {
 		return TelephonyInfo.getNewInstance(KoloHelper.getMyContextWrapper(), telManager);
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 	public static void initialize(ContextWrapper context) {
 		initialized = false;
 		telManager = (TelephonyManager) KoloHelper.getMyContextWrapper().getSystemService(Context.TELEPHONY_SERVICE);
