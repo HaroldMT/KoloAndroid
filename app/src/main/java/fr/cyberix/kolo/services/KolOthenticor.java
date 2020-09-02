@@ -1,6 +1,7 @@
 package fr.cyberix.kolo.services;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -13,6 +14,7 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.List;
 
+import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.ksoap2.IWsdl2CodeEvents;
 import fr.cyberix.kolo.ksoap2.WS_Enums;
 import fr.cyberix.kolo.model.entities.Customer;
@@ -20,8 +22,8 @@ import fr.cyberix.kolo.model.entities.LoginAttempt;
 import fr.cyberix.kolo.model.entities.Registration;
 
 public class KolOthenticor {
-	
-	public String NAMESPACE = "http://kolo.cyberix.fr/";
+	final static String TAG = "KolOthenticator";
+	public String NAMESPACE = KoloConstants.KolOthenticor_BaseUrl;
 	public String url = "";
 	public int timeOut = 180000;
 	public IWsdl2CodeEvents eventHandler;
@@ -87,15 +89,15 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "DoConfirmRegistration");
+		SoapObject soapReq = new SoapObject(KoloConstants.KolOthenticor_BaseUrl, "DoConfirmRegistration");
 		soapReq.addProperty("jsonReg", jsonReg);
 		soapEnvelope.setOutputSoapObject(soapReq);
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/DoConfirmRegistration", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "DoConfirmRegistration", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/DoConfirmRegistration", soapEnvelope);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "DoConfirmRegistration", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {
@@ -162,15 +164,15 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "DoLogin");
+		SoapObject soapReq = new SoapObject(KoloConstants.KolOthenticor_BaseUrl, "DoLogin");
 		soapReq.addProperty("jsonLogAttempt", jsonLogAttempt);
 		soapEnvelope.setOutputSoapObject(soapReq);
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/DoLogin", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "DoLogin", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/DoLogin", soapEnvelope);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "DoLogin", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {
@@ -237,15 +239,18 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "DoRegistration");
+
+		SoapObject soapReq = new SoapObject(KoloConstants.NAMESPACE, "DoRegistration");
 		soapReq.addProperty("jsonReg", jsonReg);
 		soapEnvelope.setOutputSoapObject(soapReq);
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
+			Log.d(TAG, "URL : " + KoloConstants.KolOthenticor_BaseUrl + "?op=DoRegistration");
+
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/DoRegistration", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.NAMESPACE + "DoRegistration", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/DoRegistration", soapEnvelope);
+				httpTransport.call(KoloConstants.NAMESPACE + "DoRegistration", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {
@@ -256,9 +261,11 @@ public class KolOthenticor {
 			} else {
 				SoapObject result = (SoapObject) retObj;
 				if (result.getPropertyCount() > 0) {
-					Object obj = result.getProperty(0);
+					Object obj = result.getProperty(0); //((SoapObject)result.getProperty(0)).getProperty(2); // (); IsSuccess, ErrorMessage,  DataObject
+
 					if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
 						SoapPrimitive j = (SoapPrimitive) obj;
+
 						String resultVariable = j.toString();
 						return resultVariable;
 					} else if (obj != null && obj instanceof String) {
@@ -312,8 +319,8 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "SignIn");
-		soapEnvelope.addMapping("http://kolo.cyberix.fr/", "loginAttempt", new LoginAttempt().getClass());
+		SoapObject soapReq = new SoapObject(KoloConstants.KolOthenticor_BaseUrl, "SignIn");
+		soapEnvelope.addMapping(KoloConstants.KolOthenticor_BaseUrl, "loginAttempt", new LoginAttempt().getClass());
 		MarshalFloat marshalFloat = new MarshalFloat();
 		marshalFloat.register(soapEnvelope);
 		soapReq.addProperty("loginAttempt", loginAttempt);
@@ -321,9 +328,9 @@ public class KolOthenticor {
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/SignIn", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignIn", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/SignIn", soapEnvelope);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignIn", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {
@@ -386,16 +393,16 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "SignUp");
-		soapEnvelope.addMapping("http://kolo.cyberix.fr/", "registration", new Registration().getClass());
+		SoapObject soapReq = new SoapObject(KoloConstants.KolOthenticor_BaseUrl, "SignUp");
+		soapEnvelope.addMapping(KoloConstants.KolOthenticor_BaseUrl, "registration", new Registration().getClass());
 		soapReq.addProperty("registration", registration);
 		soapEnvelope.setOutputSoapObject(soapReq);
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/SignUp", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignUp", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/SignUp", soapEnvelope);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignUp", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {
@@ -458,16 +465,16 @@ public class KolOthenticor {
 		SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		soapEnvelope.implicitTypes = true;
 		soapEnvelope.dotNet = true;
-		SoapObject soapReq = new SoapObject("http://kolo.cyberix.fr/", "SignUpVerification");
-		soapEnvelope.addMapping("http://kolo.cyberix.fr/", "registration", new Registration().getClass());
+		SoapObject soapReq = new SoapObject(KoloConstants.KolOthenticor_BaseUrl, "SignUpVerification");
+		soapEnvelope.addMapping(KoloConstants.KolOthenticor_BaseUrl, "registration", new Registration().getClass());
 		soapReq.addProperty("registration", registration);
 		soapEnvelope.setOutputSoapObject(soapReq);
 		HttpTransportSE httpTransport = new HttpTransportSE(url, timeOut);
 		try {
 			if (headers != null) {
-				httpTransport.call("http://kolo.cyberix.fr/SignUpVerification", soapEnvelope, headers);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignUpVerification", soapEnvelope, headers);
 			} else {
-				httpTransport.call("http://kolo.cyberix.fr/SignUpVerification", soapEnvelope);
+				httpTransport.call(KoloConstants.KolOthenticor_BaseUrl + "SignUpVerification", soapEnvelope);
 			}
 			Object retObj = soapEnvelope.bodyIn;
 			if (retObj instanceof SoapFault) {

@@ -468,4 +468,27 @@ public class Registration implements KvmSerializable {
 	//    @Override
 	public void setInnerText(String s) {
 	}
+
+	@Override
+	public String toString() {
+		return "Registration{" +
+				"idRegistration=" + idRegistration +
+				", lastName='" + lastName + '\'' +
+				", firstName='" + firstName + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
+				", dob='" + dob + '\'' +
+				", email='" + email + '\'' +
+				", registrationToken='" + registrationToken + '\'' +
+				", registrationStatusCode='" + registrationStatusCode + '\'' +
+				", registrationDate='" + registrationDate + '\'' +
+				", registrationConfirmDate='" + registrationConfirmDate + '\'' +
+				", simSubscriberId='" + simSubscriberId + '\'' +
+				", simSerialNumber='" + simSerialNumber + '\'' +
+				", operatorDeviceSim='" + operatorDeviceSim + '\'' +
+				", registrationTokenExpiryDate='" + registrationTokenExpiryDate + '\'' +
+				", pwd='" + pwd + '\'' +
+				", deviceId='" + deviceId + '\'' +
+				", refRegistrationStatu=" + refRegistrationStatu +
+				'}';
+	}
 }

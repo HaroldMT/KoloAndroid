@@ -281,7 +281,8 @@ public class SignUpActivity extends AppCompatActivity
 	}
 	
 	private class UserSignUpTask extends AsyncTask<Void, Void, Registration> {
-		
+		final static String TAG = "UserSignUpTask";
+
 		private Registration mRegistration;
 		private AccountInfo mAccountInfo;
 		private MobileDevice mMobileDevice;
@@ -289,6 +290,8 @@ public class SignUpActivity extends AppCompatActivity
 		UserSignUpTask(Registration registration, AccountInfo accountInfo) {
 			mRegistration = registration;
 			mAccountInfo = accountInfo;
+
+			Log.d(TAG, mRegistration.toString());
 		}
 		
 		UserSignUpTask(Registration registration, AccountInfo accountInfo, MobileDevice mobileDevice) {
@@ -303,8 +306,8 @@ public class SignUpActivity extends AppCompatActivity
 				KolOthenticor service = ServiceHelper.getOthenticorService();
 				String regJson = SerializationHelper.toJson(mRegistration, mRegistration.getClass());
 				String resultJson = service.DoRegistration(regJson);
-				mRegistration = SerializationHelper.fromJson(resultJson, mRegistration.getClass());
-				
+				RegistrationResult registrationResult = SerializationHelper.fromJson(resultJson, RegistrationResult.class);
+				mRegistration = registrationResult.dataObject;
 			} catch (Exception e) {
 				return null;
 			}
@@ -332,10 +335,15 @@ public class SignUpActivity extends AppCompatActivity
 			mRegistration.setRegistrationStatusCode("");
 			ConfigHelper.getAccountInfo().setRegistration(registration);
 			ConfigHelper.saveConfig();
+
+			Log.d(TAG, "onPreexcutate: " + mRegistration.toString());
 		}
 		
 		@Override
 		protected void onPostExecute(final Registration myRegistration) {
+			Log.d(TAG, (mRegistration != null) + " -- " + (mRegistration != null && myRegistration.getRegistrationStatusCode() != null));
+			Log.d(TAG, mRegistration.toString());
+
 			final Boolean success = mRegistration != null && mRegistration.getRegistrationStatusCode().equalsIgnoreCase(KoloConstants
 					                                                                                                            .REGISTRATION_STATUS_NEEDCONFIRM);
 			new android.os.Handler().postDelayed(
@@ -358,6 +366,7 @@ public class SignUpActivity extends AppCompatActivity
 		
 		@Override
 		protected void onCancelled() {
+			Log.d(TAG, "onCancelled()");
 			userSignUpTask = null;
 			signup_progressBar.setVisibility(View.GONE);
 		}
@@ -378,7 +387,45 @@ public class SignUpActivity extends AppCompatActivity
 	
 
 	
+	private class RegistrationResult {
+		boolean isSuccess;
+		String errorMessage;
+		Registration dataObject;
 
+		public RegistrationResult(boolean isSuccess) {
+			this.isSuccess = isSuccess;
+		}
+
+		public RegistrationResult(boolean isSuccess, String errorMessage, Registration registration) {
+			this.isSuccess = isSuccess;
+			this.errorMessage = errorMessage;
+			this.dataObject = registration;
+		}
+
+		public boolean isSuccess() {
+			return isSuccess;
+		}
+
+		public void setSuccess(boolean success) {
+			isSuccess = success;
+		}
+
+		public String getErrorMessage() {
+			return errorMessage;
+		}
+
+		public void setErrorMessage(String errorMessage) {
+			this.errorMessage = errorMessage;
+		}
+
+		public Registration getDataObject() {
+			return dataObject;
+		}
+
+		public void setDataObject(Registration dataObject) {
+			this.dataObject = dataObject;
+		}
+	}
 	
 	
 }
