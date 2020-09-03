@@ -108,7 +108,7 @@ public class ConfigHelper {
 	}
 	
 	public static boolean getRegistered() {
-		boolean result = (accountInfo != null) ? accountInfo.getRegistered() : false;
+		boolean result = (accountInfo != null) ? accountInfo.isRegistred() : false;
 		return result;
 	}
 	
