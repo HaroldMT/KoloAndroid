@@ -23,7 +23,7 @@ import fr.cyberix.kolo.model.entities.Registration;
 public final class AccountInfo {
 	private Boolean isAuthenticated = false;
 	private Boolean isRegistring = false;
-	private Boolean isRegistred = false;
+	private boolean isRegistred = false;
 	private Customer customer = new Customer();
 	private Date lastAuthenticationTime;
 	private MobileDevice mobileDevice = new MobileDevice();
@@ -41,10 +41,12 @@ public final class AccountInfo {
 		isAuthenticated = authenticated;
 	}
 	
-	@NonNull
-	public Boolean getRegistered() {
-		return isRegistred;
-	}
+//	@NonNull
+//	public Boolean getRegistered() {
+//		return isRegistred;
+//	}
+
+
 	
 	@NonNull
 	public Boolean getRegistering() {
@@ -90,14 +92,23 @@ public final class AccountInfo {
 		isRegistring = registring;
 	}
 	
-	public Boolean getRegistred() {
+//	public Boolean getRegistred() {
+//		return isRegistred;
+//	}
+//
+//	public void setRegistred(Boolean registred) {
+//		isRegistred = registred;
+//	}
+
+
+	public boolean isRegistred() {
 		return isRegistred;
 	}
-	
-	public void setRegistred(Boolean registred) {
+
+	public void setRegistred(boolean registred) {
 		isRegistred = registred;
 	}
-	
+
 	public Person getPerson() {
 		return person;
 	}

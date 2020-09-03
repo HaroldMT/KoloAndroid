@@ -68,7 +68,9 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 	
 	@OnClick(R.id.btn_signup_conf_confirm)
 	public void OnClickRegistration() {
-		if (validate()) confirmRegistration();
+		if (validate()) {
+			confirmRegistration();
+		}
 	}
 	
 	public boolean validate() {
@@ -143,8 +145,20 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 		protected Customer doInBackground(Void... params) {
 			Customer myCustomer = new Customer();
 			try {
-				myCustomer = SerializationHelper.fromJson(new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl).DoConfirmRegistration
-						(SerializationHelper.toJson(registration, registration.getClass())), myCustomer.getClass());
+				String s = SerializationHelper.toJson(registration, registration.getClass());
+				String sc = new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl).DoConfirmRegistration(s);
+				ConfirmationResult confirmationResult = SerializationHelper.fromJson(sc, ConfirmationResult.class);
+				myCustomer = confirmationResult.dataObject;
+
+//				myCustomer = SerializationHelper.fromJson(
+//						new KolOthenticor(
+//								null,
+//							KoloConstants.KolOthenticor_BaseUrl
+//						).DoConfirmRegistration
+//									(
+//											SerializationHelper.toJson(registration, registration.getClass())
+//									), myCustomer.getClass()
+//				);
 			} catch (Exception e) {
 				return null;
 			}
@@ -179,4 +193,41 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 			//confirm_signup_progressBar.setVisibility(View.GONE);
 		}
 	}
+
+	private class ConfirmationResult {
+		boolean isSuccess;
+		String errorMessage;
+		Customer dataObject;
+
+		public ConfirmationResult(boolean isSuccess, String errorMessage, Customer dataObject) {
+			this.isSuccess = isSuccess;
+			this.errorMessage = errorMessage;
+			this.dataObject = dataObject;
+		}
+
+		public boolean isSuccess() {
+			return isSuccess;
+		}
+
+		public void setSuccess(boolean success) {
+			isSuccess = success;
+		}
+
+		public String getErrorMessage() {
+			return errorMessage;
+		}
+
+		public void setErrorMessage(String errorMessage) {
+			this.errorMessage = errorMessage;
+		}
+
+		public Customer getDataObject() {
+			return dataObject;
+		}
+
+		public void setDataObject(Customer dataObject) {
+			this.dataObject = dataObject;
+		}
+	}
+
 }
