@@ -59,7 +59,8 @@ public final class AccountInfo {
 	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-		if (customer.getMobileDevice() != null) setMobileDevice(customer.getMobileDevice());
+//		if (customer.getMobileDevice() != null) setMobileDevice(customer.getMobileDevice());
+		if (customer.getMobileDevices() != null && customer.getMobileDevices().size() > 0)  setMobileDevice(customer.getMobileDevices().get(0));
 		if (customer.getBusiness() != null) setBusiness(customer.getBusiness());
 		if (customer.getPerson() != null) setPerson(customer.getPerson());
 	}

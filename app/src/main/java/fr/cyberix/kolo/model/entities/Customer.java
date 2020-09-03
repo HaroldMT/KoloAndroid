@@ -5,7 +5,9 @@ import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 public class Customer implements KvmSerializable {
 	
@@ -26,7 +28,9 @@ public class Customer implements KvmSerializable {
 	private Currency currency;
 	private Registration registration;
 	private RefCustomerType refCustomerType;
-	private MobileDevice mobileDevice;
+//	private MobileDevice mobileDevice;
+	List<MobileDevice> mobileDevices;
+
 	private int topUpPercentage;
 	private int gravityId;
 	private String gravityCode;
@@ -175,10 +179,19 @@ public class Customer implements KvmSerializable {
 			setRefCustomerType(new RefCustomerType(j));
 			
 		}
-		if (soapObject.hasProperty("MobileDevice")) {
-			SoapObject j = (SoapObject) soapObject.getProperty("MobileDevice");
-			setMobileDevice(new MobileDevice(j));
-			
+//		if (soapObject.hasProperty("MobileDevice")) {
+//			SoapObject j = (SoapObject) soapObject.getProperty("MobileDevice");
+//			setMobileDevice(new MobileDevice(j));
+//
+//		}
+		if (soapObject.hasProperty("MobileDevices")) {
+			SoapObject j = (SoapObject) soapObject.getProperty("MobileDevices");
+			if (mobileDevices == null) {
+				mobileDevices = new ArrayList<>();
+			}
+			this.mobileDevices.add(new MobileDevice(j));
+//			setMobileDevice(new MobileDevice(j));
+
 		}
 		if (soapObject.hasProperty("CustomerImage")) {
 			SoapObject j = (SoapObject) soapObject.getProperty("CustomerImage");
@@ -272,7 +285,7 @@ public class Customer implements KvmSerializable {
 			case 16:
 				return getRefCustomerType();
 			case 17:
-				return getMobileDevice();
+				return getMobileDevices();
 			case 18:
 				return customerImage;
 			case 19:
@@ -520,14 +533,22 @@ public class Customer implements KvmSerializable {
 		this.refCustomerType = refCustomerType;
 	}
 	
-	public MobileDevice getMobileDevice() {
-		return mobileDevice;
+//	public MobileDevice getMobileDevice() {
+//		return mobileDevice;
+//	}
+//
+//	public void setMobileDevice(MobileDevice mobileDevice) {
+//		this.mobileDevice = mobileDevice;
+//	}
+
+	public List<MobileDevice> getMobileDevices() {
+		return mobileDevices;
 	}
-	
-	public void setMobileDevice(MobileDevice mobileDevice) {
-		this.mobileDevice = mobileDevice;
+
+	public void setMobileDevices(List<MobileDevice> mobileDevices) {
+		this.mobileDevices = mobileDevices;
 	}
-	
+
 	public void setIdRegistration(int idRegistration) {
 		this.idRegistration = idRegistration;
 	}

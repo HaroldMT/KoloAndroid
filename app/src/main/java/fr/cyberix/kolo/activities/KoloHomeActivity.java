@@ -49,6 +49,8 @@ import fr.cyberix.kolo.fragments.OperationsFragment;
 import fr.cyberix.kolo.fragments.SettingsFragment;
 import fr.cyberix.kolo.helpers.ConfigHelper;
 import fr.cyberix.kolo.helpers.KoloHelper;
+import fr.cyberix.kolo.model.AccountInfo;
+import fr.cyberix.kolo.model.entities.Customer;
 import fr.cyberix.kolo.other.CircleTransform;
 import io.card.payment.CardIOActivity;
 import io.card.payment.CreditCard;
@@ -103,30 +105,30 @@ public class KoloHomeActivity extends AppCompatActivity
 		setContentView(R.layout.activity_kolo_home);
 		KoloHelper.setActivity(this);
 		TAG = this.getLocalClassName();
-		
+
 		toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
-		
+
 		if (getSupportActionBar() != null) {
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
 		mHandler = new Handler();
-		
+
 		drawer = findViewById(R.id.drawer_layout);
 		navigationView = findViewById(R.id.nav_view);
 		fab = findViewById(R.id.fab);
-		
+
 		// Navigation view header
 		navHeader = navigationView.getHeaderView(0);
 		txtName = navHeader.findViewById(R.id.name);
 		txtWebsite = navHeader.findViewById(R.id.website);
 		imgNavHeaderBg = navHeader.findViewById(R.id.img_header_bg);
 		imgProfile = navHeader.findViewById(R.id.img_profile);
-		
+
 		// load toolbar titles from string resources
 		activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-		
+
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -134,7 +136,7 @@ public class KoloHomeActivity extends AppCompatActivity
 				        .setAction("Action", null).show();
 			}
 		});
-		
+
 		// load nav menu header data
 		loadNavHeader();
 		
@@ -148,6 +150,9 @@ public class KoloHomeActivity extends AppCompatActivity
 		}
 		
 		ConfigHelper.getAccountInfo().getCustomer().setEneoContractNo("200050721");
+		AccountInfo accountInfo = ConfigHelper.getAccountInfo();
+		Customer customer = accountInfo.getCustomer();
+		customer.setEneoContractNo("200050721");
 	}
 	
 	private void loadNavHeader() {

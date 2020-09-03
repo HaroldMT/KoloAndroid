@@ -68,6 +68,7 @@ public class SplashActivity extends AppCompatActivity {
 				if (dateHelper.diffInMin < KoloConstants.forceLoginAfterShutdownTimeLimit) {
 					gotoLoginActivity = false;
 					KoloHelper.startActivity(KoloHomeActivity.class);
+//					KoloHelper.startActivity(KoloMadActivity.class);
 //					startActivity(new Intent(getApplicationContext(), KoloHomeActivity.class));
 				}
 			}
