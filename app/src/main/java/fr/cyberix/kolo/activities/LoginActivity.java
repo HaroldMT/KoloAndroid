@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 			() {
 		@Override
 		public void onOperationSuccess(String message, KoloWsObject<LoginAttempt> data) {
+			Log.d(TAG, "onOperationSuccess");
 			LoginAttempt attempt = data.getDataObject();
 			Date time = Calendar.getInstance().getTime();
 			ConfigHelper.getAccountInfo().setLastAuthenticationTime(time);
@@ -88,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 		@Override
 		public void onOperationFailure(String errorMessage) {
 			Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+			Log.d(TAG, "onOperationFailure");
 			btnLogin.setEnabled(true);
 			btnSignup.setEnabled(true);
 			btnForgot.setEnabled(true);
@@ -133,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 		ButterKnife.bind(this);
 		setTitle("Kolo Login");
 		loadConfig();
+		loginProgressBar.setVisibility(View.INVISIBLE);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
