@@ -353,10 +353,18 @@ public final class ServiceHelper {
 			@Override
 			protected void onPostExecute(ResultType result) {
 				super.onPostExecute(result);
-				if (result == null) serviceInterface.onOperationFailure("The operation could not complete. Please retry");
-				else if (result.getSucces() == false) serviceInterface.onOperationFailure(result.getErrorMessage());
-				else if (result.getDataObject() == null) serviceInterface.onOperationFailure(result.getErrorMessage());
-				else serviceInterface.onOperationSuccess("", result);
+				if (result == null) {
+					serviceInterface.onOperationFailure("The operation could not complete. Please retry");
+				}
+				else if (result.getSucces() == false) {
+					serviceInterface.onOperationFailure(result.getErrorMessage());
+				}
+				else if (result.getDataObject() == null) {
+					serviceInterface.onOperationFailure(result.getErrorMessage());
+				}
+				else {
+					serviceInterface.onOperationSuccess("", result);
+				}
 			}
 		}.execute(parameter);
 	}

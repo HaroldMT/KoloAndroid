@@ -102,7 +102,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 							if (success) {
 								SetQrContact(contact);
 								onSearchNumberContactSucces();
-							} else onSearchNumberContactFailed();
+							} else {
+								onSearchNumberContactFailed();
+							}
 							progressBar.setVisibility(View.GONE);
 							sendBtn.setEnabled(true);
 							cancelBtn.setEnabled(true);
@@ -141,7 +143,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 							if (success) {
 //								transfertP2p = transfertP2p2;
 								onSendMoneySuccess();
-							} else onSendMoneyFailed();
+							} else {
+								onSendMoneyFailed();
+							}
 							progressBar.setVisibility(View.GONE);
 							sendBtn.setEnabled(true);
 							cancelBtn.setEnabled(true);
@@ -224,7 +228,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 					int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
 					String number = cursor.getString(column);
 					Toast.makeText(this, "Recherche du compte Kolo pour le numéro " + number, Toast.LENGTH_LONG).show();
-					ServiceHelper.doInBackground(null, findContact);
+
+					number = number.replaceAll("[^0-9]", "");
+					ServiceHelper.doInBackground(number, findContact);
 				} else {
 					Toast.makeText(this, "Aucun contact récupéré", Toast.LENGTH_LONG).show();
 				}
