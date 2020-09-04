@@ -115,6 +115,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		@Override
 		public void onOperationFailure(String errorMessage) {
 			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+			progressBar.setVisibility(View.GONE);
+			sendBtn.setEnabled(true);
+			cancelBtn.setEnabled(true);
 		}
 		
 		@Override
@@ -156,6 +159,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		@Override
 		public void onOperationFailure(String errorMessage) {
 			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+			progressBar.setVisibility(View.GONE);
+			sendBtn.setEnabled(true);
+			cancelBtn.setEnabled(true);
 		}
 		
 		@Override
