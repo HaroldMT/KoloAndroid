@@ -15,7 +15,7 @@ android {
             applicationIdSuffix ".debug"
             debuggable true
             versionNameSuffix "-debug"
-            buildConfigField "String", "BASE_URL", '"http://192.168.100.11/KoloWin.CustomerService/"'
+            buildConfigField "String", "BASE_URL", '"http://192.168.100.12/KoloWin.CustomerService/"'
         }
         staging {
             applicationIdSuffix ".staging"

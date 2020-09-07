@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 			btnLogin.setEnabled(true);
 			btnSignup.setEnabled(true);
 			btnForgot.setEnabled(true);
+			loginProgressBar.setVisibility(View.INVISIBLE);
 		}
 		
 		@Override

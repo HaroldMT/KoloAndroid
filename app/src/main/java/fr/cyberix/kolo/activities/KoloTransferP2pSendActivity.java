@@ -369,6 +369,7 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		int amount;
 		try {
 			amount = Integer.parseInt(strAmount);
+			transfertP2p.setIdSendingCustomer(ConfigHelper.getCustomerId());
 			transfertP2p.setAmount(amount);
 		} catch (NumberFormatException nfe) {
 			KoloHelper.ShowToast("Montant invalide");
