@@ -38,11 +38,17 @@ android {
         sourceCompatibility 1.8
     }
 }
+configurations {
+
+    all*.exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    all*.exclude group: 'com.google.code.ksoap2-android', module: 'ksoap2-android'
+
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     /*implementation files('libs/ksoap2-android-assembly-3.6.2-jar-with-dependencies.jar')*/
-    implementation 'com.google.code.ksoap2-android:ksoap2-base:3.6.2'
+//    implementation 'com.google.code.ksoap2-android:ksoap2-base:3.6.2'
     implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
     implementation 'com.google.code.ksoap2-android:ksoap2-android-assembly:3.6.2'
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
@@ -69,4 +75,6 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'joda-time:joda-time:2.10'
     implementation "com.leodroidcoder:generic-adapter:1.0.0"
+    compile files('libs/ExKsoap2-1.0.3.1.jar')
+    compile files('libs/ksoap2-android-assembly-3.6.4-jar-with-dependencies.jar')
 }

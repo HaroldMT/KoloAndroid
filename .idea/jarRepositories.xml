@@ -46,5 +46,10 @@
       <option name="name" value="$USER_HOME$/Android/Sdk/extras/android/m2repository" />
       <option name="url" value="file:$USER_HOME$/Android/Sdk/extras/android/m2repository/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="http://ksoap2-android.googlecode.com/svn/m2-repo" />
+    </remote-repository>
   </component>
 </project>

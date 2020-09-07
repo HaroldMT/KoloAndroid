@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
 			}
 		});
 		Customer customer = ConfigHelper.getAccountInfo().getCustomer();
-		if (customer != null && customer.person != null) {
+		if (customer != null && customer.Person != null) {
 			showHomeData();
 		} else {
 			refreshItems();
@@ -100,8 +100,8 @@ public class HomeFragment extends Fragment {
 			this.availableBalance.setText(String.valueOf(customer.getBalance()));
 			Person person = customer.getPerson();
 			if (person != null) {
-				this.firstName.setText(customer.person.getFirstname());
-				this.lastName.setText(customer.person.getLastname());
+				this.firstName.setText(customer.Person.getFirstname());
+				this.lastName.setText(customer.Person.getLastname());
 			}
 		}
 	}
