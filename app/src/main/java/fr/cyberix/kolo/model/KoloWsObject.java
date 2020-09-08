@@ -1,15 +1,15 @@
 package fr.cyberix.kolo.model;
 
 public class KoloWsObject<T> {
-	private Boolean isSucces;
+	private boolean isSucces = false;
 	private String errorMessage;
 	private T dataObject;
 	
-	public Boolean getSucces() {
+	public boolean getSucces() {
 		return isSucces;
 	}
 	
-	public void setSucces(Boolean succes) {
+	public void setSucces(boolean succes) {
 		isSucces = succes;
 	}
 	

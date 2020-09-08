@@ -362,6 +362,7 @@ public final class ServiceHelper {
 				else if (result.getDataObject() == null) {
 					serviceInterface.onOperationFailure(result.getErrorMessage());
 				}
+
 				else {
 					serviceInterface.onOperationSuccess("", result);
 				}
