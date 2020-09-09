@@ -30,14 +30,12 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
     private String CreationDate;
     
     private String ExpiryDate;
-
-//    private java.util.Date CreationDate;
-//
-//    private java.util.Date ExpiryDate;
     
     private Boolean Readed;
     
     private String Category;
+    
+    private String FireBaseToken;
     
     private Customer Customer;
     
@@ -81,44 +79,24 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
         this.Message = value;     
     }
     
-//    public java.util.Date getCreationDate()
-//    {
-//        return this.CreationDate;
-//    }
-//
-//    public void setCreationDate(java.util.Date value)
-//    {
-//        this.CreationDate = value;
-//    }
-//
-//    public java.util.Date getExpiryDate()
-//    {
-//        return this.ExpiryDate;
-//    }
-//
-//    public void setExpiryDate(java.util.Date value)
-//    {
-//        this.ExpiryDate = value;
-//    }
-
     public String getCreationDate()
     {
         return this.CreationDate;
     }
-
+    
     public void setCreationDate(String value)
     {
-        this.CreationDate = value;
+        this.CreationDate = value;     
     }
-
+    
     public String getExpiryDate()
     {
         return this.ExpiryDate;
     }
-
+    
     public void setExpiryDate(String value)
     {
-        this.ExpiryDate = value;
+        this.ExpiryDate = value;     
     }
     
     public Boolean getReaded()
@@ -139,6 +117,16 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
     public void setCategory(String value)
     {
         this.Category = value;     
+    }
+    
+    public String getFireBaseToken()
+    {
+        return this.FireBaseToken;
+    }
+    
+    public void setFireBaseToken(String value)
+    {
+        this.FireBaseToken = value;     
     }
     
     public Customer getCustomer()
@@ -272,12 +260,10 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
                     if(j.toString()!=null)
                     {
                         this.CreationDate = j.toString();
-                        //this.CreationDate = ExtendedSoapSerializationEnvelope.getDateTimeConverter().convertDateTime(j.toString());
                     }
                 }
-                else if (obj instanceof java.util.Date){
-                    this.CreationDate = (String) obj;
-                    //this.CreationDate = (java.util.Date)obj;
+                else if (obj instanceof String){
+                    this.CreationDate = (String)obj;
                 }
             }
             return true;
@@ -292,12 +278,10 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
                     if(j.toString()!=null)
                     {
                         this.ExpiryDate = j.toString();
-                        //this.ExpiryDate = ExtendedSoapSerializationEnvelope.getDateTimeConverter().convertDateTime(j.toString());
                     }
                 }
                 else if (obj instanceof String){
-                    this.ExpiryDate = (String) obj;
-                    //this.ExpiryDate = (java.util.Date)obj;
+                    this.ExpiryDate = (String)obj;
                 }
             }
             return true;
@@ -337,6 +321,27 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
                 }
                 else{
                     this.Category = "";
+                }
+            }
+            return true;
+        }
+        if (info.name.equals("FireBaseToken"))
+        {
+            if(obj!=null)
+            {
+                if (obj instanceof SoapPrimitive)
+                {
+                    SoapPrimitive j =(SoapPrimitive) obj;
+                    if(j.toString()!=null)
+                    {
+                        this.FireBaseToken = j.toString();
+                    }
+                }
+                else if (obj instanceof String){
+                    this.FireBaseToken = (String)obj;
+                }
+                else{
+                    this.FireBaseToken = "";
                 }
             }
             return true;
@@ -382,12 +387,10 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
         else if(propertyIndex==4)
         {
             return this.CreationDate!=null?this.CreationDate:SoapPrimitive.NullSkip;
-            //return this.CreationDate!=null?ExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(this.CreationDate):SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==5)
         {
             return this.ExpiryDate!=null?this.ExpiryDate:SoapPrimitive.NullNilElement;
-            //return this.ExpiryDate!=null?ExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(this.ExpiryDate):SoapPrimitive.NullNilElement;
         }
         else if(propertyIndex==6)
         {
@@ -399,6 +402,10 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
         }
         else if(propertyIndex==8)
         {
+            return this.FireBaseToken!=null?this.FireBaseToken:SoapPrimitive.NullSkip;
+        }
+        else if(propertyIndex==9)
+        {
             return this.Customer!=null?this.Customer:SoapPrimitive.NullSkip;
         }
         return null;
@@ -407,7 +414,7 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
 
     @Override
     public int getPropertyCount() {
-        return 9;
+        return 10;
     }
 
     @Override
@@ -462,6 +469,12 @@ public class KoloNotification extends AttributeContainer implements KvmSerializa
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==8)
+        {
+            info.type = PropertyInfo.STRING_CLASS;
+            info.name = "FireBaseToken";
+            info.namespace= "http://kolo.cyberix.fr/";
+        }
+        else if(propertyIndex==9)
         {
             info.type = Customer.class;
             info.name = "Customer";

@@ -10,9 +10,7 @@ package fr.cyberix.kolo.model.entities;
 
 
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.security.PublicKey;
 import java.util.Date;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
@@ -33,21 +31,18 @@ public class Registration extends AttributeContainer implements KvmSerializable
     
     private String PhoneNumber;
     
-    //private String Dob;
     private String Dob;
-
+    
     private String Email;
     
     private String RegistrationToken;
     
     private String RegistrationStatusCode;
     
-    //private String RegistrationDate;
     private String RegistrationDate;
-
-    //private String RegistrationConfirmDate;
+    
     private String RegistrationConfirmDate;
-
+    
     private String SimSubscriberId;
     
     private String SimSerialNumber;
@@ -59,6 +54,8 @@ public class Registration extends AttributeContainer implements KvmSerializable
     private String Pwd;
     
     private String DeviceId;
+    
+    private String FireBaseToken;
     
     private ArrayOfActivation Activations;
     
@@ -105,24 +102,14 @@ public class Registration extends AttributeContainer implements KvmSerializable
     {
         this.PhoneNumber = value;     
     }
-    
-    public Date getDob()
-    {
+
+    public Date getDob() {
         return DateHelper.String2Date(Dob);
     }
 
-    public void setDob(Date value)
-    {
-        this.Dob = DateHelper.Date2String(value);
+    public void setDob(Date dob) {
+        this.Dob = DateHelper.Date2String(dob);
     }
-
-//    public String getDob(){
-//        return this.Dob;
-//    }
-//
-//    public void setDob(String value){
-//        this.Dob = value;
-//    }
     
     public String getEmail()
     {
@@ -154,24 +141,24 @@ public class Registration extends AttributeContainer implements KvmSerializable
         this.RegistrationStatusCode = value;     
     }
     
-    public Date getRegistrationDate()
+    public String getRegistrationDate()
     {
-        return DateHelper.String2Date(RegistrationDate);
+        return this.RegistrationDate;
     }
     
-    public void setRegistrationDate(Date value)
+    public void setRegistrationDate(String value)
     {
-        this.RegistrationDate = DateHelper.Date2String(value);
+        this.RegistrationDate = value;     
     }
     
-    public Date getRegistrationConfirmDate()
+    public String getRegistrationConfirmDate()
     {
-        return DateHelper.String2Date(RegistrationConfirmDate);
+        return this.RegistrationConfirmDate;
     }
     
-    public void setRegistrationConfirmDate(Date value)
+    public void setRegistrationConfirmDate(String value)
     {
-        this.RegistrationConfirmDate = DateHelper.Date2String(value);
+        this.RegistrationConfirmDate = value;     
     }
     
     public String getSimSubscriberId()
@@ -234,6 +221,16 @@ public class Registration extends AttributeContainer implements KvmSerializable
         this.DeviceId = value;     
     }
     
+    public String getFireBaseToken()
+    {
+        return this.FireBaseToken;
+    }
+    
+    public void setFireBaseToken(String value)
+    {
+        this.FireBaseToken = value;     
+    }
+    
     public ArrayOfActivation getActivations()
     {
         return this.Activations;
@@ -264,7 +261,7 @@ public class Registration extends AttributeContainer implements KvmSerializable
         this.RefRegistrationStatu = value;     
     }
 
-    public Registration(){}
+    public  Registration(){}
 
     public Registration(SoapObject j){
         loadFromSoap(j, new ExtendedSoapSerializationEnvelope());
@@ -619,6 +616,27 @@ public class Registration extends AttributeContainer implements KvmSerializable
             }
             return true;
         }
+        if (info.name.equals("FireBaseToken"))
+        {
+            if(obj!=null)
+            {
+                if (obj instanceof SoapPrimitive)
+                {
+                    SoapPrimitive j =(SoapPrimitive) obj;
+                    if(j.toString()!=null)
+                    {
+                        this.FireBaseToken = j.toString();
+                    }
+                }
+                else if (obj instanceof String){
+                    this.FireBaseToken = (String)obj;
+                }
+                else{
+                    this.FireBaseToken = "";
+                }
+            }
+            return true;
+        }
         if (info.name.equals("Activations"))
         {
             if(obj!=null)
@@ -725,13 +743,17 @@ public class Registration extends AttributeContainer implements KvmSerializable
         }
         else if(propertyIndex==16)
         {
-            return this.Activations!=null?this.Activations:SoapPrimitive.NullSkip;
+            return this.FireBaseToken!=null?this.FireBaseToken:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==17)
         {
-            return this.Customers!=null?this.Customers:SoapPrimitive.NullSkip;
+            return this.Activations!=null?this.Activations:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==18)
+        {
+            return this.Customers!=null?this.Customers:SoapPrimitive.NullSkip;
+        }
+        else if(propertyIndex==19)
         {
             return this.RefRegistrationStatu!=null?this.RefRegistrationStatu:SoapPrimitive.NullSkip;
         }
@@ -741,7 +763,7 @@ public class Registration extends AttributeContainer implements KvmSerializable
 
     @Override
     public int getPropertyCount() {
-        return 19;
+        return 20;
     }
 
     @Override
@@ -845,17 +867,23 @@ public class Registration extends AttributeContainer implements KvmSerializable
         }
         else if(propertyIndex==16)
         {
-            info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "Activations";
+            info.type = PropertyInfo.STRING_CLASS;
+            info.name = "FireBaseToken";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==17)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "Customers";
+            info.name = "Activations";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==18)
+        {
+            info.type = PropertyInfo.VECTOR_CLASS;
+            info.name = "Customers";
+            info.namespace= "http://kolo.cyberix.fr/";
+        }
+        else if(propertyIndex==19)
         {
             info.type = RefRegistrationStatu.class;
             info.name = "RefRegistrationStatu";

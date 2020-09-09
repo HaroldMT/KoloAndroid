@@ -28,8 +28,7 @@ public class Customer extends AttributeContainer implements KvmSerializable
     private Integer Balance=0;
     
     private String DateCreated;
-    //private java.util.Date DateCreated;
-
+    
     private Integer IdRegistration;
     
     private Integer BalanceUnavailable=0;
@@ -46,13 +45,15 @@ public class Customer extends AttributeContainer implements KvmSerializable
     
     private Integer GravityPercentage;
     
+    private String FireBaseToken;
+    
     private ArrayOfAccountOperationRequest AccountOperationRequests;
     
     private ArrayOfActivation Activations;
     
-    private ArrayOfBill IssuedBills;
+    private ArrayOfBill Bills;
     
-    private ArrayOfBill PayedBills;
+    private ArrayOfBill Bills1;
     
     private Business Business;
     
@@ -92,7 +93,7 @@ public class Customer extends AttributeContainer implements KvmSerializable
     
     private ArrayOfTransferGravity TransferGravities;
     
-    private ArrayOfTransfert2CashDetail Transfert2CashDetails;
+    private ArrayOfTransfert2CashDetail Transfert2CashDetail;
     
     private ArrayOfTransfertE2e TransfertE2e;
     
@@ -100,13 +101,13 @@ public class Customer extends AttributeContainer implements KvmSerializable
     
     private ArrayOfTransfertGroupScheduled TransfertGroupScheduleds;
     
-    private ArrayOfTransfertP2p ReceivedTransfertP2p;
+    private ArrayOfTransfertP2p TransfertP2p;
     
-    private ArrayOfTransfertP2p SentTransfertP2p;
+    private ArrayOfTransfertP2p TransfertP2p1;
     
-    private ArrayOfTransfertScheduled ReceivedTransfertScheduleds;
+    private ArrayOfTransfertScheduled TransfertScheduleds;
     
-    private ArrayOfTransfertScheduled SentTransfertScheduleds;
+    private ArrayOfTransfertScheduled TransfertScheduleds1;
     
     private ArrayOfCustomerGroup CustomerGroups1;
     
@@ -150,24 +151,14 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.Balance = value;     
     }
     
-//    public java.util.Date getDateCreated()
-//    {
-//        return this.DateCreated;
-//    }
-//
-//    public void setDateCreated(java.util.Date value)
-//    {
-//        this.DateCreated = value;
-//    }
-
     public String getDateCreated()
     {
         return this.DateCreated;
     }
-
+    
     public void setDateCreated(String value)
     {
-        this.DateCreated = value;
+        this.DateCreated = value;     
     }
     
     public Integer getIdRegistration()
@@ -250,6 +241,16 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.GravityPercentage = value;     
     }
     
+    public String getFireBaseToken()
+    {
+        return this.FireBaseToken;
+    }
+    
+    public void setFireBaseToken(String value)
+    {
+        this.FireBaseToken = value;     
+    }
+    
     public ArrayOfAccountOperationRequest getAccountOperationRequests()
     {
         return this.AccountOperationRequests;
@@ -270,24 +271,24 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.Activations = value;     
     }
     
-    public ArrayOfBill getIssuedBills()
+    public ArrayOfBill getBills()
     {
-        return this.IssuedBills;
+        return this.Bills;
     }
     
-    public void setIssuedBills(ArrayOfBill value)
+    public void setBills(ArrayOfBill value)
     {
-        this.IssuedBills = value;     
+        this.Bills = value;     
     }
     
-    public ArrayOfBill getPayedBills()
+    public ArrayOfBill getBills1()
     {
-        return this.PayedBills;
+        return this.Bills1;
     }
     
-    public void setPayedBills(ArrayOfBill value)
+    public void setBills1(ArrayOfBill value)
     {
-        this.PayedBills = value;     
+        this.Bills1 = value;     
     }
     
     public Business getBusiness()
@@ -480,14 +481,14 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.TransferGravities = value;     
     }
     
-    public ArrayOfTransfert2CashDetail getTransfert2CashDetails()
+    public ArrayOfTransfert2CashDetail getTransfert2CashDetail()
     {
-        return this.Transfert2CashDetails;
+        return this.Transfert2CashDetail;
     }
     
-    public void setTransfert2CashDetails(ArrayOfTransfert2CashDetail value)
+    public void setTransfert2CashDetail(ArrayOfTransfert2CashDetail value)
     {
-        this.Transfert2CashDetails = value;     
+        this.Transfert2CashDetail = value;     
     }
     
     public ArrayOfTransfertE2e getTransfertE2e()
@@ -520,44 +521,44 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.TransfertGroupScheduleds = value;     
     }
     
-    public ArrayOfTransfertP2p getReceivedTransfertP2p()
+    public ArrayOfTransfertP2p getTransfertP2p()
     {
-        return this.ReceivedTransfertP2p;
+        return this.TransfertP2p;
     }
     
-    public void setReceivedTransfertP2p(ArrayOfTransfertP2p value)
+    public void setTransfertP2p(ArrayOfTransfertP2p value)
     {
-        this.ReceivedTransfertP2p = value;     
+        this.TransfertP2p = value;     
     }
     
-    public ArrayOfTransfertP2p getSentTransfertP2p()
+    public ArrayOfTransfertP2p getTransfertP2p1()
     {
-        return this.SentTransfertP2p;
+        return this.TransfertP2p1;
     }
     
-    public void setSentTransfertP2p(ArrayOfTransfertP2p value)
+    public void setTransfertP2p1(ArrayOfTransfertP2p value)
     {
-        this.SentTransfertP2p = value;     
+        this.TransfertP2p1 = value;     
     }
     
-    public ArrayOfTransfertScheduled getReceivedTransfertScheduleds()
+    public ArrayOfTransfertScheduled getTransfertScheduleds()
     {
-        return this.ReceivedTransfertScheduleds;
+        return this.TransfertScheduleds;
     }
     
-    public void setReceivedTransfertScheduleds(ArrayOfTransfertScheduled value)
+    public void setTransfertScheduleds(ArrayOfTransfertScheduled value)
     {
-        this.ReceivedTransfertScheduleds = value;     
+        this.TransfertScheduleds = value;     
     }
     
-    public ArrayOfTransfertScheduled getSentTransfertScheduleds()
+    public ArrayOfTransfertScheduled getTransfertScheduleds1()
     {
-        return this.SentTransfertScheduleds;
+        return this.TransfertScheduleds1;
     }
     
-    public void setSentTransfertScheduleds(ArrayOfTransfertScheduled value)
+    public void setTransfertScheduleds1(ArrayOfTransfertScheduled value)
     {
-        this.SentTransfertScheduleds = value;     
+        this.TransfertScheduleds1 = value;     
     }
     
     public ArrayOfCustomerGroup getCustomerGroups1()
@@ -570,8 +571,7 @@ public class Customer extends AttributeContainer implements KvmSerializable
         this.CustomerGroups1 = value;     
     }
 
-
-    public  Customer(){}
+    public Customer(){}
 
     public Customer(SoapObject j){
         loadFromSoap(j, new ExtendedSoapSerializationEnvelope());
@@ -693,12 +693,10 @@ public class Customer extends AttributeContainer implements KvmSerializable
                     if(j.toString()!=null)
                     {
                         this.DateCreated = j.toString();
-                        //this.DateCreated = ExtendedSoapSerializationEnvelope.getDateTimeConverter().convertDateTime(j.toString());
                     }
                 }
                 else if (obj instanceof String){
-                    this.DateCreated = (String) obj;
-                    //this.DateCreated = (java.util.Date)obj;
+                    this.DateCreated = (String)obj;
                 }
             }
             return true;
@@ -853,6 +851,27 @@ public class Customer extends AttributeContainer implements KvmSerializable
             }
             return true;
         }
+        if (info.name.equals("FireBaseToken"))
+        {
+            if(obj!=null)
+            {
+                if (obj instanceof SoapPrimitive)
+                {
+                    SoapPrimitive j =(SoapPrimitive) obj;
+                    if(j.toString()!=null)
+                    {
+                        this.FireBaseToken = j.toString();
+                    }
+                }
+                else if (obj instanceof String){
+                    this.FireBaseToken = (String)obj;
+                }
+                else{
+                    this.FireBaseToken = "";
+                }
+            }
+            return true;
+        }
         if (info.name.equals("AccountOperationRequests"))
         {
             if(obj!=null)
@@ -871,21 +890,21 @@ public class Customer extends AttributeContainer implements KvmSerializable
             }
             return true;
         }
-        if (info.name.equals("IssuedBills"))
+        if (info.name.equals("Bills"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.IssuedBills = (ArrayOfBill)__envelope.get(j,ArrayOfBill.class,false);
+                this.Bills = (ArrayOfBill)__envelope.get(j,ArrayOfBill.class,false);
             }
             return true;
         }
-        if (info.name.equals("PayedBills"))
+        if (info.name.equals("Bills1"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.PayedBills = (ArrayOfBill)__envelope.get(j,ArrayOfBill.class,false);
+                this.Bills1 = (ArrayOfBill)__envelope.get(j,ArrayOfBill.class,false);
             }
             return true;
         }
@@ -1060,12 +1079,12 @@ public class Customer extends AttributeContainer implements KvmSerializable
             }
             return true;
         }
-        if (info.name.equals("Transfert2CashDetails"))
+        if (info.name.equals("Transfert2CashDetail"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.Transfert2CashDetails = (ArrayOfTransfert2CashDetail)__envelope.get(j,ArrayOfTransfert2CashDetail.class,false);
+                this.Transfert2CashDetail = (ArrayOfTransfert2CashDetail)__envelope.get(j,ArrayOfTransfert2CashDetail.class,false);
             }
             return true;
         }
@@ -1096,39 +1115,39 @@ public class Customer extends AttributeContainer implements KvmSerializable
             }
             return true;
         }
-        if (info.name.equals("ReceivedTransfertP2p"))
+        if (info.name.equals("TransfertP2p"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.ReceivedTransfertP2p = (ArrayOfTransfertP2p)__envelope.get(j,ArrayOfTransfertP2p.class,false);
+                this.TransfertP2p = (ArrayOfTransfertP2p)__envelope.get(j,ArrayOfTransfertP2p.class,false);
             }
             return true;
         }
-        if (info.name.equals("SentTransfertP2p"))
+        if (info.name.equals("TransfertP2p1"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.SentTransfertP2p = (ArrayOfTransfertP2p)__envelope.get(j,ArrayOfTransfertP2p.class,false);
+                this.TransfertP2p1 = (ArrayOfTransfertP2p)__envelope.get(j,ArrayOfTransfertP2p.class,false);
             }
             return true;
         }
-        if (info.name.equals("ReceivedTransfertScheduleds"))
+        if (info.name.equals("TransfertScheduleds"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.ReceivedTransfertScheduleds = (ArrayOfTransfertScheduled)__envelope.get(j,ArrayOfTransfertScheduled.class,false);
+                this.TransfertScheduleds = (ArrayOfTransfertScheduled)__envelope.get(j,ArrayOfTransfertScheduled.class,false);
             }
             return true;
         }
-        if (info.name.equals("SentTransfertScheduleds"))
+        if (info.name.equals("TransfertScheduleds1"))
         {
             if(obj!=null)
             {
                 java.lang.Object j = obj;
-                this.SentTransfertScheduleds = (ArrayOfTransfertScheduled)__envelope.get(j,ArrayOfTransfertScheduled.class,false);
+                this.TransfertScheduleds1 = (ArrayOfTransfertScheduled)__envelope.get(j,ArrayOfTransfertScheduled.class,false);
             }
             return true;
         }
@@ -1173,7 +1192,6 @@ public class Customer extends AttributeContainer implements KvmSerializable
         else if(propertyIndex==4)
         {
             return this.DateCreated!=null?this.DateCreated:SoapPrimitive.NullSkip;
-            //return this.DateCreated!=null?ExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(this.DateCreated):SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==5)
         {
@@ -1209,129 +1227,133 @@ public class Customer extends AttributeContainer implements KvmSerializable
         }
         else if(propertyIndex==13)
         {
-            return this.AccountOperationRequests!=null?this.AccountOperationRequests:SoapPrimitive.NullSkip;
+            return this.FireBaseToken!=null?this.FireBaseToken:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==14)
         {
-            return this.Activations!=null?this.Activations:SoapPrimitive.NullSkip;
+            return this.AccountOperationRequests!=null?this.AccountOperationRequests:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==15)
         {
-            return this.IssuedBills!=null?this.IssuedBills:SoapPrimitive.NullSkip;
+            return this.Activations!=null?this.Activations:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==16)
         {
-            return this.PayedBills!=null?this.PayedBills:SoapPrimitive.NullSkip;
+            return this.Bills!=null?this.Bills:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==17)
         {
-            return this.Business!=null?this.Business:SoapPrimitive.NullSkip;
+            return this.Bills1!=null?this.Bills1:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==18)
         {
-            return this.Currency!=null?this.Currency:SoapPrimitive.NullSkip;
+            return this.Business!=null?this.Business:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==19)
         {
-            return this.Registration!=null?this.Registration:SoapPrimitive.NullSkip;
+            return this.Currency!=null?this.Currency:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==20)
         {
-            return this.RefCustomerType!=null?this.RefCustomerType:SoapPrimitive.NullSkip;
+            return this.Registration!=null?this.Registration:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==21)
         {
-            return this.MobileDevices!=null?this.MobileDevices:SoapPrimitive.NullSkip;
+            return this.RefCustomerType!=null?this.RefCustomerType:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==22)
         {
-            return this.CustomerAddresses!=null?this.CustomerAddresses:SoapPrimitive.NullSkip;
+            return this.MobileDevices!=null?this.MobileDevices:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==23)
         {
-            return this.CustomerBalanceHistories!=null?this.CustomerBalanceHistories:SoapPrimitive.NullSkip;
+            return this.CustomerAddresses!=null?this.CustomerAddresses:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==24)
         {
-            return this.CustomerGroups!=null?this.CustomerGroups:SoapPrimitive.NullSkip;
+            return this.CustomerBalanceHistories!=null?this.CustomerBalanceHistories:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==25)
         {
-            return this.CustomerImage!=null?this.CustomerImage:SoapPrimitive.NullSkip;
+            return this.CustomerGroups!=null?this.CustomerGroups:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==26)
         {
-            return this.CustomerLogin!=null?this.CustomerLogin:SoapPrimitive.NullSkip;
+            return this.CustomerImage!=null?this.CustomerImage:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==27)
         {
-            return this.CustomerTags!=null?this.CustomerTags:SoapPrimitive.NullSkip;
+            return this.CustomerLogin!=null?this.CustomerLogin:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==28)
         {
-            return this.EneoBillPayments!=null?this.EneoBillPayments:SoapPrimitive.NullSkip;
+            return this.CustomerTags!=null?this.CustomerTags:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==29)
         {
-            return this.ExternalAccounts!=null?this.ExternalAccounts:SoapPrimitive.NullSkip;
+            return this.EneoBillPayments!=null?this.EneoBillPayments:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==30)
         {
-            return this.KoloNotifications!=null?this.KoloNotifications:SoapPrimitive.NullSkip;
+            return this.ExternalAccounts!=null?this.ExternalAccounts:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==31)
         {
-            return this.Partner!=null?this.Partner:SoapPrimitive.NullSkip;
+            return this.KoloNotifications!=null?this.KoloNotifications:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==32)
         {
-            return this.Person!=null?this.Person:SoapPrimitive.NullSkip;
+            return this.Partner!=null?this.Partner:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==33)
         {
-            return this.RecurringContributions!=null?this.RecurringContributions:SoapPrimitive.NullSkip;
+            return this.Person!=null?this.Person:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==34)
         {
-            return this.TopUps!=null?this.TopUps:SoapPrimitive.NullSkip;
+            return this.RecurringContributions!=null?this.RecurringContributions:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==35)
         {
-            return this.TransferGravities!=null?this.TransferGravities:SoapPrimitive.NullSkip;
+            return this.TopUps!=null?this.TopUps:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==36)
         {
-            return this.Transfert2CashDetails!=null?this.Transfert2CashDetails:SoapPrimitive.NullSkip;
+            return this.TransferGravities!=null?this.TransferGravities:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==37)
         {
-            return this.TransfertE2e!=null?this.TransfertE2e:SoapPrimitive.NullSkip;
+            return this.Transfert2CashDetail!=null?this.Transfert2CashDetail:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==38)
         {
-            return this.TransfertGroups!=null?this.TransfertGroups:SoapPrimitive.NullSkip;
+            return this.TransfertE2e!=null?this.TransfertE2e:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==39)
         {
-            return this.TransfertGroupScheduleds!=null?this.TransfertGroupScheduleds:SoapPrimitive.NullSkip;
+            return this.TransfertGroups!=null?this.TransfertGroups:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==40)
         {
-            return this.ReceivedTransfertP2p!=null?this.ReceivedTransfertP2p:SoapPrimitive.NullSkip;
+            return this.TransfertGroupScheduleds!=null?this.TransfertGroupScheduleds:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==41)
         {
-            return this.SentTransfertP2p!=null?this.SentTransfertP2p:SoapPrimitive.NullSkip;
+            return this.TransfertP2p!=null?this.TransfertP2p:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==42)
         {
-            return this.ReceivedTransfertScheduleds!=null?this.ReceivedTransfertScheduleds:SoapPrimitive.NullSkip;
+            return this.TransfertP2p1!=null?this.TransfertP2p1:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==43)
         {
-            return this.SentTransfertScheduleds!=null?this.SentTransfertScheduleds:SoapPrimitive.NullSkip;
+            return this.TransfertScheduleds!=null?this.TransfertScheduleds:SoapPrimitive.NullSkip;
         }
         else if(propertyIndex==44)
+        {
+            return this.TransfertScheduleds1!=null?this.TransfertScheduleds1:SoapPrimitive.NullSkip;
+        }
+        else if(propertyIndex==45)
         {
             return this.CustomerGroups1!=null?this.CustomerGroups1:SoapPrimitive.NullSkip;
         }
@@ -1341,7 +1363,7 @@ public class Customer extends AttributeContainer implements KvmSerializable
 
     @Override
     public int getPropertyCount() {
-        return 45;
+        return 46;
     }
 
     @Override
@@ -1427,191 +1449,197 @@ public class Customer extends AttributeContainer implements KvmSerializable
         }
         else if(propertyIndex==13)
         {
-            info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "AccountOperationRequests";
+            info.type = PropertyInfo.STRING_CLASS;
+            info.name = "FireBaseToken";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==14)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "Activations";
+            info.name = "AccountOperationRequests";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==15)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "IssuedBills";
+            info.name = "Activations";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==16)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "PayedBills";
+            info.name = "Bills";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==17)
+        {
+            info.type = PropertyInfo.VECTOR_CLASS;
+            info.name = "Bills1";
+            info.namespace= "http://kolo.cyberix.fr/";
+        }
+        else if(propertyIndex==18)
         {
             info.type = Business.class;
             info.name = "Business";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==18)
+        else if(propertyIndex==19)
         {
             info.type = Currency.class;
             info.name = "Currency";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==19)
+        else if(propertyIndex==20)
         {
             info.type = Registration.class;
             info.name = "Registration";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==20)
+        else if(propertyIndex==21)
         {
             info.type = RefCustomerType.class;
             info.name = "RefCustomerType";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==21)
+        else if(propertyIndex==22)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "MobileDevices";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==22)
+        else if(propertyIndex==23)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "CustomerAddresses";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==23)
+        else if(propertyIndex==24)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "CustomerBalanceHistories";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==24)
+        else if(propertyIndex==25)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "CustomerGroups";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==25)
+        else if(propertyIndex==26)
         {
             info.type = CustomerImage.class;
             info.name = "CustomerImage";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==26)
+        else if(propertyIndex==27)
         {
             info.type = CustomerLogin.class;
             info.name = "CustomerLogin";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==27)
+        else if(propertyIndex==28)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "CustomerTags";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==28)
+        else if(propertyIndex==29)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "EneoBillPayments";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==29)
+        else if(propertyIndex==30)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "ExternalAccounts";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==30)
+        else if(propertyIndex==31)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "KoloNotifications";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==31)
+        else if(propertyIndex==32)
         {
             info.type = Partner.class;
             info.name = "Partner";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==32)
+        else if(propertyIndex==33)
         {
             info.type = Person.class;
             info.name = "Person";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==33)
+        else if(propertyIndex==34)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "RecurringContributions";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==34)
+        else if(propertyIndex==35)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "TopUps";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==35)
+        else if(propertyIndex==36)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "TransferGravities";
             info.namespace= "http://kolo.cyberix.fr/";
         }
-        else if(propertyIndex==36)
-        {
-            info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "Transfert2CashDetails";
-            info.namespace= "http://kolo.cyberix.fr/";
-        }
         else if(propertyIndex==37)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "TransfertE2e";
+            info.name = "Transfert2CashDetail";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==38)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "TransfertGroups";
+            info.name = "TransfertE2e";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==39)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "TransfertGroupScheduleds";
+            info.name = "TransfertGroups";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==40)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "ReceivedTransfertP2p";
+            info.name = "TransfertGroupScheduleds";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==41)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "SentTransfertP2p";
+            info.name = "TransfertP2p";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==42)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "ReceivedTransfertScheduleds";
+            info.name = "TransfertP2p1";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==43)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
-            info.name = "SentTransfertScheduleds";
+            info.name = "TransfertScheduleds";
             info.namespace= "http://kolo.cyberix.fr/";
         }
         else if(propertyIndex==44)
+        {
+            info.type = PropertyInfo.VECTOR_CLASS;
+            info.name = "TransfertScheduleds1";
+            info.namespace= "http://kolo.cyberix.fr/";
+        }
+        else if(propertyIndex==45)
         {
             info.type = PropertyInfo.VECTOR_CLASS;
             info.name = "CustomerGroups1";
@@ -1623,7 +1651,6 @@ public class Customer extends AttributeContainer implements KvmSerializable
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
-
 
     public int getTotalBalance() {
         return Balance + BalanceUnavailable;

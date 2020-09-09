@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "666610149810",
+    "firebase_url": "https://kolofcm.firebaseio.com",
+    "project_id": "kolofcm",
+    "storage_bucket": "kolofcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666610149810:android:cb91a35eec798b07f55cab",
+        "android_client_info": {
+          "package_name": "fr.cyberix.kolo.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666610149810-nlgq3u8b1v1erjsogpmmoh0sepp5ts84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.cyberix.kolo.debug",
+            "certificate_hash": "a466b025d9a565f049a914dd122c5a7dde491745"
+          }
+        },
+        {
+          "client_id": "666610149810-4ee76aike8t8k158fnpu4qa8ar84djq3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8rIx1NAk6JhVUdfO7zW2zSZE91jFe2_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666610149810-4ee76aike8t8k158fnpu4qa8ar84djq3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
