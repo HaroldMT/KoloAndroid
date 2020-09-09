@@ -26,7 +26,7 @@ public class KoloNotificationViewHolder extends BaseViewHolder<KoloNotification,
 		data = item;
 		txtnotiftitle.setText(data.getTitle());
 		txtnotifmessage.setText(data.getMessage());
-		txtnotifcreationdate.setText(data.getCreationDate());
+		txtnotifcreationdate.setText((CharSequence) data.getCreationDate());
 	}
-	
+
 }

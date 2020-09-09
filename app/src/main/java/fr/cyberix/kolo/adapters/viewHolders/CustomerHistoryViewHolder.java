@@ -32,6 +32,6 @@ public class CustomerHistoryViewHolder extends BaseViewHolder<CustomerBalanceHis
 		txtAmount.setText(data.getAmount());
 		txtOldBalance.setText(data.getOldBalance());
 		txtNewBalance.setText(data.getNewBalance());
-		txtHistoryDate.setText(data.getHistoryDate());
+		txtHistoryDate.setText((CharSequence) data.getHistoryDate());
 	}
 }

@@ -102,7 +102,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 							if (success) {
 								SetQrContact(contact);
 								onSearchNumberContactSucces();
-							} else onSearchNumberContactFailed();
+							} else {
+								onSearchNumberContactFailed();
+							}
 							progressBar.setVisibility(View.GONE);
 							sendBtn.setEnabled(true);
 							cancelBtn.setEnabled(true);
@@ -113,6 +115,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		@Override
 		public void onOperationFailure(String errorMessage) {
 			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+			progressBar.setVisibility(View.GONE);
+			sendBtn.setEnabled(true);
+			cancelBtn.setEnabled(true);
 		}
 		
 		@Override
@@ -140,8 +145,10 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 						public void run() {
 							if (success) {
 //								transfertP2p = transfertP2p2;
-								onSendMoneySuccess();
-							} else onSendMoneyFailed();
+								onSendMoneySuccess(transfertP2p2);
+							} else {
+								onSendMoneyFailed(transfertP2p2.getErrorMessage());
+							}
 							progressBar.setVisibility(View.GONE);
 							sendBtn.setEnabled(true);
 							cancelBtn.setEnabled(true);
@@ -151,7 +158,12 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		
 		@Override
 		public void onOperationFailure(String errorMessage) {
-			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+//			KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+			onSendMoneyFailed(errorMessage);
+
+			progressBar.setVisibility(View.GONE);
+			sendBtn.setEnabled(true);
+			cancelBtn.setEnabled(true);
 		}
 		
 		@Override
@@ -163,6 +175,7 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 			if (schedateswitchcompat.isChecked()) transfertP2p.setTransfertDate(txtScheduledDate.getText().toString());
 			transfertP2p.setNeedsConfirmation(needconfswitchcompat.isChecked());
 			transfertP2p.setIdReceiverCustomer(qrContact.getIdCustomer());
+			transfertP2p.setIdSendingCustomer(ConfigHelper.getCustomerId());
 		}
 		
 		@Override
@@ -224,7 +237,9 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 					int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
 					String number = cursor.getString(column);
 					Toast.makeText(this, "Recherche du compte Kolo pour le numéro " + number, Toast.LENGTH_LONG).show();
-					ServiceHelper.doInBackground(null, findContact);
+
+					number = number.replaceAll("[^0-9]", "");
+					ServiceHelper.doInBackground(number, findContact);
 				} else {
 					Toast.makeText(this, "Aucun contact récupéré", Toast.LENGTH_LONG).show();
 				}
@@ -357,6 +372,7 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		int amount;
 		try {
 			amount = Integer.parseInt(strAmount);
+//			transfertP2p.setIdSendingCustomer(ConfigHelper.getCustomerId());
 			transfertP2p.setAmount(amount);
 		} catch (NumberFormatException nfe) {
 			KoloHelper.ShowToast("Montant invalide");
@@ -374,10 +390,33 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		return true;
 	}
 	
-	public void onSendMoneyFailed() {
+	public void onSendMoneyFailed(String errorMessage) {
 		Log.d(TAG, "onSendMoneyFailed");
-		KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
+//		KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
+//		KoloHelper.ShowSimpleAlert("Failure", errorMessage);
+
+		switch (errorMessage) {
+			case "001":
+				KoloHelper.ShowSimpleAlert("Échec", "An error occurred during the operation. Please, try again.");
+				break;
+			case "002":
+				KoloHelper.ShowSimpleAlert("Échec", "The Receiver is INVALID.");
+				break;
+			case "003":
+				KoloHelper.ShowSimpleAlert("Échec", "The Sender is INVALID.");
+				break;
+			case "010":
+				KoloHelper.ShowSimpleAlert("Échec", "The Sender does not have enough money into his account");
+				break;
+			case "011":
+				KoloHelper.ShowSimpleAlert("Échec", "Operation is successful.");
+				break;
+			default:
+				KoloHelper.ShowSimpleAlert("Échec", "La transaction n'a pas abouti");
+				break;
+		}
 	}
+
 	
 	private void onSearchNumberContactFailed() {
 		KoloHelper.ShowSimpleAlert("Échec", "Erreur lors de la recherche du contact");
@@ -389,8 +428,29 @@ public class KoloTransferP2pSendActivity extends AppCompatActivity
 		finish();
 	}
 	
-	public void onSendMoneySuccess() {
-		KoloHelper.ShowToast("Fin de l'opération");
+	public void onSendMoneySuccess(KoloWsObject<TransfertP2p> tP2P) {
+		String error = tP2P.getErrorMessage();
+
+		switch (error) {
+			case "001":
+				KoloHelper.ShowToast("An error occurred during the operation. Please, try again.");
+				break;
+			case "002":
+				KoloHelper.ShowToast("The Receiver is INVALID.");
+				break;
+			case "003":
+				KoloHelper.ShowToast("The Sender is INVALID.");
+				break;
+			case "010":
+				KoloHelper.ShowToast("The Sender does not have enough money into his account");
+				break;
+			case "011":
+				KoloHelper.ShowToast("Operation is successful.");
+				break;
+			default:
+				KoloHelper.ShowToast("Fin de l'opération");
+				break;
+		}
 	}
 	
 	@Override

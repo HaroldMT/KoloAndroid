@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -93,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 			btnLogin.setEnabled(true);
 			btnSignup.setEnabled(true);
 			btnForgot.setEnabled(true);
+			loginProgressBar.setVisibility(View.INVISIBLE);
 		}
 		
 		@Override
@@ -114,9 +116,9 @@ public class LoginActivity extends AppCompatActivity {
 			loginAttempt.setSubscriberId(telInfo.getSubscriberId());
 			loginAttempt.setDeviceId(telInfo.getDeviceId());
 			if (loc != null) {
-				loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
-				loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
-				loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
+				loginAttempt.setLatitude(BigDecimal.valueOf(loc.getLatitude()));
+				loginAttempt.setLongitude(BigDecimal.valueOf(loc.getLongitude()));
+				loginAttempt.setAccuracy(BigDecimal.valueOf(loc.getAccuracy()));
 			}
 		}
 		
@@ -217,9 +219,9 @@ public class LoginActivity extends AppCompatActivity {
 		loginAttempt.setSubscriberId(telInfo.getSubscriberId());
 		loginAttempt.setDeviceId(telInfo.getDeviceId());
 		if (loc != null) {
-			loginAttempt.setLatitude(Double.valueOf(loc.getLatitude()));
-			loginAttempt.setLongitude(Double.valueOf(loc.getLongitude()));
-			loginAttempt.setAccuracy(Double.valueOf(loc.getAccuracy()));
+			loginAttempt.setLatitude(BigDecimal.valueOf(loc.getLatitude()));
+			loginAttempt.setLongitude(BigDecimal.valueOf(loc.getLongitude()));
+			loginAttempt.setAccuracy(BigDecimal.valueOf(loc.getAccuracy()));
 		}
 		ServiceHelper.doInBackground(loginAttempt, tryToLogIn);
 //		userSignInTask = new UserSignInTask();

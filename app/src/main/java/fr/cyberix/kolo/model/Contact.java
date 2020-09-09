@@ -58,7 +58,7 @@ public final class Contact {
 	public byte[] getImageBytes() {
 		byte[] imageBytes = null;
 		if (customerImage != null) {
-			imageBytes = customerImage.getImageBytes().toBytes();
+			imageBytes = customerImage.getImageBytes().getBytes();
 		} else {
 			imageBytes = new byte[1];
 		}

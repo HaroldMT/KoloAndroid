@@ -19,6 +19,7 @@ import fr.cyberix.kolo.helpers.KoloConstants;
 import fr.cyberix.kolo.helpers.KoloHelper;
 import fr.cyberix.kolo.helpers.PermissionHelper;
 import fr.cyberix.kolo.helpers.ServiceHelper;
+import fr.cyberix.kolo.services.NotificationsService;
 
 public class SplashActivity extends AppCompatActivity {
 	@BindView(R.id.splash_text)
@@ -73,7 +74,9 @@ public class SplashActivity extends AppCompatActivity {
 				}
 			}
 			if (gotoLoginActivity) {
+//				NotificationsService.
 //				startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
 				KoloHelper.startActivity(LoginActivity.class);
 			}
 			

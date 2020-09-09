@@ -3,12 +3,18 @@ package fr.cyberix.kolo.activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,13 +91,33 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 	}
 	
 	public void confirmRegistration() {
-		Log.d(TAG, "Confirm");
-		if (!validate()) {
-			onConfirmFailed();
-			return;
-		}
-		userConfirmSignUpTask = new UserConfirmSignUpTask();
-		userConfirmSignUpTask.execute((Void) null);
+		FirebaseInstanceId.getInstance()
+				.getInstanceId()
+				.addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+					@Override
+					public void onComplete(@NonNull Task<InstanceIdResult> task) {
+						if (!task.isSuccessful()) {
+							Log.w(TAG, "getInstanceId failed", task.getException());
+							return;
+						}
+
+						Log.d(TAG, "Confirm - " + task.getResult().getToken());
+						if (!validate()) {
+							onConfirmFailed();
+							return;
+						}
+						registration.setFireBaseToken(task.getResult().getToken());
+						userConfirmSignUpTask = new UserConfirmSignUpTask();
+						userConfirmSignUpTask.execute((Void) null);
+					}
+				});
+//		Log.d(TAG, "Confirm");
+//		if (!validate()) {
+//			onConfirmFailed();
+//			return;
+//		}
+//		userConfirmSignUpTask = new UserConfirmSignUpTask();
+//		userConfirmSignUpTask.execute((Void) null);
 	}
 	
 	public void onConfirmFailed() {
@@ -145,6 +171,7 @@ public class SignUpConfirmationActivity extends AppCompatActivity {
 		protected Customer doInBackground(Void... params) {
 			Customer myCustomer = new Customer();
 			try {
+				Log.d(TAG, "REGISTRATION --- " + registration.getFireBaseToken());
 				String s = SerializationHelper.toJson(registration, registration.getClass());
 				String sc = new KolOthenticor(null, KoloConstants.KolOthenticor_BaseUrl).DoConfirmRegistration(s);
 				ConfirmationResult confirmationResult = SerializationHelper.fromJson(sc, ConfirmationResult.class);
